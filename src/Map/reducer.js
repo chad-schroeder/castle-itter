@@ -16,7 +16,7 @@ const initialState = {
                     los: ['purple', 'red'],
                 },
             },
-            stability: 6,
+            defense: 6,
         },
         'South Terrace': {
             canEspace: true,
@@ -34,7 +34,7 @@ const initialState = {
                     los: ['green', 'yellow'],
                 },
             },
-            stability: 6,
+            defense: 6,
         },
         'Keep': {
             canEspace: true,
@@ -52,7 +52,7 @@ const initialState = {
                     los: ['red', 'purple'],
                 },
             },
-            stability: 6,
+            defense: 6,
         },
         'Great Hall': {
             canEspace: false,
@@ -70,7 +70,7 @@ const initialState = {
                     los: ['yellow'],
                 },
             },
-            stability: 6,
+            defense: 6,
         },
         'Gate House': {
             canEspace: true,
@@ -94,7 +94,7 @@ const initialState = {
                     }
                 },
             },
-            stability: 6,
+            defense: 6,
         },
         'Besotten Jenny': {
             canEspace: true,
@@ -135,7 +135,7 @@ const initialState = {
                     },
                 },
             },
-            stability: 6,
+            defense: 6,
         },
         'Cellar': {
             canEspace: false,
@@ -156,7 +156,7 @@ const initialState = {
                     los: [],
                 },
             },
-            stability: 6,
+            defense: 6,
         },
     },
 };

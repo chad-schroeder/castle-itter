@@ -1,8 +1,10 @@
 const initialState = {
     loading: true,
-    currentEnemyDeck: 1,
-    escaped: false,
     playerTurn: true,
+    actionsRemaining: {
+        player: 5,
+        enemy: 0,
+    },
     suppression: {
         'green': 0,
         'black': 0,

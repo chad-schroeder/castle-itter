@@ -1,7 +1,7 @@
 const initialState = {
     loading: true,
     playerTurn: true,
-    actionsRemaining: {
+    actions: {
         player: 5,
         enemy: 0,
     },
@@ -11,6 +11,7 @@ const initialState = {
         'purple': 0,
         'red': 0,
     },
+    escaped: false,
 };
 
 const reducer = (state = initialState, { type, payload }) => {

@@ -15,7 +15,6 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
                 }
             },
             'Lee': {
@@ -32,7 +31,6 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
                 }
             },
             'Worsham': {
@@ -45,7 +43,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Pollock': {
@@ -58,7 +56,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Steiner': {
@@ -74,7 +72,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Szymczyk': {
@@ -90,7 +88,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Rushford': {
@@ -106,7 +104,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Schrader': {
@@ -122,7 +120,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Gangl': {
@@ -140,7 +138,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Dietrich': {
@@ -156,7 +154,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'RF1': {
@@ -172,7 +170,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'RF2': {
@@ -188,7 +186,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'RF3': {
@@ -204,7 +202,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'RF4': {
@@ -220,7 +218,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'RF5': {
@@ -236,7 +234,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Linson': {
@@ -252,7 +250,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Waltl': {
@@ -268,7 +266,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Clemenceau': {
@@ -285,7 +283,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Gamelin': {
@@ -302,7 +300,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'De La Rocque': {
@@ -319,7 +317,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Reynaud': {
@@ -336,7 +334,7 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
             'Borotra': {
@@ -353,16 +351,15 @@ const initialState = {
                 tokens: {
                     action: false,
                     command: false,
-                    suppressiveed: false,
+                    disrupted: false,
                 }
             },
         },
         deploymentCount: 0,
         besottenJenny: {
             destroyed: false,
-            defendersKia: 0,
+            casualties: 0,
         },
-        escaped: false,
         kia: [],
     },
     axis: {
@@ -419,7 +416,7 @@ const initialState = {
                 attack: 2,
                 defense: 4,
                 counter: true,
-                suppressive: true,
+                disrupted: true,
                 decks: {
                     1: [],
                     2: [],
@@ -430,7 +427,7 @@ const initialState = {
                 attack: 3,
                 defense: 4,
                 counter: true,
-                suppressive: true,
+                disrupted: true,
                 decks: {
                     1: [],
                     2: [],

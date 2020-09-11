@@ -159,7 +159,6 @@ const initialState = {
             stability: 6,
         },
     },
-    locations: ['North Terrace', 'South Terrace', 'Keep', 'Great Hall', 'Gatehouse', 'Besotten Jeny', 'Cellar'],
 };
 
 const reducer = (state = initialState, { type, payload }) => {

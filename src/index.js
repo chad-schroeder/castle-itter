@@ -3,15 +3,13 @@ import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
 
-import { Map } from './Map';
-import { Units } from './Units';
+import { App } from './App';
 
 import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Map />
-    <Units />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

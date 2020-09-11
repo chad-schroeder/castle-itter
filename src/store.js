@@ -2,10 +2,12 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 
+import { reducer as commonReducer, saga as commonSaga } from './App';
 import { reducer as mapReducer, saga as mapSaga } from './Map';
 import { reducer as unitReducer, saga as unitSaga } from './Units';
 
 const rootReducer = combineReducers({
+    common: commonReducer,
     map: mapReducer,
     units: unitReducer,
 });

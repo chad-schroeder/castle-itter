@@ -1,0 +1,1 @@
+export const getCommonState = state => state.common;

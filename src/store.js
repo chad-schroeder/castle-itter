@@ -3,9 +3,11 @@ import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 
 import { reducer as mapReducer, saga as mapSaga } from './Map';
+import { reducer as unitReducer, saga as unitSaga } from './Units';
 
 const rootReducer = combineReducers({
     map: mapReducer,
+    units: unitReducer,
 });
 
 function* rootSaga() {

@@ -1,5 +1,14 @@
 const initialState = {
     loading: true,
+    currentEnemyDeck: 1,
+    escaped: false,
+    playerTurn: true,
+    suppression: {
+        'green': 0,
+        'black': 0,
+        'purple': 0,
+        'red': 0,
+    },
 };
 
 const reducer = (state = initialState, { type, payload }) => {

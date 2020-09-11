@@ -6,7 +6,7 @@ const Map = () => {
 
     return (
         <div>
-            <p>{spaces}</p>
+            <p>Map</p>
         </div>
     );
 };

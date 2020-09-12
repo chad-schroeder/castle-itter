@@ -16,6 +16,11 @@ const getAvailableMoves = (tiles) => {
         .filter(tile => tile.unit === null)
         .map(tile => tile.id);
 
+    // TODO: 
+    // ensure location defense isn't 0  (Besotten Jenny)
+    // when prisoners can move
+    // filter for Move and Moving Between Location
+
     return available;
 };
 

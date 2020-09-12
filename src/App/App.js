@@ -1,22 +1,22 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Map } from '../Map';
 import { Units } from '../Units';
 
+import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
 
 const App = () => {
-    const { loading, playerTurn, suppression } = useSelector(state => state.common);
+    // const { loading, playerTurn, suppression } = useSelector(state => state.common);
+    const { tiles } = useSelector(state => state.map);
 
     return (
         <>
             <h1>Castle Itter</h1>
-            <h2>Stats</h2>
-            <p>Player turn: {playerTurn ? 'True' : 'False'}</p>
-            <p>Suppression tokens:</p>
+            <h2>Available tiles</h2>
             <ul>
-                {Object.keys(suppression).map((key, i) => (
-                    <li key={key}>{key[0].toUpperCase() + key.slice(1)}: {suppression[key]}</li>
+                {getAvailableMoves(tiles).map(tile => (
+                    <li key={tile}>{tile}</li>
                 ))}
             </ul>
             <Map />

@@ -1,164 +1,280 @@
+/*
+ * CASTLE ITTER
+ *
+ * License: MIT
+ *
+ * A non-commercial port of the solo boardgame "Castle Itter":
+ * https://boardgamegeek.com/boardgame/196257/castle-itter
+ * 
+ * Designer: David Thompson
+ * Artist: David Thompson, Matt W White
+ * Publisher: Dan Verssen Games (DVG)
+ */
+
 const initialState = {
-    locations: {
-        'North Terrace': {
+    locations: [
+        {
+            id: 'NT',
+            name: 'North Terrace',
+            spaces: ['NT2', 'NT3', 'NT5', 'NT6'],
             canEspace: true,
-            spaces: {
-                'NT2': {
-                    los: ['purple'],
-                },
-                'NT3': {
-                    los: ['purple'],
-                },
-                'NT5': {
-                    los: ['purple', 'yellow'],
-                },
-                'NT6': {
-                    los: ['purple', 'red'],
-                },
-            },
             defense: 6,
         },
-        'South Terrace': {
+        {
+            id: 'ST',
+            name: 'South Terrace',
+            spaces: ['ST2', 'ST4', 'ST5', 'ST6'],
             canEspace: true,
-            spaces: {
-                'ST2': {
-                    los: ['green'],
-                },
-                'ST4': {
-                    los: ['green'],
-                },
-                'ST5': {
-                    los: ['green', 'red'],
-                },
-                'ST6': {
-                    los: ['green', 'yellow'],
-                },
-            },
             defense: 6,
         },
-        'Keep': {
+        {
+            id: 'K',
+            name: 'Keep',
+            spaces: ['K1', 'K2', 'K3', 'K4'],
             canEspace: true,
-            spaces: {
-                'K1': {
-                    los: ['red'],
-                },
-                'K2': {
-                    los: ['red'],
-                },
-                'K3': {
-                    los: ['red', 'green'],
-                },
-                'K4': {
-                    los: ['red', 'purple'],
-                },
-            },
             defense: 6,
         },
-        'Great Hall': {
+        {
+            id: 'GH',
+            name: 'Great Hall',
+            spaces: ['GH1', 'GH2', 'GH3', 'GH4'],
             canEspace: false,
-            spaces: {
-                'GH1p': {
-                    los: ['purple'],
-                },
-                'GH1g': {
-                    los: ['green'],
-                },
-                'GH3': {
-                    los: ['yellow'],
-                },
-                'GH4': {
-                    los: ['yellow'],
-                },
-            },
             defense: 6,
         },
-        'Gate House': {
+        {
+            id: 'G',
+            name: 'Gatehouse',
+            spaces: ['G1', 'G2', 'G3', 'G4'],
             canEspace: true,
-            spaces: {
-                'G1': {
-                    los: ['yellow', 'black'],
-                },
-                'G2': {
-                    los: ['yellow', 'black'],
-                },
-                'G3': {
-                    los: ['black'],
-                },
-                'G4': {
-                    los: ['black'],
-                    armament: {
-                        name: 'M13/A4',
-                        attack: 2,
-                        suppress: 3,
-                        tanker: true,
-                    }
-                },
-            },
             defense: 6,
         },
-        'Besotten Jenny': {
+        {
+            id: 'BJ',
+            name: 'Besotten Jenny',
+            spaces: ['BJ1', 'BJ2', 'BJ3', 'BJ4'],
             canEspace: true,
-            spaces: {
-                'BJ1': {
-                    los: ['black'],
-                    armament: {
-                        name: '76mm Cannon Load',
-                        tanker: true,
-                    }
-                },
-                'BJ2': {
-                    los: ['black'],
-                    armament: {
-                        name: '76mm Cannon',
-                        attack: 4,
-                        suppress: 7,
-                        loaded: false,
-                        tanker: true,
-                    },
-                },
-                'BJ3': {
-                    los: ['black'],
-                    armament: {
-                        name: 'M2HB',
-                        attack: 2,
-                        suppress: 4,
-                        tanker: true,
-                    },
-                },
-                'BJ4': {
-                    los: ['black'],
-                    armament: {
-                        name: 'M1919A4',
-                        attack: 2,
-                        suppress: 3,
-                        tanker: true,
-                    },
-                },
-            },
             defense: 6,
         },
-        'Cellar': {
+        {
+            id: 'C',
+            name: 'Cellar',
+            spaces: ['C1', 'C2', 'C3', 'C4', 'C5'],
             canEspace: false,
-            spaces: {
-                'C1': {
-                    los: [],
-                },
-                'C2': {
-                    los: [],
-                },
-                'C3': {
-                    los: [],
-                },
-                'C4': {
-                    los: [],
-                },
-                'C5': {
-                    los: [],
-                },
-            },
             defense: 6,
         },
-    },
+    ],
+    tiles: [
+        {
+            id: 'NT2',
+            location: 'NT',
+            los: ['purple'],
+            unit: null,
+        },
+        {
+            id: 'NT3',
+            location: 'NT',
+            los: ['purple'],
+            unit: null,
+        },
+        {
+            id: 'NT5',
+            location: 'NT',
+            los: ['purple', 'yellow'],
+            unit: null,
+        },
+        {
+            id: 'NT6',
+            location: 'NT',
+            los: ['purple', 'red'],
+            unit: null,
+        },
+        {
+            id: 'ST2',
+            location: 'ST',
+            los: ['green'],
+            unit: null,
+        },
+        {
+            id: 'ST2',
+            location: 'ST',
+            los: ['green'],
+            unit: null,
+        },
+        {
+            id: 'ST5',
+            location: 'ST',
+            los: ['green', 'red'],
+            unit: null,
+        },
+        {
+            id: 'ST6',
+            location: 'ST',
+            los: ['green', 'yellow'],
+            unit: null,
+        },
+        {
+            id: 'K1',
+            location: 'K',
+            los: ['red'],
+            unit: null,
+        },
+        {
+            id: 'K2',
+            location: 'K',
+            los: ['red'],
+            unit: null,
+        },
+        {
+            id: 'K3',
+            location: 'K',
+            los: ['red', 'green'],
+            unit: null,
+        },
+        {
+            id: 'K4',
+            location: 'K',
+            los: ['red', 'purple'],
+            unit: null,
+        },
+        {
+            id: 'GH1',
+            location: 'GH',
+            los: ['purple'],
+            unit: null,
+        },
+        {
+            id: 'GH2',
+            location: 'GH',
+            los: ['green'],
+            unit: null,
+        },
+        {
+            id: 'GH3',
+            location: 'GH',
+            los: ['yellow'],
+            unit: null,
+        },
+        {
+            id: 'GH4',
+            location: 'GH',
+            los: ['yellow'],
+            unit: null,
+        },
+        {
+            id: 'G1',
+            location: 'G',
+            los: ['yellow', 'black'],
+            unit: null,
+        },
+        {
+            id: 'G2',
+            location: 'G',
+            los: ['yellow', 'black'],
+            unit: null,
+        },
+        {
+            id: 'G3',
+            location: 'G',
+            los: ['black'],
+            unit: null,
+        },
+        {
+            id: 'G4',
+            location: 'G',
+            los: ['black'],
+            unit: null,
+            armament: {
+                name: 'M13/A4',
+                attack: 2,
+                suppress: 3,
+                tanker: true,
+            }
+        }, 
+        {
+            id: 'BJ1',
+            location: 'BJ',
+            los: [],
+            unit: null,
+            armament: {
+                name: '76mm Cannon Load',
+                tanker: true,
+            }
+        },
+        {
+            id: 'BJ2',
+            location: 'BJ',
+            los: ['black'],
+            unit: null,
+            armament: {
+                name: '76mm Cannon',
+                attack: 4,
+                suppress: 7,
+                loaded: false,
+                tanker: true,
+            },
+        },
+        {
+            id: 'BJ3',
+            location: 'BJ',
+            los: ['black'],
+            unit: null,
+            armament: {
+                name: 'M2HB',
+                attack: 2,
+                suppress: 4,
+                tanker: true,
+            },
+        },
+        {
+            id: 'BJ4',
+            location: 'BJ',
+            los: ['black'],
+            unit: null,
+            armament: {
+                name: 'M1919A4',
+                attack: 2,
+                suppress: 3,
+                tanker: true,
+            },
+        },
+        {
+            id: 'C1',
+            location: 'C',
+            los: [],
+            unit: 'Gamelin',
+        },
+        {
+            id: 'C2',
+            location: 'C',
+            los: [],
+            unit: 'Clemenceau',
+        },
+        {
+            id: 'C3',
+            location: 'C',
+            los: [],
+            unit: 'De La Rocque',
+        },
+        {
+            id: 'C4',
+            location: 'C',
+            los: [],
+            unit: 'Reynaud',
+        },
+        {
+            id: 'C5',
+            location: 'C',
+            los: [],
+            unit: 'Borotra',
+        },
+    ],
+    colors: {
+        red: ['K1', 'K2', 'K3', 'K4', 'ST5', 'NT6'],
+        purple: ['GH1', 'NT2', 'NT3', 'K4', 'NT5', 'NT6'],
+        green: ['GH1', 'ST2', 'K3', 'ST4', 'ST5', 'ST6'],
+        yellow: ['G1', 'G2', 'GH3', 'GH4', 'NT5', 'ST6'],
+        black: ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'],
+    }
 };
 
 const reducer = (state = initialState, { type, payload }) => {

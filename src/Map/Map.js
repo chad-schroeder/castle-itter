@@ -7,7 +7,7 @@ const Map = () => {
     return (
         <div>
             <h2>Map</h2>
-            <p>Locations: {Object.keys(locations).length}</p>
+            <p>Locations: {locations.length}</p>
         </div>
     );
 };

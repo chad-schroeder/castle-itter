@@ -18,10 +18,10 @@ import { Map } from '../Map';
 import { Units } from '../Units';
 
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
-import targetByColor from '../Utils/Libs/targeting';
+import getTargetsByColor from '../Utils/Libs/targetAllied';
 
 const App = () => {
-    const { tiles, colors } = useSelector(state => state.map);
+    const { tiles } = useSelector(state => state.map);
 
     return (
         <>
@@ -32,9 +32,9 @@ const App = () => {
                     <li key={tile}>{tile}</li>
                 ))}
             </ul>
-            <h2>Target by color: Purple</h2>
+            <h2>Target Allied tile (by color): Purple</h2>
             <ul>
-                {targetByColor('purple').map(target => (
+                {getTargetsByColor('purple').map(target => (
                     <li key={target}>{target}</li>
                 ))}
             </ul>

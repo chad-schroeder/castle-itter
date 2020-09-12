@@ -13,9 +13,9 @@
 
 import store from '../../store';
 
-const targetByColor = (color) => {
+const getTargetsByColor = (color) => {
     const colors = store.getState().map.colors;
     return colors[color];
 };
 
-export default targetByColor;
+export default getTargetsByColor;

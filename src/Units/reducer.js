@@ -1,7 +1,8 @@
 const initialState = {
     allied: {
-        combatants: {
-            'Basse': {
+        combatants: [
+            {
+                id: 'basse',
                 name: 'Basse',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -17,7 +18,8 @@ const initialState = {
                     command: false,
                 }
             },
-            'Lee': {
+            {
+                id: 'lee',
                 name: 'Lee',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -33,7 +35,8 @@ const initialState = {
                     command: false,
                 }
             },
-            'Worsham': {
+            {
+                id: 'worsham',
                 name: 'Worsham',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -46,7 +49,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Pollock': {
+            {
+                id: 'pollack',
                 name: 'Pollack',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -59,7 +63,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Steiner': {
+            {
+                id: 'steiner',
                 name: 'Steiner',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -75,7 +80,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Szymczyk': {
+            {
+                id: 'szymczyk',
                 name: 'Szymczyk',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -91,7 +97,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Rushford': {
+            {
+                id: 'rushford',
                 name: 'Rushford',
                 nationality: 'USA',
                 location: 'Deployment',
@@ -107,7 +114,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Schrader': {
+            {
+                id: 'schrader',
                 name: 'Schrader',
                 nationality: 'SS',
                 location: 'Deployment',
@@ -123,7 +131,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Gangl': {
+            {
+                id: 'gangl',
                 name: 'Gangl',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -141,7 +150,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Dietrich': {
+            {
+                id: 'dietrich',
                 name: 'Dietrich',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -157,7 +167,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'RF1': {
+            {
+                id: 'rifleman1',
                 name: 'Rifleman',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -173,7 +184,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'RF2': {
+            {
+                id: 'rifleman2',
                 name: 'Rifleman',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -189,7 +201,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'RF3': {
+            {
+                id: 'rifleman3',
                 name: 'Rifleman',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -205,7 +218,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'RF4': {
+            {
+                id: 'rifleman4',
                 name: 'Rifleman',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -221,7 +235,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'RF5': {
+            {
+                id: 'rifleman5',
                 name: 'Rifleman',
                 nationality: 'GER',
                 location: 'Deployment',
@@ -237,7 +252,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Linson': {
+            {
+                id: 'linson',
                 name: 'Linson',
                 nationality: 'GER',
                 location: 'Reinforcement',
@@ -253,7 +269,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Waltl': {
+            {
+                id: 'waltl',
                 name: 'Waltl',
                 nationality: 'AUS',
                 location: 'Reinforcement',
@@ -269,7 +286,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Clemenceau': {
+            {
+                id: 'clemenceau',
                 name: 'Clemenceau',
                 nationality: 'FRA',
                 location: 'Cellar',
@@ -286,7 +304,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Gamelin': {
+            {
+                id: 'gamelin',
                 name: 'Gamelin',
                 nationality: 'FRA',
                 location: 'Cellar',
@@ -303,7 +322,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'De La Rocque': {
+            {
+                id: 'rocque',
                 name: 'De La Rocque',
                 nationality: 'FRA',
                 location: 'Cellar',
@@ -320,7 +340,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Reynaud': {
+            {
+                id: 'reynaud',
                 name: 'Reynaud',
                 nationality: 'FRA',
                 location: 'Cellar',
@@ -337,7 +358,8 @@ const initialState = {
                     disrupted: false,
                 }
             },
-            'Borotra': {
+            {
+                id: 'borotra',
                 name: 'Borotra',
                 nationality: 'FRA',
                 location: 'Cellar',
@@ -354,7 +376,7 @@ const initialState = {
                     disrupted: false,
                 }
             },
-        },
+        ],
         deploymentCount: 0,
         besottenJenny: {
             destroyed: false,

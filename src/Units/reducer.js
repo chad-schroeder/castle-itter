@@ -64,8 +64,36 @@ const initialState = {
                 }
             },
             {
-                id: 'steiner',
-                name: 'Steiner',
+                id: 'sutton',
+                name: 'Sutton',
+                nationality: 'USA',
+                location: 'Deployment',
+                attack: 1,
+                suppress: 1,
+                exhausted: false,
+                tokens: {
+                    action: false,
+                    command: false,
+                    disrupted: false,
+                }
+            },
+            {
+                id: 'petrukovich',
+                name: 'Petrukovich',
+                nationality: 'USA',
+                location: 'Deployment',
+                attack: 1,
+                suppress: 1,
+                exhausted: false,
+                tokens: {
+                    action: false,
+                    command: false,
+                    disrupted: false,
+                }
+            },
+            {
+                id: 'seiner',
+                name: 'Seiner',
                 nationality: 'USA',
                 location: 'Deployment',
                 attack: 1,
@@ -100,6 +128,23 @@ const initialState = {
             {
                 id: 'rushford',
                 name: 'Rushford',
+                nationality: 'USA',
+                location: 'Deployment',
+                attack: 1,
+                suppress: 2,
+                modifiers: {
+                    tanker: true,
+                },
+                exhausted: false,
+                tokens: {
+                    action: false,
+                    command: false,
+                    disrupted: false,
+                }
+            },
+            {
+                id: 'mchaley',
+                name: 'McHaley',
                 nationality: 'USA',
                 location: 'Deployment',
                 attack: 1,
@@ -153,6 +198,40 @@ const initialState = {
             {
                 id: 'dietrich',
                 name: 'Dietrich',
+                nationality: 'GER',
+                location: 'Deployment',
+                attack: 1,
+                suppress: 1,
+                modifiers: {
+                    officer: true,
+                },
+                exhausted: false,
+                tokens: {
+                    action: false,
+                    command: false,
+                    disrupted: false,
+                }
+            },
+            {
+                id: 'hockel',
+                name: 'Hockel',
+                nationality: 'GER',
+                location: 'Deployment',
+                attack: 1,
+                suppress: 1,
+                modifiers: {
+                    officer: true,
+                },
+                exhausted: false,
+                tokens: {
+                    action: false,
+                    command: false,
+                    disrupted: false,
+                }
+            },
+            {
+                id: 'blechschmidt',
+                name: 'Blechschmidt',
                 nationality: 'GER',
                 location: 'Deployment',
                 attack: 1,
@@ -260,6 +339,24 @@ const initialState = {
                 attack: 1,
                 suppress: 2,
                 modifiers: {
+                    reinforcement: true,
+                },
+                exhausted: false,
+                tokens: {
+                    action: false,
+                    command: false,
+                    disrupted: false,
+                }
+            },
+            {
+                id: 'wegscheider',
+                name: 'Wegscheider',
+                nationality: 'GER',
+                location: 'Reinforcement',
+                attack: 1,
+                suppress: 2,
+                modifiers: {
+                    officer: true,
                     reinforcement: true,
                 },
                 exhausted: false,
@@ -386,43 +483,103 @@ const initialState = {
     },
     axis: {
         combatants: {
-            'Rifleman': {
+            RF: {
+                name: 'Rifleman',
                 defense: 3,
                 counter: true,
                 decks: {
-                    1: [],
-                    2: [],
-                    3: [],
+                    1: [
+                        { place: 2 },
+                        { place: 2 },
+                        { place: 2 },
+                    ],
+                    2: [
+                        { place: 2 },
+                        { place: 2 },
+                        { place: 2 },
+                    ],
+                    3: [
+                        { place: 3 },
+                    ],
+                    4: [
+                        { place: 2 },
+                        { place: 2 },
+                        { place: 3 },
+                        { place: 3 },
+                    ],
                 },
             },
-            'Scout': {
+            SC: {
+                name: 'Scout',
                 defense: 4,
                 counter: true,
                 decks: {
-                    1: [],
-                    2: [],
-                    3: [],
+                    1: [
+                        { place: 2 },
+                        { place: 2 },
+                        { place: 2 },
+                    ],
+                    2: [
+                        { place: 2 },
+                        { place: 2 },
+                    ],
                 },
             },
-            'Sturm': {
+            ST: {
+                name: 'Sturm',
                 defense: 5,
                 counter: true,
                 decks: {
-                    1: [],
-                    2: [],
-                    3: [],
+                    1: [
+                        { place: 1 },
+                    ],
+                    2: [
+                        { place: 1 },
+                        { place: 1 },
+                    ],
+                    3: [
+                        { place: 1 },
+                        { place: 2 },
+                    ],
+                    4: [
+                        { place: 1 },
+                        { place: 1 },
+                        { place: 2 },
+                        { place: 2 },
+                    ],
                 },
             },
-            'Sniper': {
+            SF: {
+                name: 'Suppressive Fire',
+                counter: false,
+                disrupt: true,
+                decks: {
+                    2: [{}],
+                    3: [{}],
+                    4: [{}, {}],
+                },
+            },
+            SN: {
+                name: 'Sniper',
                 attack: 4,
                 counter: false,
                 disrupt: true,
                 decks: {
-                    1: [],
-                    2: [],
+                    2: [
+                        {
+                            target: {
+                                1: 'black',
+                                2: 'black',
+                                3: 'green',
+                                4: 'yellow',
+                                5: 'red',
+                                6: 'purple',
+                            },
+                        }
+                    ],
                     3: [
                         {
-                            targets: {
+                            target: {
                                 1: 'black',
                                 2: 'black',
                                 3: 'green',
@@ -434,77 +591,209 @@ const initialState = {
                     ],
                 },
             },
-            'Machine Gunner': {
+            MG: {
+                name: 'Machine Gunner',
                 attack: 2,
                 defense: 4,
                 counter: true,
                 disrupted: true,
                 decks: {
-                    1: [],
-                    2: [],
-                    3: [],
+                    1: [{}],
+                    2: [{}, {}],
+                    3: [{}],
+                    4: [{}],
                 },
             },
-            'Mortar': {
+            MT: {
+                name: 'Mortar',
                 attack: 3,
                 defense: 4,
                 counter: true,
                 disrupted: true,
                 decks: {
-                    1: [],
-                    2: [],
-                    3: [],
+                    1: [{}],
+                    2: [{}, {}],
+                    3: [{}],
+                    4: [{}],
                 },
             },
-            '20mm FLAK 30': {
+            FL20: {
+                name: '20mm FLAK 30',
                 attack: 2,
                 counter: false,
                 disrupt: true,
                 decks: {
-                    1: [],
-                    2: [],
-                    3: [],
+                    2: [
+                        { 
+                            target: {
+                                1: 'purple',
+                                2: 'purple',
+                                3: 'purple',
+                                4: 'red',
+                                5: 'red',
+                                6: 'red',
+                            },
+                        },
+                    ],
+                    3: [
+                        {
+                            target: {
+                                1: 'purple',
+                                2: 'purple',
+                                3: 'purple',
+                                4: 'red',
+                                5: 'red',
+                                6: 'red',
+                            },
+                        },
+                        {
+                            target: {
+                                1: 'purple',
+                                2: 'purple',
+                                3: 'purple',
+                                4: 'red',
+                                5: 'red',
+                                6: 'red',
+                            },
+                        },
+                    ],
                 },
             },
-            '88mm FLAK 37': {
+            FL88: {
+                name: '88mm FLAK 37',
                 attack: 5,
                 counter: false,
                 disrupt: true,
                 decks: {
-                    1: [],
-                    2: [
+                    1: [
                         {
-                            targets: {
-                                1: 'Keep',
-                                2: 'Keep',
-                                3: 'Great Hall',
-                                4: 'North Terrace',
-                                5: 'North Terrace',
-                                6: 'North Terrace',
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'NT',
+                                5: 'NT',
+                                6: 'NT',
                             },
                         },
                     ],
-                    3: [],
+                    2: [
+                        {
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'NT',
+                                5: 'NT',
+                                6: 'NT',
+                            },
+                        },
+                    ],
+                    3: [
+                        {
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'NT',
+                                5: 'NT',
+                                6: 'NT',
+                            },
+                        },
+                        {
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'NT',
+                                5: 'NT',
+                                6: 'NT',
+                            },
+                        },
+                    ],
                 },
             },
-            '75mm PAK 40': {
+            PA75: {
+                name: '75mm PAK 40',
                 attack: 4,
                 counter: false,
                 decks: {
-                    1: [],
+                    1: [
+                        {
+                            target: {
+                                1: 'BJ',
+                                2: 'BJ',
+                                3: 'G',
+                                4: 'G',
+                                5: 'G',
+                                6: 'GH'
+                            },
+                        },
+                        {
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'ST',
+                                5: 'ST',
+                                6: 'ST',
+                            },
+                        }
+                    ],
                     2: [
                         {
-                            targets: {
-                                1: 'Keep',
-                                2: 'Keep',
-                                3: 'Great Hall',
-                                4: 'South Terrace',
-                                5: 'South Terrace',
-                                6: 'South Terrace',
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'ST',
+                                5: 'ST',
+                                6: 'ST',
                             },
                         },
                     ],
-                    3: [],
+                    3: [
+                        { 
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'ST',
+                                5: 'ST',
+                                6: 'ST',
+                            },
+                        },
+                        {
+                            target: {
+                                1: 'BJ',
+                                2: 'BJ',
+                                3: 'G',
+                                4: 'G',
+                                5: 'G',
+                                6: 'GH',
+                            },
+                        },
+                        {
+                            target: {
+                                1: 'BJ',
+                                2: 'BJ',
+                                3: 'G',
+                                4: 'G',
+                                5: 'G',
+                                6: 'GH',
+                            },
+                        },
+                        {
+                            target: {
+                                1: 'K',
+                                2: 'K',
+                                3: 'GH',
+                                4: 'ST',
+                                5: 'ST',
+                                6: 'ST',
+                            },
+                        },
+                    ],
                 },
             },
             'Panzerfaust': {
@@ -513,11 +802,13 @@ const initialState = {
                 disrupt: true,
                 decks: {
                     1: [],
-                    2: [],
+                    2: [
+                        {},
+                        {},
+                    ],
                     3: [
-                        {
-                            target: 'Besotten Jenny',
-                        },
+                        {},
+                        {},
                     ],
                 },
             },

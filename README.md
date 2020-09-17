@@ -2,7 +2,7 @@
 
 Port of the boardgame "Castle Itter" (https://boardgamegeek.com/boardgame/196257/castle-itter) in React for fun and coding practice.
 
-![](./public/images/box.jpg | width=200)
+![](./public/images/box.jpg)
 
 ## Description ##
 

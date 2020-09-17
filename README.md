@@ -4,9 +4,9 @@ Port of the boardgame "Castle Itter" (https://boardgamegeek.com/boardgame/196257
 
 <img src="./public/images/box.jpg" width="260">
 
-Designer: David Thompson<br /> 
-Artist: David Thompson, Matt W White<br /> 
-Publisher: Dan Verssen Games (DVG)
+**Designer:** David Thompson<br /> 
+**Artist:** David Thompson, Matt W White<br /> 
+**Publisher:** Dan Verssen Games (DVG)
 
 ## Description ##
 

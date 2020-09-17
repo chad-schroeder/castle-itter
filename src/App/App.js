@@ -11,17 +11,24 @@
  * Publisher: Dan Verssen Games (DVG)
  */
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Map } from '../Map';
 import { Units } from '../Units';
 
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
+import destroyBesottenJenny from '../Utils/Libs/destroyBesottenJenny';
 import getTargetsByColor from '../Utils/Libs/targetAllied';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({ type: 'DESTROY_BESOTTEN_JENNY' });
+    }, []);
 
     return (
         <>

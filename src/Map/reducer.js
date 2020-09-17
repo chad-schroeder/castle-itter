@@ -95,7 +95,7 @@ const initialState = {
             unit: null,
         },
         {
-            id: 'ST2',
+            id: 'ST4',
             location: 'ST',
             los: ['green'],
             unit: null,
@@ -198,7 +198,8 @@ const initialState = {
             armament: {
                 name: '76mm Cannon Load',
                 tanker: true,
-            }
+            },
+            destroyed: false,
         },
         {
             id: 'BJ2',
@@ -212,6 +213,7 @@ const initialState = {
                 loaded: false,
                 tanker: true,
             },
+            destroyed: false,
         },
         {
             id: 'BJ3',
@@ -224,6 +226,7 @@ const initialState = {
                 suppress: 4,
                 tanker: true,
             },
+            destroyed: false,
         },
         {
             id: 'BJ4',
@@ -236,6 +239,7 @@ const initialState = {
                 suppress: 3,
                 tanker: true,
             },
+            destroyed: false,
         },
         {
             id: 'C1',
@@ -283,15 +287,24 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...initialState,
         };
-    case 'UPDATE_MAP_SPACES':
-        return {
-            ...initialState,
-            spaces: ['d1'],
-        }
     case 'RESET_MAP_SPACES':
         return {
             ...initialState,
         }
+    case 'DESTROY_BESOTTEN_JENNY': {
+        return {
+            ...state,
+            tiles: [
+                ...state.tiles, 
+                {
+                    id: 'CHAD1',
+                    location: 'NT',
+                    los: ['purple'],
+                    unit: null,
+                },
+            ],
+        }
+    }
     default:
         return state;
     }

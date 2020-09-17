@@ -17,11 +17,10 @@ const getAvailableMoves = () => {
     const tiles = store.getState().map.tiles;
 
     return tiles
-        .filter(tile => tile.unit === null)
+        .filter(tile => tile.unit === null && !tile.destroyed)
         .map(tile => tile.id);
 
     // TODO: 
-    // ensure location defense isn't 0  (Besotten Jenny)
     // when prisoners can move
     // filter for Move and Moving Between Location
 };

@@ -27,7 +27,8 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({ type: 'DESTROY_BESOTTEN_JENNY' });
+        const destroyed = destroyBesottenJenny();
+        dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: destroyed });
     }, []);
 
     return (

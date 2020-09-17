@@ -294,15 +294,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'DESTROY_BESOTTEN_JENNY': {
         return {
             ...state,
-            tiles: [
-                ...state.tiles, 
-                {
-                    id: 'CHAD1',
-                    location: 'NT',
-                    los: ['purple'],
-                    unit: null,
-                },
-            ],
+            tiles: [...payload],
         }
     }
     default:

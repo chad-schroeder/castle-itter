@@ -16,17 +16,15 @@ import store from '../../store';
 const destroyBesottenJenny = () => {
     const tiles = store.getState().map.tiles;
 
-    const destroyed = tiles.reduce((tally, tile) => {
+    const destroyed = tiles.map(tile => {
         if (tile.location === 'BJ') {
-            tally.push({
+            return {
                 ...tile,
                 destroyed: true,
-            });
+            };
         }
-        return tally;
-    }, []);
-
-    // const destroyed = tiles.filter(tile => !tile.destroyed);
+        return tile;
+    });
 
     return destroyed;
 };

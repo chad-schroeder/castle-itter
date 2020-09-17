@@ -3,12 +3,12 @@ import createSagaMiddleware from 'redux-saga';
 // import { all } from 'redux-saga/effects';
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { reducer as commonReducer } from './App';
+// import { reducer as commonReducer } from './App';
 import { reducer as mapReducer } from './Map';
 import { reducer as unitReducer } from './Units';
 
 const rootReducer = combineReducers({
-    common: commonReducer,
+    // common: commonReducer,
     map: mapReducer,
     units: unitReducer,
 });

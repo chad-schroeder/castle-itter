@@ -16,7 +16,7 @@ const App = () => {
     useEffect(() => {
         const destroyed = destroyBesottenJenny();
         dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: destroyed });
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

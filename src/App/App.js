@@ -12,13 +12,6 @@ import suppress from '../Utils/Libs/suppress';
 const App = () => {
     const { tiles } = useSelector(state => state.map);
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const destroyed = destroyJennyTiles();
-        dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: destroyed });
-    }, [dispatch]);
-
     return (
         <>
             <h1>Castle Itter</h1>
@@ -34,7 +27,7 @@ const App = () => {
                     <li key={target}>{target}</li>
                 ))}
             </ul>
-            <p>Supress: {suppress('NT5')}</p>
+            <p>Supress: {suppress()}</p>
             <Map />
             <Units />
         </>

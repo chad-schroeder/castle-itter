@@ -14,6 +14,16 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'APP_LOADING':
         return {
             ...initialState,
+        };
+    case 'APP_LOADED':
+        return {
+            ...initialState,
+            loading: false,
+        };
+    case 'ADD_SUPPRESSION':
+        return {
+            ...state,
+            suppression: { ...payload },
         }
     default:
         return state;

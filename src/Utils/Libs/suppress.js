@@ -11,7 +11,6 @@ const getSuppressionValue = (unitId = 'pollack') => {
 
 const suppress = (unitId = 'pollack') => {
     const suppression = store.getState().common.suppression;
-    console.log('suppression', suppression);
 
     // TODO: ensure a unit has los before coming to this function
 
@@ -21,7 +20,6 @@ const suppress = (unitId = 'pollack') => {
 
     // get unit suppression value
     const suppressValue = getSuppressionValue();
-    // console.log('getSupressionValue', suppressValue);
 
     // allow user input to allot suppression
     // for now, auto assign
@@ -31,8 +29,6 @@ const suppress = (unitId = 'pollack') => {
         suppression[color] = suppression[color] + suppressValue;
     });
 
-    console.log('dispatch', suppression);
-    
     store.dispatch({
         type: 'ADD_SUPPRESSION',
         payload: suppression,

@@ -9,13 +9,13 @@ const getSuppressionValue = (unitId) => {
     return value;
 };
 
-const suppress = (unitId) => {
+const suppress = (unitId, tileId) => {
     const suppression = store.getState().common.suppression;
 
     // TODO: ensure a unit has los before coming to this function
 
     // get line of sight
-    const los = getLineOfSight('NT5');
+    const los = getLineOfSight(tileId);
     // console.log('getLineOfSight', los);
 
     // get unit suppression value

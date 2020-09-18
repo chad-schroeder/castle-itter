@@ -26,7 +26,7 @@ const App = () => {
                     <li key={target}>{target}</li>
                 ))}
             </ul>
-            <p>Supress: {suppress('basse')}</p>
+            <p>Supress: {suppress('basse', 'NT5')}</p>
             <Map />
             <Units />
         </>

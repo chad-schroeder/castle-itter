@@ -5,7 +5,6 @@ import { Map } from '../Map';
 import { Units } from '../Units';
 
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
-import destroyJennyTiles from '../Utils/Libs/destroyJennyTiles';
 import getTargetsByColor from '../Utils/Libs/targetAllied';
 import suppress from '../Utils/Libs/suppress';
 

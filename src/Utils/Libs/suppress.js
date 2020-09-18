@@ -2,14 +2,14 @@ import { getLineOfSight } from './targeting';
 
 import store from '../../store';
 
-const getSuppressionValue = (unitId = 'pollack') => {
+const getSuppressionValue = (unitId = 'basse') => {
     const allied = store.getState().units.allied.combatants;
     const value = allied.find(person => person.id === unitId).suppress;
     // TODO: add modifiers
     return value;
 };
 
-const suppress = (unitId = 'pollack') => {
+const suppress = () => {
     const suppression = store.getState().common.suppression;
 
     // TODO: ensure a unit has los before coming to this function
@@ -25,14 +25,9 @@ const suppress = (unitId = 'pollack') => {
     // for now, auto assign
 
     // assign suppression
-    los.forEach(color => {
-        suppression[color] = suppression[color] + suppressValue;
-    });
+    los.forEach(color => suppression[color] += suppressValue);
 
-    store.dispatch({
-        type: 'ADD_SUPPRESSION',
-        payload: suppression,
-    });
+    store.dispatch({ type: 'ADD_SUPPRESSION', payload: suppression });
 
     return los;
 };

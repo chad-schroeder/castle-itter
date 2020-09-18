@@ -5,7 +5,7 @@ import { Map } from '../Map';
 import { Units } from '../Units';
 
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
-import destroyBesottenJenny from '../Utils/Libs/destroyBesottenJenny';
+import destroyJennyTiles from '../Utils/Libs/destroyJennyTiles';
 import getTargetsByColor from '../Utils/Libs/targetAllied';
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const destroyed = destroyBesottenJenny();
+        const destroyed = destroyJennyTiles();
         dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: destroyed });
     }, [dispatch]);
 

@@ -1,6 +1,6 @@
 import store from '../../store';
 
-const destroyBesottenJenny = () => {
+const destroyJennyTiles = () => {
     const tiles = store.getState().map.tiles;
 
     const destroyed = tiles.map(tile => {
@@ -16,4 +16,4 @@ const destroyBesottenJenny = () => {
     return destroyed;
 };
 
-export default destroyBesottenJenny;
+export default destroyJennyTiles;

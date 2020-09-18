@@ -2,14 +2,14 @@ import { getLineOfSight } from './targeting';
 
 import store from '../../store';
 
-const getSuppressionValue = (unitId = 'basse') => {
+const getSuppressionValue = (unitId) => {
     const allied = store.getState().units.allied.combatants;
     const value = allied.find(person => person.id === unitId).suppress;
     // TODO: add modifiers
     return value;
 };
 
-const suppress = () => {
+const suppress = (unitId) => {
     const suppression = store.getState().common.suppression;
 
     // TODO: ensure a unit has los before coming to this function
@@ -19,7 +19,7 @@ const suppress = () => {
     // console.log('getLineOfSight', los);
 
     // get unit suppression value
-    const suppressValue = getSuppressionValue();
+    const suppressValue = getSuppressionValue(unitId);
 
     // allow user input to allot suppression
     // for now, auto assign

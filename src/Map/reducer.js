@@ -277,12 +277,12 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'RESET_MAP_SPACES':
         return {
             ...initialState,
-        }
+        };
     case 'DESTROY_BESOTTEN_JENNY': {
         return {
             ...state,
             tiles: [...payload],
-        }
+        };
     }
     default:
         return state;

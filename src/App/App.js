@@ -7,6 +7,7 @@ import { Units } from '../Units';
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
 import destroyJennyTiles from '../Utils/Libs/destroyJennyTiles';
 import getTargetsByColor from '../Utils/Libs/targetAllied';
+import suppress from '../Utils/Libs/suppress';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -33,6 +34,7 @@ const App = () => {
                     <li key={target}>{target}</li>
                 ))}
             </ul>
+            <p>Supress: {suppress('NT5')}</p>
             <Map />
             <Units />
         </>

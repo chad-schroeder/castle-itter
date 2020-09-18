@@ -1,17 +1,12 @@
 const initialState = {
     loading: true,
-    playerTurn: true,
-    actions: {
-        player: 5,
-        enemy: 0,
-    },
     suppression: {
-        'green': 0,
-        'black': 0,
-        'purple': 0,
-        'red': 0,
+        purple: 0,
+        green: 0,
+        black: 0,
+        yellow: 0,
+        red: 0,
     },
-    escaped: false,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -19,11 +14,6 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'APP_LOADING':
         return {
             ...initialState,
-        };
-    case 'APP_LOADED':
-        return {
-            ...state,
-            loading: false,
         }
     default:
         return state;

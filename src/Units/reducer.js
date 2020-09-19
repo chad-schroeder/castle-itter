@@ -1,6 +1,6 @@
 const initialState = {
-    allied: {
-        combatants: [
+    friendly: {
+        units: [
             {
                 id: 'basse',
                 name: 'Basse',
@@ -474,15 +474,10 @@ const initialState = {
                 }
             },
         ],
-        deploymentCount: 0,
-        besottenJenny: {
-            destroyed: false,
-            casualties: 0,
-        },
         kia: [],
     },
-    axis: {
-        combatants: {
+    enemy: {
+        units: {
             RF: {
                 name: 'Rifleman',
                 defense: 3,

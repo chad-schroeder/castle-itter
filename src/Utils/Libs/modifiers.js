@@ -2,7 +2,7 @@ import store from '../../store';
 
 const locations = store.getState().map.locations;
 const tiles = store.getState().map.tiles;
-const combatants = store.getState().units.allied.combatants;
+const friendlyUnits = store.getState().units.friendly.units;
 
 export const inspire = (tileId) => {
     // get location of tile
@@ -19,7 +19,7 @@ export const inspire = (tileId) => {
     console.log('units', units);
 
     // check if unit with inspire is in a tile within location
-    const inspired = combatants.some(combatant => units.includes(combatant.id) && combatant?.modifiers?.inspire);
+    const inspired = friendlyUnits.some(combatant => units.includes(combatant.id) && combatant?.modifiers?.inspire);
     console.log('inspired', inspired);
 
     return inspired;

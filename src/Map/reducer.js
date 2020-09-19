@@ -55,7 +55,7 @@ const initialState = {
             id: 'NT2',
             location: 'NT',
             los: ['purple'],
-            unit: null,
+            unit: 'hockel',
         },
         {
             id: 'NT3',
@@ -67,13 +67,13 @@ const initialState = {
             id: 'NT5',
             location: 'NT',
             los: ['purple', 'yellow'],
-            unit: null,
+            unit: 'rifleman1',
         },
         {
             id: 'NT6',
             location: 'NT',
             los: ['purple', 'red'],
-            unit: 'basse',
+            unit: null,
         },
         {
             id: 'ST2',

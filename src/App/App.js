@@ -7,12 +7,13 @@ import { Units } from '../Units';
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
 import getTargetsByColor from '../Utils/Libs/targetAllied';
 import suppress from '../Utils/Libs/suppress';
-import { inspire, modifiers } from '../Utils/Libs/modifiers';
+import { inspire, morale } from '../Utils/Libs/modifiers';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
 
     const inspired = inspire('NT5');
+    const fled = morale('NT5');
 
     return (
         <>
@@ -35,7 +36,13 @@ const App = () => {
                     <li key={color}>{color}</li>
                 ))}
             </ul>
-            <p>Inspire: {inspired ? 'true' : 'false'}</p>
+            <p>Inspired: {inspired ? 'true' : 'false'}</p>
+            <p>Morale: {fled ? 'true' : 'false'}</p>
+            <ul>
+                {/* {morale('NT5').map(unit => (
+                    <li key={unit}>{unit}</li>
+                ))} */}
+            </ul>
             <Map />
             <Units />
         </>

@@ -55,7 +55,7 @@ const initialState = {
             id: 'NT2',
             location: 'NT',
             los: ['purple'],
-            unit: 'hockel',
+            unit: null, // 'hockel'
         },
         {
             id: 'NT3',

@@ -1,6 +1,6 @@
-import { getLineOfSight } from './targeting';
+import { getLineOfSight } from '../targeting';
 
-import store from '../../store';
+import store from '../../../store';
 
 const getSuppressionValue = (unitId) => {
     const friendlies = store.getState().units.friendly.units;

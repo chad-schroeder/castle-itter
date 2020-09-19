@@ -5,7 +5,7 @@ const initialState = {
                 id: 'basse',
                 name: 'Basse',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -22,7 +22,7 @@ const initialState = {
                 id: 'lee',
                 name: 'Lee',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -39,7 +39,7 @@ const initialState = {
                 id: 'worsham',
                 name: 'Worsham',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 exhausted: false,
@@ -53,7 +53,7 @@ const initialState = {
                 id: 'pollack',
                 name: 'Pollack',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 2,
                 suppress: 3,
                 exhausted: false,
@@ -67,7 +67,7 @@ const initialState = {
                 id: 'sutton',
                 name: 'Sutton',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 exhausted: false,
@@ -81,7 +81,7 @@ const initialState = {
                 id: 'petrukovich',
                 name: 'Petrukovich',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 exhausted: false,
@@ -95,7 +95,7 @@ const initialState = {
                 id: 'seiner',
                 name: 'Seiner',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -112,7 +112,7 @@ const initialState = {
                 id: 'szymczyk',
                 name: 'Szymczyk',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -129,7 +129,7 @@ const initialState = {
                 id: 'rushford',
                 name: 'Rushford',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -146,7 +146,7 @@ const initialState = {
                 id: 'mchaley',
                 name: 'McHaley',
                 nationality: 'USA',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -163,7 +163,7 @@ const initialState = {
                 id: 'schrader',
                 name: 'Schrader',
                 nationality: 'SS',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -180,7 +180,7 @@ const initialState = {
                 id: 'gangl',
                 name: 'Gangl',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -199,7 +199,7 @@ const initialState = {
                 id: 'dietrich',
                 name: 'Dietrich',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -216,7 +216,7 @@ const initialState = {
                 id: 'hockel',
                 name: 'Hockel',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -233,7 +233,7 @@ const initialState = {
                 id: 'blechschmidt',
                 name: 'Blechschmidt',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -250,7 +250,7 @@ const initialState = {
                 id: 'rifleman1',
                 name: 'Rifleman',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -267,7 +267,7 @@ const initialState = {
                 id: 'rifleman2',
                 name: 'Rifleman',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -284,7 +284,7 @@ const initialState = {
                 id: 'rifleman3',
                 name: 'Rifleman',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -301,7 +301,7 @@ const initialState = {
                 id: 'rifleman4',
                 name: 'Rifleman',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -318,7 +318,7 @@ const initialState = {
                 id: 'rifleman5',
                 name: 'Rifleman',
                 nationality: 'GER',
-                location: 'Deployment',
+                placement: 'Deployment',
                 attack: 1,
                 suppress: 1,
                 modifiers: {
@@ -335,7 +335,7 @@ const initialState = {
                 id: 'linson',
                 name: 'Linson',
                 nationality: 'GER',
-                location: 'Reinforcement',
+                placement: 'Reinforcement',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -352,7 +352,7 @@ const initialState = {
                 id: 'wegscheider',
                 name: 'Wegscheider',
                 nationality: 'GER',
-                location: 'Reinforcement',
+                placement: 'Reinforcement',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -370,7 +370,7 @@ const initialState = {
                 id: 'waltl',
                 name: 'Waltl',
                 nationality: 'AUS',
-                location: 'Reinforcement',
+                placement: 'Reinforcement',
                 attack: 1,
                 suppress: 2,
                 modifiers: {
@@ -387,7 +387,7 @@ const initialState = {
                 id: 'clemenceau',
                 name: 'Clemenceau',
                 nationality: 'FRA',
-                location: 'Cellar',
+                placement: 'Cellar',
                 attack: 0,
                 suppress: 1,
                 modifiers: {
@@ -405,7 +405,7 @@ const initialState = {
                 id: 'gamelin',
                 name: 'Gamelin',
                 nationality: 'FRA',
-                location: 'Cellar',
+                placement: 'Cellar',
                 attack: 0,
                 suppress: 1,
                 modifiers: {
@@ -423,7 +423,7 @@ const initialState = {
                 id: 'rocque',
                 name: 'De La Rocque',
                 nationality: 'FRA',
-                location: 'Cellar',
+                placement: 'Cellar',
                 attack: 0,
                 suppress: 1,
                 modifiers: {
@@ -441,7 +441,7 @@ const initialState = {
                 id: 'reynaud',
                 name: 'Reynaud',
                 nationality: 'FRA',
-                location: 'Cellar',
+                placement: 'Cellar',
                 attack: 0,
                 suppress: 1,
                 modifiers: {
@@ -459,7 +459,7 @@ const initialState = {
                 id: 'borotra',
                 name: 'Borotra',
                 nationality: 'FRA',
-                location: 'Cellar',
+                placement: 'Cellar',
                 attack: 0,
                 suppress: 1,
                 modifiers: {

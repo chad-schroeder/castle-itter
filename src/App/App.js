@@ -7,6 +7,7 @@ import { Units } from '../Units';
 import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
 import getTargetsByColor from '../Utils/Libs/targetAllied';
 import suppress from '../Utils/Libs/suppress';
+import { inspire, modifiers } from '../Utils/Libs/modifiers';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -27,6 +28,7 @@ const App = () => {
                 ))}
             </ul>
             <p>Supress: {suppress('basse', 'NT5')}</p>
+            <p>Inspire: {inspire('NT5')}</p>
             <Map />
             <Units />
         </>

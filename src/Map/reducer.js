@@ -61,7 +61,7 @@ const initialState = {
             id: 'NT3',
             location: 'NT',
             los: ['purple'],
-            unit: null,
+            unit: 'clemenceau',
         },
         {
             id: 'NT5',

@@ -12,6 +12,8 @@ import { inspire, modifiers } from '../Utils/Libs/modifiers';
 const App = () => {
     const { tiles } = useSelector(state => state.map);
 
+    const inspired = inspire('NT5');
+
     return (
         <>
             <h1>Castle Itter</h1>
@@ -27,8 +29,13 @@ const App = () => {
                     <li key={target}>{target}</li>
                 ))}
             </ul>
-            <p>Supress: {suppress('basse', 'NT5')}</p>
-            <p>Inspire: {inspire('NT5')}</p>
+            <h3>Supress</h3>
+            <ul>
+                {suppress('basse', 'NT5').map(color => (
+                    <li key={color}>{color}</li>
+                ))}
+            </ul>
+            <p>Inspire: {inspired ? 'true' : 'false'}</p>
             <Map />
             <Units />
         </>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Map } from '../Map';
-import { Units } from '../Units';
+import { Map } from 'Map';
+import { Units } from 'Units';
 
-import getAvailableMoves from '../Utils/Libs/getAvailableMoves';
-import getTargetsByColor from '../Utils/Libs/targetAllied';
-import suppress from '../Utils/Libs/Actions/suppress';
-import inspire from '../Utils/Libs/Modifiers/inspire';
-import morale from '../Utils/Libs/Modifiers/morale';
+import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
+import getTargetsByColor from 'Utils/Libs/targetAllied';
+import suppress from 'Utils/Actions/suppress';
+import inspire from 'Utils/Modifiers/inspire';
+import morale from 'Utils/Modifiers/morale';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);

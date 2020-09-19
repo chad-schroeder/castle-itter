@@ -1,4 +1,4 @@
-import store from '../../../store';
+import store from '../../store';
 
 const tiles = store.getState().map.tiles;
 const friendlies = store.getState().units.friendly.units;

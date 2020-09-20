@@ -9,12 +9,14 @@ import getTargetsByColor from 'Utils/Libs/targetAllied';
 import suppress from 'Utils/Actions/suppress';
 import inspire from 'Utils/Modifiers/inspire';
 import morale from 'Utils/Modifiers/morale';
+import sacrifice from 'Utils/Modifiers/sacrifice';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
 
     const inspired = inspire('NT5');
     const fled = morale('NT5');
+    const sacrificed = sacrifice('NT5');
 
     return (
         <>
@@ -38,7 +40,8 @@ const App = () => {
                 ))}
             </ul>
             <p>Inspired: {inspired ? 'true' : 'false'}</p>
-            <p>Morale: {fled ? 'true' : 'false'}</p>
+            <p>Low Morale: {fled ? 'true' : 'false'}</p>
+            <p>Sacrificed: {sacrificed ? 'true' : 'false'}</p>
             <ul>
                 {/* {morale('NT5').map(unit => (
                     <li key={unit}>{unit}</li>

@@ -16,11 +16,12 @@ const inspire = (tileId) => {
         .map(tile => tile.unit);
 
     // check if unit with inspire is in a tile within location
-    const inspired = friendlies.some(combatant => 
-        units.includes(combatant.id) && 
-        combatant?.modifiers?.inspire && 
-        !combatant.exhausted && 
-        !combatant.tokens.disrupted
+    const inspired = friendlies.some(unit => 
+        units.includes(unit.id) &&
+        unit?.modifiers?.inspire &&
+        !unit.kia &&
+        !unit.exhausted &&
+        !unit.tokens.disrupted
     );
 
     return inspired;

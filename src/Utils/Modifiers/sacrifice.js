@@ -3,12 +3,12 @@ import store from '../../store';
 const tiles = store.getState().map.tiles;
 const friendlies = store.getState().units.friendly.units;
 
-const sacrifice = (unitId, tileId) => {
+const sacrifice = (tileId) => {
     // get location of tile
     const location = tiles.find(tile => tile.id === tileId).location;
 
     // only one unit, 'gangl', can sacrifice, so check for him
-    const hasGangl = tiles.find(tile => tile.unit === 'gangl' && tile.location === location);
+    const hasGangl = tiles.find(tile => tile.unit === 'gangl' && tile.location === location).unit;
 
     if (hasGangl) {
         // gangl can be exhausted or disrupted and still sacrifice
@@ -32,6 +32,8 @@ const sacrifice = (unitId, tileId) => {
             
             // update friendly units
             store.dispatch({ type: 'UPDATE_FRIENDLIES', payload });
+
+            return true;
         }
 
         return false;

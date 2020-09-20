@@ -13,6 +13,7 @@ const initialState = {
                     tanker: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -30,6 +31,7 @@ const initialState = {
                     tanker: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -43,6 +45,7 @@ const initialState = {
                 attack: 1,
                 suppress: 1,
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -57,6 +60,7 @@ const initialState = {
                 attack: 2,
                 suppress: 3,
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -71,6 +75,7 @@ const initialState = {
                 attack: 1,
                 suppress: 1,
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -85,6 +90,7 @@ const initialState = {
                 attack: 1,
                 suppress: 1,
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -102,6 +108,7 @@ const initialState = {
                     tanker: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -119,6 +126,7 @@ const initialState = {
                     tanker: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -136,6 +144,7 @@ const initialState = {
                     tanker: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -153,6 +162,7 @@ const initialState = {
                     tanker: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -170,6 +180,7 @@ const initialState = {
                     commander: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -189,6 +200,7 @@ const initialState = {
                     sacrifice: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -206,6 +218,7 @@ const initialState = {
                     officer: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -223,6 +236,7 @@ const initialState = {
                     officer: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -240,6 +254,7 @@ const initialState = {
                     officer: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -257,6 +272,7 @@ const initialState = {
                     morale: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -274,6 +290,7 @@ const initialState = {
                     morale: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -291,6 +308,7 @@ const initialState = {
                     morale: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -308,6 +326,7 @@ const initialState = {
                     morale: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -325,6 +344,7 @@ const initialState = {
                     morale: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -342,6 +362,7 @@ const initialState = {
                     reinforcement: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -360,6 +381,7 @@ const initialState = {
                     reinforcement: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -377,6 +399,7 @@ const initialState = {
                     reinforcement: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -395,6 +418,7 @@ const initialState = {
                     prisoner: true,
                 },
                 exhausted: false,
+                kia: false,
                 tokens: {
                     action: false,
                     command: false,
@@ -413,6 +437,7 @@ const initialState = {
                     prisoner: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -431,6 +456,7 @@ const initialState = {
                     prisoner: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -449,6 +475,7 @@ const initialState = {
                     prisoner: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -467,6 +494,7 @@ const initialState = {
                     prisoner: true,
                 },
                 exhausted: false,
+                kia: true,
                 tokens: {
                     action: false,
                     command: false,
@@ -474,7 +502,6 @@ const initialState = {
                 }
             },
         ],
-        kia: [],
     },
     enemy: {
         units: {
@@ -818,6 +845,13 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'RESET_UNITS':
         return {
             ...initialState,
+        }
+    case 'UPDATE_FRIENDLIES':
+        return {
+            ...state,
+            friendly: {
+                units: [...payload],
+            },
         }
     default:
         return state;

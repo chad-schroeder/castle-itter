@@ -73,7 +73,7 @@ const initialState = {
             id: 'NT6',
             location: 'NT',
             los: ['purple', 'red'],
-            unit: null,
+            unit: 'gangl',
         },
         {
             id: 'ST2',

@@ -1,5 +1,5 @@
 const initialState = {
-    locations: [
+    locations: [ // hero areas
         {
             id: 'NT',
             name: 'North Terrace',
@@ -50,7 +50,7 @@ const initialState = {
             defense: 6,
         },
     ],
-    tiles: [
+    tiles: [ // hero spaces
         {
             id: 'NT2',
             location: 'NT',
@@ -259,101 +259,101 @@ const initialState = {
             unit: 'Borotra',
         },
     ],
-    colors: {
+    colors: { // enemy targeting
         orange: ['K1', 'K2', 'K3', 'K4', 'ST5', 'NT6'],
         purple: ['GH1', 'NT2', 'NT3', 'K4', 'NT5', 'NT6'],
         green: ['GH1', 'ST2', 'K3', 'ST4', 'ST5', 'ST6'],
         yellow: ['G1', 'G2', 'GH3', 'GH4', 'NT5', 'ST6'],
         black: ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'],
     },
-    circles: [
+    circles: [ // enemy spaces
         {
             id: 2,
             los: 'green',
             nextNode: 13, 
             infantry: null, 
-            mortar: null, 
-            mg: null,
+            mortar: 0, 
+            mg: 0,
         },
         { 
             id: 3,
             los: 'orange', 
             nextNode: 13, 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 4,
             nextNode: 15, 
             los: 'orange', 
             infantry: null, 
-            mortar: null, 
-            mg: null
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 5,
             nextNode: 18,
             los: 'purple', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 6,
             nextNode: 20,
             los: 'purple', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 7,
             nextNode: 22,
             los: 'black', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 8,
             nextNode: 26,
             los: 'black', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 9,
             nextNode: 26,
             los: 'black', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 10,
             nextNode: 28,
             los: 'black', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 11,
             nextNode: 32,
             los: 'green', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 12,
             nextNode: 32,
             los: 'green', 
             infantry: null, 
-            mortar: null, 
-            mg: null 
+            mortar: 0, 
+            mg: 0,
         },
         {
             id: 13,

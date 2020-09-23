@@ -72,7 +72,7 @@ const initialState = {
         {
             id: 'NT6',
             location: 'NT',
-            los: ['purple', 'red'],
+            los: ['purple', 'orange'],
             unit: 'gangl',
         },
         {
@@ -90,7 +90,7 @@ const initialState = {
         {
             id: 'ST5',
             location: 'ST',
-            los: ['green', 'red'],
+            los: ['green', 'orange'],
             unit: null,
         },
         {
@@ -102,25 +102,25 @@ const initialState = {
         {
             id: 'K1',
             location: 'K',
-            los: ['red'],
+            los: ['orange'],
             unit: null,
         },
         {
             id: 'K2',
             location: 'K',
-            los: ['red'],
+            los: ['orange'],
             unit: null,
         },
         {
             id: 'K3',
             location: 'K',
-            los: ['red', 'green'],
+            los: ['orange', 'green'],
             unit: null,
         },
         {
             id: 'K4',
             location: 'K',
-            los: ['red', 'purple'],
+            los: ['orange', 'purple'],
             unit: null,
         },
         {
@@ -260,12 +260,222 @@ const initialState = {
         },
     ],
     colors: {
-        red: ['K1', 'K2', 'K3', 'K4', 'ST5', 'NT6'],
+        orange: ['K1', 'K2', 'K3', 'K4', 'ST5', 'NT6'],
         purple: ['GH1', 'NT2', 'NT3', 'K4', 'NT5', 'NT6'],
         green: ['GH1', 'ST2', 'K3', 'ST4', 'ST5', 'ST6'],
         yellow: ['G1', 'G2', 'GH3', 'GH4', 'NT5', 'ST6'],
         black: ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'],
-    }
+    },
+    circles: [
+        {
+            id: 2,
+            los: 'green',
+            nextNode: 13, 
+            infantry: null, 
+            mortar: null, 
+            mg: null,
+        },
+        { 
+            id: 3,
+            los: 'orange', 
+            nextNode: 13, 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 4,
+            nextNode: 15, 
+            los: 'orange', 
+            infantry: null, 
+            mortar: null, 
+            mg: null
+        },
+        {
+            id: 5,
+            nextNode: 18,
+            los: 'purple', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 6,
+            nextNode: 20,
+            los: 'purple', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 7,
+            nextNode: 22,
+            los: 'black', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 8,
+            nextNode: 26,
+            los: 'black', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 9,
+            nextNode: 26,
+            los: 'black', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 10,
+            nextNode: 28,
+            los: 'black', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 11,
+            nextNode: 32,
+            los: 'green', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 12,
+            nextNode: 32,
+            los: 'green', 
+            infantry: null, 
+            mortar: null, 
+            mg: null 
+        },
+        {
+            id: 13,
+            nextNode: 14,
+            los: 'orange', 
+            infantry: null, 
+        },
+        {
+            id: 14,
+            nextNode: 16,
+            los: 'orange', 
+            infantry: null, 
+        },
+        {
+            id: 15,
+            nextNode: 14,
+            los: 'orange', 
+            infantry: null, 
+        },
+        {
+            id: 16,
+            nextNode: 21,
+            los: 'orange', 
+            infantry: null, 
+        },
+        {
+            id: 17,
+            nextNode: 16,
+            los: 'orange', 
+            infantry: null, 
+        },
+        {
+            id: 18,
+            nextNode: 17,
+            los: 'orange', 
+            infantry: null, 
+        },
+        {
+            id: 19,
+            nextNode: 17,
+            los: 'purple', 
+            infantry: null, 
+        },
+        {
+            id: 20,
+            nextNode: 19,
+            los: 'purple', 
+            infantry: null, 
+        },
+        {
+            id: 21,
+            nextNode: 0,
+            los: 'orange', 
+            infantry: null,
+        },
+        {
+            id: 22,
+            nextNode: 23,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 23,
+            nextNode: 24,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 24,
+            nextNode: 25,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 25,
+            nextNode: 0,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 26,
+            nextNode: 27,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 27,
+            nextNode: 24,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 28,
+            nextNode: 29,
+            los: 'green', 
+            infantry: null,
+        },
+        {
+            id: 29,
+            nextNode: 30,
+            los: 'green', 
+            infantry: null,
+        },
+        {
+            id: 30,
+            nextNode: 31,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 31,
+            nextNode: 0,
+            los: 'yellow', 
+            infantry: null,
+        },
+        {
+            id: 32,
+            nextNode: 30,
+            los: 'green', 
+            infantry: null,
+        },
+    ],
 };
 
 const reducer = (state = initialState, { type, payload }) => {

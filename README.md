@@ -2,7 +2,7 @@
 
 Port of the boardgame "Castle Itter" (https://boardgamegeek.com/boardgame/196257/castle-itter) in React for fun and coding practice.
 
-<img src="./public/images/box.jpg" width="260">
+<img src="./public/images/box-art.jpg" width="260">
 
 **Designer:** David Thompson<br /> 
 **Artist:** David Thompson, Matt W White<br /> 

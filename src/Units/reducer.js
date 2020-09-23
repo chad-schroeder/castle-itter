@@ -507,8 +507,9 @@ const initialState = {
         units: {
             RF: {
                 name: 'Rifleman',
+                type: 'rifleman',
                 defense: 3,
-                counter: true,
+                advance: true,
                 decks: {
                     1: [
                         { place: 2 },
@@ -533,8 +534,9 @@ const initialState = {
             },
             SC: {
                 name: 'Scout',
+                type: 'scout',
                 defense: 4,
-                counter: true,
+                advance: true,
                 decks: {
                     1: [
                         { place: 2 },
@@ -549,8 +551,9 @@ const initialState = {
             },
             ST: {
                 name: 'Sturm',
+                type: 'sturm',
                 defense: 5,
-                counter: true,
+                advance: true,
                 decks: {
                     1: [
                         { place: 1 },
@@ -573,7 +576,8 @@ const initialState = {
             },
             SF: {
                 name: 'Suppressive Fire',
-                counter: false,
+                type: 'sf',
+                advance: false,
                 disrupt: true,
                 decks: {
                     2: [{}],
@@ -583,8 +587,9 @@ const initialState = {
             },
             SN: {
                 name: 'Sniper',
+                type: 'sniper',
                 attack: 4,
-                counter: false,
+                advance: false,
                 disrupt: true,
                 decks: {
                     2: [
@@ -615,9 +620,10 @@ const initialState = {
             },
             MG: {
                 name: 'Machine Gunner',
+                type: 'mg',
                 attack: 2,
                 defense: 4,
-                counter: true,
+                advance: true,
                 disrupted: true,
                 decks: {
                     1: [{}],
@@ -628,9 +634,10 @@ const initialState = {
             },
             MT: {
                 name: 'Mortar',
+                type: 'mortar',
                 attack: 3,
                 defense: 4,
-                counter: true,
+                advance: true,
                 disrupted: true,
                 decks: {
                     1: [{}],
@@ -641,8 +648,9 @@ const initialState = {
             },
             FL20: {
                 name: '20mm FLAK 30',
+                type: '20mm',
                 attack: 2,
-                counter: false,
+                advance: false,
                 disrupt: true,
                 decks: {
                     2: [
@@ -683,8 +691,9 @@ const initialState = {
             },
             FL88: {
                 name: '88mm FLAK 37',
+                type: '88mm',
                 attack: 5,
-                counter: false,
+                advance: false,
                 disrupt: true,
                 decks: {
                     1: [
@@ -737,8 +746,9 @@ const initialState = {
             },
             PA75: {
                 name: '75mm PAK 40',
+                type: '75mm',
                 attack: 4,
-                counter: false,
+                advance: false,
                 decks: {
                     1: [
                         {
@@ -818,9 +828,11 @@ const initialState = {
                     ],
                 },
             },
-            'Panzerfaust': {
+            Panzerfaust: {
+                name: 'Panzerfaust',
+                type: 'pf',
                 attack: 4,
-                counter: false,
+                advance: false,
                 disrupt: true,
                 decks: {
                     1: [],

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Map } from 'Map';
@@ -10,14 +10,25 @@ import suppress from 'Utils/Actions/suppress';
 import inspire from 'Utils/Modifiers/inspire';
 import morale from 'Utils/Modifiers/morale';
 import sacrifice from 'Utils/Modifiers/sacrifice';
+import advance from 'Utils/Enemy/advance';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
 
-    const inspired = inspire('NT5');
-    const fled = morale('NT5');
-    const sacrificed = sacrifice('NT5');
-
+    useEffect(() => {
+        const soldier = {
+            id: 456,
+            type: 'rifleman',
+            defense: 3,
+        };
+        
+        advance(2, soldier);
+    }, []);
+    
+    // const inspired = inspire('NT5');
+    // const fled = morale('NT5');
+    // const sacrificed = sacrifice('NT5');
+    
     return (
         <>
             <h1>Castle Itter</h1>
@@ -39,9 +50,9 @@ const App = () => {
                     <li key={color}>{color}</li>
                 ))}
             </ul>
-            <p>Inspired: {inspired ? 'true' : 'false'}</p>
+            {/* <p>Inspired: {inspired ? 'true' : 'false'}</p>
             <p>Low Morale: {fled ? 'true' : 'false'}</p>
-            <p>Sacrificed: {sacrificed ? 'true' : 'false'}</p>
+            <p>Sacrificed: {sacrificed ? 'true' : 'false'}</p> */}
             <ul>
                 {/* {morale('NT5').map(unit => (
                     <li key={unit}>{unit}</li>

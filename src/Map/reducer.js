@@ -55,25 +55,25 @@ const initialState = {
             id: 'NT2',
             location: 'NT',
             los: ['purple'],
-            unit: null, // 'hockel'
+            unit: null,
         },
         {
             id: 'NT3',
             location: 'NT',
             los: ['purple'],
-            unit: 'clemenceau',
+            unit: null,
         },
         {
             id: 'NT5',
             location: 'NT',
             los: ['purple', 'yellow'],
-            unit: 'rifleman1',
+            unit: null,
         },
         {
             id: 'NT6',
             location: 'NT',
             los: ['purple', 'orange'],
-            unit: 'gangl',
+            unit: null,
         },
         {
             id: 'ST2',
@@ -181,7 +181,7 @@ const initialState = {
             id: 'BJ1',
             location: 'BJ',
             los: [],
-            unit: 'steiner',
+            unit: null, // 'steiner',
             armament: {
                 name: '76mm Cannon Load',
                 tanker: true,
@@ -192,7 +192,7 @@ const initialState = {
             id: 'BJ2',
             location: 'BJ',
             los: ['black'],
-            unit: 'rushford',
+            unit: null, // 'rushford',
             armament: {
                 name: '76mm Cannon',
                 attack: 4,
@@ -259,13 +259,6 @@ const initialState = {
             unit: 'Borotra',
         },
     ],
-    colors: { // enemy targeting
-        orange: ['K1', 'K2', 'K3', 'K4', 'ST5', 'NT6'],
-        purple: ['GH1', 'NT2', 'NT3', 'K4', 'NT5', 'NT6'],
-        green: ['GH1', 'ST2', 'K3', 'ST4', 'ST5', 'ST6'],
-        yellow: ['G1', 'G2', 'GH3', 'GH4', 'NT5', 'ST6'],
-        black: ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'],
-    },
     tracks: { // enemy tracks
         2: {
             los: 'green',

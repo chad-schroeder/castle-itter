@@ -266,216 +266,193 @@ const initialState = {
         yellow: ['G1', 'G2', 'GH3', 'GH4', 'NT5', 'ST6'],
         black: ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'],
     },
-    tracks: [ // enemy tracks
-        {
-            id: 2,
+    tracks: { // enemy tracks
+        2: {
             los: 'green',
-            nextNode: 13, 
-            counter: null, 
+            next: 13, 
+            counter: {
+                id: 789,
+                type: 'scout',
+                defense: 3,
+            }, 
             mortar: 0, 
             mg: 0,
         },
-        { 
-            id: 3,
+        3: { 
             los: 'orange', 
-            nextNode: 13, 
+            next: 13, 
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 4,
+        4: {
             los: 'orange', 
-            nextNode: 15, 
+            next: 15, 
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 5,
+        5: {
             los: 'purple', 
-            nextNode: 18,
+            next: 18,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 6,
+        6: {
             los: 'purple', 
-            nextNode: 20,
+            next: 20,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 7,
+        7: {
             los: 'black', 
-            nextNode: 22,
+            next: 22,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 8,
+        8: {
             los: 'black', 
-            nextNode: 26,
+            next: 26,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 9,
+        9: {
             los: 'black', 
-            nextNode: 26,
+            next: 26,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 10,
+        10: {
             los: 'black', 
-            nextNode: 28,
+            next: 28,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 11,
+        11: {
             los: 'green', 
-            nextNode: 32,
+            next: 32,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 12,
+        12: {
             los: 'green', 
-            nextNode: 32,
+            next: 32,
             counter: null, 
             mortar: 0, 
             mg: 0,
         },
-        {
-            id: 13,
+        13: {
             los: 'orange', 
-            nextNode: 14,
+            next: 14,
+            counter: {
+                id: 123,
+                type: 'sturm',
+                defense: 3,
+            }, 
+        },
+        14: {
+            los: 'orange', 
+            next: 16,
             counter: null, 
         },
-        {
-            id: 14,
+        15: {
             los: 'orange', 
-            nextNode: 16,
+            next: 14,
             counter: null, 
         },
-        {
-            id: 15,
+        16: {
             los: 'orange', 
-            nextNode: 14,
+            next: 21,
             counter: null, 
         },
-        {
-            id: 16,
+        17: {
             los: 'orange', 
-            nextNode: 21,
+            next: 16,
             counter: null, 
         },
-        {
-            id: 17,
+        18: {
             los: 'orange', 
-            nextNode: 16,
+            next: 17,
             counter: null, 
         },
-        {
-            id: 18,
-            los: 'orange', 
-            nextNode: 17,
-            counter: null, 
-        },
-        {
-            id: 19,
+        19: {
             los: 'purple', 
-            nextNode: 17,
+            next: 17,
             counter: null, 
         },
-        {
-            id: 20,
+        20: {
             los: 'purple', 
-            nextNode: 19,
+            next: 19,
             counter: null, 
         },
-        {
-            id: 21,
+        21: {
             los: 'orange', 
-            nextNode: null,
+            next: null,
             counter: null,
         },
-        {
-            id: 22,
+        22: {
             los: 'yellow', 
-            nextNode: 23,
+            next: 23,
             counter: null,
         },
-        {
-            id: 23,
+        23: {
             los: 'yellow', 
-            nextNode: 24,
+            next: 24,
             counter: null,
         },
-        {
-            id: 24,
+        24: {
             los: 'yellow', 
-            nextNode: 25,
+            next: 25,
             counter: null,
         },
-        {
-            id: 25,
+        25: {
             los: 'yellow', 
-            nextNode: null,
+            next: null,
             counter: null,
         },
-        {
-            id: 26,
+        26: {
             los: 'yellow', 
-            nextNode: 27,
+            next: 27,
             counter: null,
         },
-        {
-            id: 27,
+        27: {
             los: 'yellow', 
-            nextNode: 24,
+            next: 24,
             counter: null,
         },
-        {
-            id: 28,
+        28: {
             los: 'green', 
-            nextNode: 29,
+            next: 29,
             counter: null,
         },
-        {
-            id: 29,
+        29: {
             los: 'green', 
-            nextNode: 30,
+            next: 30,
             counter: null,
         },
-        {
-            id: 30,
+        30: {
             los: 'yellow', 
-            nextNode: 31,
+            next: 31,
             counter: null,
         },
-        {
-            id: 31,
+        31: {
             los: 'yellow', 
-            nextNode: null,
+            next: null,
             counter: null,
         },
-        {
-            id: 32,
+        32: {
             los: 'green', 
-            nextNode: 30,
+            next: 30,
             counter: null,
         },
-    ],
+    },
 };
 
 const reducer = (state = initialState, { type, payload }) => {

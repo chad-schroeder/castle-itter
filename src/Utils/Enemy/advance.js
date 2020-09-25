@@ -3,22 +3,30 @@ import store from '../../store';
 const tracks = store.getState().map.tracks;
 
 const advance = (trackId, enemy) => {
-    // const track = tracks.find(track => track.id === trackId);
+    let track = trackId;
+    let incoming = enemy;
 
-    const payload = tracks.map(track => {
-        if (track.id === trackId) {
-            return {
-                ...track,
-                counter: enemy,
-            };
+    do {
+        // in current tile, get next node, counter
+        const { next, counter } = tracks[track];
+        console.log(track);
+        console.log('Next', next);
+        console.log('Counter', counter);
+        
+        // assign incoming enemy to this track
+        tracks[track].counter = incoming;
+
+        // update next track, assign incoming counter
+        track = next;
+        incoming = counter;
+
+        // if no more counters to assign, end
+        if (incoming === null) {
+            (console.log('break'));
+            break;
         }
-        return track;
-    });
-    
-    console.log(payload);
-    
-    store.dispatch({ type: 'UPDATE_TRACKS', payload });
-    
+    } while (incoming !== null)
+
     return false;
 };
 

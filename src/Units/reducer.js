@@ -511,25 +511,10 @@ const initialState = {
                 defense: 3,
                 advance: true,
                 decks: {
-                    1: [
-                        { place: 2 },
-                        { place: 2 },
-                        { place: 2 },
-                    ],
-                    2: [
-                        { place: 2 },
-                        { place: 2 },
-                        { place: 2 },
-                    ],
-                    3: [
-                        { place: 3 },
-                    ],
-                    4: [
-                        { place: 2 },
-                        { place: 2 },
-                        { place: 3 },
-                        { place: 3 },
-                    ],
+                    1: [2, 2, 2],
+                    2: [2, 2, 2],
+                    3: [3],
+                    4: [2, 2, 3, 3],
                 },
             },
             SC: {
@@ -538,15 +523,8 @@ const initialState = {
                 defense: 4,
                 advance: true,
                 decks: {
-                    1: [
-                        { place: 2 },
-                        { place: 2 },
-                        { place: 2 },
-                    ],
-                    2: [
-                        { place: 2 },
-                        { place: 2 },
-                    ],
+                    1: [2, 2, 2],
+                    2: [2, 2],
                 },
             },
             ST: {
@@ -555,23 +533,10 @@ const initialState = {
                 defense: 5,
                 advance: true,
                 decks: {
-                    1: [
-                        { place: 1 },
-                    ],
-                    2: [
-                        { place: 1 },
-                        { place: 1 },
-                    ],
-                    3: [
-                        { place: 1 },
-                        { place: 2 },
-                    ],
-                    4: [
-                        { place: 1 },
-                        { place: 1 },
-                        { place: 2 },
-                        { place: 2 },
-                    ],
+                    1: [1],
+                    2: [1, 1],
+                    3: [1, 2],
+                    4: [1, 1, 2, 2],
                 },
             },
             SF: {
@@ -580,9 +545,9 @@ const initialState = {
                 advance: false,
                 disrupt: true,
                 decks: {
-                    2: [{}],
-                    3: [{}],
-                    4: [{}, {}],
+                    2: 1,
+                    3: 1,
+                    4: 2,
                 },
             },
             SN: {
@@ -591,31 +556,17 @@ const initialState = {
                 attack: 4,
                 advance: false,
                 disrupt: true,
+                target: {
+                    1: 'black',
+                    2: 'black',
+                    3: 'green',
+                    4: 'yellow',
+                    5: 'red',
+                    6: 'purple',
+                },
                 decks: {
-                    2: [
-                        {
-                            target: {
-                                1: 'black',
-                                2: 'black',
-                                3: 'green',
-                                4: 'yellow',
-                                5: 'red',
-                                6: 'purple',
-                            },
-                        }
-                    ],
-                    3: [
-                        {
-                            target: {
-                                1: 'black',
-                                2: 'black',
-                                3: 'green',
-                                4: 'yellow',
-                                5: 'red',
-                                6: 'purple',
-                            },
-                        },
-                    ],
+                    2: 1,
+                    3: 1,
                 },
             },
             MG: {
@@ -626,10 +577,10 @@ const initialState = {
                 advance: true,
                 disrupted: true,
                 decks: {
-                    1: [{}],
-                    2: [{}, {}],
-                    3: [{}],
-                    4: [{}],
+                    1: 1,
+                    2: 2,
+                    3: 1,
+                    4: 1,
                 },
             },
             MT: {
@@ -640,10 +591,10 @@ const initialState = {
                 advance: true,
                 disrupted: true,
                 decks: {
-                    1: [{}],
-                    2: [{}, {}],
-                    3: [{}],
-                    4: [{}],
+                    1: 1,
+                    2: 2,
+                    3: 1,
+                    4: 1,
                 },
             },
             FL20: {
@@ -652,41 +603,17 @@ const initialState = {
                 attack: 2,
                 advance: false,
                 disrupt: true,
+                target: {
+                    1: 'purple',
+                    2: 'purple',
+                    3: 'purple',
+                    4: 'red',
+                    5: 'red',
+                    6: 'red',
+                },
                 decks: {
-                    2: [
-                        { 
-                            target: {
-                                1: 'purple',
-                                2: 'purple',
-                                3: 'purple',
-                                4: 'red',
-                                5: 'red',
-                                6: 'red',
-                            },
-                        },
-                    ],
-                    3: [
-                        {
-                            target: {
-                                1: 'purple',
-                                2: 'purple',
-                                3: 'purple',
-                                4: 'red',
-                                5: 'red',
-                                6: 'red',
-                            },
-                        },
-                        {
-                            target: {
-                                1: 'purple',
-                                2: 'purple',
-                                3: 'purple',
-                                4: 'red',
-                                5: 'red',
-                                6: 'red',
-                            },
-                        },
-                    ],
+                    2: 1,
+                    3: 2,
                 },
             },
             FL88: {
@@ -695,56 +622,21 @@ const initialState = {
                 attack: 5,
                 advance: false,
                 disrupt: true,
+                target: {
+                    1: 'K',
+                    2: 'K',
+                    3: 'GH',
+                    4: 'NT',
+                    5: 'NT',
+                    6: 'NT',
+                },
                 decks: {
-                    1: [
-                        {
-                            target: {
-                                1: 'K',
-                                2: 'K',
-                                3: 'GH',
-                                4: 'NT',
-                                5: 'NT',
-                                6: 'NT',
-                            },
-                        },
-                    ],
-                    2: [
-                        {
-                            target: {
-                                1: 'K',
-                                2: 'K',
-                                3: 'GH',
-                                4: 'NT',
-                                5: 'NT',
-                                6: 'NT',
-                            },
-                        },
-                    ],
-                    3: [
-                        {
-                            target: {
-                                1: 'K',
-                                2: 'K',
-                                3: 'GH',
-                                4: 'NT',
-                                5: 'NT',
-                                6: 'NT',
-                            },
-                        },
-                        {
-                            target: {
-                                1: 'K',
-                                2: 'K',
-                                3: 'GH',
-                                4: 'NT',
-                                5: 'NT',
-                                6: 'NT',
-                            },
-                        },
-                    ],
+                    1: 1,
+                    2: 1,
+                    3: 2,
                 },
             },
-            PA75: {
+            PA75: { // TODO: figure out how to handle targeting on this one
                 name: '75mm PAK 40',
                 type: '75mm',
                 attack: 4,
@@ -835,15 +727,9 @@ const initialState = {
                 advance: false,
                 disrupt: true,
                 decks: {
-                    1: [],
-                    2: [
-                        {},
-                        {},
-                    ],
-                    3: [
-                        {},
-                        {},
-                    ],
+                    1: 0,
+                    2: 2,
+                    3: 2,
                 },
             },
         },

@@ -274,7 +274,7 @@ const initialState = {
                 id: 789,
                 type: 'scout',
                 defense: 3,
-            }, 
+            },
             mortar: 0, 
             mg: 0,
         },
@@ -351,11 +351,7 @@ const initialState = {
         13: {
             los: 'orange', 
             next: 14,
-            counter: {
-                id: 123,
-                type: 'sturm',
-                defense: 3,
-            }, 
+            counter: null, 
         },
         14: {
             los: 'orange', 

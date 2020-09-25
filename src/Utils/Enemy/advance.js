@@ -13,7 +13,7 @@ const advance = (trackId, enemy) => {
         // place incoming counter on current track
         tracks[track].counter = incoming;
 
-        // update to next track, next incoming counter
+        // prepare loop for next track, next incoming counter
         track = next;
         incoming = counter;
 

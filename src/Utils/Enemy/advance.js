@@ -7,25 +7,25 @@ const advance = (trackId, enemy) => {
     let incoming = enemy;
 
     do {
-        // in current tile, get next node, counter
+        // get next track, counter (if any) from current track
         const { next, counter } = tracks[track];
-        console.log(track);
-        console.log('Next', next);
-        console.log('Counter', counter);
-        
-        // assign incoming enemy to this track
+
+        // place incoming counter on current track
         tracks[track].counter = incoming;
 
-        // update next track, assign incoming counter
+        // update to next track, next incoming counter
         track = next;
         incoming = counter;
 
-        // if no more counters to assign, end
-        if (incoming === null) {
-            (console.log('break'));
+        // if there is still a counter to place but no more tracks, game over!
+        if (track === null && incoming) {
+            console.log('You lose!');
             break;
         }
-    } while (incoming !== null)
+
+        // if no more incoming counters, exit
+        if (incoming === null) break;
+    } while (incoming)
 
     return false;
 };

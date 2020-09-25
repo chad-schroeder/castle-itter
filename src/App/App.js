@@ -7,10 +7,11 @@ import { Units } from 'Units';
 import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
 import getTargetsByColor from 'Utils/Libs/targetAllied';
 import suppress from 'Utils/Actions/suppress';
-import inspire from 'Utils/Modifiers/inspire';
-import morale from 'Utils/Modifiers/morale';
-import sacrifice from 'Utils/Modifiers/sacrifice';
+// import inspire from 'Utils/Modifiers/inspire';
+// import morale from 'Utils/Modifiers/morale';
+// import sacrifice from 'Utils/Modifiers/sacrifice';
 import advance from 'Utils/Enemy/advance';
+import buildDeck from 'Utils/Libs/buildDeck';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -23,6 +24,8 @@ const App = () => {
         };
         
         advance(2, soldier);
+
+        buildDeck();
     }, []);
     
     // const inspired = inspire('NT5');

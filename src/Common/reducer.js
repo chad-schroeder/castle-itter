@@ -11,7 +11,7 @@ const initialState = {
         yellow: 0,
         red: 0,
     },
-    deck: [],
+    deck: [], // axis draw deck
     decks: {
         1: [
             { id: uuidv4(), type: 'RF', count: 2, deck: 1, },
@@ -84,7 +84,6 @@ const initialState = {
     score: 0,
     escaped: false,
     enemies: {
-        deployed: [],
         defeated: [],
     },
 };

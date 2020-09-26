@@ -20,13 +20,13 @@ const App = () => {
     useEffect(() => {
         buildDeck();
 
-        const soldier = {
-            id: 456,
-            type: 'rifleman',
-            defense: 3,
-        };
+        // const soldier = {
+        //     id: 456,
+        //     type: 'rifleman',
+        //     defense: 3,
+        // };
         
-        advance(2, soldier);
+        // advance(2, soldier);
     }, []);
     
     // const inspired = inspire('NT5');
@@ -36,12 +36,12 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <h2>Available tiles</h2>
+            {/* <h2>Available tiles</h2>
             <ul>
                 {getAvailableMoves(tiles).map(tile => (
                     <li key={tile}>{tile}</li>
                 ))}
-            </ul>
+            </ul> */}
             <button onClick={changeTurn}>
                 Change Turn
             </button>

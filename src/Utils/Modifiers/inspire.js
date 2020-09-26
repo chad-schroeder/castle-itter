@@ -16,6 +16,7 @@ const inspire = (tileId) => {
         .map(tile => tile.unit);
 
     // check if unit with inspire is in a tile within location
+    // TODO: ensure it is not the same unit that is inspiring
     const inspired = friendlies.some(unit => 
         units.includes(unit.id) &&
         unit?.modifiers?.inspire &&

@@ -25,7 +25,8 @@ const App = () => {
         
         advance(2, soldier);
 
-        buildDeck();
+        const deck = buildDeck();
+        console.log('deck', deck);
     }, []);
     
     // const inspired = inspire('NT5');

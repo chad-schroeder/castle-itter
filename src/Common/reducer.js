@@ -104,6 +104,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             deck: [...payload],
         };
+    case 'PLAYED_CARD':
+        return {
+            ...state,
+            deck: [...payload],
+        };
     case 'CHANGE_TURN':
         return {
             ...state,

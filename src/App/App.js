@@ -11,7 +11,7 @@ import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
 // import morale from 'Utils/Modifiers/morale';
 // import sacrifice from 'Utils/Modifiers/sacrifice';
 import advance from 'Utils/Enemy/advance';
-import buildDeck from 'Utils/Libs/buildDeck';
+import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
 
 const App = () => {
@@ -44,6 +44,9 @@ const App = () => {
             </ul> */}
             <button onClick={changeTurn}>
                 Change Turn
+            </button>
+            <button onClick={playCard}>
+                Play Card
             </button>
             <Map />
             <Units />

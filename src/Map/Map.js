@@ -3,15 +3,16 @@ import { useSelector } from 'react-redux';
 
 const Map = () => {
     const { locations, tiles } = useSelector(state => state.map);
+    
     const [tileDetails, setTileDetails] = useState('');
-
+    
     const handleChange = (e) => {
         const { id, location, los, unit } = tiles.find(tile => tile.id === e.target.value);
 
         const details = `
-            Id: ${id}
-            Location: ${location}
-            LOS: ${los}
+            Id: ${id} | 
+            Location: ${location} | 
+            LOS: ${los} | 
             Unit: ${unit}
         `;
 

@@ -1,3 +1,5 @@
+import changeTurn from './changeTurn';
+
 import store from '../../store';
 
 const shuffle = (deck) => {
@@ -8,7 +10,18 @@ const shuffle = (deck) => {
     return deck;
 };
 
-const buildDeck = () => {
+export const playCard = () => {
+    const { deck, actionsRemaining } = store.getState().common;
+    const topCard = deck[0];
+
+    console.log('play card', topCard);
+
+    // remove top card from deck
+    const cards = deck.filter(card => card.id !== topCard.id);
+    store.dispatch({ type: 'PLAYED_CARD', payload: cards });
+};
+
+export const buildDeck = () => {
     const decks = store.getState().common.decks;
     
     const deck = [
@@ -20,6 +33,4 @@ const buildDeck = () => {
 
     store.dispatch({ type: 'BUILD_DECK', payload: deck });
 };
-
-export default buildDeck;
 

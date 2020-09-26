@@ -100,6 +100,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...initialState,
             loading: false,
         };
+    case 'BUILD_DECK':
+        return {
+            ...state,
+            deck: [...payload],
+        };
     case 'CHANGE_TURN':
         return {
             ...state,

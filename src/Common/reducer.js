@@ -100,11 +100,16 @@ const reducer = (state = initialState, { type, payload }) => {
             ...initialState,
             loading: false,
         };
+    case 'CHANGE_TURN':
+        return {
+            ...state,
+            ...payload,
+        };
     case 'ADD_SUPPRESSION':
         return {
             ...state,
             suppression: { ...payload },
-        }
+        };
     default:
         return state;
     }

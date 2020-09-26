@@ -12,6 +12,7 @@ import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
 // import sacrifice from 'Utils/Modifiers/sacrifice';
 import advance from 'Utils/Enemy/advance';
 import buildDeck from 'Utils/Libs/buildDeck';
+import changeTurn from 'Utils/Libs/changeTurn';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -27,6 +28,8 @@ const App = () => {
 
         const deck = buildDeck();
         console.log('deck', deck);
+
+        changeTurn();
     }, []);
     
     // const inspired = inspire('NT5');

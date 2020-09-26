@@ -18,6 +18,8 @@ const App = () => {
     const { tiles } = useSelector(state => state.map);
 
     useEffect(() => {
+        buildDeck();
+
         const soldier = {
             id: 456,
             type: 'rifleman',
@@ -25,11 +27,6 @@ const App = () => {
         };
         
         advance(2, soldier);
-
-        const deck = buildDeck();
-        console.log('deck', deck);
-
-        changeTurn();
     }, []);
     
     // const inspired = inspire('NT5');
@@ -45,6 +42,9 @@ const App = () => {
                     <li key={tile}>{tile}</li>
                 ))}
             </ul>
+            <button onClick={changeTurn}>
+                Change Turn
+            </button>
             <Map />
             <Units />
         </>

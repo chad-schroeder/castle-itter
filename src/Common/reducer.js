@@ -7,6 +7,7 @@ const initialState = {
         yellow: 0,
         red: 0,
     },
+    deck: [],
     decks: {
         1: [
             { type: 'RF', count: 2, deck: 1, },

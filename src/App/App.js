@@ -13,6 +13,7 @@ import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
 import advance from 'Utils/Enemy/advance';
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
+import sniper from 'Utils/Enemy/sniper';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -27,6 +28,8 @@ const App = () => {
         // };
         
         // advance(2, soldier);
+
+        sniper();
     }, []);
     
     // const inspired = inspire('NT5');

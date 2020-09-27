@@ -522,14 +522,11 @@ const initialState = {
             },
             SF: {
                 name: 'Suppressive Fire',
-                counter: false,
                 disrupt: true,
             },
             SN: {
                 name: 'Sniper',
                 attack: 4,
-                counter: false,
-                disrupt: true,
             },
             MG: {
                 name: 'Machine Gunner',
@@ -548,24 +545,20 @@ const initialState = {
             FL20: {
                 name: '20mm FLAK 30',
                 attack: 2,
-                counter: false,
                 disrupt: true,
             },
             FL88: {
                 name: '88mm FLAK 37',
                 attack: 5,
-                counter: false,
                 disrupt: true,
             },
             PA75: {
                 name: '75mm PAK 40',
                 attack: 4,
-                counter: false,
             },
             PF: {
                 name: 'Panzerfaust',
                 attack: 4,
-                counter: false,
                 disrupt: true,
             },
         },

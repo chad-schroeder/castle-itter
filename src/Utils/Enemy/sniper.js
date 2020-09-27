@@ -1,6 +1,8 @@
+import rollDice from '../Libs/dice';
+
 import store from '../../store';
 
-const sniper = () => {
+const sniper = (attackValue = 4) => {
     const { locations, tiles, targeting } = store.getState().map;
 
     // get target color
@@ -26,13 +28,14 @@ const sniper = () => {
     console.log('sniper defense', defense);
 
     // roll to hit
-    const targetRoll = 6;
-        // if hit, eliminate unit
-        if (targetRoll >= defense) {
-            console.log('unit eliminated');
-        }
-        // else, end action
+    const targetRoll = rollDice(attackValue);
+    console.log('dice result', targetRoll);
 
+    if (targetRoll.some(dice => dice >= defense)) {
+        console.log('unit eliminated');
+    } else {
+        console.log('miss!');
+    }
 };
 
 export default sniper;

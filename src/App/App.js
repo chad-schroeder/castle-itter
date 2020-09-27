@@ -29,7 +29,7 @@ const App = () => {
         
         // advance(2, soldier);
 
-        sniper();
+        sniper(4);
     }, []);
     
     // const inspired = inspire('NT5');

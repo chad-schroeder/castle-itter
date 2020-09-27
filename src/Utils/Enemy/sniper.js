@@ -1,23 +1,25 @@
-import rollDice from '../Libs/dice';
+import { rollDice, acquireTarget } from '../Libs/dice';
 
 import store from '../../store';
 
-const sniper = (attackValue = 4) => {
+const sniper = () => {
     const { locations, tiles, targeting } = store.getState().map;
+    const { SN: sniper } = store.getState().units.enemy;
 
     // get target color
-    const targetColor = targeting.axis.SN[3]; // green
-    console.log('sniper color', targetColor);
+    const rollForColor = rollDice();
+    const targetColor = targeting.SN[rollForColor];
 
     // get target tiles
-    const targetColors = targeting.axis[targetColor]; // ['GH1', 'ST2', 'K3', 'ST4', 'ST5', 'ST6']
-    console.log('sniper tiles', targetColors);
+    const targetColors = targeting[targetColor];
+    console.log('targetColors', targetColors);
 
     // roll for target tile
-    const targetTile = 'K3';
+    const targetUnit = acquireTarget(targetColors);
+    const targetTile = 'G2';
 
     // check if target tile has a unit, otherwise search for next target
-    const hasUnit = true;
+    
 
     // find location id from tile
     const { location: locationId } = tiles.find(tile => tile.id === targetTile);
@@ -28,6 +30,7 @@ const sniper = (attackValue = 4) => {
     console.log('sniper defense', defense);
 
     // roll to hit
+    const attackValue = sniper.attack;
     const targetRoll = rollDice(attackValue);
     console.log('dice result', targetRoll);
 

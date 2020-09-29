@@ -1,11 +1,7 @@
 import store from '../../store';
 
 const tiles = store.getState().map.tiles;
-const friendlies = store.getState().units.friendly.units;
-
-export const escape = () => {
-
-};
+const { allied } = store.getState().units;
 
 export const canEscape = (tileId) => {
     // borotra cannot escape from the Cellar of Great Hall
@@ -15,7 +11,7 @@ export const canEscape = (tileId) => {
         const vacancies = true;
 
         // get boratra
-        const boratra = friendlies.find(unit => unit.id === 'borotra');
+        const boratra = { allied }.find(unit => unit.id === 'borotra');
 
         if (!boratra.exhausted) {
             

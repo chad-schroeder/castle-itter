@@ -108,7 +108,7 @@ const initialState = {
             id: 'K3',
             location: 'K',
             los: ['orange', 'green'],
-            unit: 'basse',
+            unit: 'pollack',
         },
         {
             id: 'K4',

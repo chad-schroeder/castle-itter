@@ -14,6 +14,7 @@ import advance from 'Utils/Enemy/advance';
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
 import sniper from 'Utils/Enemy/sniper';
+import { eliminateUnit } from 'Utils/Libs/eliminateUnit.js';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -29,7 +30,9 @@ const App = () => {
         
         // advance(2, soldier);
 
-        sniper(4);
+        // sniper(4);
+
+        eliminateUnit('basse');
     }, []);
     
     // const inspired = inspire('NT5');

@@ -3,8 +3,8 @@ import { getLineOfSight } from '../Libs/targeting';
 import store from '../../store';
 
 const getSuppressionValue = (unitId) => {
-    const friendlies = store.getState().units.friendly.units;
-    const value = friendlies.find(person => person.id === unitId).suppress;
+    const { allies } = store.getState().units;
+    const value = allies.find(person => person.id === unitId).suppress;
     // TODO: add modifiers
     return value;
 };

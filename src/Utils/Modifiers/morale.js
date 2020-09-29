@@ -1,7 +1,7 @@
 import store from '../../store';
 
-const tiles = store.getState().map.tiles;
-const friendlies = store.getState().units.friendly.units;
+const { tiles } = store.getState().map;
+const { allies } = store.getState().units;
 
 const morale = (tileId) => {
     // get location of tile
@@ -14,10 +14,10 @@ const morale = (tileId) => {
     console.log('morale units', units);
 
     // check if unit with the officer modifier is within location
-    const officer = friendlies.some(unit => units.includes(unit.id) && unit?.modifiers?.officer);
+    const officer = allies.some(unit => units.includes(unit.id) && unit?.modifiers?.officer);
     console.log('officer', officer);
 
-    const fled = friendlies.filter(unit => units.includes(unit.id) && unit?.modifiers?.morale);
+    const fled = allies.filter(unit => units.includes(unit.id) && unit?.modifiers?.morale);
     console.log('fled', fled);
 
     return officer;

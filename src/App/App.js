@@ -42,12 +42,6 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            {/* <h2>Available tiles</h2>
-            <ul>
-                {getAvailableMoves(tiles).map(tile => (
-                    <li key={tile}>{tile}</li>
-                ))}
-            </ul> */}
             <button onClick={changeTurn}>
                 Change Turn
             </button>

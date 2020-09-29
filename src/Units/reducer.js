@@ -1,5 +1,5 @@
 const initialState = {
-    allied: [
+    allies: [
         {
             id: 'basse',
             name: 'Basse',
@@ -570,12 +570,12 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'UPDATE_FRIENDLIES':
         return {
             ...state,
-            allied: [...payload],
+            allies: [...payload],
         };
     case 'UNIT_KIA': {
         return {
             ...state,
-            allied: [...payload],
+            allies: [...payload],
         };
     }
     default:

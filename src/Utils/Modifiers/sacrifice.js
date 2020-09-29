@@ -1,7 +1,7 @@
 import store from '../../store';
 
-const tiles = store.getState().map.tiles;
-const friendlies = store.getState().units.friendly.units;
+const { tiles } = store.getState().map;
+const { allies } = store.getState().units;
 
 const sacrifice = (tileId) => {
     // get location of tile
@@ -12,15 +12,14 @@ const sacrifice = (tileId) => {
 
     if (hasGangl) {
         // gangl can be exhausted or disrupted and still sacrifice
-        const gangl = friendlies.find(unit => unit.id === 'gangl' && !unit.kia);
+        const gangl = allies.find(unit => unit.id === 'gangl' && !unit.kia);
 
         if (gangl) { 
             // send user option to sacrifice
             // await response
                 // for this example, always sacrifice
 
-            // update friendly units
-            const payload = friendlies.map(unit => {
+            const payload = allies.map(unit => {
                 if (unit.id === 'gangl') {
                     return {
                         ...unit,
@@ -30,8 +29,8 @@ const sacrifice = (tileId) => {
                 return unit;
             });
             
-            // update friendly units
-            store.dispatch({ type: 'UPDATE_FRIENDLIES', payload });
+            // update allies
+            store.dispatch({ type: 'UPDATE_ALLIES', payload });
 
             return true;
         }

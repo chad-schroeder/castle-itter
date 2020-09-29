@@ -1,10 +1,10 @@
 import store from '../../store';
 
 export const eliminateUnit = unitId => {
-    const { allied } = store.getState().units;
+    const { allies } = store.getState().units;
 
     // set unit to KIA
-    const payload = allied.map(unit => {
+    const payload = allies.map(unit => {
         if (unit.id === unitId) {
             return {
                 ...unit,

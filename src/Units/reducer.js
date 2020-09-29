@@ -1,5 +1,5 @@
 const initialState = {
-    friendly: [
+    allied: [
         {
             id: 'basse',
             name: 'Basse',
@@ -501,7 +501,7 @@ const initialState = {
             }
         },
     ],
-    enemy: {
+    axis: {
         RF: {
             name: 'Rifleman',
             defense: 3,
@@ -566,14 +566,18 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'RESET_UNITS':
         return {
             ...initialState,
-        }
+        };
     case 'UPDATE_FRIENDLIES':
         return {
             ...state,
-            friendly: {
-                units: [...payload],
-            },
-        }
+            allied: [...payload],
+        };
+    case 'UNIT_KIA': {
+        return {
+            ...state,
+            allied: [...payload],
+        };
+    }
     default:
         return state;
     }

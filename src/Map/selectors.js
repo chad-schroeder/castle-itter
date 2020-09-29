@@ -1,1 +1,1 @@
-export const spaces = state => state.map.spaces;
+export const tiles = state => state.map.tiles;

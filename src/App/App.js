@@ -13,8 +13,9 @@ import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
 import advance from 'Utils/Enemy/advance';
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
-import sniper from 'Utils/Enemy/sniper';
-import { eliminateUnit } from 'Utils/Libs/eliminateUnit.js';
+// import sniper from 'Utils/Enemy/sniper';
+import mortar from 'Utils/Enemy/mortar';
+// import { eliminateUnit } from 'Utils/Libs/eliminateUnit.js';
 
 const App = () => {
     const { tiles } = useSelector(state => state.map);
@@ -32,7 +33,8 @@ const App = () => {
 
         // sniper(4);
 
-        eliminateUnit('basse');
+        // eliminateUnit('basse');
+        mortar(2);
     }, []);
     
     // const inspired = inspire('NT5');

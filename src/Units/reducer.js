@@ -16,6 +16,7 @@ const initialState = {
             tokens: {
                 action: false,
                 command: false,
+                disrupted: false,
             }
         },
         {
@@ -34,6 +35,7 @@ const initialState = {
             tokens: {
                 action: false,
                 command: false,
+                disrupted: false,
             }
         },
         {
@@ -529,14 +531,12 @@ const initialState = {
             name: 'Machine Gunner',
             attack: 2,
             defense: 4,
-            counter: true,
             disrupted: true,
         },
         MT: {
             name: 'Mortar',
             attack: 3,
             defense: 4,
-            counter: true,
             disrupted: true,
         },
         FL20: {
@@ -567,17 +567,11 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...initialState,
         };
-    case 'UPDATE_FRIENDLIES':
+    case 'UPDATE_ALLIES':
         return {
             ...state,
             allies: [...payload],
         };
-    case 'UNIT_KIA': {
-        return {
-            ...state,
-            allies: [...payload],
-        };
-    }
     default:
         return state;
     }

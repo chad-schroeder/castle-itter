@@ -1,13 +1,14 @@
-// import {
-//     select, call, put, take, takeLatest, takeEvery,
-// } from 'redux-saga/effects';
+import {
+    select, call, put, take, takeLatest, takeEvery,
+} from 'redux-saga/effects';
 
-// import { spaces } from './selectors';
+import { tiles } from './selectors';
 
-// function* fetchMapSpaces() {
-//     yield put({ type: 'SET_MAP_SPACES', payload: spaces });
-// }
+function* vacateTile() {
+    console.log('tile should be vacated');
+    // yield put({ type: 'SET_MAP_SPACES', payload: spaces });
+}
 
 export default function* root() {
-    // yield takeLatest('GET_MAP_SPACES', fetchMapSpaces);
+    yield takeLatest('UNIT_KIA', vacateTile);
 }

@@ -84,7 +84,7 @@ const initialState = {
             id: 'ST5',
             location: 'ST',
             los: ['green', 'orange'],
-            unit: null,
+            unit: 'worsham',
         },
         {
             id: 'ST6',
@@ -530,9 +530,10 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...initialState,
         };
-    case 'RESET_MAP_SPACES':
+    case 'UPDATE_TILES':
         return {
-            ...initialState,
+            ...state,
+            tiles: [...payload],
         };
     case 'DESTROY_BESOTTEN_JENNY': {
         return {

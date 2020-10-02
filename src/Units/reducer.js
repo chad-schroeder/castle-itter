@@ -508,16 +508,19 @@ const initialState = {
             name: 'Rifleman',
             defense: 3,
             counter: true,
+            canAdvance: true,
         },
         scout: {
             name: 'Scout',
             defense: 4,
             counter: true,
+            canAdvance: true,
         },
         sturm: {
             name: 'Sturm',
             defense: 5,
             counter: true,
+            canAdvance: true,
         },
         suppressiveFire: {
             name: 'Suppressive Fire',
@@ -531,12 +534,14 @@ const initialState = {
             name: 'Machine Gunner',
             attack: 2,
             defense: 4,
+            counter: true,
             disrupted: true,
         },
         mortar: {
             name: 'Mortar',
             attack: 3,
             defense: 4,
+            counter: true,
             disrupted: true,
         },
         flak20: {

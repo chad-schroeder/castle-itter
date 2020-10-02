@@ -504,56 +504,56 @@ const initialState = {
         },
     ],
     axis: {
-        RF: {
+        rifleman: {
             name: 'Rifleman',
             defense: 3,
             counter: true,
         },
-        SC: {
+        scout: {
             name: 'Scout',
             defense: 4,
             counter: true,
         },
-        ST: {
+        sturm: {
             name: 'Sturm',
             defense: 5,
             counter: true,
         },
-        SF: {
+        suppressiveFire: {
             name: 'Suppressive Fire',
             disrupt: true,
         },
-        SN: {
+        sniper: {
             name: 'Sniper',
             attack: 4,
         },
-        MG: {
+        machineGun: {
             name: 'Machine Gunner',
             attack: 2,
             defense: 4,
             disrupted: true,
         },
-        MT: {
+        mortar: {
             name: 'Mortar',
             attack: 3,
             defense: 4,
             disrupted: true,
         },
-        FL20: {
+        flak20: {
             name: '20mm FLAK 30',
             attack: 2,
             disrupt: true,
         },
-        FL88: {
+        flak88: {
             name: '88mm FLAK 37',
             attack: 5,
             disrupt: true,
         },
-        PA75: {
+        pak75: {
             name: '75mm PAK 40',
             attack: 4,
         },
-        PF: {
+        panzerfaust: {
             name: 'Panzerfaust',
             attack: 4,
             disrupt: true,

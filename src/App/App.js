@@ -13,8 +13,7 @@ import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
 import advance from 'Utils/Enemy/advance';
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
-// import sniper from 'Utils/Enemy/sniper';
-import mortar from 'Utils/Enemy/mortar';
+import { sniper } from 'Utils/Enemy/disruption';
 // import { eliminateUnit } from 'Utils/Libs/eliminateUnit.js';
 
 const App = () => {
@@ -31,10 +30,10 @@ const App = () => {
         
         // advance(2, soldier);
 
-        // sniper(4);
+        sniper(4);
 
         // eliminateUnit('basse');
-        mortar(2);
+        // mortar(2);
     }, []);
     
     // const inspired = inspire('NT5');

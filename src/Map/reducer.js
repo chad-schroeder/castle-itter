@@ -475,7 +475,7 @@ const initialState = {
             counter: null,
         },
     },
-    targets: { // which allied units are targeted
+    axisLOS: { // tiles axis units can target
         sniper: {
             1: 'black',
             2: 'black',

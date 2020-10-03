@@ -1,5 +1,3 @@
-import changeTurn from './changeTurn';
-
 import store from '../../store';
 
 const shuffle = (deck) => {
@@ -11,7 +9,7 @@ const shuffle = (deck) => {
 };
 
 export const playCard = () => {
-    const { deck, actionsRemaining } = store.getState().common;
+    const { deck } = store.getState().common;
     const topCard = deck[0];
 
     console.log('play card', topCard);

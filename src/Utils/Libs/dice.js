@@ -23,12 +23,10 @@ export const acquireTarget = (targetList = ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'])
     let target;
 
     // select random tile from targetList as initial target
-    const index = getRandomIndex(targetList);
+    const initialIndex = getRandomIndex(targetList);
 
-    let i = index;
-
-    // proceed through targetList for unit to target
-    do {
+    let i = initialIndex;
+    do { // proceed through targetList for unit to target
         const unit = getUnit(targetList, i);
 
         if (unit) {
@@ -39,7 +37,7 @@ export const acquireTarget = (targetList = ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'])
 
         // loop through entire array from starting index back through again, once
         i = (i + 1) % targetList.length;
-    } while (i !== index)
+    } while (i !== initialIndex)
 
     return target;
 };

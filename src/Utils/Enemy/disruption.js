@@ -2,7 +2,7 @@ import { rollDice, acquireTarget, rollToHit } from '../Libs/dice';
 
 import store from '../../store';
 
-const { locations, tiles, tracks, targets } = store.getState().map;
+const { locations, tiles, tracks, axisLOS } = store.getState().map;
 
 const disruptUnits = (targetList) => {
     const units = tiles
@@ -13,19 +13,19 @@ const disruptUnits = (targetList) => {
 
 const getTargetColor = (id) => {
     const roll = rollDice();
-    const color = targets[id][roll];
+    const color = axisLOS[id][roll];
     return color;
 };
 
 const getTargetTiles = (color) => {
-    return targets[color];
+    return axisLOS[color];
 };
 
 const getTargetByColor = (axisId) => {
     const color = getTargetColor(axisId);
     const tiles = getTargetTiles(color);
-    const unit = acquireTarget(tiles);
-    return unit;
+    const target = acquireTarget(tiles);
+    return target;
 };
 
 const getLocationByUnit = (unitId) => {
@@ -41,20 +41,13 @@ const getLocationDefense = (locationId) => {
 export const cardSniper = () => {
     const { sniper: { id, attack } } = store.getState().units.axis;
 
-    // acquire target
     const unit = getTargetByColor(id);
 
     if (unit) {
-        // get location
         const locationId = getLocationByUnit(unit);
-
-        // get defense value of location
         const defense = getLocationDefense(locationId);
-
         const casualty = rollToHit(attack, defense);
         console.log(casualty);
-
-        return;
     }
     
     console.log('sniper: no unit found');
@@ -68,7 +61,7 @@ export const cardMortar = (trackId) => {
     const { los } = tracks[trackId];
 
     // get all matching color tiles
-    const targetList = targets[los];
+    const targetList = axisLOS[los];
     console.log('mortar', targetList);
 
     disruptUnits(targetList);

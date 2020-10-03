@@ -2,7 +2,7 @@ import { rollDice, acquireTarget } from '../Libs/dice';
 
 import store from '../../store';
 
-const { locations, tiles, tracks, targeting } = store.getState().map;
+const { locations, tiles, tracks, targets } = store.getState().map;
 
 const disruptUnits = (targetList) => {
     const units = tiles
@@ -11,30 +11,47 @@ const disruptUnits = (targetList) => {
     console.log(units);
 };
 
+const getTargetColor = (id) => {
+    const roll = rollDice();
+    const color = targets[id][roll];
+    return color;
+};
+
+const getTargetTiles = (color) => {
+    return targets[color];
+};
+
+const getLocationByUnit = (unit) => {
+    const { location} = tiles.find(tile => tile.unit === unit);
+    return location;
+};
+
+const getLocationValue = (id) => {
+    const { defense } = locations.find(location => location.id === id);
+    return defense;
+};
+
 export const cardSniper = () => {
-    const { sniper } = store.getState().units.axis;
+    const { sniper: { id, attack }} = store.getState().units.axis;
 
-    // determine target color
-    const rollColor = rollDice();
-    const targetColor = targeting.SN[rollColor];
+    // get target color
+    const targetColor = getTargetColor(id);
 
-    // get all tiles with target color
-    const targetColors = targeting[targetColor];
+    // get all target tiles
+    const targetColors = getTargetTiles(targetColor);
 
-    // search for a unit to target among possible tiles
+    // get unit to target, if any
     const targetUnit = acquireTarget(targetColors);
 
     if (targetUnit) {
-        // find tile the unit occupies
-        const { location: locationId } = tiles.find(tile => tile.unit === targetUnit);
+        // get unit tile
+        const locationId = getLocationByUnit(targetUnit);
 
         // get defense value of tile location
-        const { defense } = locations.find(location => location.id === locationId);
+        const defense = getLocationValue(locationId);
     
         // roll to hit
-        // TODO: UX for rolling dice + sniper result
-        const attackValue = sniper.attack;
-        const snipershot = rollDice(attackValue);
+        const snipershot = rollDice(attack);
     
         if (snipershot.some(dice => dice >= defense)) {
             // if any die is equal to or greater than location defense, unit is killed
@@ -49,14 +66,15 @@ export const cardSniper = () => {
     console.log('sniper: no unit found');
 };
 
-export const mortar = (trackId) => {
+export const cardMortar = (trackId) => {
     const { mortar } = store.getState().units.axis;
     console.log('mortar', mortar);
 
     // acquire target color
-    const { los } = tracks[trackId]; 
+    const { los } = tracks[trackId];
+
     // get all matching color tiles
-    const targetList = targeting[los];
+    const targetList = targets[los];
     console.log('mortar', targetList);
 
     disruptUnits(targetList);

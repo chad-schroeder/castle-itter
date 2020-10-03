@@ -1,9 +1,9 @@
-import { v4 as uuidv4 } from 'uuid'; // uuidv4()
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
     loading: true,
     playerTurn: true,
-    actionsRemaining: 5, // enemy turn gets 3
+    actionsRemaining: 5,
     suppression: {
         purple: 0,
         green: 0,

@@ -21,8 +21,15 @@ const getTargetTiles = (color) => {
     return targets[color];
 };
 
+const getTargetByColor = (id) => {
+    const color = getTargetColor(id);
+    const tiles = getTargetTiles(color);
+    const unit = acquireTarget(tiles);
+    return unit;
+};
+
 const getLocationByUnit = (unit) => {
-    const { location} = tiles.find(tile => tile.unit === unit);
+    const { location } = tiles.find(tile => tile.unit === unit);
     return location;
 };
 
@@ -34,26 +41,20 @@ const getLocationValue = (id) => {
 export const cardSniper = () => {
     const { sniper: { id, attack }} = store.getState().units.axis;
 
-    // get target color
-    const targetColor = getTargetColor(id);
+    // acquire target
+    const unit = getTargetByColor(id);
 
-    // get all target tiles
-    const targetColors = getTargetTiles(targetColor);
-
-    // get unit to target, if any
-    const targetUnit = acquireTarget(targetColors);
-
-    if (targetUnit) {
+    if (unit) {
         // get unit tile
-        const locationId = getLocationByUnit(targetUnit);
+        const locationId = getLocationByUnit(unit);
 
         // get defense value of tile location
         const defense = getLocationValue(locationId);
     
         // roll to hit
-        const snipershot = rollDice(attack);
+        const roll = rollDice(attack);
     
-        if (snipershot.some(dice => dice >= defense)) {
+        if (roll.some(dice => dice >= defense)) {
             // if any die is equal to or greater than location defense, unit is killed
             console.log('unit eliminated');
         } else {

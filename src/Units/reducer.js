@@ -505,32 +505,38 @@ const initialState = {
     ],
     axis: {
         rifleman: {
+            id: 'rifleman',
             name: 'Rifleman',
             defense: 3,
             counter: true,
             canAdvance: true,
         },
         scout: {
+            id: 'scout',
             name: 'Scout',
             defense: 4,
             counter: true,
             canAdvance: true,
         },
         sturm: {
+            id: 'sturm',
             name: 'Sturm',
             defense: 5,
             counter: true,
             canAdvance: true,
         },
         suppressiveFire: {
+            id: 'sf',
             name: 'Suppressive Fire',
             disrupt: true,
         },
         sniper: {
+            id: 'sniper',
             name: 'Sniper',
             attack: 4,
         },
         machineGun: {
+            id: 'mg',
             name: 'Machine Gunner',
             attack: 2,
             defense: 4,
@@ -538,6 +544,7 @@ const initialState = {
             disrupted: true,
         },
         mortar: {
+            id: 'mortar',
             name: 'Mortar',
             attack: 3,
             defense: 4,
@@ -545,20 +552,24 @@ const initialState = {
             disrupted: true,
         },
         flak20: {
+            id: 'flak20',
             name: '20mm FLAK 30',
             attack: 2,
             disrupt: true,
         },
         flak88: {
+            id: 'flak88',
             name: '88mm FLAK 37',
             attack: 5,
             disrupt: true,
         },
         pak75: {
+            id: 'pak75',
             name: '75mm PAK 40',
             attack: 4,
         },
         panzerfaust: {
+            id: 'pf',
             name: 'Panzerfaust',
             attack: 4,
             disrupt: true,

@@ -1,24 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import { Map } from 'Map';
 import { Units } from 'Units';
 
-import getAvailableMoves from 'Utils/Libs/getAvailableMoves';
-// import getTargetsByColor from 'Utils/Libs/targetAllied';
-// import suppress from 'Utils/Actions/suppress';
-// import inspire from 'Utils/Modifiers/inspire';
-// import morale from 'Utils/Modifiers/morale';
-// import sacrifice from 'Utils/Modifiers/sacrifice';
-import advance from 'Utils/Enemy/advance';
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
-import { sniper } from 'Utils/Enemy/disruption';
-// import { eliminateUnit } from 'Utils/Libs/eliminateUnit.js';
+import { cardSniper } from 'Utils/Enemy/disruption';
 
 const App = () => {
-    const { tiles } = useSelector(state => state.map);
-
     useEffect(() => {
         buildDeck();
 
@@ -30,7 +20,7 @@ const App = () => {
         
         // advance(2, soldier);
 
-        sniper(4);
+        cardSniper(4);
 
         // eliminateUnit('basse');
         // mortar(2);

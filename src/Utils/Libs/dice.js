@@ -41,3 +41,17 @@ export const acquireTarget = (targetList = ['G1', 'G2', 'G3', 'G4', 'G4', 'G4'])
 
     return target;
 };
+
+export const rollToHit = (attack = 0, defense = 6) => {
+    const roll = rollDice(attack);
+    let result;
+    
+    if (roll.some(dice => dice >= defense)) {
+        // if any die is equal to or greater than location defense, unit is killed
+        result = 'unit eliminated!';
+    } else {
+        result = 'miss!';
+    }
+
+    return result;
+};

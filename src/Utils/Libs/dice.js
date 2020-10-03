@@ -13,19 +13,23 @@ export const rollDice = (numOfDice = 1) => {
     return rolls;
 };
 
-export const acquireTarget = (targetList = ['G1', 'G2', 'G3', 'G4', 'G4', 'G4']) => {
+const getUnit = (targetList, index) => {
     const { tiles } = store.getState().map;
+    const { unit } = tiles.find(tile => tile.id === targetList[index]);
+    return unit;
+};
 
+export const acquireTarget = (targetList = ['G1', 'G2', 'G3', 'G4', 'G4', 'G4']) => {    
     let target;
 
     // select random tile from targetList as initial target
     const index = getRandomIndex(targetList);
 
-    // prepare iterator
     let i = index;
 
-    do { // search through targetList for unit as target
-        const { unit } = tiles.find(tile => tile.id === targetList[i]);
+    // proceed through targetList for unit to target
+    do {
+        const unit = getUnit(targetList, i);
 
         if (unit) {
             // target acquired, exit loop

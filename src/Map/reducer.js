@@ -475,8 +475,8 @@ const initialState = {
             counter: null,
         },
     },
-    targeting: { // which allied units are targeted
-        SN: {
+    targets: { // which allied units are targeted
+        sniper: {
             1: 'black',
             2: 'black',
             3: 'green',
@@ -484,7 +484,7 @@ const initialState = {
             5: 'orange',
             6: 'purple',
         },
-        FL20: {
+        flak20: {
             1: 'purple',
             2: 'purple',
             3: 'purple',
@@ -492,7 +492,7 @@ const initialState = {
             5: 'orange',
             6: 'orange',
         },
-        FL88: {
+        flak88: {
             1: 'K',
             2: 'K',
             3: 'GH',
@@ -500,7 +500,7 @@ const initialState = {
             5: 'NT',
             6: 'NT',
         },
-        PA75A: {
+        pak75a: {
             1: 'BJ',
             2: 'BJ',
             3: 'G',
@@ -508,7 +508,7 @@ const initialState = {
             5: 'G',
             6: 'GH'
         },
-        PA75B: {
+        pak75b: {
             1: 'K',
             2: 'K',
             3: 'GH',

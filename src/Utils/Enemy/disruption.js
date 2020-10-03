@@ -1,9 +1,8 @@
-import { getRandomIndex, rollDice, acquireTarget } from '../Libs/dice';
+import { rollDice, acquireTarget } from '../Libs/dice';
 
 import store from '../../store';
 
 const { locations, tiles, tracks, targeting } = store.getState().map;
-const { allies } = store.getState().units;
 
 const disruptUnits = (targetList) => {
     const units = tiles
@@ -12,7 +11,7 @@ const disruptUnits = (targetList) => {
     console.log(units);
 };
 
-export const sniper = () => {
+export const cardSniper = () => {
     const { sniper } = store.getState().units.axis;
 
     // determine target color
@@ -27,7 +26,7 @@ export const sniper = () => {
 
     if (targetUnit) {
         // find tile the unit occupies
-        const { location: locationId, id: tileId } = tiles.find(tile => tile.unit === targetUnit);
+        const { location: locationId } = tiles.find(tile => tile.unit === targetUnit);
 
         // get defense value of tile location
         const { defense } = locations.find(location => location.id === locationId);
@@ -50,11 +49,9 @@ export const sniper = () => {
     console.log('sniper: no unit found');
 };
 
-
-
-
 export const mortar = (trackId) => {
-    const { attack } = store.getState().units.axis.MT;
+    const { mortar } = store.getState().units.axis;
+    console.log('mortar', mortar);
 
     // acquire target color
     const { los } = tracks[trackId]; 

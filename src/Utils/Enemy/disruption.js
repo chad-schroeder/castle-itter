@@ -1,4 +1,4 @@
-import { rollDice, acquireTarget } from '../Libs/dice';
+import { rollDice, acquireTarget, rollToHit } from '../Libs/dice';
 
 import store from '../../store';
 
@@ -21,45 +21,38 @@ const getTargetTiles = (color) => {
     return targets[color];
 };
 
-const getTargetByColor = (id) => {
-    const color = getTargetColor(id);
+const getTargetByColor = (axisId) => {
+    const color = getTargetColor(axisId);
     const tiles = getTargetTiles(color);
     const unit = acquireTarget(tiles);
     return unit;
 };
 
-const getLocationByUnit = (unit) => {
-    const { location } = tiles.find(tile => tile.unit === unit);
+const getLocationByUnit = (unitId) => {
+    const { location } = tiles.find(tile => tile.unit === unitId);
     return location;
 };
 
-const getLocationValue = (id) => {
-    const { defense } = locations.find(location => location.id === id);
+const getLocationDefense = (locationId) => {
+    const { defense } = locations.find(location => location.id === locationId);
     return defense;
 };
 
 export const cardSniper = () => {
-    const { sniper: { id, attack }} = store.getState().units.axis;
+    const { sniper: { id, attack } } = store.getState().units.axis;
 
     // acquire target
     const unit = getTargetByColor(id);
 
     if (unit) {
-        // get unit tile
+        // get location
         const locationId = getLocationByUnit(unit);
 
-        // get defense value of tile location
-        const defense = getLocationValue(locationId);
-    
-        // roll to hit
-        const roll = rollDice(attack);
-    
-        if (roll.some(dice => dice >= defense)) {
-            // if any die is equal to or greater than location defense, unit is killed
-            console.log('unit eliminated');
-        } else {
-            console.log('miss!');
-        }
+        // get defense value of location
+        const defense = getLocationDefense(locationId);
+
+        const casualty = rollToHit(attack, defense);
+        console.log(casualty);
 
         return;
     }

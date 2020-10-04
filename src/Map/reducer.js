@@ -212,7 +212,7 @@ const initialState = {
             id: 'BJ4',
             location: 'BJ',
             los: ['black'],
-            unit: null,
+            unit: 'steiner',
             armament: {
                 name: 'M1919A4',
                 attack: 2,

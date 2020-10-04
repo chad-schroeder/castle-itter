@@ -83,3 +83,20 @@ export const cardDisrupt = (axisId, trackId) => {
     });
 };
 
+export const cardPanzerfaust = () => {
+    const { attack } = store.getState().units.axis.panzerfaust;
+    const defense = getLocationDefense('BJ'); // target is always the Besotten Jenny
+
+    const hit = rollToHit(attack, defense);
+    
+    if (hit) {
+        console.log('panzerfaust hit!');
+
+        const units = tiles
+            .filter(tile => tile.location === 'BJ' && tile.unit)
+            .map(tile => tile.unit);
+        console.log('units', units);
+    } else {
+        console.log('panzerfaust missed!');
+    }
+};

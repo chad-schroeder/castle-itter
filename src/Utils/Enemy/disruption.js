@@ -56,7 +56,7 @@ export const cardSniper = () => {
 };
 
 export const cardDisrupt = (axisId, trackId) => {
-    const { id, attack } = store.getState().units.axis[axisId];
+    const { attack } = store.getState().units.axis[axisId];
     console.log(`Card: ${axisId}`, attack);
 
     // acquire target color

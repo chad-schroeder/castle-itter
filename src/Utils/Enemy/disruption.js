@@ -1,6 +1,7 @@
 import { rollDice, acquireTarget, rollToHit } from '../Libs/dice';
 
 import store from '../../store';
+import suppress from 'Utils/Actions/suppress';
 
 const { locations, tiles, tracks, axisLOS } = store.getState().map;
 
@@ -81,6 +82,42 @@ export const cardDisrupt = (axisId, trackId) => {
             console.log(`${axisId} shot on ${unit} missed!`);
         }
     });
+};
+
+export const cardSuppressiveFire = () => {
+    // only tracks 2 through 12 can have suppressive fire units
+    for (let i = 2; i <= 12; i += 1) {
+        const { los, suppress } = tracks[i];
+
+        if (suppress.length) {
+            console.log('suppress:', suppress);
+            
+            suppress.forEach(unit => {
+                const { attack } = store.getState().units.axis[unit];
+                const colors = getTargetTiles(los);
+
+                // get all matching color tiles
+                const targetList = axisLOS[los];
+                console.log('targetList', targetList);
+
+                const units = tiles
+                    .filter(tile => targetList.includes(tile.id) && tile.unit)
+                    .map(tile => tile.unit);
+
+                units.forEach(unit => {
+                    const locationId = getLocationByUnit(unit);
+                    const defense = getLocationDefense(locationId);
+                    const casualty = rollToHit(attack, defense);
+
+                    if (casualty) {
+                        console.log(`${unit} hit! ${unit} has been disrupted`);
+                    } else {
+                        console.log(`${unit} shot on ${unit} missed!`);
+                    }
+                });
+            });
+        }
+    }
 };
 
 export const cardPanzerfaust = () => {

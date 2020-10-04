@@ -261,8 +261,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: ['machineGun'],
         },
         3: { 
             los: 'orange', 
@@ -272,8 +271,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             }, 
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         4: {
             los: 'orange', 
@@ -283,8 +281,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             }, 
-            mortar: 0, 
-            mg: 0,
+            suppress: ['mortar'],
         },
         5: {
             los: 'purple', 
@@ -294,8 +291,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         6: {
             los: 'purple', 
@@ -305,8 +301,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         7: {
             los: 'black', 
@@ -316,8 +311,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         8: {
             los: 'black', 
@@ -327,8 +321,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         9: {
             los: 'black', 
@@ -338,8 +331,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         10: {
             los: 'black', 
@@ -349,8 +341,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         11: {
             los: 'green', 
@@ -360,8 +351,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         12: {
             los: 'green', 
@@ -371,8 +361,7 @@ const initialState = {
                 type: 'RF',
                 defense: 3,
             },
-            mortar: 0, 
-            mg: 0,
+            suppress: [],
         },
         13: {
             los: 'orange', 

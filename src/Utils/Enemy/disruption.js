@@ -40,14 +40,23 @@ const getLocationDefense = (locationId) => {
 
 export const cardSniper = () => {
     const { sniper: { id, attack } } = store.getState().units.axis;
+    console.log('Card: Sniper!');
 
     const unit = getTargetByColor(id);
 
     if (unit) {
+        console.log(`${unit} has been targeted!`);
+
         const locationId = getLocationByUnit(unit);
         const defense = getLocationDefense(locationId);
         const casualty = rollToHit(attack, defense);
-        console.log(casualty);
+        
+        if (casualty) {
+            console.log(`Shot hit! ${unit} has been KIA`);
+        } else {
+            console.log('Shot missed!');
+        }
+        return;
     }
     
     console.log('sniper: no unit found');

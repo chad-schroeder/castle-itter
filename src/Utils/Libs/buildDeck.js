@@ -13,7 +13,8 @@ export const playCard = () => {
     const { deck } = store.getState().common;
 
     if (deck.length) {
-        const { id = null, deck: deckId, card, target, type } = deck[0];
+        const { id, deck: deckId, card, target, type } = deck[0];
+        console.log('Current card:', deck[0]);
         console.log('Play card:', type);
         console.log('Current deck:', deckId);
 
@@ -43,9 +44,9 @@ export const playCard = () => {
         // remove top card from deck, by id instead of .unshift() as a debug precaution
         const cards = deck.filter(card => card.id !== id);
         store.dispatch({ type: 'PLAYED_CARD', payload: cards });
+    } else {
+        console.log('Game Over: Deck exhausted');
     }
-
-    console.log('Game Over: Deck exhausted');
 };
 
 export const buildDeck = () => {

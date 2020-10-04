@@ -541,7 +541,7 @@ const initialState = {
             attack: 2,
             defense: 4,
             counter: true,
-            disrupted: true,
+            disrupt: true,
         },
         mortar: {
             id: 'mortar',
@@ -549,7 +549,7 @@ const initialState = {
             attack: 3,
             defense: 4,
             counter: true,
-            disrupted: true,
+            disrupt: true,
         },
         flak20: {
             id: 'flak20',
@@ -567,12 +567,12 @@ const initialState = {
             id: 'pak75',
             name: '75mm PAK 40',
             attack: 4,
+            disrupt: true,
         },
         panzerfaust: {
             id: 'pf',
             name: 'Panzerfaust',
             attack: 4,
-            disrupt: true,
         },
     },
 };

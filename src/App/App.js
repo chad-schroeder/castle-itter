@@ -6,7 +6,7 @@ import { Units } from 'Units';
 
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
-import { cardSniper } from 'Utils/Enemy/disruption';
+import { cardSniper, cardDisrupt } from 'Utils/Enemy/disruption';
 
 const App = () => {
     useEffect(() => {
@@ -23,7 +23,7 @@ const App = () => {
         cardSniper(4);
 
         // eliminateUnit('basse');
-        // mortar(2);
+        cardDisrupt('machineGun', 2);
     }, []);
     
     // const inspired = inspire('NT5');

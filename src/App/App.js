@@ -27,12 +27,8 @@ const App = () => {
 
         // cardPanzerfaust();
 
-        cardSuppressiveFire();
+        // cardSuppressiveFire();
     }, []);
-    
-    // const inspired = inspire('NT5');
-    // const fled = morale('NT5');
-    // const sacrificed = sacrifice('NT5');
     
     return (
         <>

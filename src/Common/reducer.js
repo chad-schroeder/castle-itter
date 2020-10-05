@@ -81,6 +81,7 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', card: 'disrupt', deck: 4, },
         ],
     },
+    gameOver: false,
     score: 0,
     escaped: false,
     enemies: {
@@ -93,27 +94,27 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'APP_LOADING':
         return {
             ...initialState,
-        };
+        }
     case 'APP_LOADED':
         return {
             ...initialState,
             loading: false,
-        };
+        }
     case 'BUILD_DECK':
         return {
             ...state,
             deck: [...payload],
-        };
+        }
     case 'PLAYED_CARD':
         return {
             ...state,
             deck: [...payload],
-        };
+        }
     case 'CHANGE_TURN':
         return {
             ...state,
             ...payload,
-        };
+        }
     case 'SPEND_ACTION':
         return {
             ...state,
@@ -123,7 +124,12 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             suppression: { ...payload },
-        };
+        }
+    case 'GAME_OVER':
+        return {
+            ...state,
+            gameOver: true,
+        }
     default:
         return state;
     }

@@ -4,9 +4,9 @@ import React, { useEffect } from 'react';
 import { Map } from 'Map';
 import { Units } from 'Units';
 
-import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
-import changeTurn from 'Utils/Libs/changeTurn';
-import spendAction from 'Utils/Libs/spendAction';
+import buildDeck from 'Utils/Libs/buildDeck';
+import playCard from 'Utils/Libs/playCard';
+import { spendAction } from 'Utils/Libs/turn';
 import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 const App = () => {
@@ -34,9 +34,6 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <button onClick={changeTurn}>
-                Change Turn
-            </button>
             <button onClick={playCard}>
                 Play Card
             </button>

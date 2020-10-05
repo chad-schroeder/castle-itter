@@ -65,7 +65,7 @@ const getScore = () => {
     
     let score = 0;
 
-    // 5 points: Besotten Jenny was destroyed, but no defenders inside
+    // 5 points: Besotten Jenny was destroyed but no defenders were inside
     if (besottenJennyDestroyed && !besottenJennyCasualties.length) {
         score += 5;
     }
@@ -76,12 +76,13 @@ const getScore = () => {
     }
 
     // 3 points for each French defender on the board but not in the cellar
+    // 1 point for each French defender in the cellar
     score += getFrenchCount();
 
     // 1 point for any other defender on the board (including the cellar)
     score += getNonFrenchCount();
 
-    // Subtract 1 point for each SS counter on the board
+    // subtract 1 point for each SS counter on the board
     score -= getAxisBoardCount();
     
     console.log('getScore', score);

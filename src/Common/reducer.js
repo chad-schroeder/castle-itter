@@ -114,6 +114,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             ...payload,
         };
+    case 'SPEND_ACTION':
+        return {
+            ...state,
+            actionsRemaining: payload,
+        }
     case 'ADD_SUPPRESSION':
         return {
             ...state,

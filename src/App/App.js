@@ -6,6 +6,7 @@ import { Units } from 'Units';
 
 import { playCard, buildDeck } from 'Utils/Libs/buildDeck';
 import changeTurn from 'Utils/Libs/changeTurn';
+import spendAction from 'Utils/Libs/spendAction';
 import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 const App = () => {
@@ -38,6 +39,9 @@ const App = () => {
             </button>
             <button onClick={playCard}>
                 Play Card
+            </button>
+            <button onClick={spendAction}>
+                Spend Action
             </button>
             <Map />
             <Units />

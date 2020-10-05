@@ -13,9 +13,9 @@ const buildDeck = () => {
     
     const deck = [
         ...shuffle(decks[1]),
-        ...shuffle(decks[2]),
-        ...shuffle(decks[3]),
-        ...shuffle(decks[4]),
+        // ...shuffle(decks[2]),
+        // ...shuffle(decks[3]),
+        // ...shuffle(decks[4]),
     ];
 
     store.dispatch({ type: 'BUILD_DECK', payload: deck });

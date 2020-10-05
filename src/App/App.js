@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Map } from 'Map';
 import { Units } from 'Units';
@@ -10,6 +10,8 @@ import { spendAction } from 'Utils/Libs/turn';
 import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 const App = () => {
+    const { gameOver } = useSelector(state => state.common);
+
     useEffect(() => {
         buildDeck();
 
@@ -34,12 +36,13 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <button onClick={playCard}>
+            <button onClick={playCard} disabled={gameOver}>
                 Play Card
             </button>
-            <button onClick={spendAction}>
+            <button onClick={spendAction} disabled={gameOver}>
                 Spend Action
             </button>
+            <p>Game Over: {gameOver ? 'true' : 'false'}</p>
             <Map />
             <Units />
         </>

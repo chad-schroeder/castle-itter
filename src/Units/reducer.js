@@ -494,6 +494,7 @@ const initialState = {
                 escape: true,
                 prisoner: true,
             },
+            escaped: false,
             exhausted: false,
             kia: false,
             tokens: {

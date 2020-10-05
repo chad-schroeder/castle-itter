@@ -84,6 +84,8 @@ const initialState = {
     gameOver: false,
     score: 0,
     escaped: false,
+    besottenJennyDestroyed: false,
+    besottenJennyCasualties: [],
     enemies: {
         defeated: [],
     },

@@ -27,7 +27,11 @@ const playCard = () => {
                 break;
             }
             case 'reinforcements': {
-                console.log('reinforcements');
+                console.log('Action: Reinforcements');
+                break;
+            }
+            case '142nd': {
+                console.log('Action: 142 Infantry Regiment');
                 break;
             }
             default: {

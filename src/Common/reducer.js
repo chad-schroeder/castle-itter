@@ -81,14 +81,13 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', card: 'disrupt', deck: 4, },
         ],
     },
-    gameOver: false,
     score: 0,
+    gameOver: false,
+    hasWon: false,
     escaped: false,
     besottenJennyDestroyed: false,
     besottenJennyCasualties: [],
-    enemies: {
-        defeated: [],
-    },
+    enemiesDefeated: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {

@@ -59,7 +59,7 @@ const getAxisBoardCount = () => {
     return count;
 };
 
-const getScore = () => {
+export const getScore = () => {
     const { besottenJennyDestroyed, besottenJennyCasualties, escaped } = store.getState().common;
     
     let score = 0;
@@ -84,8 +84,36 @@ const getScore = () => {
     // subtract 1 point for each SS counter on the board
     score -= getAxisBoardCount();
     
-    console.log('getScore', score);
     return score;
 };
 
-export default getScore;
+export const getMedal = (score) => {
+    let award = null;
+    let victory = 'Draw';
+
+    if (score >= 40) {
+        award = 'Austrian National Hero';
+        victory = 'Epic Victory';
+    } else if (score >= 30) {
+        award = 'Medal of Honor';
+        victory = 'Major Victory';
+    } else if (score >= 20) {
+        award = 'Distinguished Service Cross';
+        victory = 'Major Victory';
+    } else if (score >= 10) {
+        award = 'Silver Star';
+        victory = 'Minor Victory';
+    } else if (score >= 1) {
+        award = 'Bronze Star';
+        victory = 'Minor Victory';
+    }
+
+    return { award, victory };
+};
+
+export const getFinalScore = () => {
+    const score = getScore();
+    const { award, victory } = getMedal(score);
+
+    console.log('endGame', { score, award, victory });
+};

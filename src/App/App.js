@@ -7,8 +7,8 @@ import { Units } from 'Units';
 import buildDeck from 'Utils/Libs/buildDeck';
 import playCard from 'Utils/Libs/playCard';
 import { spendAction } from 'Utils/Libs/turn';
-import getScore from 'Utils/Libs/getScore';
-import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
+import { getFinalScore } from 'Utils/Libs/scoring';
+// import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 const App = () => {
     const { gameOver } = useSelector(state => state.common);
@@ -43,7 +43,7 @@ const App = () => {
             <button onClick={spendAction} disabled={gameOver}>
                 Spend Action
             </button>
-            <button onClick={getScore}>
+            <button onClick={getFinalScore}>
                 End Game
             </button>
             <p>Game Over: {gameOver ? 'true' : 'false'}</p>

@@ -43,29 +43,27 @@ const shuffleBottomCards = () => {
 const removeUnitFromTile = (tileId) => {
     const { tiles } = store.getState().map;
 
-    // remove borotra from tile
-    const payloadTiles = tiles.map(tile => {
+    const payload = tiles.map(tile => {
         if (tile.id === tileId) {
             return { ...tile, unit: null }
         }
         return tile;
     });
 
-    store.dispatch({ type: 'UPDATE_TILES', payload: payloadTiles });
+    store.dispatch({ type: 'UPDATE_TILES', payload: payload });
 };
 
 const escapeBorotra = () => {
     const { allies } = store.getState().units;
 
-    // remove boratra from map
-    const payloadAllies = allies.map(ally => {
+    const payload = allies.map(ally => {
         if (ally.id === 'borotra') {
             return { ...ally, escaped: true }
         }
         return ally;
     });
 
-    store.dispatch({ type: 'UPDATE_ALLIES', payload: payloadAllies });
+    store.dispatch({ type: 'UPDATE_ALLIES', payload });
 };
 
 const escape = (tileId) => {

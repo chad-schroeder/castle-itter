@@ -65,6 +65,7 @@ const initialState = {
             { id: uuidv4(), type: 'pak75', card: 'disrupt', target: 'pak75b', deck: 3, },
             { id: uuidv4(), type: 'panzerfaust', card: 'panzerfaust', deck: 3, },
             { id: uuidv4(), type: 'panzerfaust', card: 'panzerfaust', deck: 3, },
+            { id: 'reinforcements', type: 'reinforcements', card: 'reinforcements', deck: 3, text: 'Defenders with the [R] designation have been added to your supply' },
         ],
         4: [
             { id: uuidv4(), type: 'rifleman', card: 'advance', count: 2, deck: 4, },
@@ -81,6 +82,7 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', card: 'disrupt', deck: 4, },
         ],
     },
+    deckLevel: 3,
     score: 0,
     gameOver: false,
     hasWon: false,
@@ -125,6 +127,11 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             suppression: { ...payload },
+        }
+    case 'ESCAPED':
+        return {
+            ...state,
+            escaped: true,
         }
     case 'GAME_OVER':
         return {

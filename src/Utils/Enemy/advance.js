@@ -19,6 +19,7 @@ const advance = (trackId, enemy) => {
 
         // if there is still a counter to place but no more tracks, game over!
         if (track === null && incoming) {
+            store.dispatch({ type: 'GAME_LOST' });
             console.log('You lose!');
             break;
         }

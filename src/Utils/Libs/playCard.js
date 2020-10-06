@@ -26,6 +26,10 @@ const playCard = () => {
                 console.log('Action: Panzerfaust');
                 break;
             }
+            case 'reinforcements': {
+                console.log('reinforcements');
+                break;
+            }
             default: {
                 console.log('Action: Disrupt');
                 break;

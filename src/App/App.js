@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { Map } from 'Map';
 import { Units } from 'Units';
 
-import buildDeck from 'Utils/Libs/buildDeck';
+import { buildDeck } from 'Utils/Libs/deck';
 import playCard from 'Utils/Libs/playCard';
 import { spendAction } from 'Utils/Libs/turn';
 import { getFinalScore } from 'Utils/Libs/scoring';
+import escape from 'Utils/Libs/escape';
 // import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 const App = () => {
@@ -47,6 +48,9 @@ const App = () => {
                 End Game
             </button>
             <p>Game Over: {gameOver ? 'true' : 'false'}</p>
+            <button onClick={() => escape('G2')}>
+                Escape
+            </button>
             <Map />
             <Units />
         </>

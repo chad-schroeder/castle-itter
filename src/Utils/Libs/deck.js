@@ -1,6 +1,6 @@
 import store from '../../store';
 
-const shuffle = (deck) => {
+export const shuffle = (deck) => {
     for (let i = deck.length - 1; i > 0; i -= 1) {
       let randomIndex = Math.floor(Math.random() * (i + 1));
       [deck[i], deck[randomIndex]] = [deck[randomIndex], deck[i]];
@@ -8,7 +8,7 @@ const shuffle = (deck) => {
     return deck;
 };
 
-const buildDeck = () => {
+export const buildDeck = () => {
     const decks = store.getState().common.decks;
     
     const deck = [
@@ -21,4 +21,3 @@ const buildDeck = () => {
     store.dispatch({ type: 'BUILD_DECK', payload: deck });
 };
 
-export default buildDeck;

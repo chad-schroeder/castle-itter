@@ -6,18 +6,17 @@ const getFrenchCount = () => {
 
     let score = 0;
 
-    // get list of all surviving french units
-    // do not count Borotra if he escaped
+    // get list of all surviving french units; do not count Borotra if he escaped
     const french = allies
         .filter(ally => ally.nationality === 'FRA' && !ally.kia && !ally.escaped)
         .map(ally => ally.id);
 
-    // compute score based on where French unit is
+    // compute score
     tiles.forEach(tile => {
         if (french.includes(tile.unit)) {
-            if (tile.location !== 'C') {
+            if (tile.location !== 'C') { // if not located in the cellar
                 score += 3;
-            } else {
+            } else { // if located in the cellar
                 score += 1;
             }
         }

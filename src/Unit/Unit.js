@@ -4,30 +4,22 @@ const Unit = ({ unit }) => {
     const { id, name, nationality, placement, attack, suppress, modifiers = {}, tokens, kia, } = unit;
     const { commander, tanker, sacrifice, officer, morale, reinforcement, inspire, prisoner, escape } = modifiers;
     const { action, command, disrupted } = tokens;
+
+    const handleClick = (action, value = null) => console.log(`${action}: ${value}`);
     
     return (
         <li key={id}>
             <p>Name: {name}</p>
             <p>Nationality: {nationality}</p>
             <p>Placement: {placement}</p>
-            <p>Attack: {attack}</p>
-            <p>Suppress: {suppress}</p>
-            {modifiers &&
-                <>
-                    <p>Modifiers:</p>
-                    <ul>
-                        {commander && <li>Commander</li>}
-                        {tanker && <li>Tanker</li>}
-                        {sacrifice && <li>Sacrifice</li>}
-                        {officer && <li>Officer</li>}
-                        {morale && <li>Morale</li>}
-                        {reinforcement && <li>Reinforcement</li>}
-                        {inspire && <li>Inspire</li>}
-                        {prisoner && <li>Prisoner</li>}
-                        {escape && <li>Escape</li>}
-                    </ul>
-                </>
-            }
+            <p>Actions:</p>
+            <ul>
+                <li><button onClick={() => handleClick('Attack', attack)}>Attack</button></li>
+                <li><button onClick={() => handleClick('Suppress', suppress)}>Suppress</button></li>
+                {commander && <li><button onClick={() => handleClick('Command')}>Command</button></li>}
+                {sacrifice && <li><button onClick={() => handleClick('Sacrifice')}>Sacrifice</button></li>}
+                {escape && <li><button onClick={() => handleClick('Escape')}>Escape</button></li>}
+            </ul>
             {kia && <p>KIA: true</p>}
             {(action || command || disrupted) &&
                 <>

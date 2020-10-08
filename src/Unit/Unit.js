@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Unit = ({ unit }) => {
-    const { id, name, nationality, placement, attack, suppress, modifiers = {}, tokens, kia, } = unit;
-    const { commander, tanker, sacrifice, officer, morale, reinforcement, inspire, escape } = modifiers;
-    const { action, command, disrupted } = tokens;
+    const { id, name, attack, suppress, modifiers = {}, tokens, kia, } = unit;
+    const { commander, sacrifice, escape } = modifiers;
+    const { tookAction, commanded, disrupted } = tokens;
 
     const displayTypes = Object.keys(modifiers)
         .map(key => key.charAt(0).toUpperCase())
@@ -24,12 +24,12 @@ const Unit = ({ unit }) => {
                 {escape && <li><button onClick={() => handleClick('Escape')}>Escape</button></li>}
             </ul>
             {kia && <p>KIA: true</p>}
-            {(action || command || disrupted) &&
+            {(tookAction || commanded || disrupted) &&
                 <>
                     <p>Tokens:</p>
                     <ul>
-                        {action && <li>Action</li>}
-                        {command && <li>Commanded</li>}
+                        {tookAction && <li>tookAction</li>}
+                        {commanded && <li>Commanded</li>}
                         {disrupted && <li>Disrupted</li>}
                     </ul>
                 </>

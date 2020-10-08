@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 const initialState = {
     loading: true,
     playerTurn: true,
-    actionsRemaining: 5,
+    actionsRemaining: 5, // 5 for player, 3 for axis
+    deployment: 'Start', // Start, Normal, Reinforcement
     suppression: {
         purple: 0,
         green: 0,
@@ -82,7 +83,7 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', card: 'disrupt', deck: 4, },
         ],
     },
-    deckLevel: 3,
+    deckLevel: 1,
     score: 0,
     gameOver: false,
     hasWon: false,

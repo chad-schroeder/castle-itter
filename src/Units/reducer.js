@@ -14,7 +14,7 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
+                action: true,
                 command: false,
                 disrupted: false,
             }

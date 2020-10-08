@@ -4,7 +4,7 @@ const playCard = () => {
     const { deck } = store.getState().common;
 
     if (deck.length) {
-        const { id, deck: deckId, card, target, type } = deck[0];
+        const { id, deck: deckId, card, type } = deck[0];
         console.log('Current card:', deck[0]);
         console.log('Play card:', type);
         console.log('Current deck:', deckId);

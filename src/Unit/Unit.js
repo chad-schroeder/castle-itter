@@ -2,16 +2,19 @@ import React from 'react';
 
 const Unit = ({ unit }) => {
     const { id, name, nationality, placement, attack, suppress, modifiers = {}, tokens, kia, } = unit;
-    const { commander, tanker, sacrifice, officer, morale, reinforcement, inspire, prisoner, escape } = modifiers;
+    const { commander, tanker, sacrifice, officer, morale, reinforcement, inspire, escape } = modifiers;
     const { action, command, disrupted } = tokens;
+
+    const displayTypes = Object.keys(modifiers)
+        .map(key => key.charAt(0).toUpperCase())
+        .join('/');
 
     const handleClick = (action, value = null) => console.log(`${action}: ${value}`);
     
     return (
         <li key={id}>
             <p>Name: {name}</p>
-            <p>Nationality: {nationality}</p>
-            <p>Placement: {placement}</p>
+            {displayTypes && <p>Modifiers: {displayTypes}</p>}
             <p>Actions:</p>
             <ul>
                 <li><button onClick={() => handleClick('Attack', attack)}>Attack</button></li>

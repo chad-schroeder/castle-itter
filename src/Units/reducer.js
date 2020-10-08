@@ -14,8 +14,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: true,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -33,8 +33,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -48,8 +48,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -63,8 +63,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -78,8 +78,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -93,8 +93,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -111,8 +111,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -129,8 +129,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -147,8 +147,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -165,8 +165,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -183,8 +183,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -203,8 +203,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -221,8 +221,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -239,8 +239,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -257,8 +257,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -275,8 +275,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -293,8 +293,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -311,8 +311,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -329,8 +329,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -347,8 +347,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -365,8 +365,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -384,8 +384,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -402,8 +402,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -420,8 +420,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -438,8 +438,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -456,8 +456,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -474,8 +474,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },
@@ -493,8 +493,8 @@ const initialState = {
             exhausted: false,
             kia: false,
             tokens: {
-                action: false,
-                command: false,
+                tookAction: false,
+                commanded: false,
                 disrupted: false,
             }
         },

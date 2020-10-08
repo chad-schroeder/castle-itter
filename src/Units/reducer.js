@@ -416,7 +416,6 @@ const initialState = {
             suppress: 1,
             modifiers: {
                 inspire: true,
-                prisoner: true,
             },
             exhausted: false,
             kia: false,
@@ -435,7 +434,6 @@ const initialState = {
             suppress: 1,
             modifiers: {
                 inspire: true,
-                prisoner: true,
             },
             exhausted: false,
             kia: false,
@@ -454,7 +452,6 @@ const initialState = {
             suppress: 1,
             modifiers: {
                 inspire: true,
-                prisoner: true,
             },
             exhausted: false,
             kia: false,
@@ -473,7 +470,6 @@ const initialState = {
             suppress: 1,
             modifiers: {
                 inspire: true,
-                prisoner: true,
             },
             exhausted: false,
             kia: false,
@@ -492,7 +488,6 @@ const initialState = {
             suppress: 1,
             modifiers: {
                 escape: true,
-                prisoner: true,
             },
             escaped: false,
             exhausted: false,

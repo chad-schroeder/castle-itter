@@ -1,40 +1,28 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import Tile from '../Tile';
+
 const Map = () => {
-    const { locations, tiles } = useSelector(state => state.map);
+    const [tileId, setTileId] = useState('BJ4');
     
-    const [tileDetails, setTileDetails] = useState('');
+    const { tiles } = useSelector(state => state.map);
     
     const handleChange = (e) => {
-        const { id, location, los, unit } = tiles.find(tile => tile.id === e.target.value);
-
-        const details = `
-            Id: ${id} | 
-            Location: ${location} | 
-            LOS: ${los} | 
-            Unit: ${unit}
-        `;
-
-        setTileDetails(details);
+        setTileId(e.target.value);
     };
 
     return (
         <div>
             <h2>Map</h2>
-            <p>Locations: {locations.length}</p>
             <select onChange={handleChange}>
-                {tiles.map(tile => (
-                    <option
-                        key={tile.id}
-                        value={tile.id}
-                    >
-                        {tile.id}
+                {tiles.map(({ id }) => (
+                    <option key={id} value={id}>
+                        {id}
                     </option>
                 ))}
             </select>
-            <p>Tile details</p>
-            <p>{tileDetails}</p>
+            <Tile id={tileId} />
         </div>
     );
 };

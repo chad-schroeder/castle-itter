@@ -99,8 +99,8 @@ const initialState = {
             }
         },
         {
-            id: 'seiner',
-            name: 'Seiner',
+            id: 'steiner',
+            name: 'Steiner',
             nationality: 'USA',
             placement: 'Deployment',
             attack: 1,

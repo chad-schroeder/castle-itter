@@ -84,7 +84,7 @@ const initialState = {
             id: 'ST5',
             location: 'ST',
             los: ['green', 'orange'],
-            unit: 'worsham',
+            unit: null,
         },
         {
             id: 'ST6',
@@ -108,7 +108,7 @@ const initialState = {
             id: 'K3',
             location: 'K',
             los: ['orange', 'green'],
-            unit: 'pollack',
+            unit: null,
         },
         {
             id: 'K4',
@@ -150,7 +150,7 @@ const initialState = {
             id: 'G2',
             location: 'G',
             los: ['yellow', 'black'],
-            unit: 'basse',
+            unit: null,
         },
         {
             id: 'G3',
@@ -162,38 +162,34 @@ const initialState = {
             id: 'G4',
             location: 'G',
             los: ['black'],
-            unit: null,
+            unit: 'basse',
             armament: {
                 name: 'M13/A4',
                 attack: 2,
                 suppress: 3,
-                tanker: true,
             }
         }, 
         {
             id: 'BJ1',
             location: 'BJ',
             los: [],
-            unit: null, // 'steiner',
+            unit: 'steiner',
             armament: {
-                name: '76mm Cannon Load',
-                tanker: true,
+                name: '76mm Cannon',
+                load: true,
             },
-            destroyed: false,
         },
         {
             id: 'BJ2',
             location: 'BJ',
             los: ['black'],
-            unit: null, // 'rushford',
+            unit: null,
             armament: {
                 name: '76mm Cannon',
                 attack: 4,
                 suppress: 7,
                 loaded: false,
-                tanker: true,
             },
-            destroyed: false,
         },
         {
             id: 'BJ3',
@@ -204,9 +200,7 @@ const initialState = {
                 name: 'M2HB',
                 attack: 2,
                 suppress: 4,
-                tanker: true,
             },
-            destroyed: false,
         },
         {
             id: 'BJ4',
@@ -217,9 +211,7 @@ const initialState = {
                 name: 'M1919A4',
                 attack: 2,
                 suppress: 3,
-                tanker: true,
             },
-            destroyed: false,
         },
         {
             id: 'C1',

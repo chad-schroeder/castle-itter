@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const Tile = ({ id = 'BJ4' }) => {
+const Tile = ({ id }) => {
     const { tiles } = useSelector(state => state.map);
 
     const { location, los, unit, armament } = tiles.find(tile => tile.id === id);

@@ -516,12 +516,6 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             tiles: [...payload],
         };
-    case 'DESTROY_BESOTTEN_JENNY': {
-        return {
-            ...state,
-            tiles: [...payload],
-        };
-    }
     case 'UPDATE_TRACKS': {
         return {
             ...state,

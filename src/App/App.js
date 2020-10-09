@@ -9,6 +9,7 @@ import playCard from 'Utils/Libs/playCard';
 import { spendAction } from 'Utils/Libs/turn';
 import { getFinalScore } from 'Utils/Libs/scoring';
 import escape from 'Utils/Libs/escape';
+import destroyBesottenJenny from 'Utils/Libs/destroyBesottenJenny';
 // import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 const App = () => {
@@ -43,6 +44,9 @@ const App = () => {
             </button>
             <button onClick={spendAction} disabled={gameOver}>
                 Spend Action
+            </button>
+            <button onClick={destroyBesottenJenny} disabled={gameOver}>
+                Destroy Besotten Jenny
             </button>
             <button onClick={getFinalScore}>
                 End Game

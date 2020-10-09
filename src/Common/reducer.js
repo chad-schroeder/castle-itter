@@ -129,6 +129,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             suppression: { ...payload },
         }
+    case 'DESTROY_BESOTTEN_JENNY':
+        return {
+            ...state,
+            besottenJennyDestroyed: true,
+        }
     case 'ESCAPED':
         return {
             ...state,

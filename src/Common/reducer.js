@@ -133,6 +133,7 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             besottenJennyDestroyed: true,
+            besottenJennyCasualties: [...payload],
         }
     case 'ESCAPED':
         return {

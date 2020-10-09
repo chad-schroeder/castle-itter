@@ -21,10 +21,9 @@ const Unit = ({ unit }) => {
     
     return (
         <li key={id}>
-            <p>{name}</p>
-            {displayTypes && <p>Modifiers: {displayTypes}</p>}
+            {name} | {displayTypes}&nbsp;|&nbsp;
             <button onClick={() => handleClick('Move')} disabled={disableUnit()}>Move</button>
-            <button onClick={() => handleClick('Swap')} disabled={disableUnit()}>Swap</button>
+            <button onClick={() => handleClick('Swap')} disabled={disableUnit()}>Swap</button> 
             <button onClick={() => handleClick('Attack', attack)} disabled={disableUnit()}>Attack</button>
             <button onClick={() => handleClick('Suppress', suppress)} disabled={disableUnit()}>Suppress</button>
             {commander && <button onClick={() => handleClick('Command')} disabled={disableUnit()}>Command</button>}

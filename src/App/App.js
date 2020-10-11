@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
 
 import { Map } from 'Map';
 import { Units } from 'Units';
+import Card from 'Card';
 
 import { buildDeck } from 'Utils/Libs/deck';
 import playCard from 'Utils/Libs/playCard';
@@ -20,6 +21,13 @@ const setupGame = () => {
 };
 
 const App = () => {
+    const [card, setCard] = useState(null);
+
+    const cardPlayed = () => {
+        const card = playCard();
+        console.log('cardPlayed', card);
+        setCard(card);
+    };
 
     useEffect(() => {
         setupGame();
@@ -45,9 +53,10 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <button onClick={playCard}>
+            <button onClick={cardPlayed}>
                 Play Card
             </button>
+            <Card {...card} />
             <button onClick={spendAction}>
                 Spend Action
             </button>

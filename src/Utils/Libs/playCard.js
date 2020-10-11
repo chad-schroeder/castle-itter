@@ -1,13 +1,17 @@
 import store from '../../store';
 
 const playCard = () => {
-    const { deck } = store.getState().common;
+    const { deck, deckLevel } = store.getState().common;
 
     if (deck.length) {
-        const { id, deck: deckId, card, type } = deck[0];
-        console.log('Current card:', deck[0]);
-        console.log('Play card:', type);
-        console.log('Current deck:', deckId);
+        const cardDrawn = deck[0];
+        const { id, card, set } = cardDrawn;
+        console.log('Current card:', cardDrawn);
+
+        // if card played is from new deck, advance deck level
+        if (set > deckLevel) {
+            store.dispatch({ type: 'UPDATE_DECK_LEVEL', payload: set });
+        }
 
         switch(card) {
             case 'advance': {
@@ -40,12 +44,11 @@ const playCard = () => {
             }
         }
 
-        // remove top card from deck, by id instead of .unshift() as a debug precaution
         const cards = deck.filter(card => card.id !== id);
         store.dispatch({ type: 'PLAYED_CARD', payload: cards });
     } else {
-        console.log('Game Over: Deck exhausted');
-        store.dispatch({ type: 'GAME_OVER' });
+        console.log('You lose: Deck exhausted');
+        store.dispatch({ type: 'GAME_OVER', payload: false });
     }
 };
 

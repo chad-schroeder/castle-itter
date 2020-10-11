@@ -25,7 +25,6 @@ const App = () => {
 
     const cardPlayed = () => {
         const card = playCard();
-        console.log('cardPlayed', card);
         setCard(card);
     };
 

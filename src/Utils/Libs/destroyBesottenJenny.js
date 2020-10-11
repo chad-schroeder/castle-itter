@@ -7,6 +7,7 @@ const destroyBesottenJenny = () => {
         .filter(tile => tile.location === 'BJ' && tile.unit)
         .map(tile => tile.unit);
 
+    console.log('Besotten Jenny destroyed', casualties);
     store.dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: casualties });
 };
 

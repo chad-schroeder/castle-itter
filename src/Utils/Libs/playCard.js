@@ -5,12 +5,11 @@ const playCard = () => {
 
     if (deck.length) {
         const cardDrawn = deck[0];
-        const { id, card, set } = cardDrawn;
-        console.log('Current card:', cardDrawn);
+        const { id, card, cardDeck } = cardDrawn;
 
-        // if card played is from new deck, advance deck level
-        if (set > deckLevel) {
-            store.dispatch({ type: 'UPDATE_DECK_LEVEL', payload: set });
+        // if card is from next deck, advance deck level
+        if (cardDeck > deckLevel) {
+            store.dispatch({ type: 'UPDATE_DECK_LEVEL', payload: cardDeck });
         }
 
         switch(card) {
@@ -44,8 +43,11 @@ const playCard = () => {
             }
         }
 
+        // remove card from deck, update deck
         const cards = deck.filter(card => card.id !== id);
         store.dispatch({ type: 'PLAYED_CARD', payload: cards });
+
+        return cardDrawn;
     } else {
         console.log('You lose: Deck exhausted');
         store.dispatch({ type: 'GAME_OVER', payload: false });

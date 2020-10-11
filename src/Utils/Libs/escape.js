@@ -37,7 +37,7 @@ const shuffleBottomCards = () => {
     const newDeck = [...deck, ...shuffled];
 
     store.dispatch({ type: 'BUILD_DECK', payload: newDeck });
-    store.dispatch({ type: 'ESCAPED' });
+    store.dispatch({ type: 'BOROTRA_ESCAPED' });
 };
 
 const removeUnitFromTile = (tileId) => {

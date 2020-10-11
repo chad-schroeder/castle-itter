@@ -1,88 +1,79 @@
 import store from '../../store';
 
-const getFrenchCount = () => {
-    const { tiles } = store.getState().map;
-    const { allies } = store.getState().units;
+const scoreFrench = (tiles, allies) => {
+    let tally = 0;
 
-    let score = 0;
-
-    // get list of all surviving french units; do not count Borotra if he escaped
     const french = allies
-        .filter(ally => ally.nationality === 'FRA' && !ally.kia && !ally.escaped)
+        .filter(ally => ally.nationality === 'FRA' && !ally.kia && !ally.hasEscaped)
         .map(ally => ally.id);
 
-    // compute score
     tiles.forEach(tile => {
         if (french.includes(tile.unit)) {
-            if (tile.location !== 'C') { // if not located in the cellar
-                score += 3;
-            } else { // if located in the cellar
-                score += 1;
+            if (tile.location !== 'C') { // if outide the cellar
+                tally += 3;
+            } else {
+                tally += 1;
             }
         }
     });
 
-    return score;
+    return tally;
 };
 
-const getNonFrenchCount = () => {
-    const { tiles } = store.getState().map;
-    const { allies } = store.getState().units;
+const scoreNonFrench = (tiles, allies) => {
+    let tally = 0;
 
-    let count = 0;
-
-    // get list of all surviving non-French units
     const nonFrench = allies
         .filter(ally => ally.nationality !== 'FRA' && !ally.kia)
         .map(ally => ally.id);
 
-    // for each tile with a non-French unit, increase count by one
     tiles.forEach(tile => {
         if (nonFrench.includes(tile.unit)) {
-            count += 1;
+            tally += 1;
         }
     });
     
-    return count;
+    return tally;
 };
 
-const getAxisBoardCount = () => {
-    const { tracks } = store.getState().map;
-    let count = 0;
+const scoreAxis = (tracks) => {
+    let tally = 0;
 
     Object.keys(tracks).forEach(key => {
         if (tracks[key].counter) {
-            count += 1;
+            tally += 1;
         }
     });
         
-    return count;
+    return tally;
 };
 
-export const getScore = () => {
-    const { besottenJennyDestroyed, besottenJennyCasualties, escaped } = store.getState().common;
-    
+export const calculateScore = () => {
+    const { tankDestroyed, tankCasualties, hasEscaped } = store.getState().common;
+    const { tiles, tracks } = store.getState().map;
+    const { allies } = store.getState().units;
+
     let score = 0;
 
     // 5 points: Besotten Jenny was destroyed but no defenders were inside
-    if (besottenJennyDestroyed && !besottenJennyCasualties.length) {
+    if (tankDestroyed && !tankCasualties.length) {
         score += 5;
     }
 
-    // 5 points: Borotra escaped
-    if (escaped) {
+    // 5 points: Borotra hasEscaped
+    if (hasEscaped) {
         score += 5;
     }
 
     // 3 points for each French defender on the board but not in the cellar
     // 1 point for each French defender in the cellar
-    score += getFrenchCount();
+    score += scoreFrench(tiles, allies);
 
     // 1 point for any other defender on the board (including the cellar)
-    score += getNonFrenchCount();
+    score += scoreNonFrench(tiles, allies);
 
     // subtract 1 point for each SS counter on the board
-    score -= getAxisBoardCount();
+    score -= scoreAxis(tracks);
     
     return score;
 };
@@ -111,9 +102,8 @@ export const getMedal = (score) => {
     return { award, victory };
 };
 
-export const getFinalScore = () => {
-    const score = getScore();
+export const getScore = () => {
+    const score = calculateScore();
     const { award, victory } = getMedal(score);
-
-    console.log('endGame', { score, award, victory });
+    return { score, award, victory };
 };

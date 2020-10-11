@@ -1,48 +1,21 @@
 import store from '../../store';
 
-const playCard = () => {
-    const { deck } = store.getState().common;
+const drawCard = deck => {
+    const currentCard = deck.shift();
+    return currentCard;
+};
 
+const playCard = deck => {
     if (deck.length) {
-        const currentCard = deck.shift();
+        const card = drawCard(deck);
+        
+        const { action } = card;
+        console.log('action', action);
 
-        const { action } = currentCard;
+        // remove card and update deck
+        store.dispatch({ type: 'CARD_PLAYED', payload: { deck, card } });
 
-        switch(action) {
-            case 'advance': {
-                console.log('Action: Advance');
-                break;
-            }
-            case 'sniper': {
-                console.log('Action: Sniper');
-                break;
-            }
-            case 'suppress': {
-                console.log('Action: Suppress');
-                break;
-            }
-            case 'panzerfaust': {
-                console.log('Action: Panzerfaust');
-                break;
-            }
-            case 'reinforcements': {
-                console.log('Action: Reinforcements');
-                break;
-            }
-            case '142nd': {
-                console.log('Action: 142 Infantry Regiment');
-                break;
-            }
-            default: {
-                console.log('Action: Disrupt');
-                break;
-            }
-        }
-
-        // remove card from deck, update deck
-        store.dispatch({ type: 'CARD_PLAYED', payload: { deck, currentCard } });
-
-        return currentCard;
+        return card;
     } else {
         console.log('You lose: Deck exhausted');
         store.dispatch({ type: 'GAME_OVER', payload: false });

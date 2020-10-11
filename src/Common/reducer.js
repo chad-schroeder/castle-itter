@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
     loading: true,
+    isRunning: true,
+    hasWon: false,
     playerTurn: true,
     actionsRemaining: 5, // 5 for player, 3 for axis
     deployment: 'Start', // Start, Normal, Reinforcement
@@ -10,7 +12,7 @@ const initialState = {
         green: 0,
         black: 0,
         yellow: 0,
-        red: 0,
+        orange: 0,
     },
     deck: [], // axis draw deck
     decks: {
@@ -83,14 +85,11 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', action: 'disrupt', cardDeck: 4, },
         ],
     },
-    currentaction: null,
+    card: null,
     score: 0,
-    gameOver: false,
-    hasWon: null, // null, true, false
-    escaped: false,
-    besottenJennyDestroyed: false,
-    besottenJennyCasualties: [],
-    enemiesDefeated: [],
+    hasEscaped: false,
+    tankDestroyed: false,
+    tankCasualties: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -101,7 +100,7 @@ const reducer = (state = initialState, { type, payload }) => {
         }
     case 'APP_LOADED':
         return {
-            ...initialState,
+            ...state,
             loading: false,
         }
     case 'BUILD_DECK':
@@ -110,10 +109,12 @@ const reducer = (state = initialState, { type, payload }) => {
             deck: [...payload],
         }
     case 'CARD_PLAYED':
+        const { deck, card} = payload;
+
         return {
             ...state,
-            deck: [...payload.deck],
-            currentaction: payload.currentCard,
+            deck: [...deck],
+            card,
         }
     case 'UPDATE_DECK_LEVEL':
         return {
@@ -138,18 +139,18 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'DESTROY_BESOTTEN_JENNY':
         return {
             ...state,
-            besottenJennyDestroyed: true,
-            besottenJennyCasualties: [...payload],
+            tankDestroyed: true,
+            tankCasualties: [...payload],
         }
-    case 'ESCAPED':
+    case 'BOROTRA_ESCAPED':
         return {
             ...state,
-            escaped: true,
+            hasEscaped: true,
         }
     case 'GAME_OVER':
         return {
             ...state,
-            gameOver: true,
+            isRunning: false,
             hasWon: payload,
         }
     case 'NEW_GAME':

@@ -1,34 +1,51 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const Unit = ({ unit }) => {
-    const { id, name, attack, suppress, modifiers = {}, tokens, kia, placement } = unit;
-    const { commander, sacrifice, escape } = modifiers;
-    const { tookAction, commanded, disrupted } = tokens;
-
-    const { deployment } = useSelector(state => state.common);
-
-    const displayTypes = Object.keys(modifiers)
+const displayTypes = (modifiers) => {
+    return Object.keys(modifiers)
         .map(key => key.charAt(0).toUpperCase())
         .join('/');
+};
 
-    const disableUnit = () => {
-        if (deployment === 'Start' && placement !== 'Deployment') return true;
-        if (deployment === 'Normal' && placement === 'Reinforcement') return true;
-    };
+const actionAttack = (value, tileId) => {
+    console.log(`Attack: ${value}, tileId: ${tileId}`);
+};
 
-    const handleClick = (action, value = null) => console.log(`${action}: ${value}`);
+const actionSuppress = (value, tileId) => {
+    console.log(`Suppress: ${value}, tileId: ${tileId}`);
+};
+
+const Unit = ({ unit }) => {
+    const { tiles } = useSelector(state => state.map);
+
+    const {
+        id,
+        name,
+        attack,
+        suppress,
+        kia, 
+        modifiers = {},
+        tokens: { 
+            tookAction, 
+            commanded, 
+            disrupted 
+        },
+    } = unit;
+
+    const { commander, sacrifice, escape } = modifiers;
     
+    const { tile: tileId } = tiles.find(tile => tile.unit === id);
+
     return (
         <li key={id}>
-            {name} | {displayTypes}&nbsp;|&nbsp;
-            <button onClick={() => handleClick('Move')} disabled={disableUnit()}>Move</button>
-            <button onClick={() => handleClick('Swap')} disabled={disableUnit()}>Swap</button> 
-            <button onClick={() => handleClick('Attack', attack)} disabled={disableUnit()}>Attack</button>
-            <button onClick={() => handleClick('Suppress', suppress)} disabled={disableUnit()}>Suppress</button>
-            {commander && <button onClick={() => handleClick('Command')} disabled={disableUnit()}>Command</button>}
-            {sacrifice && <button onClick={() => handleClick('Sacrifice')} disabled={disableUnit()}>Sacrifice</button>}
-            {escape && <button onClick={() => handleClick('Escape')} disabled={disableUnit()}>Escape</button>}
+            {name} | {displayTypes(modifiers)}&nbsp;|&nbsp;
+            <button>Move</button>
+            <button>Swap</button> 
+            <button onClick={() => actionAttack(attack, tileId)}>Attack</button>
+            <button onClick={() => actionSuppress(suppress, tileId)}>Suppress</button>
+            {commander && <button>Command</button>}
+            {sacrifice && <button>Sacrifice</button>}
+            {escape && <button>Escape</button>}
             {kia && <p>KIA: true</p>}
             {(tookAction || commanded || disrupted) &&
                 <>

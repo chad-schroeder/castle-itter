@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Map } from 'Map';
 import { Units } from 'Units';
 import Card from 'Card';
+import Score from 'Score';
 
 import { buildDeck } from 'Utils/Libs/deck';
 import playCard from 'Utils/Libs/playCard';
 import { spendAction } from 'Utils/Libs/turn';
-import { getFinalScore } from 'Utils/Libs/scoring';
 import escape from 'Utils/Libs/escape';
 import destroyBesottenJenny from 'Utils/Libs/destroyBesottenJenny';
 // import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
@@ -22,6 +22,8 @@ const setupGame = () => {
 
 const App = () => {
     const [card, setCard] = useState(null);
+
+    const { deck } = useSelector(state => state.common);
     
     useEffect(() => {
         setupGame();
@@ -30,7 +32,7 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <button onClick={() => setCard(playCard)}>
+            <button onClick={() => setCard(playCard(deck))}>
                 Play Card
             </button>
             <Card {...card} />
@@ -40,9 +42,6 @@ const App = () => {
             <button onClick={destroyBesottenJenny}>
                 Destroy Besotten Jenny
             </button>
-            <button onClick={getFinalScore}>
-                End Game
-            </button>
             <button onClick={setupGame}>
                 New Game
             </button>
@@ -51,6 +50,7 @@ const App = () => {
             </button>
             <Map />
             <Units />
+            <Score />
         </>
     );
 };

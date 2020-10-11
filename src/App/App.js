@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import { Map } from 'Map';
 import { Units } from 'Units';
@@ -12,11 +12,17 @@ import escape from 'Utils/Libs/escape';
 import destroyBesottenJenny from 'Utils/Libs/destroyBesottenJenny';
 // import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
+import store from 'store';
+
+const setupGame = () => {
+    store.dispatch({ type: 'NEW_GAME' });
+    buildDeck();
+};
+
 const App = () => {
-    const { gameOver } = useSelector(state => state.common);
 
     useEffect(() => {
-        buildDeck();
+        setupGame();
 
         // const soldier = {
         //     id: 456,
@@ -39,19 +45,21 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <button onClick={playCard} disabled={gameOver}>
+            <button onClick={playCard}>
                 Play Card
             </button>
-            <button onClick={spendAction} disabled={gameOver}>
+            <button onClick={spendAction}>
                 Spend Action
             </button>
-            <button onClick={destroyBesottenJenny} disabled={gameOver}>
+            <button onClick={destroyBesottenJenny}>
                 Destroy Besotten Jenny
             </button>
             <button onClick={getFinalScore}>
                 End Game
             </button>
-            <p>Game Over: {gameOver ? 'true' : 'false'}</p>
+            <button onClick={setupGame}>
+                New Game
+            </button>
             <button onClick={() => escape('G2')}>
                 Escape
             </button>

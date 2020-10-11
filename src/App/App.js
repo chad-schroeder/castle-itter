@@ -22,37 +22,15 @@ const setupGame = () => {
 
 const App = () => {
     const [card, setCard] = useState(null);
-
-    const cardPlayed = () => {
-        const card = playCard();
-        setCard(card);
-    };
-
+    
     useEffect(() => {
         setupGame();
-
-        // const soldier = {
-        //     id: 456,
-        //     type: 'rifleman',
-        //     defense: 3,
-        // };
-        
-        // advance(2, soldier);
-
-        // cardSniper(4);
-
-        // eliminateUnit('basse');
-        // cardDisrupt('machineGun', 2);
-
-        // cardPanzerfaust();
-
-        // cardSuppressiveFire();
     }, []);
     
     return (
         <>
             <h1>Castle Itter</h1>
-            <button onClick={cardPlayed}>
+            <button onClick={() => setCard(playCard)}>
                 Play Card
             </button>
             <Card {...card} />

@@ -1,12 +1,14 @@
 import React from 'react';
 
+import { StyledContainer, StyledHeading, StyledTagline, } from './styled';
+
 const Score = ({ score, award, victory }) => {
     return (
-        <>
-            <h1>{victory}</h1>
+        <StyledContainer>
+            <StyledHeading>{victory}</StyledHeading>
             {award  && <h2>{award}</h2>}
-            <p>Score: {score}</p>
-        </>
+            <StyledTagline>Score: {score}</StyledTagline>
+        </StyledContainer>
     );
 };
 

@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        padding: 20px;
         min-height: 100vh;
         overflow-x: hidden;
         font-family: sans-serif;

@@ -56,7 +56,7 @@ export const StyledDeck = styled.div`
     color: white;
     font-size: 1.2rem;
     font-family: 'Oswald', sans-serif;
-    background-color: #940000;
+    background-color: ${theme.colors.black};
     border: 3px solid white;
     border-radius: 50%;
 `;
@@ -80,7 +80,7 @@ export const StyledBanner = styled.ul`
         height: 0;
         border: 0 solid white;
         border-color: transparent;
-        border-top-color: #940000;
+        border-top-color: #9e0000;
         border-width: 10px 20px;
     }
 
@@ -98,7 +98,7 @@ export const StyledBanner = styled.ul`
         font-family: 'Oswald', sans-serif;
         text-decoration: none;
         text-align: center;
-        background: #940000;
+        background: #9e0000;
 
         &:before,
         &:after {
@@ -108,7 +108,7 @@ export const StyledBanner = styled.ul`
             left: 0;
             width: 0;
             height: 0;
-            border: 0 solid #940000;
+            border: 0 solid #9e0000;
             border-width: 10px 21px;
         }
 
@@ -120,7 +120,7 @@ export const StyledBanner = styled.ul`
         &:after {
             top: 100%;
             border-color: transparent;
-            border-top-color: #940000;
+            border-top-color: #9e0000;
         }
 
         &:first-child {

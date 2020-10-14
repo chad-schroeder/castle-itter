@@ -11,8 +11,8 @@ const Card = ({ id, name, count, attack, defense, disrupt, cardDeck }) => {
                 <StyledHeader>
                     {(defense || attack) ?
                         <StyledBanner>
-                            <li>{defense}</li>
-                            <li>{attack}</li>
+                            {defense && <li>{defense}</li>}
+                            {attack && <li>{attack}</li>}
                         </StyledBanner>
                     : null}
                 </StyledHeader>

@@ -61,79 +61,42 @@ export const StyledDeck = styled.div`
     border-radius: 50%;
 `;
 
-export const StyledBanner = styled.ul`
-    display: inline-flex;
+export const StyledStats = styled.div`
+    display: flex;
     flex-direction: column;
     position: absolute;
-    top: 0;
-    right: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    top: 20px;
+    right: 8px;
 
-    &:after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 0;
-        height: 0;
-        border: 0 solid white;
-        border-color: transparent;
-        border-top-color: #ff9f00;
-        border-width: 10px 20px;
+    div + div {
+        margin-top: 8px;
     }
+`;
 
-    li {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        position: relative;
-        margin-bottom: 23px;
-        width: 42px;
-        height: 54px;
-        color: white;
-        font-size: 1.2rem;
-        font-family: 'Oswald', sans-serif;
-        text-decoration: none;
-        text-align: center;
-        background: #ff9f00;
+export const StyledDefense = styled.div`
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    background-color: white;
+    border: 3px solid ${theme.colors.black};
+    border-radius: 10px;
+`;
 
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border: 0 solid #ff9f00;
-            border-width: 10px 21px;
-        }
-
-        &:before {
-            top: -20px;
-            border-top-color: transparent;
-        }
-
-        &:after {
-            top: 100%;
-            border-color: transparent;
-            border-top-color: #ff9f00;
-        }
-
-        &:first-child {
-            height: 72px;
-            border-radius: 0;
-
-            &:before {
-                border: 0;
-            }
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
+export const StyledAttack = styled.div`
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    background-color: ${theme.colors.red};
+    border: 3px solid white;
+    border-radius: 10px;
 `;

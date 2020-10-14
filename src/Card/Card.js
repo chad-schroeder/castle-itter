@@ -1,19 +1,19 @@
 import React from 'react';
 
 import {
-    StyledContainer, StyledHeader, StyledBody, StyledTitle, StyledBanner, StyledCount, StyledDeck,
+    StyledContainer, StyledHeader, StyledBody, StyledTitle, StyledStats, StyledDefense, StyledAttack, StyledCount, StyledDeck,
 } from './styled';
 
-const Card = ({ id, name, count, attack, defense, disrupt, cardDeck }) => {
+const Card = ({ id, name, count, attack, defense, cardDeck }) => {
     if (id) {
         return (
             <StyledContainer key={id}>
                 <StyledHeader>
                     {(defense || attack) ?
-                        <StyledBanner>
-                            {defense && <li>{defense}</li>}
-                            {attack && <li>{attack}</li>}
-                        </StyledBanner>
+                        <StyledStats>
+                            {defense && <StyledDefense>{defense}</StyledDefense>}
+                            {attack && <StyledAttack>{attack}</StyledAttack>}
+                        </StyledStats>
                     : null}
                 </StyledHeader>
                 <StyledBody>

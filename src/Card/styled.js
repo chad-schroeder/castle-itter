@@ -65,7 +65,7 @@ export const StyledBanner = styled.ul`
     display: inline-flex;
     flex-direction: column;
     position: absolute;
-    top: 32px;
+    top: 0;
     right: 10px;
     margin: 0;
     padding: 0;
@@ -80,7 +80,7 @@ export const StyledBanner = styled.ul`
         height: 0;
         border: 0 solid white;
         border-color: transparent;
-        border-top-color: #9e0000;
+        border-top-color: #ff9f00;
         border-width: 10px 20px;
     }
 
@@ -98,7 +98,7 @@ export const StyledBanner = styled.ul`
         font-family: 'Oswald', sans-serif;
         text-decoration: none;
         text-align: center;
-        background: #9e0000;
+        background: #ff9f00;
 
         &:before,
         &:after {
@@ -108,7 +108,7 @@ export const StyledBanner = styled.ul`
             left: 0;
             width: 0;
             height: 0;
-            border: 0 solid #9e0000;
+            border: 0 solid #ff9f00;
             border-width: 10px 21px;
         }
 
@@ -120,11 +120,16 @@ export const StyledBanner = styled.ul`
         &:after {
             top: 100%;
             border-color: transparent;
-            border-top-color: #9e0000;
+            border-top-color: #ff9f00;
         }
 
         &:first-child {
+            height: 72px;
             border-radius: 0;
+
+            &:before {
+                border: 0;
+            }
         }
 
         &:last-child {

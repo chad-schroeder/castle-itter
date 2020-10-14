@@ -11,6 +11,7 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledHeader = styled.header`
+    position: relative;
     height: 200px;
     padding: 20px;
     background: ${theme.colors.red};
@@ -19,7 +20,7 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledBody = styled.div`
-    height: 180px;
+    height: 160px;
     padding: 20px;
     color: white;
     background: ${theme.colors.black};
@@ -55,4 +56,63 @@ export const StyledDeck = styled.div`
     background-color: ${theme.colors.black};
     border: 3px solid white;
     border-radius: 50%;
+`;
+
+export const StyledBanner = styled.ul`
+    display: inline-flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: ${theme.colors.black};
+
+    li {
+        display: block;
+        position: relative;
+        margin-right: 23px;
+        padding: 0 10px 0 5px;
+        height: 40px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px;
+        background: #3498db;
+
+        &:first-child {
+            padding-left: 15px;
+            border-radius: 0;
+
+            &:before{
+                border: none;
+            }
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border: 0 solid #3498db;
+            border-width: 20px 10px;
+            width: 0;
+            height: 0;
+        }
+
+        &:before {
+            left: -20px;
+            border-left-color: transparent;
+        }
+
+        &:after {
+            left: 100%;
+            border-color: transparent;
+            border-left-color: #3498db;
+        }
+    }
 `;

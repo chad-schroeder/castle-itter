@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import theme from 'Utils/Styles/theme';
 
 export const StyledContainer = styled.div`
-    color: white;
-    background: ${theme.colors.red};
 `;
 
 export const StyledHeading = styled.h1`

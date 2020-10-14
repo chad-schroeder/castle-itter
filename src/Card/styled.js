@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
     position: relative;
     height: 220px;
     padding: 20px;
-    background: ${theme.colors.red};
+    background: #bebebe;
     border-radius: 8px 8px 0 0;
     border-bottom: 4px solid white;
 `;

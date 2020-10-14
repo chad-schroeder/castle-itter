@@ -23,19 +23,17 @@ const setupGame = () => {
 const App = () => {
     const [card, setCard] = useState(null);
 
-    const { deck } = useSelector(state => state.common);
-    
     useEffect(() => {
         setupGame();
     }, []);
     
     return (
         <>
-            <h1>Castle Itter</h1>
-            <button onClick={() => setCard(playCard(deck))}>
+            <h1>PANZERFAUST</h1>
+            <Card {...card} />
+            <button onClick={() => setCard(playCard())}>
                 Play Card
             </button>
-            <Card {...card} />
             <button onClick={spendAction}>
                 Spend Action
             </button>

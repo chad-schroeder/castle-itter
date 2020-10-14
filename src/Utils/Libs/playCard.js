@@ -1,20 +1,27 @@
 import store from '../../store';
 
-const drawCard = deck => {
-    const currentCard = deck.shift();
-    return currentCard;
-};
+const playCard = () => {
+    const { deck } = store.getState().common;
+    const { axis } = store.getState().units;
 
-const playCard = deck => {
     if (deck.length) {
-        const card = drawCard(deck);
-        
-        const { action } = card;
-        console.log('action', action);
+        // select next card
+        const { id, type, count, cardDeck } = deck.shift();
 
-        // remove card and update deck
+        // get attributes of card selected
+        const { name, defense, attack, disrupt } = axis[type];
+
+        const card = {
+            id,
+            name,
+            ...(defense && { defense }),
+            ...(attack && { attack }),
+            ...(count && { count }),
+            ...(disrupt && { disrupt }),
+            cardDeck,
+        };
+
         store.dispatch({ type: 'CARD_PLAYED', payload: { deck, card } });
-
         return card;
     } else {
         console.log('You lose: Deck exhausted');

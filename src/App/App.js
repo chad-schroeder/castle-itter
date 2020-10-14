@@ -28,7 +28,7 @@ const App = () => {
     
     return (
         <>
-            <h1>PANZERFAUST</h1>
+            <h1>Castle Itter</h1>
             <Card {...card} />
             <button onClick={() => setCard(playCard())}>
                 Play Card

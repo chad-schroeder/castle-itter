@@ -12,7 +12,7 @@ export const StyledContainer = styled.div`
 
 export const StyledHeader = styled.header`
     position: relative;
-    height: 200px;
+    height: 220px;
     padding: 20px;
     background: ${theme.colors.red};
     border-radius: 8px 8px 0 0;
@@ -46,73 +46,89 @@ export const StyledCount = styled.div`
 
 export const StyledDeck = styled.div`
     position: absolute;
-    top: 192px;
-    right: 24px;
+    top: 209px;
+    right: 20px;
     display: inline-flex;
     justify-content: center;
-    width: 40px;
+    align-items: center;
+    width: 44px;
+    height: 44px;
     color: white;
-    font-size: 1.25rem;
-    background-color: ${theme.colors.black};
+    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    background-color: #940000;
     border: 3px solid white;
     border-radius: 50%;
 `;
 
 export const StyledBanner = styled.ul`
     display: inline-flex;
+    flex-direction: column;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 32px;
+    right: 10px;
     margin: 0;
     padding: 0;
     list-style: none;
-    background-color: ${theme.colors.black};
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 0 solid white;
+        border-color: transparent;
+        border-top-color: #940000;
+        border-width: 10px 20px;
+    }
 
     li {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
         position: relative;
-        margin-right: 23px;
-        padding: 0 10px 0 5px;
-        height: 40px;
+        margin-bottom: 23px;
+        width: 42px;
+        height: 54px;
         color: white;
+        font-size: 1.2rem;
+        font-family: 'Oswald', sans-serif;
         text-decoration: none;
         text-align: center;
-        line-height: 40px;
-        background: #3498db;
-
-        &:first-child {
-            padding-left: 15px;
-            border-radius: 0;
-
-            &:before{
-                border: none;
-            }
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
+        background: #940000;
 
         &:before,
         &:after {
             content: '';
             position: absolute;
             top: 0;
-            border: 0 solid #3498db;
-            border-width: 20px 10px;
+            left: 0;
             width: 0;
             height: 0;
+            border: 0 solid #940000;
+            border-width: 10px 21px;
         }
 
         &:before {
-            left: -20px;
-            border-left-color: transparent;
+            top: -20px;
+            border-top-color: transparent;
         }
 
         &:after {
-            left: 100%;
+            top: 100%;
             border-color: transparent;
-            border-left-color: #3498db;
+            border-top-color: #940000;
+        }
+
+        &:first-child {
+            border-radius: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 `;

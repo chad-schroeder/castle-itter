@@ -84,7 +84,7 @@ export const StyledDefense = styled.div`
     color: black;
     background-color: white;
     border: 3px solid ${theme.colors.black};
-    border-radius: 10px;
+    border-radius: 50%;
 `;
 
 export const StyledAttack = styled.div`

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
     loading: true,
-    isRunning: true,
+    paused: false,
     hasWon: false,
     playerTurn: true,
     actionsRemaining: 5, // 5 for player, 3 for axis
@@ -109,12 +109,10 @@ const reducer = (state = initialState, { type, payload }) => {
             deck: [...payload],
         }
     case 'CARD_PLAYED':
-        const { deck, card} = payload;
-
         return {
             ...state,
-            deck: [...deck],
-            card,
+            deck: [...payload.deck],
+            card: payload.card,
         }
     case 'UPDATE_DECK_LEVEL':
         return {
@@ -150,7 +148,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'GAME_OVER':
         return {
             ...state,
-            isRunning: false,
+            paused: true,
             hasWon: payload,
         }
     case 'NEW_GAME':

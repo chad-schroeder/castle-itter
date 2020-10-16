@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { Map } from 'Map';
-import { Units } from 'Units';
 import Card from 'Card';
 import Score from 'Score';
 
@@ -46,7 +45,6 @@ const App = () => {
                 Escape
             </button>
             <Map />
-            <Units />
             <Score />
         </>
     );

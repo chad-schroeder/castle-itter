@@ -8,7 +8,6 @@ const Tile = ({ id }) => {
 
     const getArmament = () => {
         const { name, attack, suppress } = armament;
-
         return ` | Armament: ${name} | Attack: ${attack} | Suppress: ${suppress}`;
     }
 

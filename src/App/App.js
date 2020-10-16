@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Map } from 'Map';
 import Card from 'Card';
 import Score from 'Score';
+import Unit from 'Unit';
 
 import { buildDeck } from 'Utils/Libs/deck';
 import playCard from 'Utils/Libs/playCard';
@@ -12,6 +13,26 @@ import destroyBesottenJenny from 'Utils/Libs/destroyBesottenJenny';
 // import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
 
 import store from 'store';
+
+const basse = {
+    id: 'basse',
+    name: 'Basse',
+    nationality: 'USA',
+    placement: 'Deployment',
+    attack: 1,
+    suppress: 2,
+    modifiers: {
+        commander: true,
+        tanker: true,
+    },
+    exhausted: false,
+    kia: false,
+    tokens: {
+        tookAction: false,
+        commanded: false,
+        disrupted: false,
+    }
+};
 
 const setupGame = () => {
     store.dispatch({ type: 'NEW_GAME' });
@@ -44,6 +65,7 @@ const App = () => {
             <button onClick={() => escape('G2')}>
                 Escape
             </button>
+            <Unit unit={basse} />
             <Map />
             <Score />
         </>

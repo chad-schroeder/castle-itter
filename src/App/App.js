@@ -67,7 +67,7 @@ const App = () => {
             </button>
             <Unit unit={basse} />
             <Map />
-            <Score />
+            {/* <Score /> */}
         </>
     );
 };

@@ -40,56 +40,16 @@ const shuffleBottomCards = () => {
     store.dispatch({ type: 'BOROTRA_ESCAPED' });
 };
 
-const removeUnitFromTile = (tileId) => {
-    const { tiles } = store.getState().map;
-
-    const payload = tiles.map(tile => {
-        if (tile.id === tileId) {
-            return { ...tile, unit: null }
-        }
-        return tile;
-    });
-
-    store.dispatch({ type: 'UPDATE_TILES', payload: payload });
-};
-
-const escapeBorotra = () => {
-    const { allies } = store.getState().units;
-
-    const payload = allies.map(ally => {
-        if (ally.id === 'borotra') {
-            return { ...ally, escaped: true }
-        }
-        return ally;
-    });
-
-    store.dispatch({ type: 'UPDATE_ALLIES', payload });
-};
-
-const escape = (tileId) => {
-    const { escaped } = store.getState().common;
-    const { tiles } = store.getState().map;
-    
-    // if borotra has already escaped, return
-    if (escaped) return;
-
-    // get tile location
-    const { location } = tiles.find(tile => tile.id === tileId);
-
-    // borotra cannot escape from the Cellar or Great Hall, if here, return
-    if (location === 'C' || location === 'GH') {
-        console.log('Boratra cannot escape from the Cellar of the Great Hall');
-        return;
-    }
+const escape = ({ id, location }) => {
+    // Borotra cannot escape from the Cellar or Great Hall, return
+    if (location === 'C' || location === 'GH') return;
 
     // shuffle the 142 Infantry Regiment card and bottom cards
     shuffleBottomCards();
 
     // remove Borotra from tile
-    removeUnitFromTile(tileId);
-
-    // update Borotra to have escaped
-    escapeBorotra();
+    
+    // update state to 'escaped: true'
 };
 
 export default escape;

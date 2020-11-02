@@ -489,7 +489,6 @@ const initialState = {
             modifiers: {
                 escape: true,
             },
-            escaped: false,
             exhausted: false,
             kia: false,
             tokens: {

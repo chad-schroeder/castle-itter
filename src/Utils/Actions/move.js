@@ -1,41 +1,43 @@
 import store from '../../store';
 
 const { tiles } = store.getState().map;
-const { units } = store.getState().units;
 
-const getLocationUnits = location => {
-    const units = tiles
+export const getLocaleUnits = location => {
+    return tiles
         .filter(tile => tile.location === location && tile.unit)
         .map(tile => tile.unit);
-    return units;
 };
 
-const getValidUnits = units => {
-    const validUnits = units.filter(unit => !unit.exhausted && !unit.tokens.disrupted);
-    return validUnits;
+const getValidUnits = (activeUnit, units) => {
+    return units.filter(unit => 
+        unit.id !== activeUnit &&
+        !unit.exhausted && 
+        !unit.tokens.tookAction && 
+        !unit.tokens.commanded && 
+        !unit.tokens.disrupted);
 };
 
-export const validateMoveWithin = (location) => {
-    const locationUnits = getLocationUnits(location);
-    const validUnits = getValidUnits(locationUnits);
+export const validateMoveWithin = location => {
+    const units = getLocaleUnits(location);
+    const validUnits = getValidUnits(units);
 
     if (validUnits) {
         console.log('Valid units', validUnits);
     }
 };
 
-export const dispatchMoveWithin = (inactiveTile, activeTile, inactiveUnit, activeUnit) => {
-    // add inactive unit to active tile
-    store.dispatch({ type: 'ADD_UNIT', payload: { id: activeTile, unit: inactiveUnit } });
+export const actionMoveWithin = (tile = 'K3') => {
+    const { id, location, unit } = tile;
 
-    // add active unit to inactive tile
-    store.dispatch({ type: 'ADD_UNIT', payload: { id: inactiveTile, unit: activeUnit } });
-};
+    // get all valid units at location
+    // const validUnits = getValidLocaleUnits(location)
 
-export const dispatchMoveLocation = (unitId, fromTile, toTile) => {
-    // remove unit from current tile
-    store.dispatch({ type: 'REMOVE_UNIT', payload: fromTile });
+    // display valid units
 
-    // add unit to new tile
-    store.dispatch({ type: 'ADD_UNIT', payload: { id: toTile, unit: unitId } });
+    // get selected tile
+    const selectedTile = 'K4';
+    const selectedUnit = selectedTile.unit;
+
+    // swap units
+
 };

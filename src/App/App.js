@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { Map } from 'Map';
 import Card from 'Card';
-import Score from 'Score';
 import Unit from 'Unit';
 
 import { buildDeck } from 'Utils/Libs/deck';
@@ -10,7 +9,8 @@ import playCard from 'Utils/Libs/playCard';
 import { spendAction } from 'Utils/Libs/turn';
 import escape from 'Utils/Libs/escape';
 import destroyBesottenJenny from 'Utils/Libs/destroyBesottenJenny';
-// import { cardSniper, cardDisrupt, cardPanzerfaust, cardSuppressiveFire } from 'Utils/Enemy/disruption';
+import { getLocationTiles } from 'Utils/Libs/tiles';
+import { getActionableUnits } from 'Utils/Libs/units';
 
 import store from 'store';
 
@@ -44,6 +44,9 @@ const App = () => {
 
     useEffect(() => {
         setupGame();
+
+        console.log('getLocationTiles', getLocationTiles('NT'));
+        console.log('getActionableUnits', getActionableUnits(['basse', 'steiner', 'pollack'], 'pollack'));
     }, []);
     
     return (
@@ -67,7 +70,6 @@ const App = () => {
             </button>
             <Unit unit={basse} />
             <Map />
-            {/* <Score /> */}
         </>
     );
 };

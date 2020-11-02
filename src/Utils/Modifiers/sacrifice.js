@@ -12,7 +12,7 @@ const sacrifice = (tileId) => {
 
     if (hasGangl) {
         // gangl can be exhausted or disrupted and still sacrifice
-        const gangl = allies.find(unit => unit.id === 'gangl' && !unit.kia);
+        const gangl = allies.find(unit => unit.id === 'gangl' && !unit.casualty);
 
         if (gangl) { 
             // send user option to sacrifice
@@ -23,7 +23,7 @@ const sacrifice = (tileId) => {
                 if (unit.id === 'gangl') {
                     return {
                         ...unit,
-                        kia: true,
+                        casualty: true,
                     };
                 }
                 return unit;

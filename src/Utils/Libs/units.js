@@ -15,7 +15,7 @@ export const getActionableUnits = (list, skipId) => {
         .filter(unit => 
             list.includes(unit.id) && 
             unit.id !== skipId &&
-            !unit.kia &&
+            !unit.casualty &&
             !unit.exhausted &&
             !unit.tokens.tookAction &&
             !unit.tokens.commanded &&
@@ -24,19 +24,19 @@ export const getActionableUnits = (list, skipId) => {
     return actionable;
 };
 
-export const eliminateUnit = unitId => {
-    // update unit status to KIA
+export const eliminateUnits = units => {
+    // update casualties
     const payloadAllies = allies.map(unit => {
-        if (unit.id === unitId) {
-            return { ...unit, kia: true }
+        if (units.includes(unit.id)) {
+            return { ...unit, casualty: true };
         }
         return unit;
     });
 
-    // remove unit from tile
+    // remove units from tiles
     const payloadTiles = tiles.map(tile => {
-        if (tile.unit === unitId) {
-            return { ...tile, unit: null, }
+        if (units.includes(tile.unit)) {
+            return { ...tile, unit: null };
         }
         return tile;
     });

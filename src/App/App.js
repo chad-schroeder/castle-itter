@@ -24,7 +24,7 @@ const basse = {
         tanker: true,
     },
     exhausted: false,
-    kia: false,
+    casualty: false,
     tokens: {
         tookAction: false,
         commanded: false,

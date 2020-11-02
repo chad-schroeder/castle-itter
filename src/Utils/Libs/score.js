@@ -4,7 +4,7 @@ const scoreFrench = (tiles, allies) => {
     let tally = 0;
 
     const french = allies
-        .filter(ally => ally.nationality === 'FRA' && !ally.kia && !ally.hasEscaped)
+        .filter(ally => ally.nationality === 'FRA' && !ally.casualty && !ally.hasEscaped)
         .map(ally => ally.id);
 
     tiles.forEach(tile => {
@@ -24,7 +24,7 @@ const scoreNonFrench = (tiles, allies) => {
     let tally = 0;
 
     const nonFrench = allies
-        .filter(ally => ally.nationality !== 'FRA' && !ally.kia)
+        .filter(ally => ally.nationality !== 'FRA' && !ally.casualty)
         .map(ally => ally.id);
 
     tiles.forEach(tile => {

@@ -20,7 +20,7 @@ const inspire = (tileId) => {
     const inspired = allies.some(unit => 
         units.includes(unit.id) &&
         unit?.modifiers?.inspire &&
-        !unit.kia &&
+        !unit.casualty &&
         !unit.exhausted &&
         !unit.tokens.disrupted
     );

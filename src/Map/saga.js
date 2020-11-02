@@ -7,6 +7,4 @@ import {
 //     // yield put({ type: 'SET_MAP_SPACES', payload: spaces });
 // }
 
-export default function* root() {
-    // yield takeLatest('UNIT_KIA', vacateTile);
-}
+export default function* root() {}

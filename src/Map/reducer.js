@@ -174,6 +174,7 @@ const initialState = {
             location: 'BJ',
             los: [],
             unit: 'steiner',
+            destroyed: null,
             armament: {
                 name: '76mm Cannon',
                 load: true,
@@ -184,6 +185,7 @@ const initialState = {
             location: 'BJ',
             los: ['black'],
             unit: null,
+            destroyed: null,
             armament: {
                 name: '76mm Cannon',
                 attack: 4,
@@ -196,6 +198,7 @@ const initialState = {
             location: 'BJ',
             los: ['black'],
             unit: null,
+            destroyed: null,
             armament: {
                 name: 'M2HB',
                 attack: 2,
@@ -207,6 +210,7 @@ const initialState = {
             location: 'BJ',
             los: ['black'],
             unit: null,
+            destroyed: null,
             armament: {
                 name: 'M1919A4',
                 attack: 2,

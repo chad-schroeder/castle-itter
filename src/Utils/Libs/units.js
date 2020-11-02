@@ -23,3 +23,29 @@ export const getActionableUnits = (list, skipId) => {
         .map(unit => unit.id);
     return actionable;
 };
+
+export const eliminateUnit = unitId => {
+    // update unit status to KIA
+    const payloadAllies = allies.map(unit => {
+        if (unit.id === unitId) {
+            return { ...unit, kia: true }
+        }
+        return unit;
+    });
+
+    // remove unit from tile
+    const payloadTiles = tiles.map(tile => {
+        if (tile.unit === unitId) {
+            return { ...tile, unit: null, }
+        }
+        return tile;
+    });
+
+    store.dispatch({ type: 'UPDATE_ALLIES', payload: payloadAllies });
+    store.dispatch({ type: 'UPDATE_TILES', payload: payloadTiles });
+};
+
+export const getTargetsByColor = color => {
+    const colors = store.getState().map.colors;
+    return colors[color];
+};

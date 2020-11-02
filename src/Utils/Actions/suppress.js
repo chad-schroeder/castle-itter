@@ -1,4 +1,4 @@
-import { getLineOfSight } from '../Libs/targeting';
+import { getLineOfSight } from '../Libs/tiles';
 
 import store from '../../store';
 

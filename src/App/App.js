@@ -6,11 +6,9 @@ import Unit from 'Unit';
 
 import { buildDeck } from 'Utils/Libs/deck';
 import playCard from 'Utils/Libs/playCard';
-import { spendAction } from 'Utils/Libs/turn';
+import { spendAction } from 'Utils/Libs/game';
 import escape from 'Utils/Libs/escape';
-import destroyBesottenJenny from 'Utils/Libs/destroyBesottenJenny';
-import { getLocationTiles } from 'Utils/Libs/tiles';
-import { getActionableUnits } from 'Utils/Libs/units';
+import { destroyBesottenJenny } from 'Utils/Libs/tiles';
 
 import store from 'store';
 
@@ -44,9 +42,6 @@ const App = () => {
 
     useEffect(() => {
         setupGame();
-
-        console.log('getLocationTiles', getLocationTiles('NT'));
-        console.log('getActionableUnits', getActionableUnits(['basse', 'steiner', 'pollack'], 'pollack'));
     }, []);
     
     return (

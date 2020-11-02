@@ -1,7 +1,6 @@
 import { rollDice, acquireTarget, rollToHit } from '../Libs/dice';
 
 import store from '../../store';
-import suppress from 'Utils/Actions/suppress';
 
 const { locations, tiles, tracks, axisLOS } = store.getState().map;
 

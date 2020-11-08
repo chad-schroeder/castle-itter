@@ -1,32 +1,31 @@
 import store from '../../store';
 
-const tiles = store.getState().map.tiles;
+const { tiles } = store.getState().map;
 const { allies } = store.getState().units;
 
-const inspire = (tileId) => {
-    // get location of tile
-    const location = tiles.find(tile => tile.id === tileId).location;
-
-    // if tile is in the cellar, return
+const inspire = (tileId, location, unitId) => {
+    // if location is the cellar, return
     if (location === 'C') return;
     
-    // find all units in same location as tile
+    // find all friendlies at location
     const units = tiles
-        .filter(tile => tile.unit && tile.location === location)
+        .filter(tile => 
+            tile.unit && 
+            tile.location === location && 
+            tile.unit !== unitId)
         .map(tile => tile.unit);
 
-    // check if unit with inspire is in a tile within location
-    // TODO: ensure it is not the same unit that is inspiring
-    // const inspired = allies.some(unit => 
-    //     units.includes(unit.id) &&
-    //     unit?.modifiers?.inspire &&
-    //     !unit.casualty &&
-    //     !unit.exhausted &&
-    //     !unit.tokens.disrupted
-    // );
+    // iterate through units at location
+    for (let unit in units) {
+        const ally = allies[unit];
 
-    // return inspired;
-    return;
+        // if unit with inspire is at location and able to inspire, return true
+        if (ally.inspire && !ally.exhausted && !ally.tokens.includes('disrupted')) {
+            return true;
+        }
+    }
+
+    return false;
 };
 
 export default inspire;

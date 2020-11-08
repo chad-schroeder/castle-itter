@@ -1,6 +1,6 @@
 const initialState = {
-    allies: [
-        {
+    allies: {
+        basse: {
             id: 'basse',
             name: 'Basse',
             nationality: 'USA',
@@ -19,7 +19,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        lee: {
             id: 'lee',
             name: 'Lee',
             nationality: 'USA',
@@ -38,7 +38,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        worsham: {
             id: 'worsham',
             name: 'Worsham',
             nationality: 'USA',
@@ -53,7 +53,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        pollack: {
             id: 'pollack',
             name: 'Pollack',
             nationality: 'USA',
@@ -68,7 +68,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        sutton: {
             id: 'sutton',
             name: 'Sutton',
             nationality: 'USA',
@@ -83,7 +83,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        petrukovich: {
             id: 'petrukovich',
             name: 'Petrukovich',
             nationality: 'USA',
@@ -98,7 +98,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        steiner: {
             id: 'steiner',
             name: 'Steiner',
             nationality: 'USA',
@@ -116,7 +116,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        szymczyk: {
             id: 'szymczyk',
             name: 'Szymczyk',
             nationality: 'USA',
@@ -134,7 +134,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rushford: {
             id: 'rushford',
             name: 'Rushford',
             nationality: 'USA',
@@ -152,7 +152,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        mchaley: {
             id: 'mchaley',
             name: 'McHaley',
             nationality: 'USA',
@@ -170,7 +170,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        schrader: {
             id: 'schrader',
             name: 'Schrader',
             nationality: 'SS',
@@ -188,7 +188,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        gangl: {
             id: 'gangl',
             name: 'Gangl',
             nationality: 'GER',
@@ -208,7 +208,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        dietrich: {
             id: 'dietrich',
             name: 'Dietrich',
             nationality: 'GER',
@@ -226,7 +226,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        hockel: {
             id: 'hockel',
             name: 'Hockel',
             nationality: 'GER',
@@ -244,7 +244,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        blechschmidt: {
             id: 'blechschmidt',
             name: 'Blechschmidt',
             nationality: 'GER',
@@ -262,7 +262,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rifleman1: {
             id: 'rifleman1',
             name: 'Rifleman',
             nationality: 'GER',
@@ -280,7 +280,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rifleman2: {
             id: 'rifleman2',
             name: 'Rifleman',
             nationality: 'GER',
@@ -298,7 +298,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rifleman3: {
             id: 'rifleman3',
             name: 'Rifleman',
             nationality: 'GER',
@@ -316,7 +316,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rifleman4: {
             id: 'rifleman4',
             name: 'Rifleman',
             nationality: 'GER',
@@ -334,7 +334,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rifleman5: {
             id: 'rifleman5',
             name: 'Rifleman',
             nationality: 'GER',
@@ -352,7 +352,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        linson: {
             id: 'linson',
             name: 'Linson',
             nationality: 'GER',
@@ -370,7 +370,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        wegscheider: {
             id: 'wegscheider',
             name: 'Wegscheider',
             nationality: 'GER',
@@ -389,7 +389,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        waltl: {
             id: 'waltl',
             name: 'Waltl',
             nationality: 'AUS',
@@ -407,7 +407,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        clemenceau: {
             id: 'clemenceau',
             name: 'Clemenceau',
             nationality: 'FRA',
@@ -425,7 +425,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        gamelin: {
             id: 'gamelin',
             name: 'Gamelin',
             nationality: 'FRA',
@@ -443,7 +443,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        rocque: {
             id: 'rocque',
             name: 'De La Rocque',
             nationality: 'FRA',
@@ -461,7 +461,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        reynaud: {
             id: 'reynaud',
             name: 'Reynaud',
             nationality: 'FRA',
@@ -479,7 +479,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-        {
+        borotra: {
             id: 'borotra',
             name: 'Borotra',
             nationality: 'FRA',
@@ -497,7 +497,7 @@ const initialState = {
                 disrupted: false,
             }
         },
-    ],
+    },
     axis: {
         rifleman: {
             id: 'rifleman',

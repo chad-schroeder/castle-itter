@@ -343,18 +343,21 @@ const initialState = {
             name: 'Rifleman',
             defense: 3,
             counter: true,
+            advance: true,
         },
         scout: {
             id: 'scout',
             name: 'Scout',
             defense: 4,
             counter: true,
+            advance: true,
         },
         sturm: {
             id: 'sturm',
             name: 'Sturm',
             defense: 5,
             counter: true,
+            advance: true,
         },
         suppressiveFire: {
             id: 'sf',

@@ -11,17 +11,17 @@ const checkMorale = locationId => {
     const units = getLocationUnits(locationId);
 
     // check if an Officer is within location
-    const officer = allies.some(unit => units.includes(unit.id) && unit?.modifiers?.officer);
+    // const officer = allies.some(unit => units.includes(unit.id) && unit?.modifiers?.officer);
     
     // if officer is present, do nothing
-    if (officer) return
+    // if (officer) return;
 
     // save a list of all fled units so we can display to player
-    const fled = allies.map(unit => units.includes(unit.id) && unit?.modifiers?.morale);
-    console.log('fled', fled);
+    // const fled = allies.map(unit => units.includes(unit.id) && unit?.modifiers?.morale);
+    // console.log('fled', fled);
 
     // remove units
-    eliminateUnits(fled);
+    // eliminateUnits(fled);
 };
 
 export default checkMorale;

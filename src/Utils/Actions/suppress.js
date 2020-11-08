@@ -1,25 +1,27 @@
-import { getLineOfSight } from '../Libs/tiles';
-
 import store from '../../store';
 
-const getSuppressionValue = (unitId) => {
-    const { allies } = store.getState().units;
-    const value = allies.find(person => person.id === unitId).suppress;
-    // TODO: add modifiers
-    return value;
+const { suppression } = store.getState().common;
+const { allies } = store.getState().units;
+
+export const canSuppress = unitId => {
+    const unit = allies[unitId];
+    if (unit.exhausted || unit.tokens.length) return false;
+    return true;
 };
 
-const suppress = (unitId, tileId) => {
-    const suppression = store.getState().common.suppression;
+const getSuppressionValue = (unitId, armament = null) => {
+    const { suppress, tanker } = allies[unitId];
 
-    // TODO: ensure a unit has los before coming to this function
+    // if tanker unit and tile has increased firepower, use that firepower
+    if (tanker && armament) {
+        return armament.suppress;
+    }
+    
+    return suppress;
+};
 
-    // get line of sight
-    const los = getLineOfSight(tileId);
-    // console.log('getLineOfSight', los);
-
-    // get unit suppression value
-    const suppressValue = getSuppressionValue(unitId);
+export const actionSuppress = (unitId, los, armament) => {
+    const suppressValue = getSuppressionValue(unitId, armament);
 
     // allow user input to allot suppression
     // for now, auto assign
@@ -28,8 +30,4 @@ const suppress = (unitId, tileId) => {
     los.forEach(color => suppression[color] += suppressValue);
 
     store.dispatch({ type: 'ADD_SUPPRESSION', payload: suppression });
-
-    return los;
 };
-
-export default suppress;

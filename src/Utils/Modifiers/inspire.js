@@ -17,15 +17,16 @@ const inspire = (tileId) => {
 
     // check if unit with inspire is in a tile within location
     // TODO: ensure it is not the same unit that is inspiring
-    const inspired = allies.some(unit => 
-        units.includes(unit.id) &&
-        unit?.modifiers?.inspire &&
-        !unit.casualty &&
-        !unit.exhausted &&
-        !unit.tokens.disrupted
-    );
+    // const inspired = allies.some(unit => 
+    //     units.includes(unit.id) &&
+    //     unit?.modifiers?.inspire &&
+    //     !unit.casualty &&
+    //     !unit.exhausted &&
+    //     !unit.tokens.disrupted
+    // );
 
-    return inspired;
+    // return inspired;
+    return;
 };
 
 export default inspire;

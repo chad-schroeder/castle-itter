@@ -7,17 +7,11 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                commander: true,
-                tanker: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            commander: true,
+            tanker: true,
         },
         lee: {
             id: 'lee',
@@ -26,17 +20,11 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                commander: true,
-                tanker: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            commander: true,
+            tanker: true,
         },
         worsham: {
             id: 'worsham',
@@ -47,11 +35,7 @@ const initialState = {
             suppress: 1,
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
         },
         pollack: {
             id: 'pollack',
@@ -62,11 +46,7 @@ const initialState = {
             suppress: 3,
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
         },
         sutton: {
             id: 'sutton',
@@ -77,11 +57,7 @@ const initialState = {
             suppress: 1,
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
         },
         petrukovich: {
             id: 'petrukovich',
@@ -92,11 +68,7 @@ const initialState = {
             suppress: 1,
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
         },
         steiner: {
             id: 'steiner',
@@ -105,16 +77,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                tanker: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            tanker: true,
         },
         szymczyk: {
             id: 'szymczyk',
@@ -123,16 +89,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                tanker: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            tanker: true,
         },
         rushford: {
             id: 'rushford',
@@ -141,16 +101,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                tanker: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            tanker: true,
         },
         mchaley: {
             id: 'mchaley',
@@ -159,16 +113,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                tanker: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            tanker: true,
         },
         schrader: {
             id: 'schrader',
@@ -177,16 +125,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                commander: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            commander: true,
         },
         gangl: {
             id: 'gangl',
@@ -195,18 +137,12 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                commander: true,
-                officer: true,
-                sacrifice: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            commander: true,
+            officer: true,
+            sacrifice: true,
         },
         dietrich: {
             id: 'dietrich',
@@ -215,16 +151,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                officer: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            officer: true,
         },
         hockel: {
             id: 'hockel',
@@ -233,16 +163,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                officer: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            officer: true,
         },
         blechschmidt: {
             id: 'blechschmidt',
@@ -251,16 +175,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                officer: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            officer: true,
         },
         rifleman1: {
             id: 'rifleman1',
@@ -269,16 +187,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                morale: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            morale: true,
         },
         rifleman2: {
             id: 'rifleman2',
@@ -287,16 +199,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                morale: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            morale: true,
         },
         rifleman3: {
             id: 'rifleman3',
@@ -305,16 +211,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                morale: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            morale: true,
         },
         rifleman4: {
             id: 'rifleman4',
@@ -323,16 +223,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                morale: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            morale: true,
         },
         rifleman5: {
             id: 'rifleman5',
@@ -341,16 +235,10 @@ const initialState = {
             placement: 'Deployment',
             attack: 1,
             suppress: 1,
-            modifiers: {
-                morale: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            morale: true,
         },
         linson: {
             id: 'linson',
@@ -359,16 +247,10 @@ const initialState = {
             placement: 'Reinforcement',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                reinforcement: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            reinforcement: true,
         },
         wegscheider: {
             id: 'wegscheider',
@@ -377,17 +259,11 @@ const initialState = {
             placement: 'Reinforcement',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                officer: true,
-                reinforcement: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            officer: true,
+            reinforcement: true,
         },
         waltl: {
             id: 'waltl',
@@ -396,16 +272,10 @@ const initialState = {
             placement: 'Reinforcement',
             attack: 1,
             suppress: 2,
-            modifiers: {
-                reinforcement: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            reinforcement: true,
         },
         clemenceau: {
             id: 'clemenceau',
@@ -414,16 +284,10 @@ const initialState = {
             placement: 'Cellar',
             attack: 0,
             suppress: 1,
-            modifiers: {
-                inspire: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            inspire: true,
         },
         gamelin: {
             id: 'gamelin',
@@ -432,16 +296,10 @@ const initialState = {
             placement: 'Cellar',
             attack: 0,
             suppress: 1,
-            modifiers: {
-                inspire: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            inspire: true,
         },
         rocque: {
             id: 'rocque',
@@ -450,16 +308,10 @@ const initialState = {
             placement: 'Cellar',
             attack: 0,
             suppress: 1,
-            modifiers: {
-                inspire: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            inspire: true,
         },
         reynaud: {
             id: 'reynaud',
@@ -468,16 +320,10 @@ const initialState = {
             placement: 'Cellar',
             attack: 0,
             suppress: 1,
-            modifiers: {
-                inspire: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
+            inspire: true,
         },
         borotra: {
             id: 'borotra',
@@ -486,16 +332,9 @@ const initialState = {
             placement: 'Cellar',
             attack: 0,
             suppress: 1,
-            modifiers: {
-                escape: true,
-            },
             exhausted: false,
             casualty: false,
-            tokens: {
-                tookAction: false,
-                commanded: false,
-                disrupted: false,
-            }
+            tokens: [],
         },
     },
     axis: {

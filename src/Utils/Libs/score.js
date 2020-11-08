@@ -1,18 +1,35 @@
 import store from '../../store';
 
-const scoreFrench = (tiles, allies) => {
+const { tankDestroyed, tankCasualties, hasEscaped } = store.getState().common;
+const { tiles, tracks } = store.getState().map;
+const { allies } = store.getState().units;
+
+const getSurvivors = () => {
+    const french = [];
+    const nonFrench = [];
+
+    Object.keys(allies).forEach(ally => {
+        if (ally.nationality === 'FRA' && !ally.casualty && !ally.hasEscaped) {
+            french.push(ally.id);
+        } else {
+            nonFrench.push(ally.id);
+        }
+    });
+
+    return [french, nonFrench];
+};
+
+const scoreFrench = () => {
     let tally = 0;
 
-    const french = allies
-        .filter(ally => ally.nationality === 'FRA' && !ally.casualty && !ally.hasEscaped)
-        .map(ally => ally.id);
+    const [french] = getSurvivors();
 
     tiles.forEach(tile => {
         if (french.includes(tile.unit)) {
-            if (tile.location !== 'C') { // if outide the cellar
-                tally += 3;
-            } else {
+            if (tile.location === 'C') { // reduce score if inside the cellar
                 tally += 1;
+            } else {
+                tally += 3;
             }
         }
     });
@@ -20,12 +37,10 @@ const scoreFrench = (tiles, allies) => {
     return tally;
 };
 
-const scoreNonFrench = (tiles, allies) => {
+const scoreNonFrench = () => {
     let tally = 0;
 
-    const nonFrench = allies
-        .filter(ally => ally.nationality !== 'FRA' && !ally.casualty)
-        .map(ally => ally.id);
+    const [_, nonFrench] = getSurvivors();
 
     tiles.forEach(tile => {
         if (nonFrench.includes(tile.unit)) {
@@ -36,7 +51,7 @@ const scoreNonFrench = (tiles, allies) => {
     return tally;
 };
 
-const scoreAxis = (tracks) => {
+const scoreAxis = () => {
     let tally = 0;
 
     Object.keys(tracks).forEach(key => {
@@ -49,10 +64,6 @@ const scoreAxis = (tracks) => {
 };
 
 export const calculateScore = () => {
-    const { tankDestroyed, tankCasualties, hasEscaped } = store.getState().common;
-    const { tiles, tracks } = store.getState().map;
-    const { allies } = store.getState().units;
-
     let score = 0;
 
     // 5 points: Besotten Jenny was destroyed but no defenders were inside
@@ -67,13 +78,13 @@ export const calculateScore = () => {
 
     // 3 points for each French defender on the board but not in the cellar
     // 1 point for each French defender in the cellar
-    score += scoreFrench(tiles, allies);
+    score += scoreFrench();
 
     // 1 point for any other defender on the board (including the cellar)
-    score += scoreNonFrench(tiles, allies);
+    score += scoreNonFrench();
 
     // subtract 1 point for each SS counter on the board
-    score -= scoreAxis(tracks);
+    score -= scoreAxis();
     
     return score;
 };

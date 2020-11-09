@@ -1,23 +1,28 @@
+import { getUnitStats } from 'Utils/Libs/units';
+import checkInspired from 'Utils/Modifiers/inspire';
+
 import store from '../../store';
 
 const { suppression } = store.getState().common;
-const { allies } = store.getState().units;
 
-export const canSuppress = unitId => {
-    const unit = allies[unitId];
-    if (unit.exhausted || unit.tokens.length) return false;
-    return true;
-};
+export const getSuppressionValue = (unitId, locationId, armament = null) => {
+    const { suppress, tanker } = getUnitStats(unitId);
 
-const getSuppressionValue = (unitId, armament = null) => {
-    const { suppress, tanker } = allies[unitId];
+    let value = suppress;
 
     // if tanker unit and tile has increased firepower, use that firepower
     if (tanker && armament) {
-        return armament.suppress;
+        value = armament.suppress;
+    }
+
+    // check if unit is inspired
+    const inspired = checkInspired(locationId, unitId);
+    
+    if (inspired) {
+        value += 1;
     }
     
-    return suppress;
+    return value;
 };
 
 export const actionSuppress = (unitId, los, armament) => {

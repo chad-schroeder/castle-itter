@@ -1,4 +1,4 @@
-import { getUnitStats } from 'Utils/Libs/units';
+import { getUnit } from 'Utils/Libs/units';
 import checkInspired from 'Utils/Modifiers/inspire';
 
 import store from '../../store';
@@ -6,7 +6,7 @@ import store from '../../store';
 const { suppression } = store.getState().common;
 
 export const getSuppressionValue = (unitId, locationId, armament = null) => {
-    const { suppress, tanker } = getUnitStats(unitId);
+    const { suppress, tanker } = getUnit(unitId);
 
     let value = suppress;
 

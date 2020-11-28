@@ -68,32 +68,32 @@ const ActionDialog = ({ unit, location }) => {
             <ActionGroup density="compact" onAction={setAction}>
                 {moveButton && (
                     <Item key="move" aria-label="Move">
-                        Move
+                        <img src="images/move.svg" alt="" />
                     </Item>
                 )}
                 {moveWithinButton && (
                     <Item key="moveWithin" aria-label="Move Within">
-                        Move Within
+                       <img src="images/moveWithin.svg" alt="" />
                     </Item>
                 )}
                 {attackButton && (
                     <Item key="attack" aria-label="Attack">
-                        Attack
+                        <img src="images/crosshairs.svg" alt="" />
                     </Item>
                 )}
                 {suppressButton && (
                     <Item key="suppress" aria-label="Suppress">
-                        Suppress
+                        <img src="images/suppress.svg" alt="" />
                     </Item>
                 )}
                 {commandButton && (
                     <Item key="command" aria-label="Command">
-                        Command
+                        <img src="images/roundel.svg" alt="" />
                     </Item>
                 )}
                 {escapeButton && (
                     <Item key="escape" aria-label="Escape">
-                        Escape
+                        <img src="images/escape.svg" alt="" />
                     </Item>
                 )}
             </ActionGroup>

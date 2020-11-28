@@ -21,16 +21,16 @@ const Unit = ({ id, name, nationality, attack, suppress, commander, tanker, offi
             <td>{nationality}</td>
             <td>{attack}</td>
             <td>{suppress}</td>
-            <td>{commander && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{tanker && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{officer && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{inspire && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{sacrifice && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{morale && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{escape && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{reinforcement && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{exhausted && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
-            <td>{casualty && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{commander && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{tanker && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{officer && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{inspire && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{sacrifice && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{morale && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{escape && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{reinforcement && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{exhausted && <img src="images/checkmark.svg" alt="" />}</td>
+            <td>{casualty && <img src="images/checkmark.svg" alt="" />}</td>
         </tr>
     );
 };

@@ -40,6 +40,7 @@ const App = () => {
         },
         exhausted: false,
         casualty: false,
+        escape: true,
     };
 
     useEffect(() => {

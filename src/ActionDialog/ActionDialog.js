@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { getOpenTiles } from 'Utils/Actions/move';
 
-import {ActionGroup, Item} from '@adobe/react-spectrum';
+import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
 const ActionDialog = ({ unit, location }) => {
     const { 
@@ -65,36 +65,54 @@ const ActionDialog = ({ unit, location }) => {
     return (
         <div>
             <h2>Action Dialog: {action}</h2>
-            <ActionGroup density="compact" onAction={setAction}>
+            <ActionGroup density="compact" selectionMode="single" onAction={setAction}>
                 {moveButton && (
-                    <Item key="move" aria-label="Move">
-                        <img src="images/move.svg" alt="" />
-                    </Item>
+                    <TooltipTrigger delay={0}>
+                        <Item key="move" aria-label="Move">
+                            <img src="images/move.svg" alt="" />
+                        </Item>
+                        <Tooltip>Move</Tooltip>
+                    </TooltipTrigger>
                 )}
                 {moveWithinButton && (
-                    <Item key="moveWithin" aria-label="Move Within">
-                       <img src="images/moveWithin.svg" alt="" />
-                    </Item>
+                    <TooltipTrigger delay={0}>
+                        <Item key="moveWithin" aria-label="Move Within">
+                            <img src="images/moveWithin.svg" alt="" />
+                        </Item>
+                        <Tooltip>Move Within</Tooltip>
+                    </TooltipTrigger>
                 )}
                 {attackButton && (
-                    <Item key="attack" aria-label="Attack">
-                        <img src="images/crosshairs.svg" alt="" />
-                    </Item>
+                    <TooltipTrigger delay={0}>
+                        <Item key="attack" aria-label="Attack">
+                            <img src="images/crosshairs.svg" alt="" />
+                        </Item>
+                        <Tooltip>Attack</Tooltip>
+                    </TooltipTrigger>
                 )}
                 {suppressButton && (
-                    <Item key="suppress" aria-label="Suppress">
-                        <img src="images/suppress.svg" alt="" />
-                    </Item>
+                    <TooltipTrigger delay={0}>
+                        <Item key="suppress" aria-label="Suppress">
+                            <img src="images/suppress.svg" alt="" />
+                        </Item>
+                        <Tooltip>Suppress</Tooltip>
+                    </TooltipTrigger>
                 )}
                 {commandButton && (
-                    <Item key="command" aria-label="Command">
-                        <img src="images/roundel.svg" alt="" />
-                    </Item>
+                    <TooltipTrigger delay={0}>
+                        <Item key="command" aria-label="Command">
+                            <img src="images/roundel.svg" alt="" />
+                        </Item>
+                        <Tooltip>Command</Tooltip>
+                    </TooltipTrigger>
                 )}
                 {escapeButton && (
-                    <Item key="escape" aria-label="Escape">
-                        <img src="images/escape.svg" alt="" />
-                    </Item>
+                    <TooltipTrigger delay={0}>
+                        <Item key="escape" aria-label="Escape">
+                            <img src="images/escape.svg" alt="" />
+                        </Item>
+                        <Tooltip>Escape</Tooltip>
+                    </TooltipTrigger>
                 )}
             </ActionGroup>
         </div>

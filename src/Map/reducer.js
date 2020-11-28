@@ -144,13 +144,13 @@ const initialState = {
             id: 'G1',
             location: 'G',
             los: ['yellow', 'black'],
-            unit: 'clemenceau',
+            unit: null,
         },
         {
             id: 'G2',
             location: 'G',
             los: ['yellow', 'black'],
-            unit: null,
+            unit: 'pollack',
         },
         {
             id: 'G3',
@@ -176,7 +176,7 @@ const initialState = {
             unit: 'steiner',
             destroyed: null,
             armament: {
-                name: '76mm Cannon',
+                name: '76mm (Load)',
                 load: true,
             },
         },
@@ -187,7 +187,7 @@ const initialState = {
             unit: null,
             destroyed: null,
             armament: {
-                name: '76mm Cannon',
+                name: '76mm (Fire)',
                 attack: 4,
                 suppress: 7,
                 loaded: false,

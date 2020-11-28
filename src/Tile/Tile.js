@@ -1,19 +1,14 @@
 import React from 'react';
 
 const Tile = ({ id, location, los, unit, armament }) => {
-    const getArmament = () => {
-        const { name, attack, suppress } = armament;
-        return ` | Armament: ${name} | Attack: ${attack} | Suppress: ${suppress}`;
-    }
-
     return (
-        <div>
-            Tile: {id} | 
-            Location: {location} |
-            LOS: {los.map(sight => `${sight}`).join(', ')}
-            {unit && ` | Unit: ${unit}`}
-            {armament && getArmament()}
-        </div>
+        <tr>
+            <td>{id}</td>
+            <td>{location}</td>
+            <td>{los.map(sight => `${sight}`).join(', ')}</td>
+            <td>{unit && unit}</td>
+            <td>{armament && armament.name}</td>
+        </tr>
     );
 };
 

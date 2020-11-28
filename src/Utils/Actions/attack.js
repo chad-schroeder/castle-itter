@@ -1,22 +1,27 @@
+import checkInspired from 'Utils/Modifiers/inspire';
+
 import store from '../../store';
 
 const { allies } = store.getState().units;
 
-export const canAttack = unitId => {
-    const unit = allies[unitId];
-    if (unit.exhausted || unit.tokens.length) return false;
-    return true;
-};
-
-const getAttackValue = (unitId, armament = null) => {
+const getAttackValue = (unitId, locationId, armament = null) => {
     const { attack, tanker } = allies[unitId];
+
+    let value = attack;
 
     // if tanker unit and tile has increased firepower, use that firepower
     if (tanker && armament) {
-        return armament.attack;
+        value = armament.attack;
+    }
+
+    // check if unit is inspired
+    const inspired = checkInspired(locationId, unitId);
+    
+    if (inspired) {
+        value += 1;
     }
     
-    return attack;
+    return value;
 };
 
 export const actionAttack = (unitId, los, armament) => {

@@ -335,6 +335,7 @@ const initialState = {
             exhausted: false,
             casualty: false,
             tokens: [],
+            escape: true,
         },
     },
     axis: {

@@ -1,35 +1,37 @@
 import React from 'react';
 
 import {
-    StyledContainer, StyledValues, StyledAttack, StyledSuppress, StyledModifiers, StyledNationality, StyledFooter,
+
 } from './styled';
 
-const displayTypes = (modifiers) => {
-    return Object.keys(modifiers)
+const displayTypes = modifiers => {
+    if (modifiers) {
+        return Object.keys(modifiers)
         .map(key => key.charAt(0).toUpperCase())
         .join('/');
+    }
+    return null;
 };
 
-const Unit = ({ unit }) => {
-    const { id, name, nationality, attack, suppress, modifiers } = unit;
-    console.log('modifiers', modifiers);
-
+const Unit = ({ id, name, nationality, attack, suppress, commander, tanker, officer, inspire, sacrifice, morale, escape, reinforcement, exhausted, casualty, }) => {
     return (
-        <StyledContainer id={id}>
-            <StyledValues>
-                <StyledAttack>{attack}</StyledAttack>
-                <StyledSuppress>{suppress}</StyledSuppress>
-            </StyledValues>
-            <StyledNationality>{nationality}</StyledNationality>
-            {modifiers &&
-                <StyledModifiers>
-                    {displayTypes(modifiers)}
-                </StyledModifiers>
-            }
-            <StyledFooter>
-                {name}
-            </StyledFooter>
-        </StyledContainer>
+        <tr>
+            <td>{id}</td>
+            <td>{name}</td>
+            <td>{nationality}</td>
+            <td>{attack}</td>
+            <td>{suppress}</td>
+            <td>{commander && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{tanker && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{officer && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{inspire && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{sacrifice && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{morale && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{escape && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{reinforcement && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{exhausted && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+            <td>{casualty && <img src="images/CheckmarkCircle.svg" alt="" />}</td>
+        </tr>
     );
 };
 

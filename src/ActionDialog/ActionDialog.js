@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { getOpenTiles } from 'Utils/Actions/move';
 
@@ -6,7 +6,6 @@ import {ActionGroup, Item} from '@adobe/react-spectrum';
 
 const ActionDialog = ({ unit, location }) => {
     const { 
-        name, 
         attack, 
         suppress, 
         commander, 
@@ -15,6 +14,8 @@ const ActionDialog = ({ unit, location }) => {
         commanded, 
         ordered, 
     } = unit;
+
+    const [action, setAction] = useState('None');
 
     // if unit cannot perform an action, return
     if (exhausted || commanded || ordered) return;
@@ -61,12 +62,10 @@ const ActionDialog = ({ unit, location }) => {
         }
     }
 
-    console.log({attackButton});
-
     return (
         <div>
-            <h2>Action Dialog: {name}</h2>
-            <ActionGroup density="compact">
+            <h2>Action Dialog: {action}</h2>
+            <ActionGroup density="compact" onAction={setAction}>
                 {moveButton && (
                     <Item key="move" aria-label="Move">
                         Move

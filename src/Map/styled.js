@@ -8,7 +8,6 @@ export const StyledMap = styled.div`
 `;
 
 export const StyledTable = styled.table`
-    margin-bottom: 20px;
     border: 1px solid var(--spectrum-table-border-color, var(--spectrum-alias-border-color-mid));
 
     tbody {

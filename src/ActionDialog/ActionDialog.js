@@ -96,7 +96,6 @@ const ActionDialog = ({ unit, location }) => {
 
     return (
         <div>
-            <h2>Action Dialog</h2>
             <ActionGroup
                 density="compact"
                 selectionMode="single"

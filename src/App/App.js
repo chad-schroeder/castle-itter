@@ -11,6 +11,8 @@ import { spendAction } from 'Utils/Libs/game';
 import escape from 'Utils/Libs/escape';
 import { destroyBesottenJenny } from 'Utils/Libs/tiles';
 
+import { Heading, View } from '@adobe/react-spectrum';
+
 import store from 'store';
 
 const setupGame = () => {
@@ -67,7 +69,17 @@ const App = () => {
                 Escape
             </button>
             <Map tiles={tiles} allies={allies} />
-            <ActionDialog unit={basse} location='G' />
+            <View
+                borderWidth="thin"
+                borderColor="dark"
+                borderRadius="medium"
+                marginY="size-200"
+                paddingY="size-125"
+                paddingX="size-200"
+            >
+                <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
+                <ActionDialog unit={basse} location='G' />
+            </View>
         </>
     );
 };

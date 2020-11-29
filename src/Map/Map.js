@@ -25,16 +25,15 @@ const Map = ({ tiles, allies  }) => {
                 borderColor="dark"
                 borderRadius="medium"
                 marginY="size-200"
-                paddingY="size-50"
+                paddingY="size-125"
                 paddingX="size-200"
             >
-                <Heading level={2} marginY="size-100">Settings</Heading>
+                <Heading level={3} marginBottom="size-100">Settings</Heading>
                 <View
                     borderWidth="thin"
                     borderColor="dark"
                     borderRadius="medium"
-                    marginY="size-50"
-                    paddingY="size-50"
+                    paddingY="size-125"
                     paddingX="size-200"
                 >
                     <RadioGroup 
@@ -53,10 +52,10 @@ const Map = ({ tiles, allies  }) => {
                 borderColor="dark"
                 borderRadius="medium"
                 marginY="size-200"
-                paddingY="size-50"
+                paddingY="size-150"
                 paddingX="size-200"
             >
-                <Heading level={2} marginY="size-100">Tiles</Heading>
+                <Heading level={2} marginBottom="size-100">Tiles</Heading>
                 <StyledTable>
                     <thead>
                         <tr>
@@ -77,10 +76,10 @@ const Map = ({ tiles, allies  }) => {
                 borderColor="dark"
                 borderRadius="medium"
                 marginY="size-200"
-                paddingY="size-50"
+                paddingY="size-150"
                 paddingX="size-200"
             >
-                <Heading level={2} marginY="size-100">Units</Heading>
+                <Heading level={2} marginBottom="size-100">Units</Heading>
                 <StyledTable>
                     <thead>
                         <tr>

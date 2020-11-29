@@ -103,6 +103,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             loading: false,
         }
+    case 'GAME_PAUSED': 
+        return {
+            ...state,
+            paused: true,
+        }
     case 'BUILD_DECK':
         return {
             ...state,

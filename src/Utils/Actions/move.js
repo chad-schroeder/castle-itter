@@ -31,15 +31,15 @@ const swapUnitTiles = (movingUnitId, staticUnitId = null, toTileId, fromTileId) 
 };
 
 // Action: move location, move within
-export const actionMove = (movingUnitId, staticUnitId, toTileId, fromTileId) => {
-    // swap tiles from where unit is moving from and to
-    const payloadTiles = swapUnitTiles(movingUnitId, staticUnitId, toTileId, fromTileId);
+// export const actionMove = (movingUnitId, staticUnitId, toTileId, fromTileId) => {
+//     // swap tiles from where unit is moving from and to
+//     const payloadTiles = swapUnitTiles(movingUnitId, staticUnitId, toTileId, fromTileId);
 
-    store.dispatch({ type: 'UPDATE_TILES', payload: payloadTiles });
+//     store.dispatch({ type: 'UPDATE_TILES', payload: payloadTiles });
     
-    // update unit to exhausted and add 'action' token
-    exhaustUnit(movingUnitId);
-};
+//     // update unit to exhausted and add 'action' token
+//     exhaustUnit(movingUnitId);
+// };
 
 // get all units at location
 export const getLocaleUnits = location => {
@@ -56,4 +56,10 @@ export const getValidUnits = (activeUnit, units) => {
         !unit.tokens.tookAction && 
         !unit.tokens.commanded && 
         !unit.tokens.disrupted);
+};
+
+export const actionMove = (unitId, openTiles) => {
+    // highlight all open tiles
+    // listen for selection
+    // finalize move action
 };

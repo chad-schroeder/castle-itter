@@ -8,9 +8,12 @@ export const StyledMap = styled.div`
 `;
 
 export const StyledTable = styled.table`
-    margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #fff;
+    border: 1px solid var(--spectrum-table-border-color, var(--spectrum-alias-border-color-mid));
+
+    tbody {
+        background-color: #fff;
+    }
 
     tr {
         border-bottom: 1px solid var(--spectrum-table-border-color, var(--spectrum-alias-border-color-mid));

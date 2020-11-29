@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 
-import { getOpenTiles } from 'Utils/Actions/move';
+import { actionMove, getOpenTiles } from 'Utils/Actions/move';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
 const ActionDialog = ({ unit, location }) => {
+    const [disabled, disableActions] = useState(false);
+
     const { 
+        id,
         attack, 
         suppress, 
         commander, 
         escape, 
         exhausted, 
         commanded, 
-        ordered, 
+        ordered,
     } = unit;
-
-    const [action, setAction] = useState('None');
 
     // if unit cannot perform an action, return
     if (exhausted || commanded || ordered) return;
@@ -62,10 +63,46 @@ const ActionDialog = ({ unit, location }) => {
         }
     }
 
+    const doAction = actionName => {
+        // remove artifacts around action created by tooltips
+        const action = actionName.replace(/[$.]/g, '');
+        console.log(`${action} clicked!`);
+
+        disableActions(true);
+
+        switch(action) {
+            case 'move':
+                actionMove(id, openTiles);
+                break;
+            case 'moveWithin':
+                // do moveWithin
+                break;
+            case 'attack':
+                // do attack
+                break;
+            case 'suppress':
+                // suppress
+                break;
+            case 'command':
+                // command
+                break;
+            case 'escape':
+                // escape
+                break;
+            default: 
+                console.log(`Unrecognized unit action called: ${action}`);
+        }
+    };
+
     return (
         <div>
-            <h2>Action Dialog: {action}</h2>
-            <ActionGroup density="compact" selectionMode="single" onAction={setAction}>
+            <h2>Action Dialog</h2>
+            <ActionGroup
+                density="compact"
+                selectionMode="single"
+                isDisabled={disabled}
+                onAction={doAction}
+            >
                 {moveButton && (
                     <TooltipTrigger delay={0}>
                         <Item key="move" aria-label="Move">
@@ -107,7 +144,7 @@ const ActionDialog = ({ unit, location }) => {
                     </TooltipTrigger>
                 )}
                 {escapeButton && (
-                    <TooltipTrigger delay={0}>
+                    <TooltipTrigger key="escape" delay={0}>
                         <Item key="escape" aria-label="Escape">
                             <img src="images/escape.svg" alt="" />
                         </Item>

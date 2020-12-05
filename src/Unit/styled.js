@@ -1,3 +1,9 @@
 import styled from 'styled-components';
-import theme from 'Utils/Styles/theme';
 
+export const StyledCenter = styled.td`
+    text-align: center;
+`;
+
+export const StyledRight = styled.td`
+    text-align: right;
+`;

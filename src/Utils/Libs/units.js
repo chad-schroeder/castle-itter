@@ -18,14 +18,13 @@ export const canTakeAction = unitId => {
 };
 
 export const getLocationUnits = (locationId, skipId = null) => {
-    console.log('getLocationUnits', { locationId, skipId });
-
     const units = tiles
         .filter(tile => 
             tile.unit &&
             tile.unit !== skipId &&
             tile.location === locationId)
         .map(tile => tile.unit);
+
     return units;
 };
 
@@ -33,8 +32,9 @@ export const getActionableUnits = (list, skipId = null) => {
     const units = list
         .filter(unit => 
             !unit.exhausted && 
-            !unit.tokens.length && 
-            !unit.tokens.length && unit.id !== skipId
+            !unit.tokens.commanded && 
+            !unit.tokens.ordered && 
+            unit.id !== skipId
         );
     return units;
 };

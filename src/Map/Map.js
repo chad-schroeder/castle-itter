@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Tile from '../Tile';
 import Unit from '../Unit';
 
-import { Heading, RadioGroup, Radio, View } from '@adobe/react-spectrum';
+import { Heading, View } from '@adobe/react-spectrum';
 
 import { StyledTable } from './styled';
-
-// return <td className="whiteSpaceNoWrap">{ this.state.freightRelayPrice[key] }</td>
 
 const displayAllies = allies => {
     return Object.keys(allies).map(ally => {
@@ -15,38 +13,9 @@ const displayAllies = allies => {
     });
 };
 
-const Map = ({ tiles, allies  }) => {
-    let [highlight, setHighlight] = useState('none');
-
+const Map = ({ tiles, allies, highlight }) => {
     return (
         <>
-            <View
-                borderWidth="thin"
-                borderColor="dark"
-                borderRadius="medium"
-                marginY="size-200"
-                paddingY="size-125"
-                paddingX="size-200"
-            >
-                <Heading level={3} marginBottom="size-100">Settings</Heading>
-                <View
-                    borderWidth="thin"
-                    borderColor="dark"
-                    borderRadius="medium"
-                    paddingY="size-125"
-                    paddingX="size-200"
-                >
-                    <RadioGroup 
-                        label="Highlight Tiles" 
-                        orientation="horizontal" 
-                        value={highlight}
-                        onChange={setHighlight}
-                    >
-                        <Radio value="none">None</Radio>
-                        <Radio value="move">Move</Radio>
-                    </RadioGroup>
-                </View>
-            </View>
             <View
                 borderWidth="thin"
                 borderColor="dark"
@@ -59,6 +28,7 @@ const Map = ({ tiles, allies  }) => {
                 <StyledTable>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>ID</th>
                             <th>Location</th>
                             <th>LOS</th>
@@ -67,7 +37,7 @@ const Map = ({ tiles, allies  }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tiles.map(tile => <Tile key={tile.id} {...tile} />)}
+                        {tiles.map(tile => <Tile key={tile.id} highlight={highlight} {...tile} />)}
                     </tbody>
                 </StyledTable>
             </View>

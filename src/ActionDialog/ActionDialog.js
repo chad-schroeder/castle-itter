@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import { actionMove, getOpenTiles } from 'Utils/Actions/move';
+import { checkCommand } from 'Utils/Actions/command';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
-const ActionDialog = ({ unit, location }) => {
+const ActionDialog = ({ location, unit }) => {
     const [disabled, disableActions] = useState(false);
 
     const { 
@@ -51,8 +52,13 @@ const ActionDialog = ({ unit, location }) => {
 
         // can command?
         if (commander) {
-            // disrupted/exhausted units at location?
-            commandButton = true;
+            const canCommand = checkCommand(location, unit.id);
+
+            if (canCommand) {
+                commandButton = true;
+            }
+
+            return false;
         }
         
         // can escape?

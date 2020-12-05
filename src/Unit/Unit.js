@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-
-} from './styled';
+import { StyledCenter, StyledRight } from './styled';
 
 const displayTypes = modifiers => {
     if (modifiers) {
@@ -19,18 +17,38 @@ const Unit = ({ id, name, nationality, attack, suppress, commander, tanker, offi
             <td>{id}</td>
             <td>{name}</td>
             <td>{nationality}</td>
-            <td>{attack}</td>
-            <td>{suppress}</td>
-            <td>{commander && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{tanker && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{officer && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{inspire && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{sacrifice && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{morale && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{escape && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{reinforcement && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{exhausted && <img src="images/checkmark.svg" alt="" />}</td>
-            <td>{casualty && <img src="images/checkmark.svg" alt="" />}</td>
+            <StyledRight>{attack}</StyledRight>
+            <StyledRight>{suppress}</StyledRight>
+            <StyledCenter>
+                {commander && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {tanker && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {officer && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {inspire && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {sacrifice && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {morale && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {escape && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {reinforcement && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {exhausted && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
+            <StyledCenter>
+                {casualty && <img src="images/checkmark.svg" alt="" />}
+            </StyledCenter>
         </tr>
     );
 };

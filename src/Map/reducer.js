@@ -227,7 +227,7 @@ const initialState = {
             id: 'C2',
             location: 'C',
             los: [],
-            unit: null,
+            unit: 'clemenceau',
         },
         {
             id: 'C3',

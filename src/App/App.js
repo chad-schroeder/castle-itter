@@ -11,7 +11,7 @@ import { spendAction } from 'Utils/Libs/game';
 import escape from 'Utils/Libs/escape';
 import { destroyBesottenJenny } from 'Utils/Libs/tiles';
 
-import { Heading, View } from '@adobe/react-spectrum';
+import { Heading, RadioGroup, Radio, View } from '@adobe/react-spectrum';
 
 import store from 'store';
 
@@ -25,6 +25,7 @@ const App = () => {
     const { allies } = useSelector(state => state.units);
 
     const [card, setCard] = useState(null);
+    const [highlight, setHighlight] = useState('none');
 
     const basse = {
         id: 'basse',
@@ -68,7 +69,37 @@ const App = () => {
             <button onClick={() => escape('G2')}>
                 Escape
             </button>
-            <Map tiles={tiles} allies={allies} />
+            <View
+                borderWidth="thin"
+                borderColor="dark"
+                borderRadius="medium"
+                marginY="size-200"
+                paddingY="size-125"
+                paddingX="size-200"
+            >
+                <Heading level={3} marginBottom="size-100">Highlight</Heading>
+                <View
+                    borderWidth="thin"
+                    borderColor="dark"
+                    borderRadius="medium"
+                    paddingY="size-125"
+                    paddingX="size-200"
+                >
+                    <RadioGroup 
+                        orientation="horizontal" 
+                        value={highlight}
+                        onChange={setHighlight}
+                    >
+                        <Radio value="none">None</Radio>
+                        <Radio value="move">Move</Radio>
+                        <Radio value="moveWithin">Move Within</Radio>
+                        <Radio value="command">Command</Radio>
+                        <Radio value="inspired">Inspired</Radio>
+                        <Radio value="morale">Morale</Radio>
+                    </RadioGroup>
+                </View>
+            </View>
+            <Map highlight={highlight} tiles={tiles} allies={allies} />
             <View
                 borderWidth="thin"
                 borderColor="dark"

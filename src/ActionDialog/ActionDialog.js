@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { actionMove, getOpenTiles } from 'Utils/Actions/move';
-import { checkCommand } from 'Utils/Actions/command';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
@@ -14,13 +13,12 @@ const ActionDialog = ({ location, unit }) => {
         suppress, 
         commander, 
         escape, 
+        tokens: { ordered, commanded, disrupted }, 
         exhausted, 
-        commanded, 
-        ordered,
     } = unit;
 
     // if unit cannot perform an action, return
-    if (exhausted || commanded || ordered) return;
+    if (exhausted || commanded || ordered || disrupted) return;
 
     let moveButton;
     let moveWithinButton;
@@ -50,15 +48,8 @@ const ActionDialog = ({ location, unit }) => {
             suppressButton = true;
         }
 
-        // can command?
         if (commander) {
-            const canCommand = checkCommand(location, unit.id);
-
-            if (canCommand) {
-                commandButton = true;
-            }
-
-            return false;
+            commandButton = true;
         }
         
         // can escape?

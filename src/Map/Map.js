@@ -53,13 +53,14 @@ const Map = ({ tiles, allies, highlight }) => {
                 <StyledTable>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Nation</th>
-                            <th class="align-right">A</th>
-                            <th class="align-right">S</th>
-                            <th class="align-center">C</th>
-                            <th class="align-center">T</th>
+                            <th className="align-right">A</th>
+                            <th className="align-right">S</th>
+                            <th className="align-center">C</th>
+                            <th className="align-center">T</th>
                             <th>Ordered</th>
                             <th>Commanded</th>
                             <th>Disrupted</th>

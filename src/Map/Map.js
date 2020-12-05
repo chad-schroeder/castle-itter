@@ -55,17 +55,14 @@ const Map = ({ tiles, allies, highlight }) => {
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Nationality</th>
-                            <th>Attack</th>
-                            <th>Suppress</th>
-                            <th>Commander</th>
-                            <th>Tanker</th>
-                            <th>Officer</th>
-                            <th>Inspire</th>
-                            <th>Sacrifice</th>
-                            <th>Morale</th>
-                            <th>Escape</th>
-                            <th>Reinforcement</th>
+                            <th>Nation</th>
+                            <th class="align-right">A</th>
+                            <th class="align-right">S</th>
+                            <th class="align-center">C</th>
+                            <th class="align-center">T</th>
+                            <th>Ordered</th>
+                            <th>Commanded</th>
+                            <th>Disrupted</th>
                             <th>Exhausted</th>
                             <th>Casualty</th>
                         </tr>

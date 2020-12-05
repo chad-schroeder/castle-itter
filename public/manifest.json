@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "roundel-usa.svg",
+      "src": "roundel.svg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "roundel-usa.svg",
+      "src": "roundel.svg",
       "type": "image/png",
       "sizes": "512x512"
     }

@@ -27,6 +27,14 @@ export const StyledTable = styled.table`
         text-align: left;
         text-transform: uppercase;
         color: rgb(110, 110, 110);
+
+        &.align-right {
+            text-align: right;
+        }
+
+        &.align-center {
+            text-align: center;
+        }
     }
 
     td {

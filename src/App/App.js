@@ -89,6 +89,7 @@ const App = () => {
                         orientation="horizontal" 
                         value={highlight}
                         onChange={setHighlight}
+                        aria-label="Set highlight"
                     >
                         <Radio value="none">None</Radio>
                         <Radio value="move">Move</Radio>

@@ -1,6 +1,6 @@
 // import { getLocationUnits } from 'Utils/Libs/units';
 
-// import store from '../../store';
+// import store from 'store';
 
 const checkInspired = () => true;
 

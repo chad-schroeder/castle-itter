@@ -37,7 +37,12 @@ const Map = ({ tiles, allies, highlight }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tiles.map(tile => <Tile key={tile.id} highlight={highlight} {...tile} />)}
+                        {tiles.map(tile => <Tile 
+                            key={tile.id} 
+                            tile={tile}
+                            allies={allies}
+                            highlight={highlight} 
+                        />)}
                     </tbody>
                 </StyledTable>
             </View>

@@ -1,31 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { StyledSpinner } from './styled';
 
-// mock Inspire
-const checkInspired = () => true;
+const Tile = ({ tile, allies, highlight }) => {
+    const { id, location, los, unit: ally, armament } = tile;
+    const unit = allies[ally];
 
-const Tile = ({ id, location, los, unit, armament, highlight }) => {
-    const { allies } = useSelector(state => state.units);
-
-    let combatant = allies[unit];
-    let attackValue = combatant?.attack;
-    let suppressValue = combatant?.suppress;
-
-    if (combatant) {
-        // check for unit at location with Inspire
-        let inspired = checkInspired();
-
-        // boost combat strength, if inspired
-        if (inspired) {
-            attackValue += 1;
-            suppressValue += 1;
-        }
-
-        console.log({ combatant, attackValue, suppressValue });
-    }
-    
     return (
         <tr>
             <StyledSpinner highlight={highlight} unit={unit}>
@@ -34,7 +14,7 @@ const Tile = ({ id, location, los, unit, armament, highlight }) => {
             <td>{id}</td>
             <td>{location}</td>
             <td>{los.map(sight => `${sight}`).join(', ')}</td>
-            <td>{unit && unit}</td>
+            <td>{unit && unit.id}</td>
             <td>{armament && armament.name}</td>
         </tr>
     );

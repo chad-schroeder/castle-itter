@@ -23,10 +23,10 @@ const Unit = ({ id, name, nationality, attack, suppress, commander, tanker, toke
                 {tokens.ordered && <img src="images/checkmark.svg" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {tokens.commanded && <img src="images/checkmark.svg" alt="" />}
+                {tokens.commanded && <img src="images/roundel.svg" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {tokens.disrupted && <img src="images/checkmark.svg" alt="" />}
+                {tokens.disrupted && <img src="images/disrupted.svg" alt="" />}
             </StyledCenter>
             <StyledCenter>
                 {exhausted && <img src="images/checkmark.svg" alt="" />}

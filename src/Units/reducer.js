@@ -219,7 +219,7 @@ const initialState = {
             tokens: {
                 ordered: false,
                 commanded: false,
-                disrupted: false,
+                disrupted: true,
             },
             exhausted: false,
             casualty: false,
@@ -234,7 +234,7 @@ const initialState = {
             officer: true,
             tokens: {
                 ordered: false,
-                commanded: false,
+                commanded: true,
                 disrupted: false,
             },
             exhausted: false,

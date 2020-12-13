@@ -14,25 +14,25 @@ const Unit = ({ id, name, nationality, attack, suppress, commander, tanker, toke
             <StyledRight>{attack}</StyledRight>
             <StyledRight>{suppress}</StyledRight>
             <StyledCenter>
-                {commander && <img src="images/checkmark.svg" alt="" />}
+                {commander && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {tanker && <img src="images/checkmark.svg" alt="" />}
+                {tanker && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {tokens.ordered && <img src="images/checkmark.svg" alt="" />}
+                {tokens.ordered && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {tokens.commanded && <img src="images/roundel.svg" alt="" />}
+                {tokens.commanded && <img src="images/commanded.svg" width="20" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {tokens.disrupted && <img src="images/disrupted.svg" alt="" />}
+                {tokens.disrupted && <img src="images/disrupted.svg" width="20" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {exhausted && <img src="images/checkmark.svg" alt="" />}
+                {exhausted && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>
             <StyledCenter>
-                {casualty && <img src="images/checkmark.svg" alt="" />}
+                {casualty && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>
         </tr>
     );

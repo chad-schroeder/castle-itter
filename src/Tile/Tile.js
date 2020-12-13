@@ -5,6 +5,7 @@ import { StyledSpinner } from './styled';
 const Tile = ({ tile, allies, highlight }) => {
     const { id, location, los, unit: ally, armament } = tile;
     const unit = allies[ally];
+    console.log({ unit });
 
     return (
         <tr>

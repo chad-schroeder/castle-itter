@@ -2,7 +2,7 @@ import { exhaustUnit } from 'Utils/Libs/units';
 
 import store from '../../store';
 
-const { tiles } = store.getState().map;
+const { tiles, tracks } = store.getState().map;
 const { allies } = store.getState().units;
 
 // get all vacant tiles
@@ -65,6 +65,16 @@ export const actionMove = (unitId, openTiles) => {
     // finalize move action
 };
 
+const canMove = () => {
+    // TODO: determine if unit is in cellar or moving from cellar
+    const openTiles = getOpenTiles();
+    if (openTiles.length) {
+        return true;
+    }
+    return false;
+};
+
+
 export const canMoveWithin = (location, skipId) => {
     const localeUnits = getLocaleUnits(location, skipId);
     const units = [];
@@ -85,7 +95,31 @@ export const canMoveWithin = (location, skipId) => {
         });
     }
 
-    console.log('canMoveWithin', units);
-
     return units;
+};
+
+export const canEscape = (los = []) => {
+    // check each track within line of sight for counters
+    for (let color of los) {
+        console.log('canEscape color', color);
+
+        const counters = [];
+
+        for (let track in tracks) {
+            console.log(tracks[track]);
+
+            if (tracks[track].los === color && tracks[track].counter) {
+                counters.push(track);
+            }
+        }
+
+        console.log('counters', counters);
+
+        if (!counters.length) {
+            // if any los track is devoid of counters, unit can escape
+            return true;
+        }
+    }
+        
+    return false;
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { actionMove, getOpenTiles, canMoveWithin } from 'Utils/Actions/move';
+import { actionMove, getOpenTiles, canMoveWithin, canEscape } from 'Utils/Actions/move';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
@@ -11,7 +11,7 @@ const canMove = () => {
     return false;
 };
 
-const ActionDialog = ({ location, unit }) => {
+const ActionDialog = ({ location, los, unit }) => {
     const [disabled, disableActions] = useState(false);
 
     const { 
@@ -34,6 +34,11 @@ const ActionDialog = ({ location, unit }) => {
     const localeUnits = canMoveWithin(location, id);
     console.log('ActionDialog', localeUnits);
 
+    if (escape) {
+        const escapeRoute = canEscape(los);
+        console.log('escapeRoute', escapeRoute);
+    }
+    
     const moveButton = canMove(); // check for open + valid tiles, if yes, unit can move
     let moveWithinButton;
     let attackButton;

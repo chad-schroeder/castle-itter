@@ -14,7 +14,7 @@ const initialState = {
                 commanded: false,
                 disrupted: false,
             },
-            exhausted: false,
+            exhausted: true,
             casualty: false,
         },
         lee: {

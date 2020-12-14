@@ -3,6 +3,7 @@ import { exhaustUnit } from 'Utils/Libs/units';
 import store from '../../store';
 
 const { tiles } = store.getState().map;
+const { allies } = store.getState().units;
 
 // get all vacant tiles
 export const getOpenTiles = () => {
@@ -42,9 +43,9 @@ const swapUnitTiles = (movingUnitId, staticUnitId = null, toTileId, fromTileId) 
 // };
 
 // get all units at location
-export const getLocaleUnits = location => {
+export const getLocaleUnits = (location, skipId = null) => {
     return tiles
-        .filter(tile => tile.location === location && tile.unit)
+        .filter(tile => tile.location === location && tile.unit && tile.unit !== skipId)
         .map(tile => tile.unit);
 };
 
@@ -62,4 +63,29 @@ export const actionMove = (unitId, openTiles) => {
     // highlight all open tiles
     // listen for selection
     // finalize move action
+};
+
+export const canMoveWithin = (location, skipId) => {
+    const localeUnits = getLocaleUnits(location, skipId);
+    const units = [];
+
+    if (localeUnits) {
+        Object.keys(allies).forEach(ally => {
+            const unit = allies[ally];
+
+            if (
+                localeUnits.includes(unit.id) && 
+                !unit.exhausted &&
+                !unit.tokens.commanded &&
+                !unit.tokens.disrupted && 
+                !unit.tokens.ordered
+            ) {
+                units.push(unit.id);
+            }
+        });
+    }
+
+    console.log('canMoveWithin', units);
+
+    return units;
 };

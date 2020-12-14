@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 
-import { actionMove, getOpenTiles } from 'Utils/Actions/move';
+import { actionMove, getOpenTiles, canMoveWithin } from 'Utils/Actions/move';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+
+const canMove = () => {
+    // TODO: determine if unit is in cellar or moving from cellar
+    const openTiles = getOpenTiles();
+    if (openTiles.length) return true;
+    return false;
+};
 
 const ActionDialog = ({ location, unit }) => {
     const [disabled, disableActions] = useState(false);
@@ -13,26 +20,26 @@ const ActionDialog = ({ location, unit }) => {
         suppress, 
         commander, 
         escape, 
-        tokens: { ordered, commanded, disrupted }, 
+        tokens: { 
+            ordered, 
+            commanded, 
+            disrupted 
+        }, 
         exhausted, 
     } = unit;
 
     // if unit cannot perform an action, return
     if (exhausted || commanded || ordered || disrupted) return;
 
-    let moveButton;
+    const localeUnits = canMoveWithin(location, id);
+    console.log('ActionDialog', localeUnits);
+
+    const moveButton = canMove(); // check for open + valid tiles, if yes, unit can move
     let moveWithinButton;
     let attackButton;
     let suppressButton;
     let commandButton;
     let escapeButton;
-
-    // can move? 
-    const openTiles = getOpenTiles();
-
-    if (openTiles.length) {
-        moveButton = true;
-    }
 
     if (location !== 'Deployment' || location !== 'C') {
         // are there valid units at same location?
@@ -69,7 +76,7 @@ const ActionDialog = ({ location, unit }) => {
 
         switch(action) {
             case 'move':
-                actionMove(id, openTiles);
+                actionMove(id);
                 break;
             case 'moveWithin':
                 // do moveWithin

@@ -1,31 +1,20 @@
 import checkInspired from 'Utils/Modifiers/inspire';
 
-import store from '../../store';
-
-const { allies } = store.getState().units;
-
-const getAttackValue = (unitId, locationId, armament = null) => {
-    const { attack, tanker } = allies[unitId];
-
+export const getAttackValue = (unit, locationId, armamentValue = 0) => {
+    const { id, attack, tanker } = unit;
     let value = attack;
 
     // if tanker unit and tile has increased firepower, use that firepower
-    if (tanker && armament) {
-        value = armament.attack;
+    if (tanker && armamentValue) {
+        value = armamentValue;
     }
 
     // check if unit is inspired
-    const inspired = checkInspired(locationId, unitId);
+    const inspired = checkInspired(locationId, id);
     
     if (inspired) {
         value += 1;
     }
     
     return value;
-};
-
-export const actionAttack = (unitId, los, armament) => {
-    const attackValue = getAttackValue(unitId, armament);
-
-    // TODO: highlight all enemy tracks within line of sight
 };

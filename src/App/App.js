@@ -21,7 +21,7 @@ const setupGame = () => {
 };
 
 const App = () => {
-    const { tiles } = useSelector(state => state.map);
+    const { tiles, tracks, locations } = useSelector(state => state.map);
     const { allies } = useSelector(state => state.units);
 
     const [card, setCard] = useState(null);
@@ -100,7 +100,13 @@ const App = () => {
                     </RadioGroup>
                 </View>
             </View>
-            <Map highlight={highlight} tiles={tiles} allies={allies} />
+            <Map 
+                highlight={highlight} 
+                tiles={tiles} 
+                allies={allies} 
+                tracks={tracks} 
+                locations={locations}
+            />
             <View
                 borderWidth="thin"
                 borderColor="dark"

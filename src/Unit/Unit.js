@@ -2,7 +2,17 @@ import React from 'react';
 
 import { StyledCenter, StyledRight, StyledSpinner } from './styled';
 
-const Unit = ({ id, name, nationality, attack, suppress, commander, tanker, tokens, exhausted, casualty, highlight, }) => {
+const checkInspired = (inspire, skipId) => {
+    // const hasInspired = inspire.filter(unit => unit.id !== skipId);
+    // if (hasInspired.lenght) return true;
+    return false;
+};
+
+const Unit = ({ unit, locations, highlight }) => {
+    const { id, name, nationality, attack, suppress, commander, tanker, tokens, exhausted, casualty, } = unit;
+    const { inspire } = locations;
+    let inspired = checkInspired(inspire, id);
+
     return (
         <tr>
             <StyledSpinner highlight={highlight}>

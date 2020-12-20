@@ -7,13 +7,19 @@ import { Heading, View } from '@adobe/react-spectrum';
 
 import { StyledTable } from './styled';
 
-const displayAllies = allies => {
-    return Object.keys(allies).map(ally => {
-        return <Unit key={ally} {...allies[ally]} />;
-    });
-};
+const Map = ({ tiles, locations, tracks, allies, highlight }) => {
+    const displayAllies = allies => {
+        return Object.keys(allies).map(ally => {
+            return (
+                <Unit 
+                    key={ally} 
+                    unit={allies[ally]}
+                    locations={locations} 
+                />
+            );
+        });
+    };
 
-const Map = ({ tiles, allies, highlight }) => {
     return (
         <>
             <View
@@ -33,16 +39,26 @@ const Map = ({ tiles, allies, highlight }) => {
                             <th>Location</th>
                             <th>LOS</th>
                             <th>Unit</th>
+                            <th>Attack</th>
+                            <th>Suppress</th>
                             <th>Armament</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {tiles.map(tile => <Tile 
-                            key={tile.id} 
-                            tile={tile}
-                            allies={allies}
-                            highlight={highlight} 
-                        />)}
+                        {tiles.map(tile => { 
+                            const { id, location: locationId } = tile;
+                            const location = locations[locationId];
+
+                            return (
+                                <Tile 
+                                    key={id} 
+                                    tile={tile}
+                                    location={location}
+                                    allies={allies}
+                                    highlight={highlight} 
+                                />
+                            );
+                        })}
                     </tbody>
                 </StyledTable>
             </View>

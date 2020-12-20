@@ -1,48 +1,66 @@
 const initialState = {
-    locations: [ // hero areas
-        {
+    locations: { // hero areas
+        NT: {
             id: 'NT',
             name: 'North Terrace',
             tiles: ['NT2', 'NT3', 'NT5', 'NT6'],
             defense: 6,
+            inspire: [],
+            officer: [],
+            morale: [],
         },
-        {
+        ST: {
             id: 'ST',
             name: 'South Terrace',
             tiles: ['ST2', 'ST4', 'ST5', 'ST6'],
             defense: 6,
+            inspire: [],
+            officer: [],
+            morale: [],
         },
-        {
+        K: {
             id: 'K',
             name: 'Keep',
             tiles: ['K1', 'K2', 'K3', 'K4'],
             defense: 6,
+            inspire: [],
+            officer: [],
+            morale: [],
         },
-        {
+        GH: {
             id: 'GH',
             name: 'Great Hall',
             tiles: ['GH1', 'GH2', 'GH3', 'GH4'],
             defense: 6,
+            inspire: [],
+            officer: [],
+            morale: [],
         },
-        {
+        G: {
             id: 'G',
             name: 'Gatehouse',
             tiles: ['G1', 'G2', 'G3', 'G4'],
             defense: 6,
+            inspire: ['clemenceau'],
+            officer: [],
+            morale: [],
         },
-        {
+        BJ: {
             id: 'BJ',
             name: 'Besotten Jenny',
             tiles: ['BJ1', 'BJ2', 'BJ3', 'BJ4'],
             defense: 6,
+            inspire: [],
+            officer: [],
+            morale: [],
         },
-        {
+        C: {
             id: 'C',
             name: 'Cellar',
             tiles: ['C1', 'C2', 'C3', 'C4', 'C5'],
             defense: 6,
         },
-    ],
+    },
     tiles: [ // hero tiles
         {
             id: 'NT2',
@@ -156,7 +174,7 @@ const initialState = {
             id: 'G3',
             location: 'G',
             los: ['black'],
-            unit: null,
+            unit: 'clemenceau',
         },
         {
             id: 'G4',
@@ -227,7 +245,7 @@ const initialState = {
             id: 'C2',
             location: 'C',
             los: [],
-            unit: 'clemenceau',
+            unit: null,
         },
         {
             id: 'C3',

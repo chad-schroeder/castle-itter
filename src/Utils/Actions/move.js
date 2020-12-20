@@ -65,7 +65,7 @@ export const actionMove = (unitId, openTiles) => {
     // finalize move action
 };
 
-const canMove = () => {
+export const canMove = () => {
     // TODO: determine if unit is in cellar or moving from cellar
     const openTiles = getOpenTiles();
     if (openTiles.length) {

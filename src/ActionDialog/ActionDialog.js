@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 
-import { actionMove, getOpenTiles, canMoveWithin, canEscape } from 'Utils/Actions/move';
+import { actionMove, canMove, canMoveWithin, canEscape } from 'Utils/Actions/move';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
-
-const canMove = () => {
-    // TODO: determine if unit is in cellar or moving from cellar
-    const openTiles = getOpenTiles();
-    if (openTiles.length) return true;
-    return false;
-};
+import { getAttackValue } from 'Utils/Actions/attack';
 
 const ActionDialog = ({ location, los, unit }) => {
     const [disabled, disableActions] = useState(false);
@@ -33,6 +27,9 @@ const ActionDialog = ({ location, los, unit }) => {
 
     const localeUnits = canMoveWithin(location, id);
     console.log('ActionDialog', localeUnits);
+
+    const attackValue = getAttackValue(unit, 'C');
+    console.log('canAttack', attackValue);
 
     if (escape) {
         const escapeRoute = canEscape(los);

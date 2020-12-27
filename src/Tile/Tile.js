@@ -1,6 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
 
-import { StyledSpinner } from './styled';
+import { StyledSpinner } from './styled';;
 
 const getLocalUnits = (locationTiles = [], tiles = [], skipId = null) => {
     const allies = tiles
@@ -73,8 +74,16 @@ const Tile = ({ tile, tiles, location, allies, highlight }) => {
             <td>{location.id}</td>
             <td>{los.map(sight => `${sight}`).join(', ')}</td>
             <td>{unit && unit.id}</td>
-            <td>{attack}</td>
-            <td>{suppress}</td>
+            <td className={classNames({
+                'hl-inspired': inspired,
+            })}>
+                {attack}
+            </td>
+            <td className={classNames({
+                'hl-inspired': inspired,
+            })}>
+                {suppress}
+            </td>
             <td>{armament && armament.name}</td>
         </tr>
     );

@@ -22,3 +22,10 @@ export const StyledSpinner = styled.td`
       `}
     }
 `;
+
+export const StyledCol = styled.td`
+    &.hl-inspired {
+      color: green;
+      font-weight: bold;
+    }
+`;

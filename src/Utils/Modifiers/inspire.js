@@ -1,34 +1,48 @@
-// import { getLocationUnits } from 'Utils/Libs/units';
+export const getLocalUnits = (locationTiles = [], tiles = [], skipId = null) => {
+    const allies = tiles
+        .filter(tile => 
+            locationTiles.includes(tile.id) 
+            && tile.unit 
+            && tile.unit !== skipId)
+        .map(tile => tile.unit);
 
-// import store from 'store';
+    return allies;
+};
 
-const checkInspired = () => true;
+const getInspiringUnits = (localUnits = [], allies = {}) => {
+    const inspireUnits = [];
 
-// const { allies } = store.getState().units;
+    Object.keys(allies).forEach(ally => {
+        const unit = allies[ally];
 
-// const checkInspired = (locationId, unitId) => {
-//     // if location is the cellar, return
-//     if (locationId === 'C') return;
+        // unit cannnot inspire if dispruted
+        if (localUnits.includes(unit.id) && unit.inspire && !unit.tokens.disabled) {
+            inspireUnits.push(unit.id);
+        }
+    });
+
+    if (inspireUnits.length) {
+        return true;
+    }
     
-//     // find other units at location
-//     const units = getLocationUnits(locationId, unitId);
+    return false;
+};
 
-//     // iterate through units at location
-//     const inspired = units.some(unit => {
-//         const ally = allies[unit];
+export const checkInspired = (locationId = 'C', locationTiles = [], tiles = [], allies = {}, skipId = null) => {
+    // units in the Cellar cannot inspired/be inspired
+    if (locationId === 'C') return;
+    
+    // get units at location, excluding current unit
+    const localUnits = getLocalUnits(locationTiles, tiles, skipId);
 
-//         if (ally.inspire && !ally.exhaused && !ally.tokens.includes('disrupted')) {
-//             return true;
-//         }
+    if (localUnits.length) {
+        // check for inspiring units at location
+        const inspired = getInspiringUnits(localUnits, allies);
 
-//         return false;
-//     });
-
-//     if (inspired) {
-//         return true;
-//     }
-
-//     return false;
-// };
-
-export default checkInspired;
+        if (inspired) {
+            return true;
+        }
+    }
+    
+    return false;
+};

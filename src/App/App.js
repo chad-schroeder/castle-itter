@@ -11,7 +11,7 @@ import { spendAction } from 'Utils/Libs/game';
 import escape from 'Utils/Libs/escape';
 import { destroyBesottenJenny } from 'Utils/Libs/tiles';
 
-import { Heading, RadioGroup, Radio, View } from '@adobe/react-spectrum';
+import { Heading, RadioGroup, Radio, View, ActionGroup, Item } from '@adobe/react-spectrum';
 
 import store from 'store';
 
@@ -54,21 +54,28 @@ const App = () => {
         <>
             <h1>Castle Itter</h1>
             <Card {...card} />
-            <button onClick={() => setCard(playCard())}>
-                Play Card
+            <ActionGroup>
+                <Item key="add">Play Card</Item>
+                <Item key="add">Spend Action</Item>
+                <Item key="add">Destroy Besotten Jenny</Item>
+                <Item key="add">New Game</Item>
+                <Item key="add">Escape</Item>
+            </ActionGroup>
+            {/* <button onClick={() => setCard(playCard())}>
+                
             </button>
             <button onClick={spendAction}>
-                Spend Action
+                
             </button>
             <button onClick={destroyBesottenJenny}>
-                Destroy Besotten Jenny
+                
             </button>
             <button onClick={setupGame}>
-                New Game
+                
             </button>
             <button onClick={() => escape('G2')}>
-                Escape
-            </button>
+                
+            </button> */}
             <View
                 borderWidth="thin"
                 borderColor="dark"

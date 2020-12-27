@@ -2,20 +2,55 @@ import React from 'react';
 
 import { StyledSpinner } from './styled';
 
-const checkInspired = (locationId, inspire = [], skipId = null) => {
-    // units in the cellar cannot be inspired
-    if (locationId === 'C') return false;
+const getLocalUnits = (locationTiles = [], tiles = [], skipId = null) => {
+    const allies = tiles
+        .filter(tile => 
+            locationTiles.includes(tile.id) 
+            && tile.unit 
+            && tile.unit !== skipId)
+        .map(tile => tile.unit);
 
-    const inspired = inspire.some(id => id !== skipId);
-    if (inspired) return true;
+    return allies;
+};
+
+const getInspiringUnits = (localUnits, allies) => {
+    const inspireUnits = [];
+
+    Object.keys(allies).forEach(ally => {
+        const unit = allies[ally];
+
+        if (localUnits.includes(unit.id) && unit.inspire && !unit.tokens.disabled) {
+            inspireUnits.push(unit.id);
+        }
+    });
+
+    if (inspireUnits.length) return true;
     return false;
 };
 
-const Tile = ({ tile, location, allies, highlight }) => {
+const checkInspired = (locationTiles = [], tiles = [], allies = {}, skipId = null) => {
+    // get units at location, excluding current unit, if any
+    const localUnits = getLocalUnits(locationTiles, tiles, skipId);
+
+    if (localUnits.length) {
+        // check for inspire units at location
+        const inspired = getInspiringUnits(localUnits, allies);
+
+        if (inspired) {
+            return true;
+        }
+    }
+    
+    return false;
+};
+
+const Tile = ({ tile, tiles, location, allies, highlight }) => {
     const { id: tileId, los, unit: ally, armament } = tile;
-    const { id: locationId, tiles: locationTiles, inspire } = location;
+    const { tiles: locationTiles } = location;
     const unit = allies[ally];
-    const inspired = checkInspired(locationId, inspire, unit?.id);
+
+    const inspired = checkInspired(locationTiles, tiles, allies, unit?.id);
+
     let attack = 0;
     let suppress = 0;
 

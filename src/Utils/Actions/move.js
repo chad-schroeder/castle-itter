@@ -1,5 +1,3 @@
-import { exhaustUnit } from 'Utils/Libs/units';
-
 import store from '../../store';
 
 const { tiles, tracks } = store.getState().map;
@@ -13,23 +11,23 @@ export const getOpenTiles = () => {
 };
 
 // move unit(s) from old tile to new tile
-const swapUnitTiles = (movingUnitId, staticUnitId = null, toTileId, fromTileId) => {
-    const updatedTiles = tiles.map(tile => {
-        // add moving unit to new tile
-        if (tile.id === toTileId) {
-            return { ...tile, unit: movingUnitId };
-        }
+// const swapUnitTiles = (movingUnitId, staticUnitId = null, toTileId, fromTileId) => {
+//     const updatedTiles = tiles.map(tile => {
+//         // add moving unit to new tile
+//         if (tile.id === toTileId) {
+//             return { ...tile, unit: movingUnitId };
+//         }
 
-        // swap in static unit or set to null
-        if (tile.id === fromTileId) { 
-            return { ...tile, unit: staticUnitId };
-        }
+//         // swap in static unit or set to null
+//         if (tile.id === fromTileId) { 
+//             return { ...tile, unit: staticUnitId };
+//         }
 
-        return tile;
-    });
+//         return tile;
+//     });
     
-    return updatedTiles;
-};
+//     return updatedTiles;
+// };
 
 // Action: move location, move within
 // export const actionMove = (movingUnitId, staticUnitId, toTileId, fromTileId) => {

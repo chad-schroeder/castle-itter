@@ -53,6 +53,7 @@ const Map = ({ tiles, locations, tracks, allies, highlight }) => {
                                 <Tile 
                                     key={id} 
                                     tile={tile}
+                                    tiles={tiles}
                                     location={location}
                                     allies={allies}
                                     highlight={highlight} 

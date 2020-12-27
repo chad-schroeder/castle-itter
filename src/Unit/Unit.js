@@ -3,7 +3,7 @@ import React from 'react';
 import { StyledCenter, StyledRight, StyledSpinner } from './styled';
 
 const Unit = ({ unit, highlight }) => {
-    const { id, name, nationality, attack, suppress, commander, tanker, tokens, exhausted, casualty, } = unit;
+    const { id, name, nationality, commander, tanker, tokens, exhausted, casualty, } = unit;
 
     return (
         <tr>
@@ -13,8 +13,6 @@ const Unit = ({ unit, highlight }) => {
             <td>{id}</td>
             <td>{name}</td>
             <td>{nationality}</td>
-            <StyledRight>{attack}</StyledRight>
-            <StyledRight>{suppress}</StyledRight>
             <StyledCenter>
                 {commander && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>

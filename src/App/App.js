@@ -11,7 +11,7 @@ import { spendAction } from 'Utils/Libs/game';
 import escape from 'Utils/Libs/escape';
 import { destroyBesottenJenny } from 'Utils/Libs/tiles';
 
-import { Heading, RadioGroup, Radio, View, ActionGroup, Item } from '@adobe/react-spectrum';
+import { Heading, RadioGroup, Radio, View, ActionGroup, Item, DialogContainer, ActionButton } from '@adobe/react-spectrum';
 
 import store from 'store';
 
@@ -25,6 +25,7 @@ const App = () => {
     const { allies } = useSelector(state => state.units);
 
     const [card, setCard] = useState(null);
+    const [dialogOpen, setDialogOpen] = useState(false);
     const [highlight, setHighlight] = useState('none');
 
     const basse = {
@@ -54,13 +55,24 @@ const App = () => {
         <>
             <h1>Castle Itter</h1>
             <Card {...card} />
-            <ActionGroup>
+            <ActionGroup onAction={() => setDialogOpen(true)}>
                 <Item key="add">Play Card</Item>
                 <Item key="add">Spend Action</Item>
                 <Item key="add">Destroy Besotten Jenny</Item>
                 <Item key="add">New Game</Item>
                 <Item key="add">Escape</Item>
             </ActionGroup>
+            <DialogContainer onDismiss={() => setDialogOpen(false)} isDismissable>
+                {dialogOpen && (
+                    <>
+                        <p>Hello, world!</p>
+                        <ActionButton onPress={() => setDialogOpen(false)}>
+                            Close
+                        </ActionButton>
+                    </>
+                )}
+            </DialogContainer>
+
             {/* <button onClick={() => setCard(playCard())}>
                 
             </button>
@@ -102,8 +114,6 @@ const App = () => {
                         <Radio value="move">Move</Radio>
                         <Radio value="moveWithin">Move Within</Radio>
                         <Radio value="command">Command</Radio>
-                        <Radio value="inspired">Inspired</Radio>
-                        <Radio value="morale">Morale</Radio>
                     </RadioGroup>
                 </View>
             </View>

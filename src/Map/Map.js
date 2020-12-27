@@ -79,15 +79,13 @@ const Map = ({ tiles, locations, tracks, allies, highlight }) => {
                             <th>ID</th>
                             <th>Name</th>
                             <th>Nation</th>
-                            <th className="align-right">A</th>
-                            <th className="align-right">S</th>
                             <th className="align-center">C</th>
                             <th className="align-center">T</th>
-                            <th>Ordered</th>
-                            <th>Commanded</th>
-                            <th>Disrupted</th>
-                            <th>Exhausted</th>
-                            <th>Casualty</th>
+                            <th className="align-center">Ordered</th>
+                            <th className="align-center">Commanded</th>
+                            <th className="align-center">Disrupted</th>
+                            <th className="align-center">Exhausted</th>
+                            <th className="align-center">Casualty</th>
                         </tr>
                     </thead>
                     <tbody>

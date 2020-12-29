@@ -25,8 +25,7 @@ const App = () => {
     const { allies } = useSelector(state => state.units);
 
     const [card, setCard] = useState(null);
-    const [dialogOpen, setDialogOpen] = useState(false);
-    const [highlight, setHighlight] = useState('none');
+    const [appDialog, setAppDialog] = useState(false);
 
     const basse = {
         id: 'basse',
@@ -55,18 +54,18 @@ const App = () => {
         <>
             <h1>Castle Itter</h1>
             <Card {...card} />
-            <ActionGroup onAction={() => setDialogOpen(true)}>
-                <Item key="add">Play Card</Item>
-                <Item key="add">Spend Action</Item>
-                <Item key="add">Destroy Besotten Jenny</Item>
-                <Item key="add">New Game</Item>
-                <Item key="add">Escape</Item>
+            <ActionGroup onAction={() => setAppDialog(true)}>
+                <Item key="playCard">Play Card</Item>
+                <Item key="spendAction">Spend Action</Item>
+                <Item key="destroyJenny">Destroy Besotten Jenny</Item>
+                <Item key="newGame">New Game</Item>
+                <Item key="escape">Escape</Item>
             </ActionGroup>
-            <DialogContainer onDismiss={() => setDialogOpen(false)} isDismissable>
-                {dialogOpen && (
+            <DialogContainer onDismiss={() => setAppDialog(false)} isDismissable>
+                {appDialog && (
                     <>
                         <p>Hello, world!</p>
-                        <ActionButton onPress={() => setDialogOpen(false)}>
+                        <ActionButton onPress={() => setAppDialog(false)}>
                             Close
                         </ActionButton>
                     </>
@@ -106,8 +105,8 @@ const App = () => {
                 >
                     <RadioGroup 
                         orientation="horizontal" 
-                        value={highlight}
-                        onChange={setHighlight}
+                        // value={highlight}
+                        // onChange={setHighlight}
                         aria-label="Set highlight"
                     >
                         <Radio value="none">None</Radio>
@@ -118,7 +117,6 @@ const App = () => {
                 </View>
             </View>
             <Map 
-                highlight={highlight} 
                 tiles={tiles} 
                 allies={allies} 
                 tracks={tracks} 

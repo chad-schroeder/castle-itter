@@ -16,6 +16,7 @@ const initialState = {
             },
             exhausted: true,
             casualty: false,
+            tile: 'G4',
         },
         lee: {
             id: 'lee',
@@ -33,6 +34,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         worsham: {
             id: 'worsham',
@@ -48,6 +50,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         pollack: {
             id: 'pollack',
@@ -63,6 +66,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'G2',
         },
         sutton: {
             id: 'sutton',
@@ -78,6 +82,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         petrukovich: {
             id: 'petrukovich',
@@ -93,6 +98,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         steiner: {
             id: 'steiner',
@@ -109,6 +115,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'BJ1',
         },
         szymczyk: {
             id: 'szymczyk',
@@ -125,6 +132,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         rushford: {
             id: 'rushford',
@@ -141,6 +149,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         mchaley: {
             id: 'mchaley',
@@ -157,6 +166,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         schrader: {
             id: 'schrader',
@@ -173,6 +183,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         gangl: {
             id: 'gangl',
@@ -191,6 +202,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         dietrich: {
             id: 'dietrich',
@@ -207,6 +219,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         hockel: {
             id: 'hockel',
@@ -223,6 +236,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         blechschmidt: {
             id: 'blechschmidt',
@@ -239,6 +253,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         rifleman1: {
             id: 'rifleman1',
@@ -255,6 +270,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         rifleman2: {
             id: 'rifleman2',
@@ -271,6 +287,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         rifleman3: {
             id: 'rifleman3',
@@ -287,6 +304,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         rifleman4: {
             id: 'rifleman4',
@@ -303,6 +321,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         rifleman5: {
             id: 'rifleman5',
@@ -319,6 +338,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         linson: {
             id: 'linson',
@@ -335,6 +355,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         wegscheider: {
             id: 'wegscheider',
@@ -352,6 +373,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         waltl: {
             id: 'waltl',
@@ -368,6 +390,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: null,
         },
         clemenceau: {
             id: 'clemenceau',
@@ -384,6 +407,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'G3',
         },
         gamelin: {
             id: 'gamelin',
@@ -400,6 +424,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'C1',
         },
         rocque: {
             id: 'rocque',
@@ -416,6 +441,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'C3',
         },
         reynaud: {
             id: 'reynaud',
@@ -432,6 +458,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'C4',
         },
         borotra: {
             id: 'borotra',
@@ -448,6 +475,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
+            tile: 'C5',
         },
     },
     axis: {

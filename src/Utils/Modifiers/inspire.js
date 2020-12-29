@@ -28,7 +28,7 @@ const getInspiringUnits = (localUnits = [], allies = {}) => {
     return false;
 };
 
-export const checkInspired = (locationId = 'C', locationTiles = [], tiles = [], allies = {}, skipId = null) => {
+export const isInspired = (locationId = 'C', locationTiles = [], tiles = [], allies = {}, skipId = null) => {
     // units in the Cellar cannot inspired/be inspired
     if (locationId === 'C') return;
     

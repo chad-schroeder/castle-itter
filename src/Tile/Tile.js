@@ -1,51 +1,64 @@
 import React from 'react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 
-import { checkInspired } from 'Utils/Modifiers/inspire';
+import { ActionButton, Content, DialogTrigger, Dialog } from '@adobe/react-spectrum';
 
-import { StyledSpinner, StyledCol } from './styled';;
+// import { checkInspired } from 'Utils/Modifiers/inspire';
 
-const Tile = ({ tile, tiles, location, allies, highlight }) => {
-    const { id: tileId, los, unit: ally, armament } = tile;
-    const { id: locationId, tiles: locationTiles } = location;
-    const unit = allies[ally];
+import { } from './styled';;
 
-    const inspired = checkInspired(locationId, locationTiles, tiles, allies, unit?.id);
+const Tile = ({ tile, tiles, allies, highlight }) => {
+    const { id, location, los, unit, armament } = tile;
+    // const { id: locationId, tiles: locationTiles } = location;
+    // const unit = allies[ally];
 
-    let attack = 0;
-    let suppress = 0;
-
-    if (unit) {
-        attack = unit.attack;
-        suppress = unit.suppress;
-
-        if (inspired) {
-            attack += 1;
-            suppress += 1;
-        }
-    }
+    // const inspired = checkInspired(locationId, locationTiles, tiles, allies, unit?.id);
 
     return (
-        <tr>
-            <StyledSpinner highlight={highlight} unit={unit}>
-                <img src="images/select.svg" alt="Indicator" />
-            </StyledSpinner>
-            <td>{tileId}</td>
-            <td>{location.id}</td>
-            <td>{los.map(sight => `${sight}`).join(', ')}</td>
-            <td>{unit && unit.id}</td>
-            <StyledCol className={classNames({
-                'hl-inspired': inspired,
-            })}>
-                {attack}
-            </StyledCol>
-            <StyledCol className={classNames({
-                'hl-inspired': inspired,
-            })}>
-                {suppress}
-            </StyledCol>
-            <td>{armament && armament.name}</td>
-        </tr>
+        <DialogTrigger type="popover" hideArrow>
+            <ActionButton>{id}</ActionButton>
+            {/* <tr>
+                <StyledSpinner highlight={highlight} unit={unit}>
+                    <img src="images/select.svg" alt="Indicator" />
+                </StyledSpinner>
+                <td>{id}</td>
+                <td>{location.id}</td>
+                <td>{los.map(sight => `${sight}`).join(', ')}</td>
+                <td>{unit && unit.id}</td>
+                <StyledCol className={classNames({
+                    'hl-inspired': inspired,
+                })}>
+                    {attack}
+                </StyledCol>
+                <StyledCol className={classNames({
+                    'hl-inspired': inspired,
+                })}>
+                    {suppress}
+                </StyledCol>
+                <td>{armament && armament.name}</td>
+            </tr> */}
+            <Dialog>
+                <Content>
+                    <table>
+                        <tr>
+                            <th>ID:</th><td>{id}</td>
+                        </tr>
+                        <tr>
+                            <th>Location:</th><td>{location}</td>
+                        </tr>
+                        <tr>
+                            <th>LOS:</th><td>{los.length ? los.map(sight => `${sight}`).join(', ') : '-'}</td>
+                        </tr>
+                        <tr>
+                            <th>Unit:</th><td>{unit ? unit : '-'}</td>
+                        </tr>
+                        <tr>
+                            <th>Armament:</th><td>{armament ? armament.name : '-'}</td>
+                        </tr>
+                    </table>
+                </Content>
+            </Dialog>
+        </DialogTrigger>
     );
 };
 

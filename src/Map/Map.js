@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Tile from '../Tile';
 import Unit from '../Unit';
 
-import { Heading, View } from '@adobe/react-spectrum';
+import { isInspired } from 'Utils/Modifiers/inspire';
 
+import { Heading, View, DialogContainer, ActionButton } from '@adobe/react-spectrum';
 import { StyledTable } from './styled';
 
-const Map = ({ tiles, locations, tracks, allies, highlight }) => {
+const Map = ({ tiles, locations, tracks, allies }) => {
+    const [tileDialog, setTileDialog] = useState(false);
+
     const displayAllies = allies => {
         return Object.keys(allies).map(ally => {
             return (
@@ -18,6 +21,10 @@ const Map = ({ tiles, locations, tracks, allies, highlight }) => {
                 />
             );
         });
+    };
+
+    const renderTile = tile => {
+        return <Tile key={tile.id} tile={tile} />;
     };
 
     return (
@@ -31,37 +38,9 @@ const Map = ({ tiles, locations, tracks, allies, highlight }) => {
                 paddingX="size-200"
             >
                 <Heading level={2} marginBottom="size-100">Tiles</Heading>
-                <StyledTable>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>ID</th>
-                            <th>Location</th>
-                            <th>LOS</th>
-                            <th>Unit</th>
-                            <th>Attack</th>
-                            <th>Suppress</th>
-                            <th>Armament</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tiles.map(tile => { 
-                            const { id, location: locationId } = tile;
-                            const location = locations[locationId];
-
-                            return (
-                                <Tile 
-                                    key={id} 
-                                    tile={tile}
-                                    tiles={tiles}
-                                    location={location}
-                                    allies={allies}
-                                    highlight={highlight} 
-                                />
-                            );
-                        })}
-                    </tbody>
-                </StyledTable>
+                <>
+                    {tiles.map(tile => renderTile(tile))}
+                </>
             </View>
             <View
                 borderWidth="thin"
@@ -75,8 +54,8 @@ const Map = ({ tiles, locations, tracks, allies, highlight }) => {
                 <StyledTable>
                     <thead>
                         <tr>
-                            <th></th>
                             <th>ID</th>
+                            <th>Tile</th>
                             <th>Name</th>
                             <th>Nation</th>
                             <th className="align-center">C</th>
@@ -93,6 +72,16 @@ const Map = ({ tiles, locations, tracks, allies, highlight }) => {
                     </tbody>
                 </StyledTable>
             </View>
+            <DialogContainer onDismiss={() => setTileDialog(false)} isDismissable>
+                {tileDialog && (
+                    <>
+                        <h2>Tile Dialog</h2>
+                        <ActionButton onPress={() => setTileDialog(false)}>
+                            Close
+                        </ActionButton>
+                    </>
+                )}
+            </DialogContainer>
         </>
     );
 };

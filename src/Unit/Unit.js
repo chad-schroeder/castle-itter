@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { StyledCenter, StyledRight, StyledSpinner } from './styled';
+import { StyledCenter, StyledSpinner } from './styled';
 
-const Unit = ({ unit, highlight }) => {
-    const { id, name, nationality, commander, tanker, tokens, exhausted, casualty, } = unit;
+const Unit = ({ unit }) => {
+    const { id, name, nationality, commander, tanker, tokens, exhausted, casualty, tile, } = unit;
 
     return (
         <tr>
-            <StyledSpinner highlight={highlight}>
-                <img src="images/select.svg" alt="" />
-            </StyledSpinner>
             <td>{id}</td>
+            <td>{tile}</td>
             <td>{name}</td>
             <td>{nationality}</td>
             <StyledCenter>

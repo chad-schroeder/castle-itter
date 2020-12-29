@@ -1,16 +1,21 @@
 import React from 'react';
 
-import { StyledCenter, StyledSpinner } from './styled';
+import { StyledCenter, StyledRight } from './styled';
 
 const Unit = ({ unit }) => {
-    const { id, name, nationality, commander, tanker, tokens, exhausted, casualty, tile, } = unit;
+    const { id, nationality, attack, suppress, commander, tanker, tokens, exhausted, casualty, tile, } = unit;
 
     return (
         <tr>
             <td>{id}</td>
             <td>{tile}</td>
-            <td>{name}</td>
             <td>{nationality}</td>
+            <StyledRight>
+                {attack}
+            </StyledRight>
+            <StyledRight>
+                {suppress}
+            </StyledRight>
             <StyledCenter>
                 {commander && <img src="images/checkmark.svg" width="20" alt="" />}
             </StyledCenter>

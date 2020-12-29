@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import Tile from '../Tile';
 import Unit from '../Unit';
 
-import { isInspired } from 'Utils/Modifiers/inspire';
+// import { isInspired } from 'Utils/Modifiers/inspire';
 
 import { Heading, View, DialogContainer, ActionButton } from '@adobe/react-spectrum';
-import { StyledTable } from './styled';
+import { StyledTable, StyledTiles } from './styled';
 
 const Map = ({ tiles, locations, tracks, allies }) => {
     const [tileDialog, setTileDialog] = useState(false);
@@ -38,9 +38,9 @@ const Map = ({ tiles, locations, tracks, allies }) => {
                 paddingX="size-200"
             >
                 <Heading level={2} marginBottom="size-100">Tiles</Heading>
-                <>
+                <StyledTiles>
                     {tiles.map(tile => renderTile(tile))}
-                </>
+                </StyledTiles>
             </View>
             <View
                 borderWidth="thin"
@@ -56,8 +56,9 @@ const Map = ({ tiles, locations, tracks, allies }) => {
                         <tr>
                             <th>ID</th>
                             <th>Tile</th>
-                            <th>Name</th>
                             <th>Nation</th>
+                            <th className="align-right">Attack</th>
+                            <th className="align-right">Suppress</th>
                             <th className="align-center">C</th>
                             <th className="align-center">T</th>
                             <th className="align-center">Ordered</th>

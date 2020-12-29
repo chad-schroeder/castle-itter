@@ -54,3 +54,9 @@ export const StyledTable = styled.table`
         border-bottom-left-radius: 4px;
     }
 `;
+
+export const StyledTiles = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    grid-gap: 1em;
+`;

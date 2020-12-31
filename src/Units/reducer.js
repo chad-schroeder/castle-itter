@@ -10,7 +10,7 @@ const initialState = {
             commander: true,
             tanker: true,
             tokens: {
-                ordered: false,
+                ordered: true,
                 commanded: false,
                 disrupted: false,
             },
@@ -34,7 +34,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         worsham: {
             id: 'worsham',
@@ -50,7 +50,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         pollack: {
             id: 'pollack',
@@ -82,7 +82,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         petrukovich: {
             id: 'petrukovich',
@@ -98,7 +98,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         steiner: {
             id: 'steiner',
@@ -132,7 +132,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         rushford: {
             id: 'rushford',
@@ -149,7 +149,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         mchaley: {
             id: 'mchaley',
@@ -166,7 +166,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         schrader: {
             id: 'schrader',
@@ -183,7 +183,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         gangl: {
             id: 'gangl',
@@ -202,7 +202,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         dietrich: {
             id: 'dietrich',
@@ -219,7 +219,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         hockel: {
             id: 'hockel',
@@ -236,7 +236,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         blechschmidt: {
             id: 'blechschmidt',
@@ -253,7 +253,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         rifleman1: {
             id: 'rifleman1',
@@ -270,7 +270,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         rifleman2: {
             id: 'rifleman2',
@@ -287,7 +287,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         rifleman3: {
             id: 'rifleman3',
@@ -304,7 +304,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         rifleman4: {
             id: 'rifleman4',
@@ -321,7 +321,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         rifleman5: {
             id: 'rifleman5',
@@ -338,7 +338,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'D',
         },
         linson: {
             id: 'linson',
@@ -355,7 +355,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'R',
         },
         wegscheider: {
             id: 'wegscheider',
@@ -373,7 +373,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'R',
         },
         waltl: {
             id: 'waltl',
@@ -390,7 +390,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: null,
+            tile: 'R',
         },
         clemenceau: {
             id: 'clemenceau',

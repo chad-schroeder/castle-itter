@@ -1,4 +1,6 @@
 export const getLocalUnits = (locationTiles = [], tiles = [], skipId = null) => {
+    // console.log({ locationTiles });
+
     const allies = tiles
         .filter(tile => 
             locationTiles.includes(tile.id) 

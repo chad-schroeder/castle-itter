@@ -19,7 +19,8 @@ const Unit = ({ unit, isInspired = false }) => {
             disrupted,
         }, 
         exhausted, 
-        casualty, 
+        casualty,
+        tile,
     } = unit;
 
 
@@ -35,7 +36,7 @@ const Unit = ({ unit, isInspired = false }) => {
                 {name}
             </StyledName>
             <StyledNationality>
-                {nationality}
+                {tile}
             </StyledNationality>
             <StyledValues>
                 {isInspired ? attack + 1 : attack} / {isInspired ? suppress + 1 : suppress}

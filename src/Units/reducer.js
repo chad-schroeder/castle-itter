@@ -34,7 +34,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D2',
         },
         worsham: {
             id: 'worsham',
@@ -50,7 +50,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D3',
         },
         pollack: {
             id: 'pollack',
@@ -82,7 +82,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D5',
         },
         petrukovich: {
             id: 'petrukovich',
@@ -98,7 +98,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D6',
         },
         steiner: {
             id: 'steiner',
@@ -132,7 +132,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D8',
         },
         rushford: {
             id: 'rushford',
@@ -149,7 +149,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D9',
         },
         mchaley: {
             id: 'mchaley',
@@ -166,7 +166,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D10',
         },
         schrader: {
             id: 'schrader',
@@ -183,7 +183,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D11',
         },
         gangl: {
             id: 'gangl',
@@ -202,7 +202,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D12',
         },
         dietrich: {
             id: 'dietrich',
@@ -219,7 +219,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D13',
         },
         hockel: {
             id: 'hockel',
@@ -236,7 +236,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D14',
         },
         blechschmidt: {
             id: 'blechschmidt',
@@ -253,7 +253,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D15',
         },
         rifleman1: {
             id: 'rifleman1',
@@ -270,7 +270,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D16',
         },
         rifleman2: {
             id: 'rifleman2',
@@ -287,7 +287,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D17',
         },
         rifleman3: {
             id: 'rifleman3',
@@ -304,7 +304,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D18',
         },
         rifleman4: {
             id: 'rifleman4',
@@ -321,7 +321,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
+            tile: 'D19',
         },
         rifleman5: {
             id: 'rifleman5',
@@ -338,24 +338,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D',
-        },
-        linson: {
-            id: 'linson',
-            name: 'Linson',
-            nationality: 'GER',
-            placement: 'Reinforcement',
-            attack: 1,
-            suppress: 2,
-            reinforcement: true,
-            tokens: {
-                ordered: false,
-                commanded: false,
-                disrupted: false,
-            },
-            exhausted: false,
-            casualty: false,
-            tile: 'R',
+            tile: 'D20',
         },
         wegscheider: {
             id: 'wegscheider',
@@ -373,7 +356,24 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'R',
+            tile: 'R1',
+        },
+        linson: {
+            id: 'linson',
+            name: 'Linson',
+            nationality: 'GER',
+            placement: 'Reinforcement',
+            attack: 1,
+            suppress: 2,
+            reinforcement: true,
+            tokens: {
+                ordered: false,
+                commanded: false,
+                disrupted: false,
+            },
+            exhausted: false,
+            casualty: false,
+            tile: 'R2',
         },
         waltl: {
             id: 'waltl',
@@ -390,7 +390,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'R',
+            tile: 'R3',
         },
         clemenceau: {
             id: 'clemenceau',

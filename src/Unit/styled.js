@@ -42,8 +42,13 @@ export const StyledValues = styled.p`
   padding: 2px 8px;
   color: white;
   font-size: 12px;
+  font-weight: bold;
   text-align: center;
   background-color: black;
+
+  ${StyledContainer}.is-inspired & {
+    color: green;
+  }
 `;
 
 export const StyledCommanded = styled.div`

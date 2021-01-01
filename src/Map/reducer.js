@@ -247,6 +247,144 @@ const initialState = {
             los: [],
             unit: 'borotra',
         },
+        {
+            id: 'D1',
+            location: 'D',
+            los: [],
+            unit: null, // basse
+        },
+        {
+            id: 'D2',
+            location: 'D',
+            los: [],
+            unit: 'lee',
+        },
+        {
+            id: 'D3',
+            location: 'D',
+            los: [],
+            unit: 'worsham',
+        },
+        {
+            id: 'D4',
+            location: 'D',
+            los: [],
+            unit: null, // pollack
+        },
+        {
+            id: 'D5',
+            location: 'D',
+            los: [],
+            unit: 'sutton',
+        },
+        {
+            id: 'D6',
+            location: 'D',
+            los: [],
+            unit: 'petrukovich',
+        },
+        {
+            id: 'D7',
+            location: 'D6',
+            los: [],
+            unit: null, // steiner
+        },
+        {
+            id: 'D8',
+            location: 'D',
+            los: [],
+            unit: 'szymczyk',
+        },
+        {
+            id: 'D9',
+            location: 'D',
+            los: [],
+            unit: 'rushford',
+        },
+        {
+            id: 'D10',
+            location: 'D',
+            los: [],
+            unit: 'mchaley',
+        },
+        {
+            id: 'D11',
+            location: 'D',
+            los: [],
+            unit: 'schrader',
+        },
+        {
+            id: 'D12',
+            location: 'D',
+            los: [],
+            unit: 'gangl',
+        },
+        {
+            id: 'D13',
+            location: 'D',
+            los: [],
+            unit: 'dietrich',
+        },
+        {
+            id: 'D14',
+            location: 'D',
+            los: [],
+            unit: 'hockel',
+        },
+        {
+            id: 'D15',
+            location: 'D',
+            los: [],
+            unit: 'blechschmidt',
+        },
+        {
+            id: 'D16',
+            location: 'D',
+            los: [],
+            unit: 'rifleman1',
+        },
+        {
+            id: 'D17',
+            location: 'D',
+            los: [],
+            unit: 'rifleman2',
+        },
+        {
+            id: 'D18',
+            location: 'D',
+            los: [],
+            unit: 'rifleman3',
+        },
+        {
+            id: 'D19',
+            location: 'D',
+            los: [],
+            unit: 'rifleman4',
+        },
+        {
+            id: 'D20',
+            location: 'D',
+            los: [],
+            unit: 'rifleman5',
+        },
+        {
+            id: 'R1',
+            location: 'R',
+            los: [],
+            unit: 'wegscheider',
+        },
+        {
+            id: 'R2',
+            location: 'R',
+            los: [],
+            unit: 'linson',
+        },
+        {
+            id: 'R3',
+            location: 'R',
+            los: [],
+            unit: 'waltl',
+        },
     ],
     tracks: { // enemy tracks
         2: {

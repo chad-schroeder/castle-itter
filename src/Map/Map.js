@@ -37,11 +37,21 @@ const checkInspired = (unit = null, tiles = [], locations = [], allies = []) => 
 const Map = ({ tiles, locations, tracks, allies }) => {
     const [tileDialog, setTileDialog] = useState(false);
 
+    console.log({ tiles });
+    console.log({ locations });
+    console.log({ tracks });
+    console.log({ allies });
+
     const renderAllies = allies => {
         return Object.keys(allies).map(ally => {
             const unit = allies[ally];
-            let isInspired = checkInspired(unit, tiles, locations, allies);
-            
+            console.log({ unit });
+
+            const { location: locationId } = tiles.find(tile => tile.id === unit.tile) || {};
+            console.log('tile', { locationId });
+
+            let isInspired = false;
+
             return (
                 <Unit 
                     key={unit.id} 

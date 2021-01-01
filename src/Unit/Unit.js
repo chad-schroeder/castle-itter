@@ -5,8 +5,9 @@ import {
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit, isInspired = false }) => {
+const Unit = ({ unit, tile = {}, isInspired = false }) => {
     const { 
+        id,
         name, 
         nationality, 
         attack, 
@@ -20,26 +21,45 @@ const Unit = ({ unit, isInspired = false }) => {
         }, 
         exhausted, 
         casualty,
-        tile,
     } = unit;
 
+    const {
+        id: tileId,
+        armament,
+    } = tile;
+
+    let attackVal = attack;
+    let suppressVal = suppress;
+
+    if (tanker && armament) {
+        attackVal = tile.armament.attack || 0;
+        suppressVal = tile.armament.suppress || 0;
+    }
+
+    if (isInspired) {
+        attackVal += 1;
+        suppressVal += 1;
+    }
 
     return (
-        <StyledContainer className={classNames({
-            'is-ordered': ordered,
-            'is-disrupted': disrupted,
-            'is-commanded': commanded,
-            'is-inspired': isInspired,
-            'is-exhausted': exhausted,
-        })}>
+        <StyledContainer 
+            className={classNames({
+                'is-ordered': ordered,
+                'is-disrupted': disrupted,
+                'is-commanded': commanded,
+                'is-inspired': isInspired,
+                'is-exhausted': exhausted,
+            })}
+            onClick={() => console.log(id, attackVal, suppressVal)}
+        >
             <StyledName>
                 {name}
             </StyledName>
             <StyledNationality>
-                {tile}
+                {tileId}
             </StyledNationality>
             <StyledValues>
-                {isInspired ? attack + 1 : attack} / {isInspired ? suppress + 1 : suppress}
+                {attackVal} / {suppressVal}
             </StyledValues>
             <StyledCommanded>
                 <img src="images/commanded.svg" width="20" alt="" />

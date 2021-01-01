@@ -149,7 +149,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D9',
+            tile: 'BJ3',
         },
         mchaley: {
             id: 'mchaley',

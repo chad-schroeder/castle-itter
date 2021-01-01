@@ -45,10 +45,7 @@ const Map = ({ tiles, locations, tracks, allies }) => {
     const renderAllies = allies => {
         return Object.keys(allies).map(ally => {
             const unit = allies[ally];
-            console.log({ unit });
-
-            const { location: locationId } = tiles.find(tile => tile.id === unit.tile) || {};
-            console.log('tile', { locationId });
+            const tile = tiles.find(tile => tile.id === unit.tile) || {};
 
             let isInspired = false;
 
@@ -56,6 +53,7 @@ const Map = ({ tiles, locations, tracks, allies }) => {
                 <Unit 
                     key={unit.id} 
                     unit={unit}
+                    tile={tile}
                     isInspired={isInspired}
                 />
             );

@@ -5,26 +5,26 @@ import {
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit, tile = {}, isInspired = false }) => {
+const Unit = ({ unit = {}, tile = {}, isInspired = false, onUnitClick }) => {
     const { 
-        id,
+        id: unitId,
         name, 
-        nationality, 
         attack, 
         suppress, 
-        commander, 
-        tanker, 
+        commander = null, 
+        tanker = null,
+        escape = false,
         tokens: {
             ordered,
             commanded,
             disrupted,
         }, 
-        exhausted, 
-        casualty,
+        exhausted,
     } = unit;
 
     const {
         id: tileId,
+        location,
         armament,
     } = tile;
 
@@ -41,6 +41,20 @@ const Unit = ({ unit, tile = {}, isInspired = false }) => {
         suppressVal += 1;
     }
 
+    const packet = {
+        unitId,
+        tileId,
+        location,
+        attack: attackVal,
+        suppress: suppressVal,
+        commander,
+        escape,
+        ordered,
+        commanded,
+        disrupted,
+        exhausted,
+    };
+
     return (
         <StyledContainer 
             className={classNames({
@@ -50,7 +64,7 @@ const Unit = ({ unit, tile = {}, isInspired = false }) => {
                 'is-inspired': isInspired,
                 'is-exhausted': exhausted,
             })}
-            onClick={() => console.log(id, attackVal, suppressVal)}
+            onClick={() => onUnitClick(packet)}
         >
             <StyledName>
                 {name}
@@ -70,27 +84,6 @@ const Unit = ({ unit, tile = {}, isInspired = false }) => {
             <StyledOrdered>
                 <img src="images/checkmark.svg" width="20" alt="" />
             </StyledOrdered>
-            {/* <p>
-                {commander && <img src="images/checkmark.svg" width="20" alt="" />}
-            </p>
-            <p>
-                {tanker && <img src="images/checkmark.svg" width="20" alt="" />}
-            </p>
-            <p>
-                {ordered && <img src="images/checkmark.svg" width="20" alt="" />}
-            </p>
-            <p>
-                {commanded && <img src="images/commanded.svg" width="20" alt="" />}
-            </p>
-            <p>
-                {disrupted && <img src="images/disrupted.svg" width="20" alt="" />}
-            </p>
-            <p>
-                {exhausted && <img src="images/checkmark.svg" width="20" alt="" />}
-            </p>
-            <p>
-                {casualty && <img src="images/checkmark.svg" width="20" alt="" />}
-            </p> */}
         </StyledContainer>
     );
 };

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Map } from 'Map';
+import { Units } from 'Units';
 import Card from 'Card';
-import ActionDialog from 'ActionDialog';
 
 import { buildDeck } from 'Utils/Libs/deck';
 // import playCard from 'Utils/Libs/playCard';
@@ -13,41 +13,22 @@ import { buildDeck } from 'Utils/Libs/deck';
 
 import { Heading, RadioGroup, Radio, View, ActionGroup, Item, DialogContainer, ActionButton } from '@adobe/react-spectrum';
 
-import store from 'store';
-
-const setupGame = () => {
-    store.dispatch({ type: 'NEW_GAME' });
-    buildDeck();
-};
-
 const App = () => {
-    const { tiles, tracks, locations } = useSelector(state => state.map);
+    const { tiles, locations, tracks, } = useSelector(state => state.map);
     const { allies } = useSelector(state => state.units);
 
     const [card, setCard] = useState(null);
     const [appDialog, setAppDialog] = useState(false);
 
-    const basse = {
-        id: 'basse',
-        name: 'Basse',
-        nationality: 'USA',
-        placement: 'Deployment',
-        attack: 1,
-        suppress: 2,
-        commander: true,
-        tanker: true,
-        tokens: {
-            ordered: false,
-            commanded: false,
-            disrupted: false,
-        },
-        exhausted: false,
-        casualty: false,
-        escape: true,
-    };
+    const dispatch = useDispatch();
+
+    // const setupGame = () => {
+    //     dispatch({ type: 'NEW_GAME' });
+    //     buildDeck();
+    // };
 
     useEffect(() => {
-        setupGame();
+        buildDeck();
     }, []);
     
     return (
@@ -116,23 +97,13 @@ const App = () => {
                     </RadioGroup>
                 </View>
             </View>
+            <Units />
             <Map 
                 tiles={tiles} 
                 allies={allies} 
                 tracks={tracks} 
                 locations={locations}
             />
-            <View
-                borderWidth="thin"
-                borderColor="dark"
-                borderRadius="medium"
-                marginY="size-200"
-                paddingY="size-125"
-                paddingX="size-200"
-            >
-                <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                <ActionDialog unit={basse} location='G' />
-            </View>
         </>
     );
 };

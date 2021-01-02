@@ -11,16 +11,16 @@ import { Provider as SpectrumProvider, defaultTheme } from '@adobe/react-spectru
 import GlobalStyle from 'Utils/Styles/GlobalStyle';
 import theme from 'Utils/Styles/theme';
 
-import store from './store';
+import store from 'store';
 
 ReactDOM.render(
   <SpectrumProvider theme={defaultTheme}>
-    <ReduxProvider store={store}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <ReduxProvider store={store}>
         <App />
         <GlobalStyle /> 
-      </ThemeProvider>
-    </ReduxProvider>
+      </ReduxProvider>
+    </ThemeProvider>
   </SpectrumProvider>,
   document.getElementById('root'),
 );

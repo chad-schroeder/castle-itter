@@ -659,12 +659,12 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'MAP_LOADING':
         return {
             ...initialState,
-        }
+        };
     case 'UPDATE_TILES':
         return {
             ...state,
             tiles: [...payload],
-        }
+        };
     case 'REMOVE_UNIT':
         return {
             ...state,
@@ -677,7 +677,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 }
                 return tile;
             }),
-        }
+        };
     case 'ADD_UNIT':
         return {
             ...state,
@@ -690,12 +690,12 @@ const reducer = (state = initialState, { type, payload }) => {
                 }
                 return tile;
             }),
-        }
+        };
     case 'UPDATE_TRACKS': {
         return {
             ...state,
             tracks: [...payload],
-        }
+        };
     }
     default:
         return state;

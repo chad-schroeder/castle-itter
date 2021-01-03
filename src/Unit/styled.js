@@ -10,6 +10,7 @@ export const StyledContainer = styled.div`
   position: relative;
   width: 100px;
   height: 78px;
+  cursor: pointer;
   background-color: white;
   border: 1px solid black;
   border-radius: 4px;

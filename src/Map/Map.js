@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Tile from '../Tile';
-import Unit from '../Unit';
-// import ActionDialog from 'ActionDialog';
+import { Units } from '../Units';
+import ActionDialog from 'ActionDialog';
 
 // import { isInspired } from 'Utils/Modifiers/inspire';
 
 import { ActionButton, Heading, DialogContainer, View, } from '@adobe/react-spectrum';
-import { StyledTiles, StyledUnits } from './styled';
+import { StyledTiles, } from './styled';
 
 // const checkInspired = (unit = null, tiles = [], locations = [], allies = []) => {
 //     const tile = tiles.find(tile => tile.id === unit.tile);
@@ -35,49 +36,16 @@ import { StyledTiles, StyledUnits } from './styled';
 //     return false;
 // };
 
-const Map = ({ tiles = [], locations = [], tracks = [], allies = {} }) => {
+const Map = () => {
+    const { tiles, locations, tracks, } = useSelector(state => state.map);
+    const { allies, axis } = useSelector(state => state.units);
+
+    const [actionUnit, setActionUnit] = useState({});
     const [tileDialog, setTileDialog] = useState(false);
 
-    const basse = {
-        id: 'basse',
-        name: 'Basse',
-        nationality: 'USA',
-        placement: 'Deployment',
-        attack: 1,
-        suppress: 2,
-        commander: true,
-        tanker: true,
-        tokens: {
-            ordered: false,
-            commanded: false,
-            disrupted: false,
-        },
-        exhausted: false,
-        casualty: false,
-        escape: true,
-    };
-
-    const onUnitClick = packet => {
-        const { unitId, attack } = packet;
-        console.log(unitId, attack);
-    };
-
-    const renderAllies = allies => {
-        return Object.keys(allies).map(ally => {
-            const unit = allies[ally];
-            const tile = tiles.find(tile => tile.id === unit.tile) || {};
-            let isInspired = false;
-
-            return (
-                <Unit 
-                    key={unit.id} 
-                    unit={unit}
-                    tile={tile}
-                    isInspired={isInspired}
-                    onUnitClick={onUnitClick}
-                />
-            );
-        });
+    const onUnitClick = unitObj => {
+        console.log({ unitObj });
+        setActionUnit(unitObj);
     };
 
     const renderTile = tile => {
@@ -108,9 +76,7 @@ const Map = ({ tiles = [], locations = [], tracks = [], allies = {} }) => {
                 paddingX="size-200"
             >
                 <Heading level={2} marginBottom="size-100">Units</Heading>
-                <StyledUnits>
-                    {renderAllies(allies)}
-                </StyledUnits>
+                <Units units={allies} tiles={tiles} onUnitClick={onUnitClick} />
             </View>
             <DialogContainer onDismiss={() => setTileDialog(false)} isDismissable>
                 {tileDialog && (
@@ -131,14 +97,10 @@ const Map = ({ tiles = [], locations = [], tracks = [], allies = {} }) => {
                 paddingX="size-200"
             >
                 <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                {/* <ActionDialog unit={basse} location='G' /> */}
+                <ActionDialog unit={actionUnit} />
             </View>
         </>
     );
 };
-
-// const Map = () => {
-//     return 'Map';
-// };
 
 export default Map;

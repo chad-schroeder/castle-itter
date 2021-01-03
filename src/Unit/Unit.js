@@ -41,10 +41,9 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, onUnitClick }) => {
         suppressVal += 1;
     }
 
-    const packet = {
+    const unitObj = {
         unitId,
-        tileId,
-        location,
+        name,
         attack: attackVal,
         suppress: suppressVal,
         commander,
@@ -53,6 +52,8 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, onUnitClick }) => {
         commanded,
         disrupted,
         exhausted,
+        tileId,
+        location,
     };
 
     return (
@@ -64,7 +65,7 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, onUnitClick }) => {
                 'is-inspired': isInspired,
                 'is-exhausted': exhausted,
             })}
-            onClick={() => onUnitClick(packet)}
+            onClick={() => onUnitClick(unitObj)}
         >
             <StyledName>
                 {name}

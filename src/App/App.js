@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import { Map } from 'Map';
-import { Units } from 'Units';
-import Card from 'Card';
+// import Card from 'Card';
 
 import { buildDeck } from 'Utils/Libs/deck';
 // import playCard from 'Utils/Libs/playCard';
@@ -14,18 +12,8 @@ import { buildDeck } from 'Utils/Libs/deck';
 import { Heading, RadioGroup, Radio, View, ActionGroup, Item, DialogContainer, ActionButton } from '@adobe/react-spectrum';
 
 const App = () => {
-    const { tiles, locations, tracks, } = useSelector(state => state.map);
-    const { allies } = useSelector(state => state.units);
-
-    const [card, setCard] = useState(null);
+    // const [card, setCard] = useState(null);
     const [appDialog, setAppDialog] = useState(false);
-
-    const dispatch = useDispatch();
-
-    // const setupGame = () => {
-    //     dispatch({ type: 'NEW_GAME' });
-    //     buildDeck();
-    // };
 
     useEffect(() => {
         buildDeck();
@@ -34,7 +22,7 @@ const App = () => {
     return (
         <>
             <h1>Castle Itter</h1>
-            <Card {...card} />
+            {/* <Card {...card} /> */}
             <ActionGroup onAction={() => setAppDialog(true)}>
                 <Item key="playCard">Play Card</Item>
                 <Item key="spendAction">Spend Action</Item>
@@ -97,13 +85,7 @@ const App = () => {
                     </RadioGroup>
                 </View>
             </View>
-            <Units />
-            <Map 
-                tiles={tiles} 
-                allies={allies} 
-                tracks={tracks} 
-                locations={locations}
-            />
+            <Map />
         </>
     );
 };

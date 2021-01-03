@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 
 // import { actionMove, canMove, canMoveWithin, canEscape } from 'Utils/Actions/move';
-import { getAttackValue } from 'Utils/Actions/attack';
-// import { testMove } from 'Utils/Actions/move';
 
 import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+
+const ActionDialog = ({ unit }) => {
+    if (Object.keys(unit).length === 0) return false;
+
+    const { name, attack, suppress } = unit;
+
+    return <p>{name}, {attack}, {suppress}</p>;
+};
 
 // const ActionDialog = ({ location, los, unit }) => {
 //     const [disabled, disableActions] = useState(false);
@@ -164,9 +170,5 @@ import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectru
 //         </div>
 //     )
 // };
-
-const ActionDialog = () => {
-    return 'ActionDialog';
-};
 
 export default ActionDialog;

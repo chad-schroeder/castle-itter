@@ -7,7 +7,7 @@ import ActionDialog from 'ActionDialog';
 
 // import { isInspired } from 'Utils/Modifiers/inspire';
 
-import { ActionButton, Heading, DialogContainer, View, } from '@adobe/react-spectrum';
+import { ActionButton, DialogContainer, Heading, Item, Picker, View, } from '@adobe/react-spectrum';
 import { StyledTiles, } from './styled';
 
 // const checkInspired = (unit = null, tiles = [], locations = [], allies = []) => {
@@ -44,7 +44,6 @@ const Map = () => {
     const [tileDialog, setTileDialog] = useState(false);
 
     const onUnitClick = unitObj => {
-        console.log({ unitObj });
         setActionUnit(unitObj);
     };
 
@@ -97,7 +96,7 @@ const Map = () => {
                 paddingX="size-200"
             >
                 <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                <ActionDialog unit={actionUnit} />
+                <ActionDialog unit={actionUnit} tiles={tiles} />
             </View>
         </>
     );

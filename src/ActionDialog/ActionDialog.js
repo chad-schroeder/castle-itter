@@ -2,14 +2,34 @@ import React, { useState } from 'react';
 
 // import { actionMove, canMove, canMoveWithin, canEscape } from 'Utils/Actions/move';
 
-import { ActionGroup, Item, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+import { ActionButton, ActionGroup, Item, Picker, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
-const ActionDialog = ({ unit }) => {
+import { StyledContainer, } from './styled';
+
+const ActionDialog = ({ unit, tiles }) => {
     if (Object.keys(unit).length === 0) return false;
 
-    const { name, attack, suppress } = unit;
+    const { name, attack, suppress, tileId } = unit;
+    console.log({ tiles });
 
-    return <p>{name}, {attack}, {suppress}</p>;
+    return (
+        <StyledContainer>
+            <p>{name}, {attack}, {suppress}</p>
+            <ActionButton>
+                {tileId}
+            </ActionButton>
+            <p>
+                move to
+            </p>
+            <Picker 
+                items={tiles}
+                onSelectionChange={(selected) => console.log(selected)} 
+                aria-label="Move"
+            >
+                {item => <Item>{item.id}</Item>}
+            </Picker>
+        </StyledContainer>
+    );
 };
 
 // const ActionDialog = ({ location, los, unit }) => {

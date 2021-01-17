@@ -9,11 +9,14 @@ export const StyledContainer = styled.div`
   display: inline-block;
   position: relative;
   width: 100px;
-  height: 78px;
   cursor: pointer;
   background-color: white;
   border: 1px solid black;
   border-radius: 4px;
+
+  &.is-active {
+    border: 1px solid green;
+  }
 
   &.is-exhausted {
     opacity: 0.5;

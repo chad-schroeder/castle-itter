@@ -40,11 +40,12 @@ const Map = () => {
     const { tiles, locations, tracks, } = useSelector(state => state.map);
     const { allies, axis } = useSelector(state => state.units);
 
-    const [actionUnit, setActionUnit] = useState({});
+    const [activeUnit, setActiveUnit] = useState({});
+    const [selectedUnits, setSelectedUnits] = useState([]);
     const [tileDialog, setTileDialog] = useState(false);
 
     const onUnitClick = unitObj => {
-        setActionUnit(unitObj);
+        setActiveUnit(unitObj);
     };
 
     const renderTile = tile => {
@@ -75,7 +76,13 @@ const Map = () => {
                 paddingX="size-200"
             >
                 <Heading level={2} marginBottom="size-100">Units</Heading>
-                <Units units={allies} tiles={tiles} onUnitClick={onUnitClick} />
+                <Units 
+                    units={allies} 
+                    tiles={tiles} 
+                    activeUnit={activeUnit}
+                    selectedUnits={selectedUnits}
+                    onUnitClick={onUnitClick} 
+                />
             </View>
             <DialogContainer onDismiss={() => setTileDialog(false)} isDismissable>
                 {tileDialog && (
@@ -96,7 +103,7 @@ const Map = () => {
                 paddingX="size-200"
             >
                 <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                <ActionDialog unit={actionUnit} tiles={tiles} />
+                <ActionDialog unit={activeUnit} tiles={tiles} />
             </View>
         </>
     );

@@ -10,7 +10,6 @@ const ActionDialog = ({ unit, tiles }) => {
     if (Object.keys(unit).length === 0) return false;
 
     const { name, attack, suppress, tileId } = unit;
-    console.log({ tiles });
 
     return (
         <StyledContainer>

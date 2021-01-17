@@ -5,7 +5,7 @@ import {
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit = {}, tile = {}, isInspired = false, onUnitClick }) => {
+const Unit = ({ unit = {}, tile = {}, isInspired = false, isActive = false, onUnitClick }) => {
     const { 
         id: unitId,
         name, 
@@ -59,6 +59,7 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, onUnitClick }) => {
     return (
         <StyledContainer 
             className={classNames({
+                'is-active': isActive,
                 'is-ordered': ordered,
                 'is-disrupted': disrupted,
                 'is-commanded': commanded,

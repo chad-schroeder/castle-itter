@@ -41,7 +41,6 @@ const Map = () => {
     const { allies, axis } = useSelector(state => state.units);
 
     const [activeUnit, setActiveUnit] = useState({});
-    const [selectedUnits, setSelectedUnits] = useState([]);
     const [tileDialog, setTileDialog] = useState(false);
 
     const onUnitClick = unitObj => {
@@ -80,7 +79,6 @@ const Map = () => {
                     units={allies} 
                     tiles={tiles} 
                     activeUnit={activeUnit}
-                    selectedUnits={selectedUnits}
                     onUnitClick={onUnitClick} 
                 />
             </View>

@@ -4,14 +4,13 @@ import Unit from '../Unit';
 
 import { StyledUnits } from './styled';
 
-const Units = ({ units = {}, tiles = [], activeUnit = {}, selectedUnits = [], onUnitClick }) => {
+const Units = ({ units = {}, tiles = [], activeUnit = {}, onUnitClick }) => {
     const renderUnits = units => {
         return Object.keys(units).map(ally => {
             const unit = units[ally];
             const id = unit.id;
             const tile = tiles.find(tile => tile.id === unit.tile) || {};
-            let isActive = activeUnit.unitId === id ? true : false;
-            let isSelectedUnit = selectedUnits.includes(id);
+            const isActive = activeUnit.unitId === id ? true : false;
             let isInspired = false;
 
             return (
@@ -20,7 +19,6 @@ const Units = ({ units = {}, tiles = [], activeUnit = {}, selectedUnits = [], on
                     unit={unit}
                     tile={tile}
                     isActive={isActive}
-                    isSelected={isSelectedUnit}
                     isInspired={isInspired}
                     onUnitClick={onUnitClick}
                 />

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 // import { actionMove, canMove, canMoveWithin, canEscape } from 'Utils/Actions/move';
 
@@ -6,10 +7,46 @@ import { ActionButton, ActionGroup, Item, Picker, Tooltip, TooltipTrigger } from
 
 import { StyledContainer, } from './styled';
 
-const ActionDialog = ({ unit, tiles }) => {
+const ActionDialog = ({ unit, tiles, allies, axis }) => {
+    const dispatch = useDispatch();
+
     if (Object.keys(unit).length === 0) return false;
 
-    const { name, attack, suppress, tileId } = unit;
+    const { unitId, name, attack, suppress, ordered, commanded, disrupted, exhausted, tileId } = unit;
+
+    const canTakeAction = () => {
+        if (ordered || exhausted || disrupted || commanded) {
+            return false;
+        }
+        return true;
+    };
+
+    const removeExhaustion = unitId => {
+        const units = {
+            ...allies,
+            [unitId]: {
+                ...allies[unitId],
+                exhausted: false,
+            },
+        };
+
+        dispatch({ type: 'REMOVE_EXHAUSTION', payload: units });
+    };
+
+    const removeDisruption = unitId => {
+        const units = {
+            ...allies,
+            [unitId]: {
+                ...allies[unitId],
+                tokens: {
+                    ...allies[unitId].tokens,
+                    disrupted: false,
+                },
+            },
+        };
+
+        dispatch({ type: 'REMOVE_DISRUPTION', payload: units });
+    };
 
     return (
         <StyledContainer>
@@ -17,16 +54,33 @@ const ActionDialog = ({ unit, tiles }) => {
             <ActionButton>
                 {tileId}
             </ActionButton>
-            <p>
-                move to
-            </p>
-            <Picker 
-                items={tiles}
-                onSelectionChange={(selected) => console.log(selected)} 
-                aria-label="Move"
-            >
-                {item => <Item>{item.id}</Item>}
-            </Picker>
+            {canTakeAction() && (
+                <>
+                    <p>
+                        move to
+                    </p>
+                    <Picker 
+                    items={tiles}
+                    onSelectionChange={(selected) => console.log(selected)} 
+                    aria-label="Move"
+                    >
+                        {item => <Item>{item.id}</Item>}
+                    </Picker>
+                    <ActionButton onPress={() => console.log('Move pressed')}>
+                        Move
+                    </ActionButton>
+                </>
+            )}
+            {exhausted && (
+                <ActionButton onPress={() => removeExhaustion(unitId)}>
+                    Remove Exhaustion
+                </ActionButton>
+            )}
+            {disrupted && (
+                <ActionButton onPress={() => removeDisruption(unitId)}>
+                    Remove Disruption
+                </ActionButton>
+            )}
         </StyledContainer>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useSelector } from 'react-redux';
 
 import Tile from '../Tile';
@@ -44,6 +44,8 @@ const Map = () => {
     const [tileDialog, setTileDialog] = useState(false);
 
     const onUnitClick = unitObj => {
+        console.log({ unitObj });
+
         setActiveUnit(unitObj);
     };
 
@@ -101,7 +103,12 @@ const Map = () => {
                 paddingX="size-200"
             >
                 <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                <ActionDialog unit={activeUnit} tiles={tiles} />
+                <ActionDialog 
+                    unit={activeUnit} 
+                    allies={allies} 
+                    axis={axis} 
+                    tiles={tiles} 
+                />
             </View>
         </>
     );

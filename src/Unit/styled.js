@@ -62,6 +62,10 @@ export const StyledCommanded = styled.div`
 
   ${StyledContainer}.is-commanded & {
     display: block;
+
+    img {
+      border-radius: 50%;
+    }
   }
 `;
 
@@ -72,6 +76,10 @@ export const StyledDisrupted = styled.div`
 
   ${StyledContainer}.is-disrupted & {
     display: block;
+    
+    img {
+      border-radius: 50%;
+    }
   }
 `;
 
@@ -82,5 +90,9 @@ export const StyledOrdered = styled.div`
 
   ${StyledContainer}.is-ordered & {
     display: block;
+    
+    img {
+      border-radius: 50%;
+    }
   }
 `;

@@ -563,6 +563,16 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             allies: [...payload],
         };
+    case 'REMOVE_DISRUPTION':
+        return {
+            ...state,
+            allies: { ...payload },
+        };
+    case 'REMOVE_EXHAUSTION':
+        return {
+            ...state,
+            allies: { ...payload },
+        };
     default:
         return state;
     }

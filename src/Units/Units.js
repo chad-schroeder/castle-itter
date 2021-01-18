@@ -8,14 +8,13 @@ const Units = ({ units = {}, tiles = [], activeUnit = {}, onUnitClick }) => {
     const renderUnits = units => {
         return Object.keys(units).map(ally => {
             const unit = units[ally];
-            const id = unit.id;
             const tile = tiles.find(tile => tile.id === unit.tile) || {};
-            const isActive = activeUnit.unitId === id ? true : false;
+            const isActive = activeUnit.unitId === unit.id ? true : false;
             let isInspired = false;
 
             return (
                 <Unit 
-                    key={id} 
+                    key={unit.id} 
                     unit={unit}
                     tile={tile}
                     isActive={isActive}

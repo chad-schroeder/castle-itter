@@ -7,7 +7,8 @@ import ActionDialog from 'ActionDialog';
 
 // import { isInspired } from 'Utils/Modifiers/inspire';
 
-import { ActionButton, DialogContainer, Heading, Item, Picker, View, } from '@adobe/react-spectrum';
+import { ActionButton, DialogContainer, Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader } from '@adobe/react-spectrum';
+
 import { StyledTiles, } from './styled';
 
 // const checkInspired = (unit = null, tiles = [], locations = [], allies = []) => {
@@ -37,20 +38,23 @@ import { StyledTiles, } from './styled';
 // };
 
 const Map = () => {
-    const { tiles, locations, tracks, } = useSelector(state => state.map);
+    const { tiles } = useSelector(state => state.map);
     const { allies, axis } = useSelector(state => state.units);
 
-    const [activeUnit, setActiveUnit] = useState({});
+    const [activeUnit, setActiveUnit] = useState(null);
     const [tileDialog, setTileDialog] = useState(false);
 
+    const columns = [
+        { name: 'Name', uid: 'id' },
+        { name: 'Location', uid: 'location' },
+        { name: 'LOS', uid: 'los' },
+        { name: 'Unit', uid: 'unit' },
+        { name: 'Armament', uid: 'armament' },
+    ];
+
     const onUnitClick = unitObj => {
-        console.log({ unitObj });
-
         setActiveUnit(unitObj);
-    };
-
-    const renderTile = tile => {
-        return <Tile key={tile.id} tile={tile} />;
+        console.log({ activeUnit });
     };
 
     return (
@@ -64,9 +68,28 @@ const Map = () => {
                 paddingX="size-200"
             >
                 <Heading level={2} marginBottom="size-100">Tiles</Heading>
-                <StyledTiles>
-                    {tiles.map(tile => renderTile(tile))}
-                </StyledTiles>
+                <Flex height="size-5000" width="100%" direction="column" gap="size-150">
+                    <TableView aria-label="Tiles">
+                        <TableHeader columns={columns}>
+                            {column => (
+                                <Column key={column.uid}>
+                                    {column.name}
+                                </Column>
+                            )}
+                        </TableHeader>
+                        <TableBody items={tiles}>
+                            {item => (
+                            <Row>
+                                <Cell>{item.id}</Cell>
+                                <Cell>{item.location}</Cell>
+                                <Cell>{item.los.length ? item.los.map(sight => `${sight}`).join(', ') : '-'}</Cell>
+                                <Cell>{item.unit ? item.unit : '-'}</Cell>
+                                <Cell>{item.armament ? item.armament.name : '-'}</Cell>
+                            </Row>
+                            )}
+                        </TableBody>
+                    </TableView>
+                </Flex>
             </View>
             <View
                 borderWidth="thin"
@@ -94,22 +117,24 @@ const Map = () => {
                     </>
                 )}
             </DialogContainer>
-            <View
-                borderWidth="thin"
-                borderColor="dark"
-                borderRadius="medium"
-                marginY="size-200"
-                paddingY="size-125"
-                paddingX="size-200"
-            >
-                <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                <ActionDialog 
-                    unit={activeUnit} 
-                    allies={allies} 
-                    axis={axis} 
-                    tiles={tiles} 
-                />
-            </View>
+            {activeUnit && (
+                <View
+                    borderWidth="thin"
+                    borderColor="dark"
+                    borderRadius="medium"
+                    marginY="size-200"
+                    paddingY="size-125"
+                    paddingX="size-200"
+                >
+                    <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
+                    <ActionDialog 
+                        unit={activeUnit} 
+                        allies={allies} 
+                        axis={axis} 
+                        tiles={tiles} 
+                    />
+                </View>
+            )}
         </>
     );
 };

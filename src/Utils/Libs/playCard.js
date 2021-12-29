@@ -1,4 +1,5 @@
 import store from '../../store';
+console.log('Play Card', store);
 
 const playCard = () => {
     const { deck } = store.getState().common;

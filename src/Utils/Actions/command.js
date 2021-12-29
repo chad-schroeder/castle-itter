@@ -1,6 +1,7 @@
 import store from '../../store';
 
 import { getLocationUnits } from 'Utils/Libs/units';
+console.log('Command', { store });
 
 const { allies } = store.getState().units;
 

@@ -8,6 +8,8 @@ import { buildDeck } from 'Utils/Libs/deck';
 // import { spendAction } from 'Utils/Libs/game';
 // import escape from 'Utils/Libs/escape';
 // import { destroyBesottenJenny } from 'Utils/Libs/tiles';
+// import { actionMove } from 'Utils/Actions/move';
+// import { command } from 'Utils/Actions/command';
 
 import { Heading, RadioGroup, Radio, View, ActionGroup, Item, DialogContainer, ActionButton } from '@adobe/react-spectrum';
 
@@ -23,14 +25,14 @@ const App = () => {
         <>
             <h1>Castle Itter</h1>
             {/* <Card {...card} /> */}
-            <ActionGroup onAction={() => setAppDialog(true)}>
+            {/* <ActionGroup onAction={() => setAppDialog(true)}>
                 <Item key="playCard">Play Card</Item>
                 <Item key="spendAction">Spend Action</Item>
                 <Item key="destroyJenny">Destroy Besotten Jenny</Item>
                 <Item key="newGame">New Game</Item>
                 <Item key="escape">Escape</Item>
-            </ActionGroup>
-            <DialogContainer onDismiss={() => setAppDialog(false)} isDismissable>
+            </ActionGroup> */}
+            {/* <DialogContainer onDismiss={() => setAppDialog(false)} isDismissable>
                 {appDialog && (
                     <>
                         <p>Hello, world!</p>
@@ -39,7 +41,7 @@ const App = () => {
                         </ActionButton>
                     </>
                 )}
-            </DialogContainer>
+            </DialogContainer> */}
 
             {/* <button onClick={() => setCard(playCard())}>
                 
@@ -56,7 +58,7 @@ const App = () => {
             <button onClick={() => escape('G2')}>
                 
             </button> */}
-            <View
+            {/* <View
                 borderWidth="thin"
                 borderColor="dark"
                 borderRadius="medium"
@@ -84,7 +86,7 @@ const App = () => {
                         <Radio value="command">Command</Radio>
                     </RadioGroup>
                 </View>
-            </View>
+            </View> */}
             <Map />
         </>
     );

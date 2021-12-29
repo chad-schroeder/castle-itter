@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
 import { canTakeAction } from '../Utils/Units/checks';
-import { removeExhaustion, removeOrdered, removeDisruption, removeCommanded } from '../Utils/Units/update';
+import { toggleExhaustion, toggleToken, setCasualty } from '../Utils/Units/update';
 
 import { ActionButton, Item, Picker, } from '@adobe/react-spectrum';
 
 import { StyledContainer, } from './styled';
 
 const ActionDialog = ({ unit, tiles, allies, axis }) => {
-    const { unitId, name, exhausted, ordered, disrupted, commanded, tileId } = unit;
+    const { unitId, name, exhausted, casualty, ordered, disrupted, commanded, tileId } = unit;
+    console.log('Unit', unit);
 
     const [selectedTile, setSelectedTile] = useState(null);
 
@@ -36,26 +37,36 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
                     </ActionButton>
                 </>
             )}
-            {exhausted && (
-                <ActionButton onPress={() => removeExhaustion(unitId)}>
-                    Remove Exhaustion
-                </ActionButton>
-            )}
-            {ordered && (
-                <ActionButton onPress={() => removeOrdered(unitId)}>
-                    Remove Ordered
-                </ActionButton>
-            )}
-            {disrupted && (
-                <ActionButton onPress={() => removeDisruption(unitId)}>
-                    Remove Disruption
-                </ActionButton>
-            )}
-            {commanded && (
-                <ActionButton onPress={() => removeCommanded(unitId)}>
-                    Remove Commanded
-                </ActionButton>
-            )}
+            <ActionButton
+                onPress={() => toggleExhaustion(unitId)}
+                isDisabled={casualty}
+            >
+                Toggle Exhaustion
+            </ActionButton>
+            <ActionButton 
+                onPress={() => toggleToken(unitId, 'ordered')}
+                isDisabled={casualty}
+            >
+                Toggle Ordered
+            </ActionButton>
+            <ActionButton 
+                onPress={() => toggleToken(unitId, 'disrupted')}
+                isDisabled={casualty}
+            >
+                Toggle Disruption
+            </ActionButton>
+            <ActionButton 
+                onPress={() => toggleToken(unitId, 'commanded')}
+                isDisabled={casualty}
+            >
+                Toggle Commanded
+            </ActionButton>
+            <ActionButton 
+                onPress={() => setCasualty(unitId)}
+                isDisabled={casualty}
+            >
+                Set Casualty
+            </ActionButton>
         </StyledContainer>
     );
 };

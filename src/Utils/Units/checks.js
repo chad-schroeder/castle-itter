@@ -1,3 +1,6 @@
 export const canTakeAction = ({ ordered, exhausted, disrupted, commanded }) => {
-    return (ordered || exhausted || disrupted || commanded) ? false: true;
+    if ((ordered || exhausted || disrupted || commanded)) {
+        return false;
+    }
+    return true;
 };

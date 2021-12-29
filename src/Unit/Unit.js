@@ -20,6 +20,7 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, isActive = false, onUn
             disrupted,
         }, 
         exhausted,
+        casualty,
     } = unit;
 
     const {
@@ -52,6 +53,7 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, isActive = false, onUn
         commanded,
         disrupted,
         exhausted,
+        casualty,
         tileId,
         location,
     };

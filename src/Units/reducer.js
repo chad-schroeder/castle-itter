@@ -563,7 +563,7 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             allies: [...payload],
         };
-    case 'REMOVE_ORDERED':
+    case 'TOGGLE_TOKEN':
         return {
             ...state,
             allies: { 
@@ -571,7 +571,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...payload,
             },
         };
-    case 'REMOVE_DISRUPTION':
+    case 'TOGGLE_EXHAUSTION':
         return {
             ...state,
             allies: { 
@@ -579,15 +579,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...payload,
             },
         };
-    case 'REMOVE_COMMANDED':
-        return {
-            ...state,
-            allies: { 
-                ...state.allies,
-                ...payload,
-            },
-        };
-    case 'REMOVE_EXHAUSTION':
+    case 'SET_CASUALTY':
         return {
             ...state,
             allies: { 

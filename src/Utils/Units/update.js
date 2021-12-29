@@ -1,62 +1,44 @@
 import store from '../../store';
 
-export const removeOrdered = unitId => {
+export const toggleToken = (unitId, token) => {
     const unit = store.getState().units.allies[unitId];
 
-    const payload = {
-        [unitId]: {
-            ...unit,
-            tokens: {
-                ...unit.tokens,
-                ordered: false,
+    store.dispatch({ 
+        type: 'TOGGLE_TOKEN', 
+        payload: {
+            [unitId]: {
+                ...unit,
+                tokens: {
+                    ...unit.tokens,
+                    [token]: !unit.tokens[token],
+                },
             },
-        },
-    };
-
-    store.dispatch({ type: 'REMOVE_ORDERED', payload });
+        }
+    });
 };
 
-export const removeDisruption = unitId => {
+export const toggleExhaustion = unitId => {
     const unit = store.getState().units.allies[unitId];
 
     const payload = {
         [unitId]: {
             ...unit,
-            tokens: {
-                ...unit.tokens,
-                disrupted: false,
-            },
+            exhausted: !unit.exhausted,
         },
     };
 
-    store.dispatch({ type: 'REMOVE_DISRUPTION', payload });
+    store.dispatch({ type: 'TOGGLE_EXHAUSTION', payload });
 };
 
-export const removeCommanded = unitId => {
+export const setCasualty = unitId => {
     const unit = store.getState().units.allies[unitId];
 
     const payload = {
         [unitId]: {
             ...unit,
-            tokens: {
-                ...unit.tokens,
-                commanded: false,
-            },
+            casualty: true,
         },
     };
 
-    store.dispatch({ type: 'REMOVE_COMMANDED', payload });
-};
-
-export const removeExhaustion = unitId => {
-    const unit = store.getState().units.allies[unitId];
-
-    const payload = {
-        [unitId]: {
-            ...unit,
-            exhausted: false,
-        },
-    };
-
-    store.dispatch({ type: 'REMOVE_EXHAUSTION', payload });
+    store.dispatch({ type: 'SET_CASUALTY', payload });
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
 import { canTakeAction } from '../Utils/Units/checks';
+import { moveFriendly } from '../Utils/Actions/move';
 import { toggleExhaustion, toggleToken, setCasualty } from '../Utils/Units/update';
 
 import { ActionButton, Item, Picker, } from '@adobe/react-spectrum';
@@ -10,7 +11,6 @@ import { StyledContainer, } from './styled';
 
 const ActionDialog = ({ unit, tiles, allies, axis }) => {
     const { unitId, name, exhausted, casualty, ordered, disrupted, commanded, tileId } = unit;
-    console.log('Unit', unit);
 
     const [selectedTile, setSelectedTile] = useState(null);
 
@@ -32,7 +32,7 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
                     >
                         {item => <Item>{item.id}</Item>}
                     </Picker>
-                    <ActionButton onPress={() => console.log('move')}>
+                    <ActionButton onPress={() => moveFriendly(unitId, tileId, selectedTile)}>
                         Move
                     </ActionButton>
                 </>

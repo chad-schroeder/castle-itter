@@ -682,7 +682,7 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             tiles: state.tiles.map(tile => {
-                if (tile.id === payload.id) {
+                if (tile.id === payload.tile) {
                     return {
                         ...tile,
                         unit: payload.unit,

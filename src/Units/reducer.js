@@ -561,7 +561,10 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'UPDATE_ALLIES':
         return {
             ...state,
-            allies: [...payload],
+            allies: {
+                ...state.allies,
+                ...payload,
+            },
         };
     case 'TOGGLE_TOKEN':
         return {

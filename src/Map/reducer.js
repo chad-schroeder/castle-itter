@@ -665,32 +665,6 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             tiles: [...payload],
         };
-    case 'REMOVE_UNIT':
-        return {
-            ...state,
-            tiles: state.tiles.map(tile => {
-                if (tile.id === payload) {
-                    return {
-                        ...tile,
-                        unit: null,
-                    }
-                }
-                return tile;
-            }),
-        };
-    case 'ADD_UNIT':
-        return {
-            ...state,
-            tiles: state.tiles.map(tile => {
-                if (tile.id === payload.tile) {
-                    return {
-                        ...tile,
-                        unit: payload.unit,
-                    }
-                }
-                return tile;
-            }),
-        };
     case 'UPDATE_TRACKS': {
         return {
             ...state,

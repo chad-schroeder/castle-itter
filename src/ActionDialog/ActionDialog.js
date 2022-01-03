@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
 import { canTakeAction } from '../Utils/Units/checks';
-import { moveFriendly } from '../Utils/Actions/move';
+import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
 import { toggleExhaustion, toggleToken, setCasualty } from '../Utils/Units/update';
 
 import { ActionButton, Item, Picker, } from '@adobe/react-spectrum';
@@ -34,6 +34,9 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
                     </Picker>
                     <ActionButton onPress={() => moveFriendly(unitId, tileId, selectedTile)}>
                         Move
+                    </ActionButton>
+                    <ActionButton onPress={() => swapFriendly(unitId, 'hockel')}>
+                        Swap
                     </ActionButton>
                 </>
             )}

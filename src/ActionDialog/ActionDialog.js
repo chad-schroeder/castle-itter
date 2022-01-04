@@ -9,7 +9,8 @@ import { ActionButton, Item, Picker, } from '@adobe/react-spectrum';
 import { StyledContainer, } from './styled';
 
 const ActionDialog = ({ unit, tiles, allies, axis }) => {
-    const { unitId, name, casualty, tileId } = unit;
+    console.log('ActionDialog', unit);
+    const { id: unitId, name, casualty, tile } = unit;
 
     const [selectedTile, setSelectedTile] = useState(null);
 
@@ -17,7 +18,7 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
         <StyledContainer>
             <p>{name}</p>
             <ActionButton>
-                {tileId}
+                {tile}
             </ActionButton>
             {canTakeAction(unit) && (
                 <>
@@ -31,7 +32,7 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
                     >
                         {item => <Item>{item.id}</Item>}
                     </Picker>
-                    <ActionButton onPress={() => moveFriendly(unitId, tileId, selectedTile)}>
+                    <ActionButton onPress={() => moveFriendly(unitId, tile, selectedTile)}>
                         Move
                     </ActionButton>
                     <ActionButton onPress={() => swapFriendly(unitId, 'hockel')}>
@@ -40,32 +41,31 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
                 </>
             )}
             <ActionButton
-                onPress={() => toggleExhaustion(unitId)}
+                onPress={() => toggleExhaustion(unit)}
                 isDisabled={casualty}
             >
                 Toggle Exhaustion
             </ActionButton>
             <ActionButton 
-                onPress={() => toggleToken(unitId, 'ordered')}
+                onPress={() => toggleToken(unit, 'ordered')}
                 isDisabled={casualty}
             >
                 Toggle Ordered
             </ActionButton>
             <ActionButton 
-                onPress={() => toggleToken(unitId, 'disrupted')}
+                onPress={() => toggleToken(unit, 'disrupted')}
                 isDisabled={casualty}
             >
                 Toggle Disruption
             </ActionButton>
             <ActionButton 
-                onPress={() => toggleToken(unitId, 'commanded')}
+                onPress={() => toggleToken(unit, 'commanded')}
                 isDisabled={casualty}
             >
                 Toggle Commanded
             </ActionButton>
             <ActionButton 
-                onPress={() => toggleCasualty(unitId)}
-                isDisabled={casualty}
+                onPress={() => toggleCasualty(unit)}
             >
                 Set Casualty
             </ActionButton>

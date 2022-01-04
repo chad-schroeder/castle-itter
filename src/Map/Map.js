@@ -1,5 +1,5 @@
-import React, { useState} from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Units } from '../Units';
 import ActionDialog from 'ActionDialog';
@@ -7,11 +7,16 @@ import ActionDialog from 'ActionDialog';
 import { ActionButton, DialogContainer, Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader } from '@adobe/react-spectrum';
 
 const Map = () => {
+    const { activeUnitId } = useSelector(state => state.common);
     const { tiles } = useSelector(state => state.map);
     const { allies, axis } = useSelector(state => state.units);
 
-    const [activeUnit, setActiveUnit] = useState(null);
+    // const [activeUnit, setActiveUnit] = useState(null);
     const [tileDialog, setTileDialog] = useState(false);
+
+    const activeUnit = allies[activeUnitId];
+
+    const dispatch = useDispatch();
 
     const columns = [
         { name: 'Name', uid: 'id' },
@@ -21,12 +26,14 @@ const Map = () => {
         { name: 'Armament', uid: 'armament' },
     ];
 
-    const onUnitClick = unitObj => {
-        setActiveUnit(unitObj);
+    const onUnitClick = unit => {
+        dispatch({ type: 'SET_ACTIVE_UNIT_ID', payload: unit.unitId })
+        // setActiveUnit(unitObj);
     };
 
     return (
         <>
+            <p>Active Unit ID: {activeUnitId}</p>
             <View
                 borderWidth="thin"
                 borderColor="dark"

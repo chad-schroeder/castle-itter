@@ -1,13 +1,11 @@
 import store from '../../store';
 import { canEscape } from '../Units/checks';
 
-export const toggleToken = (unitId, token) => {
-    const unit = store.getState().units.allies[unitId];
-
+export const toggleToken = (unit, token) => {
     store.dispatch({ 
         type: 'TOGGLE_TOKEN', 
         payload: {
-            [unitId]: {
+            [unit.id]: {
                 ...unit,
                 tokens: {
                     ...unit.tokens,
@@ -18,11 +16,9 @@ export const toggleToken = (unitId, token) => {
     });
 };
 
-export const toggleExhaustion = unitId => {
-    const unit = store.getState().units.allies[unitId];
-
+export const toggleExhaustion = unit => {
     const payload = {
-        [unitId]: {
+        [unit.id]: {
             ...unit,
             exhausted: !unit.exhausted,
         },
@@ -31,11 +27,9 @@ export const toggleExhaustion = unitId => {
     store.dispatch({ type: 'TOGGLE_EXHAUSTION', payload });
 };
 
-export const toggleCasualty = unitId => {
-    const unit = store.getState().units.allies[unitId];
-
+export const toggleCasualty = unit => {
     const payload = {
-        [unitId]: {
+        [unit.id]: {
             ...unit,
             casualty: !unit.casualty,
         },

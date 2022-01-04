@@ -1,41 +1,10 @@
 import React, { useState} from 'react';
 import { useSelector } from 'react-redux';
 
-import Tile from '../Tile';
 import { Units } from '../Units';
 import ActionDialog from 'ActionDialog';
 
-// import { isInspired } from 'Utils/Modifiers/inspire';
-
 import { ActionButton, DialogContainer, Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader } from '@adobe/react-spectrum';
-
-import { StyledTiles, } from './styled';
-
-// const checkInspired = (unit = null, tiles = [], locations = [], allies = []) => {
-//     const tile = tiles.find(tile => tile.id === unit.tile);
-
-//     // if unit is on the map, check for inspired
-//     if (tile) {
-//         const { location } = tile;
-//         const { tiles } = locations[location];
-
-//         const inspireObj = {
-//             locationId: location,
-//             locationTiles: tiles,
-//             tiles,
-//             allies,
-//             unit: unit.id,
-//         };
-
-//         const inspired = isInspired(inspireObj);
-
-//         if (inspired) {
-//             return true;
-//         }
-//     }
-
-//     return false;
-// };
 
 const Map = () => {
     const { tiles } = useSelector(state => state.map);
@@ -54,7 +23,6 @@ const Map = () => {
 
     const onUnitClick = unitObj => {
         setActiveUnit(unitObj);
-        console.log({ activeUnit });
     };
 
     return (

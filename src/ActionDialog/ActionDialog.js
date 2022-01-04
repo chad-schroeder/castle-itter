@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
 
 import { canTakeAction } from '../Utils/Units/checks';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
-import { toggleExhaustion, toggleToken, setCasualty } from '../Utils/Units/update';
+import { toggleExhaustion, toggleToken, toggleCasualty } from '../Utils/Units/update';
 
 import { ActionButton, Item, Picker, } from '@adobe/react-spectrum';
 
 import { StyledContainer, } from './styled';
 
 const ActionDialog = ({ unit, tiles, allies, axis }) => {
-    const { unitId, name, exhausted, casualty, ordered, disrupted, commanded, tileId } = unit;
+    const { unitId, name, casualty, tileId } = unit;
 
     const [selectedTile, setSelectedTile] = useState(null);
 
@@ -65,7 +64,7 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
                 Toggle Commanded
             </ActionButton>
             <ActionButton 
-                onPress={() => setCasualty(unitId)}
+                onPress={() => toggleCasualty(unitId)}
                 isDisabled={casualty}
             >
                 Set Casualty

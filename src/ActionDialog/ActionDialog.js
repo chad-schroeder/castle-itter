@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { canTakeAction } from '../Utils/Units/checks';
+import { getValidLocationAllies } from '../Utils/Units/allies';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
 import { toggleExhaustion, toggleToken, toggleCasualty } from '../Utils/Units/update';
 
@@ -9,10 +10,11 @@ import { ActionButton, Item, Picker, } from '@adobe/react-spectrum';
 import { StyledContainer, } from './styled';
 
 const ActionDialog = ({ unit, tiles, allies, axis }) => {
-    console.log('ActionDialog', unit);
     const { id: unitId, name, casualty, tile } = unit;
 
     const [selectedTile, setSelectedTile] = useState(null);
+
+    getValidLocationAllies('basse', 'NT2');
 
     return (
         <StyledContainer>
@@ -64,10 +66,8 @@ const ActionDialog = ({ unit, tiles, allies, axis }) => {
             >
                 Toggle Commanded
             </ActionButton>
-            <ActionButton 
-                onPress={() => toggleCasualty(unit)}
-            >
-                Set Casualty
+            <ActionButton onPress={() => toggleCasualty(unit)}>
+                Toggle Casualty
             </ActionButton>
         </StyledContainer>
     );

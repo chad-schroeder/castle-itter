@@ -16,7 +16,7 @@ const initialState = {
             },
             exhausted: true,
             casualty: false,
-            tile: 'G4',
+            tile: 'NT2',
         },
         lee: {
             id: 'lee',
@@ -34,7 +34,7 @@ const initialState = {
             },
             exhausted: false,
             casualty: false,
-            tile: 'D2',
+            tile: 'NT5',
         },
         worsham: {
             id: 'worsham',

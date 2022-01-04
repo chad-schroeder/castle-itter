@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Units } from '../Units';
 import ActionDialog from 'ActionDialog';
 
-import { ActionButton, DialogContainer, Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader } from '@adobe/react-spectrum';
+import { 
+    Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, 
+} from '@adobe/react-spectrum';
 
 const Map = () => {
     const { activeUnitId } = useSelector(state => state.common);
     const { tiles } = useSelector(state => state.map);
     const { allies, axis } = useSelector(state => state.units);
-
-    // const [activeUnit, setActiveUnit] = useState(null);
-    const [tileDialog, setTileDialog] = useState(false);
 
     const activeUnit = allies[activeUnitId];
 
@@ -28,12 +27,10 @@ const Map = () => {
 
     const onUnitClick = unit => {
         dispatch({ type: 'SET_ACTIVE_UNIT_ID', payload: unit.unitId })
-        // setActiveUnit(unitObj);
     };
 
     return (
         <>
-            <p>Active Unit ID: {activeUnitId}</p>
             <View
                 borderWidth="thin"
                 borderColor="dark"
@@ -82,16 +79,6 @@ const Map = () => {
                     onUnitClick={onUnitClick} 
                 />
             </View>
-            <DialogContainer onDismiss={() => setTileDialog(false)} isDismissable>
-                {tileDialog && (
-                    <>
-                        <h2>Tile Dialog</h2>
-                        <ActionButton onPress={() => setTileDialog(false)}>
-                            Close
-                        </ActionButton>
-                    </>
-                )}
-            </DialogContainer>
             {activeUnit && (
                 <View
                     borderWidth="thin"

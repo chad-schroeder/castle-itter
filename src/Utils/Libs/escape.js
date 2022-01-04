@@ -40,16 +40,16 @@ const shuffleBottomCards = () => {
     store.dispatch({ type: 'BOROTRA_ESCAPED' });
 };
 
-const escape = ({ id, location }) => {
-    // Borotra cannot escape from the Cellar or Great Hall, return
-    if (location === 'C' || location === 'GH') return;
+// const escape = ({ id, location }) => {
+//     // Borotra cannot escape from the Cellar or Great Hall, return
+//     if (location === 'C' || location === 'GH') return;
 
-    // shuffle the 142 Infantry Regiment card and bottom cards
-    shuffleBottomCards();
+//     // shuffle the 142 Infantry Regiment card and bottom cards
+//     shuffleBottomCards();
 
-    // remove Borotra from tile
+//     // remove Borotra from tile
     
-    // update state to 'escaped: true'
-};
+//     // update state to 'escaped: true'
+// };
 
 export default escape;

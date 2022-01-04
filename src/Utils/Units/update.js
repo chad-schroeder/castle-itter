@@ -1,4 +1,5 @@
 import store from '../../store';
+import { canEscape } from '../Units/checks';
 
 export const toggleToken = (unitId, token) => {
     const unit = store.getState().units.allies[unitId];
@@ -30,15 +31,20 @@ export const toggleExhaustion = unitId => {
     store.dispatch({ type: 'TOGGLE_EXHAUSTION', payload });
 };
 
-export const setCasualty = unitId => {
+export const toggleCasualty = unitId => {
     const unit = store.getState().units.allies[unitId];
 
     const payload = {
         [unitId]: {
             ...unit,
-            casualty: true,
+            casualty: !unit.casualty,
         },
     };
 
-    store.dispatch({ type: 'SET_CASUALTY', payload });
+    store.dispatch({ type: 'TOGGLE_CASUALTY', payload });
+};
+
+export const toggleEscape = unit => {
+    canEscape(unit);
+    console.log('clicked: toggleEscape');
 };

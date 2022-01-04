@@ -67,6 +67,7 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, isActive = false, onUn
                 'is-commanded': commanded,
                 'is-inspired': isInspired,
                 'is-exhausted': exhausted,
+                'is-casualty': casualty,
             })}
             onClick={() => onUnitClick(unitObj)}
         >

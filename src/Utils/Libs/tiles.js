@@ -1,8 +1,7 @@
 import store from '../../store';
 
-const { tiles, locations } = store.getState().map;
-
 export const getVacantTiles = () => {
+    const tiles = store.getState().map.tiles;
     const vacant = tiles
         .filter(tile => !tile.unit)
         .map(tile => tile.id);
@@ -10,29 +9,32 @@ export const getVacantTiles = () => {
 };
 
 export const getLocationTiles = locationId => {
+    const locations = store.getState().map.locations;
     const { tiles } = locations.find(location => location.id === locationId);
     return tiles;
 };
 
 export const getLineOfSight = tileId => {
+    const tiles = store.getState().map.tiles;
     const los = tiles.find(tile => tile.id === tileId).los;
     return los;
 };
 
-export const destroyBesottenJenny = () => {
-    const casualties = [];
+// export const destroyBesottenJenny = () => {
+//     const tiles = store.getState().map.tiles;
+//     const casualties = [];
 
-    const payloadTiles = tiles.map(tile => {
-        if (tile.location === 'BJ') {
-            if (tile.unit) {
-                casualties.push(tile.unit);
-            }
+//     const payloadTiles = tiles.map(tile => {
+//         if (tile.location === 'BJ') {
+//             if (tile.unit) {
+//                 casualties.push(tile.unit);
+//             }
 
-            return { ...tile, destroyed: true };
-        }
-        return tile;
-    });
+//             return { ...tile, destroyed: true };
+//         }
+//         return tile;
+//     });
 
-    store.dispatch({ type: 'UPDATE_TILES', payload: payloadTiles });
-    store.dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: casualties });
-};
+//     store.dispatch({ type: 'UPDATE_TILES', payload: payloadTiles });
+//     store.dispatch({ type: 'DESTROY_BESOTTEN_JENNY', payload: casualties });
+// };

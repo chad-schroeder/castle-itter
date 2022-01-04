@@ -23,7 +23,8 @@ export const StyledContainer = styled.div`
   }
 
   &.is-casualty {
-    opacity: 0.2;
+    opacity: 0.5;
+    border: 1px dashed black
   }
 `;
 

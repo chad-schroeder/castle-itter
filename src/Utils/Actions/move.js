@@ -4,6 +4,10 @@ export const moveFriendly = (unitId, fromTileId, toTileId) => {
     const tiles = store.getState().map.tiles;
     const unit = store.getState().units.allies[unitId];
 
+    // if next tile already contains a unit, cancel move
+    const newTile = tiles.find(tile => tile.id === toTileId);
+    if (newTile.unit) return;
+
     const updatedTiles = tiles.map(tile => {
         if (tile.id === fromTileId) {
             return {

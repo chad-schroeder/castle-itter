@@ -582,7 +582,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...payload,
             },
         };
-    case 'SET_CASUALTY':
+    case 'TOGGLE_CASUALTY':
         return {
             ...state,
             allies: { 

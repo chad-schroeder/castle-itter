@@ -1,3 +1,21 @@
+import store from '../../store';
+
+export const canPhaseActivate = (unit) => {
+    const phase = store.getState().common;
+
+    if (phase === 'Deployment') {
+        if (unit.location !== 'D') return false;
+        return true;
+    }
+
+    if (phase === 'Cellar') {
+        if (unit.location === 'R') return false;
+        return true;
+    }
+
+    return true;
+};
+
 export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casualty }) => {
     if ((ordered || exhausted || disrupted || commanded || casualty)) {
         return false;
@@ -5,19 +23,14 @@ export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casual
     return true;
 };
 
-export const canEscape = (unit) => {
-    // only borotra can attempt to escape
-    if (unit.unitId !== 'borotra') return;
+export const canMove = unit => {
+    console.log('can move');
+    // return canTakeAction(unit);
+};
 
-    // borotra must be able to take an action
-    if (!canTakeAction(unit)) return;
-
-    const location = unit.location;
-
-    // borotra cannot escape from the cellar
-    if (location === 'C') return;
-
-    console.log('here');
+export const canEscape = unit => {
+    if (unit.id !== 'borotra') return false; // only borotra can escape
+    if (!canTakeAction(unit)) return false; // borotra must be able to take an action
 
     return true;
 };

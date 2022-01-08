@@ -46,9 +46,12 @@ const initialState = {
             id: 'C',
             name: 'Cellar',
             tiles: ['C1', 'C2', 'C3', 'C4', 'C5'],
-            defense: 6,
-            inspire: [],
         },
+        R: {
+            id: 'R',
+            name: 'Reinforcements',
+            tiles: ['R1', 'R2', 'R3'],
+        }
     },
     tiles: [ // hero tiles
         {
@@ -292,7 +295,7 @@ const initialState = {
         },
         {
             id: 'D7',
-            location: 'D6',
+            location: 'D',
             los: [],
             unit: null, // steiner
         },
@@ -656,20 +659,31 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-    case 'MAP_LOADING':
+    case 'LOAD_MAP':
         return {
             ...initialState,
         };
+    // case 'UPDATE_TILES':
+    //     return {
+    //         ...state,
+    //         tiles: [
+    //             ...state.tiles,
+    //             ...payload,
+    //         ],
+    //     }
     case 'UPDATE_TILES':
         return {
             ...state,
             tiles: [...payload],
-        };
+        }
     case 'UPDATE_TRACKS': {
         return {
             ...state,
-            tracks: [...payload],
-        };
+            tracks: [
+                ...state.tracks,
+                ...payload
+            ],
+        }
     }
     default:
         return state;

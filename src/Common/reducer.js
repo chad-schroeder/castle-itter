@@ -6,9 +6,8 @@ const initialState = {
     hasWon: false,
     playerTurn: true,
     actionsRemaining: 5, // 5 for player, 3 for axis
-    deployment: 'Start', // Start, Normal, Reinforcement
-    activeUnitId: null,
-    targetUnitId: null,
+    phase: 'Deployment', // Deployment, Cellar, Reinforcement
+    activeUnit: null,
     suppression: {
         purple: 0,
         green: 0,
@@ -162,15 +161,15 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...initialState,
         }
-    case 'SET_ACTIVE_UNIT_ID':
+    case 'SET_ACTIVE_UNIT':
         return {
             ...state,
-            activeUnitId: payload,
+            activeUnit: payload,
         }
-    case 'SET_TARGET_UNIT_ID':
+    case 'UNSET_ACTIVE_UNIT':
         return {
             ...state,
-            targetUnitId: payload,
+            activeUnit: null,
         }
     default:
         return state;

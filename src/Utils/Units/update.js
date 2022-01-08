@@ -1,44 +1,28 @@
 import store from '../../store';
 import { canEscape } from '../Units/checks';
 
-export const toggleToken = (unit, token) => {
-    store.dispatch({ 
-        type: 'TOGGLE_TOKEN', 
-        payload: {
-            [unit.id]: {
-                ...unit,
-                tokens: {
-                    ...unit.tokens,
-                    [token]: !unit.tokens[token],
-                },
-            },
-        }
-    });
+export const toggleOrdered = id => {
+    store.dispatch({ type: 'TOGGLE_ORDERED', payload: id });
 };
 
-export const toggleExhaustion = unit => {
-    const payload = {
-        [unit.id]: {
-            ...unit,
-            exhausted: !unit.exhausted,
-        },
-    };
-
-    store.dispatch({ type: 'TOGGLE_EXHAUSTION', payload });
+export const toggleDisrupted = id => {
+    store.dispatch({ type: 'TOGGLE_DISRUPTED', payload: id });
 };
 
-export const toggleCasualty = unit => {
-    const payload = {
-        [unit.id]: {
-            ...unit,
-            casualty: !unit.casualty,
-        },
-    };
+export const toggleCommanded = id => {
+    store.dispatch({ type: 'TOGGLE_COMMANDED', payload: id });
+};
 
-    store.dispatch({ type: 'TOGGLE_CASUALTY', payload });
+export const toggleExhaustion = id => {
+    store.dispatch({ type: 'TOGGLE_EXHAUSTION', payload: id });
+};
+
+export const toggleCasualty = id => {
+    store.dispatch({ type: 'TOGGLE_CASUALTY', payload: id });
 };
 
 export const toggleEscape = unit => {
-    canEscape(unit);
-    console.log('clicked: toggleEscape');
+    if (canEscape(unit))  {
+        console.log('escaped!');
+    }
 };

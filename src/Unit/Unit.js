@@ -1,62 +1,23 @@
 import React from 'react';
+
 import classNames from 'classnames';
 
 import { 
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit = {}, tile = {}, isInspired = false, isActive = false, onUnitClick }) => {
+const Unit = ({ unit = {}, isActive = false, onClick }) => {
     const { 
-        id: unitId,
-        name, 
-        attack, 
-        suppress, 
-        commander = null, 
-        tanker = null,
-        escape = false,
-        tokens: {
-            ordered,
-            commanded,
-            disrupted,
-        }, 
+        attack,
+        suppress,
         exhausted,
         casualty,
-    } = unit;
-
-    const {
-        id: tileId,
-        location,
-        armament,
-    } = tile;
-
-    let attackVal = attack;
-    let suppressVal = suppress;
-
-    if (tanker && armament) {
-        attackVal = tile.armament.attack || 0;
-        suppressVal = tile.armament.suppress || 0;
-    }
-
-    if (isInspired) {
-        attackVal += 1;
-        suppressVal += 1;
-    }
-
-    const unitObj = {
-        unitId,
-        name,
-        attack: attackVal,
-        suppress: suppressVal,
-        commander,
-        escape,
         ordered,
-        commanded,
         disrupted,
-        exhausted,
-        casualty,
-        tileId,
-        location,
-    };
+        commanded,
+        tile,
+        name,
+    } = unit;
 
     return (
         <StyledContainer 
@@ -65,29 +26,29 @@ const Unit = ({ unit = {}, tile = {}, isInspired = false, isActive = false, onUn
                 'is-ordered': ordered,
                 'is-disrupted': disrupted,
                 'is-commanded': commanded,
-                'is-inspired': isInspired,
+                'is-inspired': false,
                 'is-exhausted': exhausted,
                 'is-casualty': casualty,
             })}
-            onClick={() => onUnitClick(unitObj)}
+            onClick={() => onClick(unit)}
         >
             <StyledName>
                 {name}
             </StyledName>
             <StyledNationality>
-                {tileId}
+                {tile}
             </StyledNationality>
             <StyledValues>
-                {attackVal} / {suppressVal}
+                {attack} | {suppress}
             </StyledValues>
             <StyledCommanded>
-                <img src="images/commanded.svg" width="20" alt="" />
+                <img src="images/commanded.svg" width="20" alt="commanded" />
             </StyledCommanded>
             <StyledDisrupted>
-                <img src="images/disrupted.svg" width="20" alt="" />
+                <img src="images/disrupted.svg" width="20" alt="disrupted" />
             </StyledDisrupted>
             <StyledOrdered>
-                <img src="images/checkmark.svg" width="20" alt="" />
+                <img src="images/checkmark.svg" width="20" alt="ordered" />
             </StyledOrdered>
         </StyledContainer>
     );

@@ -40,22 +40,19 @@ export const moveFriendly = (unitId, fromTileId, toTileId) => {
     });
 };
 
-export const swapFriendly = (firstUnitId, secondUnitId) => {
+export const swapFriendly = (firstUnit, secondUnit) => {
     const tiles = store.getState().map.tiles;
-    const allies = store.getState().units.allies;
-    const firstUnit = allies[firstUnitId];
-    const secondUnit = allies[secondUnitId];
 
     const updatedTiles = tiles.map(tile => {
-        if (tile.unit === firstUnitId) {
+        if (tile.unit === firstUnit.id) {
             return {
                 ...tile,
-                unit: secondUnitId,
+                unit: secondUnit.id,
             }
-        } else if (tile.unit === secondUnitId) {
+        } else if (tile.unit === secondUnit.id) {
             return {
                 ...tile,
-                unit: firstUnitId,
+                unit: firstUnit.id,
             }
         }
         return tile;
@@ -71,12 +68,10 @@ export const swapFriendly = (firstUnitId, secondUnitId) => {
         payload: {
             [firstUnit.id]: {
                 ...firstUnit,
-                exhausted: true,
                 tile: secondUnit.tile,
             },
             [secondUnit.id]: {
                 ...secondUnit,
-                exhausted: true,
                 tile: firstUnit.tile,
             },
         }

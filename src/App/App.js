@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import ActionDialog from 'ActionDialog';
 import { Map } from 'Map';
 // import Card from 'Card';
 
@@ -15,7 +16,7 @@ import { Heading, RadioGroup, Radio, View, ActionGroup, Item, DialogContainer, A
 
 const App = () => {
     // const [card, setCard] = useState(null);
-    const [appDialog, setAppDialog] = useState(false);
+    // const [appDialog, setAppDialog] = useState(false);
 
     useEffect(() => {
         buildDeck();
@@ -88,6 +89,7 @@ const App = () => {
                 </View>
             </View> */}
             <Map />
+            <ActionDialog />
         </>
     );
 };

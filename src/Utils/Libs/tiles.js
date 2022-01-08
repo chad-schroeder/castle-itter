@@ -1,5 +1,12 @@
 import store from '../../store';
 
+export const determineStatusColor = ({ location, unit }) => {
+    if (location === 'D' || location === 'R') return 'neutral';
+    if (location === 'C') return 'notice';
+    if (unit) return 'info';
+    return 'positive';
+};
+
 export const getVacantTiles = () => {
     const tiles = store.getState().map.tiles;
     const vacant = tiles

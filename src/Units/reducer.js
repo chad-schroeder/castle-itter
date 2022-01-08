@@ -492,6 +492,8 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
+    let unit;
+
     switch (type) {
     case 'RESET_UNITS':
         return {
@@ -506,59 +508,69 @@ const reducer = (state = initialState, { type, payload }) => {
             },
         }
     case 'TOGGLE_EXHAUSTION':
+        unit = state.allies[payload];
+
         return {
             ...state,
             allies: { 
                 ...state.allies,
-                [payload]: {
-                    ...state.allies[payload],
-                    exhausted: !state.allies[payload].exhausted,
+                [unit.id]: {
+                    ...unit,
+                    exhausted: !unit.exhausted,
                 }
             },
         }
     case 'TOGGLE_DISRUPTED':
+        unit = state.allies[payload];
+
         return {
             ...state,
             allies: {
                 ...state.allies,
-                [payload]: {
-                    ...state.allies[payload],
-                    disrupted: !state.allies[payload].disrupted,
+                [unit.id]: {
+                    ...unit,
+                    disrupted: !unit.disrupted,
                 }
             }
         }
     case 'TOGGLE_ORDERED':
+        unit = state.allies[payload];
+
         return {
             ...state,
             allies: {
                 ...state.allies,
-                [payload]: {
-                    ...state.allies[payload],
-                    ordered: !state.allies[payload].ordered,
-                    exhausted: !state.allies[payload].exhausted,
+                [unit.id]: {
+                    ...unit,
+                    ordered: !unit.ordered,
+                    exhausted: !unit.exhausted,
                 }
             }
         }
     case 'TOGGLE_COMMANDED':
+        unit = state.allies[payload];
+
         return {
             ...state,
             allies: {
                 ...state.allies,
-                [payload]: {
-                    ...state.allies[payload],
-                    commanded: !state.allies[payload].commanded,
+                [unit.id]: {
+                    ...unit,
+                    commanded: !unit.commanded,
                     exhausted: false,
                 }
             }
         }
     case 'TOGGLE_CASUALTY':
+        unit = state.allies[payload];
+
         return {
             ...state,
             allies: { 
                 ...state.allies,
-                [payload]: {
-                    ...state.allies[payload],
-                    casualty: !state.allies[payload].casualty,
+                [unit.id]: {
+                    ...unit,
+                    casualty: !unit.casualty,
                 },
             },
         }

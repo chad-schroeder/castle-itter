@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { canTakeAction, canMove } from '../Utils/Units/checks';
+import { isPhaseActivated, canTakeAction, canMove } from '../Utils/Units/checks';
 import { getValidLocationAllies } from '../Utils/Units/allies';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
 import { 
@@ -14,20 +14,12 @@ import Cancel from '@spectrum-icons/workflow/Cancel';
 
 import { StyledContainer, } from './styled';
 
-const ActionDialog = () => {
-    const { activeUnit } = useSelector(state => state.common);
-    console.log('ActionDialog', activeUnit);
-
+const ActionDialog = ({ activeUnit = {}, error = null }) => {
     const dispatch = useDispatch();
 
     const onDeactivate = () => {
         dispatch({ type: 'UNSET_ACTIVE_UNIT' });
     };
-
-    // const [selectedTile, setSelectedTile] = useState(null);
-    // const [secondUnit, setSecondUnit] = useState(null);
-    // const locationAllies = getValidLocationAllies(unitId, tile);
-    // canMove(activeUnit);
 
     if (activeUnit) {
         const { id, name, tile, casualty } = activeUnit;
@@ -48,47 +40,56 @@ const ActionDialog = () => {
                         {tile}
                     </ActionButton>
 
-                    <p>Toggles</p>
-                    <ActionButton
-                        onPress={() => toggleExhaustion(id)}
-                        isDisabled={casualty}
-                    >
-                        Exhausted
-                    </ActionButton>
+                    {error && (
+                        <p>{error}</p>
+                    )}
 
-                    <ActionButton 
-                        onPress={() => toggleOrdered(id)}
-                        isDisabled={casualty}
-                    >
-                        Ordered
-                    </ActionButton>
+                    {!error && (
+                        <>
+                            <p>Toggles</p>
+                            <ActionButton
+                                onPress={() => toggleExhaustion(id)}
+                                isDisabled={casualty}
+                            >
+                                Exhausted
+                            </ActionButton>
+
+                            <ActionButton 
+                                onPress={() => toggleOrdered(id)}
+                                isDisabled={casualty}
+                            >
+                                Ordered
+                            </ActionButton>
 
 
-                    <ActionButton
-                        onPress={() => toggleCommanded(id)}
-                        isDisabled={casualty}
-                    >
-                        Commanded
-                    </ActionButton>
+                            <ActionButton
+                                onPress={() => toggleCommanded(id)}
+                                isDisabled={casualty}
+                            >
+                                Commanded
+                            </ActionButton>
 
-                    <ActionButton 
-                        onPress={() => toggleDisrupted(id)}
-                        isDisabled={casualty}
-                    >
-                        Disrupted
-                    </ActionButton>
+                            <ActionButton 
+                                onPress={() => toggleDisrupted(id)}
+                                isDisabled={casualty}
+                            >
+                                Disrupted
+                            </ActionButton>
 
-                    <ActionButton onPress={() => toggleCasualty(id)}>
-                        Casualty
-                    </ActionButton>
+                            <ActionButton onPress={() => toggleCasualty(id)}>
+                                Casualty
+                            </ActionButton>
+                        
+                            <ActionButton
+                                aria-label="Deactivate unit"
+                                onPress={onDeactivate}
+                            >
+                                <Cancel />
+                            </ActionButton>
+                        </>
+                    )}
+
                 </StyledContainer>
-                
-                <ActionButton
-                    aria-label="Deactivate unit"
-                    onPress={onDeactivate}
-                >
-                    <Cancel />
-                </ActionButton>
             </View>
         );
     }

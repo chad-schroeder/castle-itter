@@ -8,6 +8,7 @@ import {
 
 const Unit = ({ unit = {}, isActive = false, onClick }) => {
     const { 
+        name,
         attack,
         suppress,
         exhausted,
@@ -16,7 +17,6 @@ const Unit = ({ unit = {}, isActive = false, onClick }) => {
         disrupted,
         commanded,
         tile,
-        name,
     } = unit;
 
     return (

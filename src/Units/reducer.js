@@ -358,7 +358,8 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tile: 'C1'
+            tile: 'C1',
+            location: 'C',
         },
         gamelin: {
             id: 'gamelin',
@@ -373,6 +374,7 @@ const initialState = {
             exhausted: false,
             casualty: false,
             tile: 'C2',
+            location: 'C',
         },
         rocque: {
             id: 'rocque',
@@ -387,6 +389,7 @@ const initialState = {
             exhausted: false,
             casualty: false,
             tile: 'C3',
+            location: 'C',
         },
         reynaud: {
             id: 'reynaud',
@@ -401,6 +404,7 @@ const initialState = {
             exhausted: false,
             casualty: false,
             tile: 'C4',
+            location: 'C',
         },
         borotra: {
             id: 'borotra',
@@ -415,6 +419,7 @@ const initialState = {
             exhausted: false,
             casualty: false,
             tile: 'C5',
+            location: 'C',
         },
     },
     axis: {

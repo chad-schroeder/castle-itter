@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ActionDialog from 'ActionDialog';
+import AppDialog from 'AppDialog';
 import { Map } from 'Map';
 // import Card from 'Card';
 
@@ -12,19 +14,43 @@ import { buildDeck } from 'Utils/Libs/deck';
 // import { actionMove } from 'Utils/Actions/move';
 // import { command } from 'Utils/Actions/command';
 
-import { Heading, RadioGroup, Radio, View, ActionGroup, Item, DialogContainer, ActionButton } from '@adobe/react-spectrum';
+import { Heading, RadioGroup, Radio, View, ActionGroup, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider } from '@adobe/react-spectrum';
 
 const App = () => {
+    const { activeUnit, appMessage } = useSelector(state => state.common);
+    const [dialogOpen, setDialogOpen] = useState(false);
     // const [card, setCard] = useState(null);
-    // const [appDialog, setAppDialog] = useState(false);
+    const dispatch = useDispatch();
 
+    const { title: dialogTitle, content: dialogContent, button: dialogButton } = appMessage;
+
+    const onDialogClose = () => {
+        dispatch({ type: 'UNSET_APP_MESSAGE' });
+        setDialogOpen(false);
+    };
+
+    const triggerDialog = () =>{
+        const payload = {
+            title: 'Title',
+            content: 'This is a test from Headquarters',
+            button: 'Close',
+        };
+
+        dispatch({ type: 'SET_APP_MESSAGE', payload });
+    };
+   
     useEffect(() => {
         buildDeck();
     }, []);
-    
+
+    useEffect(() => {
+        if (dialogTitle) setDialogOpen(true);
+    }, [dialogTitle]);
+
     return (
         <>
             <h1>Castle Itter</h1>
+            <Button onPress={triggerDialog}>Trigger App Dialog</Button>
             {/* <Card {...card} /> */}
             {/* <ActionGroup onAction={() => setAppDialog(true)}>
                 <Item key="playCard">Play Card</Item>
@@ -89,7 +115,19 @@ const App = () => {
                 </View>
             </View> */}
             <Map />
-            <ActionDialog />
+            <ActionDialog activeUnit={activeUnit} />
+            <DialogContainer onDismiss={onDialogClose}>
+                {dialogOpen &&
+                    <Dialog>
+                        <Heading>{dialogTitle}</Heading>
+                        <Divider />
+                        <Content>{dialogContent}</Content>
+                        <ButtonGroup>
+                            <Button variant="secondary" onPress={onDialogClose}>{dialogButton}</Button>
+                        </ButtonGroup>
+                    </Dialog>
+                }
+            </DialogContainer>
         </>
     );
 };

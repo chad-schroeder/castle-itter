@@ -1,19 +1,23 @@
 import store from '../../store';
 
-export const canPhaseActivate = (unit) => {
-    const phase = store.getState().common;
+export const isPhaseActivated = (unit) => {
+    const { phase } = store.getState().common;
+    let message = '';
 
-    if (phase === 'Deployment') {
-        if (unit.location !== 'D') return false;
-        return true;
+    if (phase === 'Deployment' && unit.location !== 'D') {
+        message = 'Only deployment units may be activated at this time';
     }
 
-    if (phase === 'Cellar') {
-        if (unit.location === 'R') return false;
-        return true;
+    if (phase === 'Cellar' && unit.location === 'R') {
+        message = 'Replacement units may not deploy until the Replacements card is revealed';
     }
-
-    return true;
+    
+    const placeable = message ? false : true;
+    
+    return {
+        placeable,
+        message,
+    }
 };
 
 export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casualty }) => {

@@ -5,6 +5,7 @@ const initialState = {
     paused: false,
     hasWon: false,
     playerTurn: true,
+    appMessage: {},
     actionsRemaining: 5, // 5 for player, 3 for axis
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
     activeUnit: null,
@@ -124,6 +125,16 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             deckLevel: payload,
+        }
+    case 'SET_APP_MESSAGE':
+        return {
+            ...state,
+            appMessage: payload,
+        }
+    case 'UNSET_APP_MESSAGE':
+        return {
+            ...state,
+            appMessage: {},
         }
     case 'CHANGE_TURN':
         return {

@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Unit from '../Unit';
 
+import { isPhaseActive } from '../Utils/Units/checks';
+
 import { Heading, View } from '@adobe/react-spectrum';
 
 import { StyledUnits } from './styled';
 
 const Units = () => {
-    const { activeUnit } = useSelector(state => state.common);
+    const { activeUnit, phase } = useSelector(state => state.common);
     const { tiles } = useSelector(state => state.map);
     const { allies } = useSelector(state => state.units);
 
@@ -24,6 +26,7 @@ const Units = () => {
             const tile = tiles.find(tile => tile.id === unit.tile);
             const { los, armament = 0 } = tile;
             const isActive = activeUnit?.id === unit.id;
+            const phaseActive = isPhaseActive(phase, unit.location);
             
             const unitObj = {
                 ...unit,
@@ -36,6 +39,7 @@ const Units = () => {
                     key={unit.id} 
                     unit={unitObj}
                     isActive={isActive}
+                    isPhaseActive={phaseActive}
                     onClick={onClick}
                 />
             );

@@ -26,6 +26,10 @@ export const StyledContainer = styled.div`
     opacity: 0.5;
     border: 1px dashed black
   }
+
+  &.is-phase-inactive {
+    opacity: 0.5;
+  }
 `;
 
 export const StyledName = styled.h2`

@@ -6,7 +6,7 @@ import {
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit = {}, isActive = false, onClick }) => {
+const Unit = ({ unit, isActive, isPhaseActive, onClick }) => {
     const { 
         name,
         attack,
@@ -29,6 +29,7 @@ const Unit = ({ unit = {}, isActive = false, onClick }) => {
                 'is-inspired': false,
                 'is-exhausted': exhausted,
                 'is-casualty': casualty,
+                'is-phase-inactive': !isPhaseActive,
             })}
             onClick={() => onClick(unit)}
         >

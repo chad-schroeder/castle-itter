@@ -1,22 +1,17 @@
 import store from '../../store';
 
-export const isPhaseActivated = (unit) => {
+export const isPhaseActive = (location) => {
     const { phase } = store.getState().common;
-    let message = '';
 
-    if (phase === 'Deployment' && unit.location !== 'D') {
-        message = 'Only deployment units may be activated at this time';
-    }
-
-    if (phase === 'Cellar' && unit.location === 'R') {
-        message = 'Replacement units may not deploy until the Replacements card is revealed';
-    }
-    
-    const placeable = message ? false : true;
-    
-    return {
-        placeable,
-        message,
+    switch(phase) {
+        case 'Deployment':
+            if (location === 'C' || location === 'R') return false;
+            return true;
+        case 'Cellar':
+            if (location === 'R') return false;
+            return true;
+        default:
+            return true;
     }
 };
 

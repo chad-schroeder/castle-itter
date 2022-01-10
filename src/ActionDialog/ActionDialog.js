@@ -1,20 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { isPhaseActivated, canTakeAction, canMove } from '../Utils/Units/checks';
+import MessageBox from './MessageBox';
+
+import { isPhaseActive, canTakeAction, canMove } from '../Utils/Units/checks';
 import { getValidLocationAllies } from '../Utils/Units/allies';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
+
 import { 
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, 
 } from '../Utils/Units/update';
 
-import { ActionButton, Item, Picker, View, Heading } from '@adobe/react-spectrum';
+import { ActionButton, Grid, Item, Picker, View, Heading } from '@adobe/react-spectrum';
 
 import Cancel from '@spectrum-icons/workflow/Cancel';
 
 import { StyledContainer, } from './styled';
 
-const ActionDialog = ({ activeUnit = {}, error = null }) => {
+const ActionDialog = ({ activeUnit }) => {
     const dispatch = useDispatch();
 
     const onDeactivate = () => {
@@ -22,7 +25,8 @@ const ActionDialog = ({ activeUnit = {}, error = null }) => {
     };
 
     if (activeUnit) {
-        const { id, name, tile, casualty } = activeUnit;
+        const { id, name, tile, location, casualty } = activeUnit;
+        const phaseActive = isPhaseActive(location);
 
         return (
             <View
@@ -34,62 +38,69 @@ const ActionDialog = ({ activeUnit = {}, error = null }) => {
                 paddingX="size-200"
             >
                 <Heading level={3} marginBottom="size-100">Unit Actions</Heading>
-                <StyledContainer>
-                    <p>{name}</p>
-                    <ActionButton>
-                        {tile}
-                    </ActionButton>
 
-                    {error && (
-                        <p>{error}</p>
-                    )}
+                <Grid
+                    areas={[
+                        'unit',
+                        'message',
+                    ]}
+                    rows={['auto', 'auto']}
+                    gap="size-100">
 
-                    {!error && (
-                        <>
-                            <p>Toggles</p>
-                            <ActionButton
-                                onPress={() => toggleExhaustion(id)}
-                                isDisabled={casualty}
-                            >
-                                Exhausted
-                            </ActionButton>
+                    <StyledContainer gridArea="unit">
+                        <p>{name}</p>
+                        <ActionButton>
+                            {tile}
+                        </ActionButton>
 
-                            <ActionButton 
-                                onPress={() => toggleOrdered(id)}
-                                isDisabled={casualty}
-                            >
-                                Ordered
-                            </ActionButton>
+                        {phaseActive && (
+                            <>
+                                <p>Toggles</p>
+                                <ActionButton
+                                    onPress={() => toggleExhaustion(id)}
+                                    isDisabled={casualty}
+                                >
+                                    Exhausted
+                                </ActionButton>
+
+                                <ActionButton 
+                                    onPress={() => toggleOrdered(id)}
+                                    isDisabled={casualty}
+                                >
+                                    Ordered
+                                </ActionButton>
 
 
-                            <ActionButton
-                                onPress={() => toggleCommanded(id)}
-                                isDisabled={casualty}
-                            >
-                                Commanded
-                            </ActionButton>
+                                <ActionButton
+                                    onPress={() => toggleCommanded(id)}
+                                    isDisabled={casualty}
+                                >
+                                    Commanded
+                                </ActionButton>
 
-                            <ActionButton 
-                                onPress={() => toggleDisrupted(id)}
-                                isDisabled={casualty}
-                            >
-                                Disrupted
-                            </ActionButton>
+                                <ActionButton 
+                                    onPress={() => toggleDisrupted(id)}
+                                    isDisabled={casualty}
+                                >
+                                    Disrupted
+                                </ActionButton>
 
-                            <ActionButton onPress={() => toggleCasualty(id)}>
-                                Casualty
-                            </ActionButton>
-                        
+                                <ActionButton onPress={() => toggleCasualty(id)}>
+                                    Casualty
+                                </ActionButton>
+                            
+                                
+                            </>
+                        )}
                             <ActionButton
                                 aria-label="Deactivate unit"
                                 onPress={onDeactivate}
                             >
                                 <Cancel />
                             </ActionButton>
-                        </>
-                    )}
-
-                </StyledContainer>
+                    </StyledContainer>
+                    <MessageBox unit={activeUnit} gridArea="message" />
+                </Grid>
             </View>
         );
     }

@@ -548,7 +548,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 [unit.id]: {
                     ...unit,
                     ordered: !unit.ordered,
-                    exhausted: !unit.exhausted,
                 }
             }
         }
@@ -562,7 +561,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 [unit.id]: {
                     ...unit,
                     commanded: !unit.commanded,
-                    exhausted: false,
                 }
             }
         }

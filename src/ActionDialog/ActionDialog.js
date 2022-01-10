@@ -11,11 +11,8 @@ import {
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, 
 } from '../Utils/Units/update';
 
-import { ActionButton, Grid, Item, Picker, View, Heading } from '@adobe/react-spectrum';
-
+import { ActionButton, Flex, Grid, Item, Picker, View, Heading } from '@adobe/react-spectrum';
 import Cancel from '@spectrum-icons/workflow/Cancel';
-
-import { StyledContainer, } from './styled';
 
 const ActionDialog = ({ activeUnit }) => {
     const dispatch = useDispatch();
@@ -47,7 +44,7 @@ const ActionDialog = ({ activeUnit }) => {
                     rows={['auto', 'auto']}
                     gap="size-100">
 
-                    <StyledContainer gridArea="unit">
+                    <Flex direction="row" gap="size-100" alignItems="center" gridArea="unit">
                         <p>{name}</p>
                         <ActionButton>
                             {tile}
@@ -98,7 +95,7 @@ const ActionDialog = ({ activeUnit }) => {
                             >
                                 <Cancel />
                             </ActionButton>
-                    </StyledContainer>
+                    </Flex>
                     <MessageBox unit={activeUnit} gridArea="message" />
                 </Grid>
             </View>

@@ -126,6 +126,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             deckLevel: payload,
         }
+    case 'SET_PHASE':
+        return {
+            ...state,
+            phase: payload,
+        }
     case 'SET_APP_MESSAGE':
         return {
             ...state,

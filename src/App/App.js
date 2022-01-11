@@ -14,10 +14,10 @@ import { buildDeck } from 'Utils/Libs/deck';
 // import { actionMove } from 'Utils/Actions/move';
 // import { command } from 'Utils/Actions/command';
 
-import { Heading, RadioGroup, Radio, View, ActionGroup, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider } from '@adobe/react-spectrum';
+import { Heading, RadioGroup, Radio, View, ActionGroup, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider, Picker, } from '@adobe/react-spectrum';
 
 const App = () => {
-    const { activeUnit, appMessage } = useSelector(state => state.common);
+    const { activeUnit, appMessage, phase } = useSelector(state => state.common);
     const [dialogOpen, setDialogOpen] = useState(false);
     // const [card, setCard] = useState(null);
     const dispatch = useDispatch();
@@ -27,6 +27,10 @@ const App = () => {
     const onDialogClose = () => {
         dispatch({ type: 'UNSET_APP_MESSAGE' });
         setDialogOpen(false);
+    };
+
+    const onPhaseChange = (phase) => {
+        dispatch({ type: 'SET_PHASE', payload: phase });
     };
 
     const triggerDialog = () =>{
@@ -51,6 +55,22 @@ const App = () => {
         <>
             <h1>Castle Itter</h1>
             <Button onPress={triggerDialog}>Trigger App Dialog</Button>
+            <View
+                borderWidth="thin"
+                borderColor="dark"
+                borderRadius="medium"
+                padding="size-150"
+            >
+                <Picker 
+                    label="Change Phase" 
+                    defaultSelectedKey={phase}
+                    onSelectionChange={selected => onPhaseChange(selected)}
+                >
+                    <Item key="Deployment">Deployment</Item>
+                    <Item key="Cellar">Cellar</Item>
+                    <Item key="Reinforcement">Reinforcement</Item>
+                </Picker>
+            </View>
             {/* <Card {...card} /> */}
             {/* <ActionGroup onAction={() => setAppDialog(true)}>
                 <Item key="playCard">Play Card</Item>

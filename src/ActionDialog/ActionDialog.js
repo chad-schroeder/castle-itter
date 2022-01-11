@@ -6,6 +6,7 @@ import MessageBox from './MessageBox';
 import { isPhaseActive, canTakeAction, canMove } from '../Utils/Units/checks';
 import { getValidLocationAllies } from '../Utils/Units/allies';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
+import { getMoveTiles } from '../Utils/Libs/tiles';
 
 import { 
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, 
@@ -15,6 +16,11 @@ import { ActionButton, Flex, Grid, Item, Picker, View, Heading } from '@adobe/re
 import Cancel from '@spectrum-icons/workflow/Cancel';
 
 const ActionDialog = ({ activeUnit }) => {
+    const { phase } = useSelector(state => state.common);
+
+    const movementTiles = getMoveTiles();
+    console.log(movementTiles);
+
     const dispatch = useDispatch();
 
     const onDeactivate = () => {
@@ -52,6 +58,20 @@ const ActionDialog = ({ activeUnit }) => {
 
                         {phaseActive && (
                             <>
+                                <p>
+                                    move to
+                                </p>
+                                <Picker 
+                                    items={movementTiles}
+                                    // onSelectionChange={(selected) => setSelectedTile(selected)} 
+                                    aria-label="Move"
+                                >
+                                    {item => <Item>{item.id}</Item>}
+                                </Picker>
+                                {/* <ActionButton onPress={() => moveFriendly(unitId, tile, selectedTile)}>
+                                    Move
+                                </ActionButton> */}
+                                
                                 <p>Toggles</p>
                                 <ActionButton
                                     onPress={() => toggleExhaustion(id)}
@@ -96,7 +116,11 @@ const ActionDialog = ({ activeUnit }) => {
                                 <Cancel />
                             </ActionButton>
                     </Flex>
-                    <MessageBox unit={activeUnit} gridArea="message" />
+                    <MessageBox 
+                        unit={activeUnit}
+                        phase={phase}
+                        gridArea="message" 
+                    />
                 </Grid>
             </View>
         );
@@ -106,19 +130,6 @@ const ActionDialog = ({ activeUnit }) => {
    
     //         {canTakeAction(activeUnit) && (
     //             <>
-    //                 <p>
-    //                     move to
-    //                 </p>
-    //                 <Picker 
-    //                     items={tiles}
-    //                     onSelectionChange={(selected) => setSelectedTile(selected)} 
-    //                     aria-label="Move"
-    //                 >
-    //                     {item => <Item>{item.id}</Item>}
-    //                 </Picker>
-    //                 <ActionButton onPress={() => moveFriendly(unitId, tile, selectedTile)}>
-    //                     Move
-    //                 </ActionButton>
     //                 <Picker 
     //                     items={locationAllies}
     //                     onSelectionChange={(selected) => setSecondUnit(selected)} 

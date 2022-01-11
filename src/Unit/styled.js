@@ -6,16 +6,18 @@ const tokens = css`
 `;
 
 export const StyledContainer = styled.div`
+  --border-color: black;
+
   display: inline-block;
   position: relative;
   width: 100px;
   cursor: pointer;
   background-color: white;
-  border: 1px solid black;
+  border: 2px solid var(--border-color);
   border-radius: 4px;
 
   &.is-active {
-    border: 1px solid green;
+    --border-color: yellowgreen;
   }
 
   &.is-exhausted {
@@ -24,7 +26,6 @@ export const StyledContainer = styled.div`
 
   &.is-casualty {
     opacity: 0.5;
-    border: 1px dashed black
   }
 
   &.is-phase-inactive {
@@ -54,6 +55,7 @@ export const StyledValues = styled.p`
   font-weight: bold;
   text-align: center;
   background-color: black;
+  border-radius: 0 0 2px 2px;
 
   ${StyledContainer}.is-inspired & {
     color: green;

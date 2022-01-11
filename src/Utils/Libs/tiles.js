@@ -12,12 +12,6 @@ export const getMoveTiles = () => {
     return tiles.filter(tile => !tile.unit && tile.movement);
 };
 
-export const getVacantTiles = () => {
-    const tiles = store.getState().map.tiles;
-    const vacant = tiles.filter(tile => !tile.unit);
-    return vacant;
-};
-
 export const getLocationTiles = locationId => {
     const locations = store.getState().map.locations;
     const { tiles } = locations.find(location => location.id === locationId);

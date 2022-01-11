@@ -63,15 +63,12 @@ const ActionDialog = ({ activeUnit }) => {
                                 </p>
                                 <Picker 
                                     items={movementTiles}
-                                    // onSelectionChange={(selected) => setSelectedTile(selected)} 
+                                    onSelectionChange={selected => moveFriendly(id, tile, selected)} 
                                     aria-label="Move"
                                 >
                                     {item => <Item>{item.id}</Item>}
                                 </Picker>
-                                {/* <ActionButton onPress={() => moveFriendly(unitId, tile, selectedTile)}>
-                                    Move
-                                </ActionButton> */}
-                                
+
                                 <p>Toggles</p>
                                 <ActionButton
                                     onPress={() => toggleExhaustion(id)}

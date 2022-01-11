@@ -23,8 +23,7 @@ export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casual
 };
 
 export const canMove = unit => {
-    console.log('can move');
-    // return canTakeAction(unit);
+    console.log('CanMove', unit);
 };
 
 export const canEscape = unit => {

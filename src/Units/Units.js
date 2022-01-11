@@ -20,31 +20,28 @@ const Units = () => {
         dispatch({ type: 'SET_ACTIVE_UNIT', payload: unit });
     };
 
-    const renderUnits = allies => {
-        return Object.keys(allies).map(ally => {
-            const unit = allies[ally];
-            const tile = tiles.find(tile => tile.id === unit.tile);
-            const { los, armament = 0 } = tile;
-            const isActive = activeUnit?.id === unit.id;
-            const phaseActive = isPhaseActive(phase, unit.location);
-            
-            const unitObj = {
-                ...unit,
-                los,
-                armament,
-            };
+    const renderUnits = allies.map(unit => {
+        const tile = tiles.find(tile => tile.id === unit.tile);
+        const { los, armament = 0 } = tile;
+        const isActive = activeUnit?.id === unit.id;
+        const phaseActive = isPhaseActive(phase, unit.location);
 
-            return (
-                <Unit 
-                    key={unit.id} 
-                    unit={unitObj}
-                    isActive={isActive}
-                    isPhaseActive={phaseActive}
-                    onClick={onClick}
-                />
-            );
-        });
-    };
+        const unitObj = {
+            ...unit,
+            los,
+            armament,
+        };
+
+        return (
+            <Unit 
+                key={unit.id} 
+                unit={unitObj}
+                isActive={isActive}
+                isPhaseActive={phaseActive}
+                onClick={onClick}
+            />
+        );
+    });
 
     return (
         <View
@@ -57,7 +54,7 @@ const Units = () => {
         >
             <Heading level={2} marginBottom="size-100">Units</Heading>
             <StyledUnits>
-                {renderUnits(allies)}
+                {renderUnits}
             </StyledUnits>
         </View>
     );

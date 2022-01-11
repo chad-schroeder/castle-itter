@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MessageBox from './MessageBox';
 
 import { isPhaseActive, canTakeAction, canMove } from '../Utils/Units/checks';
-import { getValidLocationAllies } from '../Utils/Units/allies';
+import { getSwapAllies } from '../Utils/Units/allies';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
 import { getMoveTiles } from '../Utils/Libs/tiles';
 
@@ -17,10 +17,6 @@ import Cancel from '@spectrum-icons/workflow/Cancel';
 
 const ActionDialog = ({ activeUnit }) => {
     const { phase } = useSelector(state => state.common);
-
-    const movementTiles = getMoveTiles();
-    console.log(movementTiles);
-
     const dispatch = useDispatch();
 
     const onDeactivate = () => {
@@ -29,6 +25,8 @@ const ActionDialog = ({ activeUnit }) => {
 
     if (activeUnit) {
         const { id, name, tile, location, casualty } = activeUnit;
+        const movementTiles = getMoveTiles();
+        const swapAllies = getSwapAllies(id, location);
         const phaseActive = isPhaseActive(location);
 
         return (
@@ -58,9 +56,7 @@ const ActionDialog = ({ activeUnit }) => {
 
                         {phaseActive && (
                             <>
-                                <p>
-                                    move to
-                                </p>
+                                <p>move to</p>
                                 <Picker 
                                     items={movementTiles}
                                     onSelectionChange={selected => moveFriendly(id, tile, selected)} 
@@ -68,6 +64,20 @@ const ActionDialog = ({ activeUnit }) => {
                                 >
                                     {item => <Item>{item.id}</Item>}
                                 </Picker>
+
+                                {swapAllies.length && (
+                                    <>
+                                        <p>swap with</p>
+                                        <Picker 
+                                            items={swapAllies}
+                                            onSelectionChange={selected => console.log(selected)} 
+                                            aria-label="Swap"
+                                        >
+                                            {item => <Item>{item.name}</Item>}
+                                        </Picker>
+                                    </>
+                                )}
+                                
 
                                 <p>Toggles</p>
                                 <ActionButton
@@ -123,26 +133,6 @@ const ActionDialog = ({ activeUnit }) => {
         );
     }
     return null;
-    
-   
-    //         {canTakeAction(activeUnit) && (
-    //             <>
-    //                 <Picker 
-    //                     items={locationAllies}
-    //                     onSelectionChange={(selected) => setSecondUnit(selected)} 
-    //                     aria-label="Swap"
-    //                 >
-    //                     {item => <Item>{item.id}</Item>}
-    //                 </Picker>
-    //                 <ActionButton onPress={() => swapFriendly(activeUnit, allies[secondUnit])}>
-    //                     Swap
-    //                 </ActionButton>
-    //             </>
-    //         )}
-
-
-    //     </StyledContainer>
-    // );
 };
 
 export default ActionDialog;

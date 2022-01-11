@@ -2,41 +2,29 @@ import store from '../../store';
 
 export const moveFriendly = (unitId, fromTileId, toTileId) => {
     const tiles = store.getState().map.tiles;
-    const unit = store.getState().units.allies[unitId];
+    const { allies } = store.getState().units;
 
-    // if next tile already contains a unit, cancel move
-    const newTile = tiles.find(tile => tile.id === toTileId);
-    if (newTile.unit) return;
+    const { location } = tiles.find(tile => tile.id === toTileId);
+    const unit = allies.find(unit => unit.id === unitId);
 
-    const updatedTiles = tiles.map(tile => {
-        if (tile.id === fromTileId) {
-            return {
-                ...tile,
-                unit: null,
-            }
-        } else if (tile.id === toTileId) {
-            return {
-                ...tile,
-                unit: unitId,
-            }
-        }
-        return tile;
-    });
+    console.log('moveFriendly', location, unit);
 
     store.dispatch({
         type: 'UPDATE_TILES',
-        payload: updatedTiles,
+        payload: {
+            unitId,
+            fromTileId,
+            toTileId,
+        },
     });
 
     store.dispatch({ 
-        type: 'UPDATE_ALLIES', 
+        type: 'UPDATE_ALLY', 
         payload: {
-            [unitId]: {
-                ...unit,
-                exhausted: true,
-                tile: toTileId,
-            },
-        }
+            ...unit,
+            tile: toTileId,
+            location,
+        },
     });
 };
 

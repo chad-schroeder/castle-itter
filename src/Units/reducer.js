@@ -1,6 +1,6 @@
 const initialState = {
-    allies: {
-        basse: {
+    allies: [
+        {
             id: 'basse',
             name: 'Basse',
             nationality: 'USA',
@@ -8,15 +8,16 @@ const initialState = {
             suppress: 2,
             commander: true,
             tanker: true,
-            ordered: true,
+            ordered: false,
             commanded: false,
             disrupted: false,
-            exhausted: true,
+            exhausted: false,
             casualty: false,
+            activated: true,
             tile: 'NT2',
-            location: 'NT', // D
+            location: 'NT',
         },
-        lee: {
+        {
             id: 'lee',
             name: 'Lee',
             nationality: 'USA',
@@ -29,10 +30,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tile: 'NT5',
-            location: 'NT5', // D
+            activated: true,
+            tile: 'NT3',
+            location: 'NT',
         },
-        worsham: {
+        {
             id: 'worsham',
             name: 'Worsham',
             nationality: 'USA',
@@ -43,10 +45,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D3',
             location: 'D',
         },
-        pollack: {
+        {
             id: 'pollack',
             name: 'Pollack',
             nationality: 'USA',
@@ -57,10 +60,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tile: 'G2',
-            location: 'G', // D
+            activated: false,
+            tile: 'D4',
+            location: 'D',
         },
-        sutton: {
+        {
             id: 'sutton',
             name: 'Sutton',
             nationality: 'USA',
@@ -71,10 +75,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D5',
             location: 'D',
         },
-        petrukovich: {
+        {
             id: 'petrukovich',
             name: 'Petrukovich',
             nationality: 'USA',
@@ -85,10 +90,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D6',
             location: 'D',
         },
-        steiner: {
+        {
             id: 'steiner',
             name: 'Steiner',
             nationality: 'USA',
@@ -100,10 +106,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tile: 'BJ1',
-            location: 'BJ', // D
+            activated: false,
+            tile: 'D7',
+            location: 'D',
         },
-        szymczyk: {
+        {
             id: 'szymczyk',
             name: 'Szymczyk',
             nationality: 'USA',
@@ -115,10 +122,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D8',
             location: 'D',
         },
-        rushford: {
+        {
             id: 'rushford',
             name: 'Rushford',
             nationality: 'USA',
@@ -130,10 +138,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tile: 'BJ3',
+            activated: false,
+            tile: 'D9',
             location: 'D',
         },
-        mchaley: {
+        {
             id: 'mchaley',
             name: 'McHaley',
             nationality: 'USA',
@@ -145,10 +154,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D10',
             location: 'D',
         },
-        schrader: {
+        {
             id: 'schrader',
             name: 'Schrader',
             nationality: 'SS',
@@ -160,10 +170,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D11',
             location: 'D',
         },
-        gangl: {
+        {
             id: 'gangl',
             name: 'Gangl',
             nationality: 'GER',
@@ -177,10 +188,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D12',
             location: 'D',
         },
-        dietrich: {
+        {
             id: 'dietrich',
             name: 'Dietrich',
             nationality: 'GER',
@@ -192,10 +204,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D13',
             location: 'D',
         },
-        hockel: {
+        {
             id: 'hockel',
             name: 'Hockel',
             nationality: 'GER',
@@ -207,10 +220,11 @@ const initialState = {
             disrupted: true,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D14',
             location: 'D',
         },
-        blechschmidt: {
+        {
             id: 'blechschmidt',
             name: 'Blechschmidt',
             nationality: 'GER',
@@ -222,10 +236,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D15',
             location: 'D',
         },
-        rifleman1: {
+        {
             id: 'rifleman1',
             name: 'Rifleman',
             nationality: 'GER',
@@ -237,10 +252,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D16',
             location: 'D',
         },
-        rifleman2: {
+        {
             id: 'rifleman2',
             name: 'Rifleman',
             nationality: 'GER',
@@ -252,10 +268,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D17',
             location: 'D',
         },
-        rifleman3: {
+        {
             id: 'rifleman3',
             name: 'Rifleman',
             nationality: 'GER',
@@ -267,10 +284,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D18',
             location: 'D',
         },
-        rifleman4: {
+        {
             id: 'rifleman4',
             name: 'Rifleman',
             nationality: 'GER',
@@ -282,10 +300,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D19',
             location: 'D',
         },
-        rifleman5: {
+        {
             id: 'rifleman5',
             name: 'Rifleman',
             nationality: 'GER',
@@ -297,10 +316,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'D20',
             location: 'D',
         },
-        wegscheider: {
+        {
             id: 'wegscheider',
             name: 'Wegscheider',
             nationality: 'GER',
@@ -313,10 +333,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'R1',
             location: 'R',
         },
-        linson: {
+        {
             id: 'linson',
             name: 'Linson',
             nationality: 'GER',
@@ -328,10 +349,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'R2',
             location: 'R',
         },
-        waltl: {
+        {
             id: 'waltl',
             name: 'Waltl',
             nationality: 'AUS',
@@ -343,10 +365,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'R3',
             location: 'R',
         },
-        clemenceau: {
+        {
             id: 'clemenceau',
             name: 'Clemenceau',
             nationality: 'FRA',
@@ -358,10 +381,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'C1',
             location: 'C',
         },
-        gamelin: {
+        {
             id: 'gamelin',
             name: 'Gamelin',
             nationality: 'FRA',
@@ -373,10 +397,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'C2',
             location: 'C',
         },
-        rocque: {
+        {
             id: 'rocque',
             name: 'De La Rocque',
             nationality: 'FRA',
@@ -388,10 +413,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'C3',
             location: 'C',
         },
-        reynaud: {
+        {
             id: 'reynaud',
             name: 'Reynaud',
             nationality: 'FRA',
@@ -403,10 +429,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'C4',
             location: 'C',
         },
-        borotra: {
+        {
             id: 'borotra',
             name: 'Borotra',
             nationality: 'FRA',
@@ -418,10 +445,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            activated: false,
             tile: 'C5',
             location: 'C',
         },
-    },
+    ],
     axis: {
         rifleman: {
             id: 'rifleman',
@@ -497,85 +525,98 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
-    let unit;
-
     switch (type) {
     case 'RESET_UNITS':
         return {
             ...initialState,
         }
+    case 'UPDATE_ALLY':
+        return {
+            ...state,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload.id) {
+                    return payload;
+                }
+                return unit;
+            }),
+        }
     case 'UPDATE_ALLIES':
         return {
             ...state,
-            allies: {
-                ...state.allies,
-                ...payload,
-            },
+            allies: state.allies.map(unit => {
+                if (unit.id === payload.unitId) {
+                    return {
+                        ...unit,
+                        tile: payload.toTileId,
+                    }
+                }
+                return unit;
+            })
         }
     case 'TOGGLE_EXHAUSTION':
-        unit = state.allies[payload];
-
         return {
             ...state,
-            allies: { 
-                ...state.allies,
-                [unit.id]: {
-                    ...unit,
-                    exhausted: !unit.exhausted,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        exhausted: !unit.exhausted,
+                    }
                 }
-            },
+                return unit;
+            }),
         }
     case 'TOGGLE_DISRUPTED':
-        unit = state.allies[payload];
-
         return {
             ...state,
-            allies: {
-                ...state.allies,
-                [unit.id]: {
-                    ...unit,
-                    disrupted: !unit.disrupted,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        disrupted: !unit.disrupted,
+                    }
                 }
-            }
+                return unit;
+            })
         }
     case 'TOGGLE_ORDERED':
-        unit = state.allies[payload];
-
         return {
             ...state,
-            allies: {
-                ...state.allies,
-                [unit.id]: {
-                    ...unit,
-                    ordered: !unit.ordered,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        ordered: !unit.ordered,
+                    }
                 }
-            }
+                return unit;
+            }),
         }
     case 'TOGGLE_COMMANDED':
-        unit = state.allies[payload];
-
         return {
             ...state,
-            allies: {
-                ...state.allies,
-                [unit.id]: {
-                    ...unit,
-                    commanded: !unit.commanded,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        commanded: !unit.commanded,
+                    }
                 }
-            }
+                return unit;
+            }),
         }
     case 'TOGGLE_CASUALTY':
-        unit = state.allies[payload];
-
         return {
             ...state,
-            allies: { 
-                ...state.allies,
-                [unit.id]: {
-                    ...unit,
-                    casualty: !unit.casualty,
-                },
-            },
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        casualty: !unit.casualty,
+                    }
+                }
+                return unit;
+            }),
         }
     default:
         return state;

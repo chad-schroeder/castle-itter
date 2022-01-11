@@ -58,14 +58,14 @@ const initialState = {
             id: 'NT2',
             location: 'NT',
             los: ['purple'],
-            unit: null,
+            unit: 'basse',
             movement: true,
         },
         {
             id: 'NT3',
             location: 'NT',
             los: ['purple'],
-            unit: null,
+            unit: 'lee',
             movement: true,
         },
         {
@@ -710,21 +710,27 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'LOAD_MAP':
         return {
             ...initialState,
-        };
-    // case 'UPDATE_TILES':
-    //     return {
-    //         ...state,
-    //         tiles: [
-    //             ...state.tiles,
-    //             ...payload,
-    //         ],
-    //     }
+        }
     case 'UPDATE_TILES':
         return {
             ...state,
-            tiles: [...payload],
+            tiles: state.tiles.map(tile => {
+                if (tile.id === payload.fromTileId) {
+                    return {
+                        ...tile,
+                        unit: null,
+                    }
+                }
+                if (tile.id === payload.toTileId) {
+                    return {
+                        ...tile,
+                        unit: payload.unitId,
+                    }
+                }
+                return tile;
+            }),
         }
-    case 'UPDATE_TRACKS': {
+    case 'UPDATE_TRACKS': 
         return {
             ...state,
             tracks: [
@@ -732,7 +738,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...payload
             ],
         }
-    }
     default:
         return state;
     }

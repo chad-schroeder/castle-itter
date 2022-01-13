@@ -14,7 +14,7 @@ import { buildDeck } from 'Utils/Libs/deck';
 // import { actionMove } from 'Utils/Actions/move';
 // import { command } from 'Utils/Actions/command';
 
-import { Heading, RadioGroup, Radio, View, ActionGroup, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider, Picker, } from '@adobe/react-spectrum';
+import { Grid, Heading, RadioGroup, Radio, View, ActionGroup, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider, Picker, } from '@adobe/react-spectrum';
 
 const App = () => {
     const { activeUnit, appMessage, phase } = useSelector(state => state.common);
@@ -53,24 +53,39 @@ const App = () => {
 
     return (
         <>
-            <h1>Castle Itter</h1>
-            <Button onPress={triggerDialog}>Trigger App Dialog</Button>
-            <View
-                borderWidth="thin"
-                borderColor="dark"
-                borderRadius="medium"
-                padding="size-150"
+            <Grid
+                rows={['auto', 'auto', 'auto', 'auto', 'auto']}
+                gap="size-100"
             >
-                <Picker 
-                    label="Change Phase" 
-                    defaultSelectedKey={phase}
-                    onSelectionChange={selected => onPhaseChange(selected)}
+                <h1>Castle Itter</h1>
+                <View
+                    borderWidth="thin"
+                    borderColor="dark"
+                    borderRadius="medium"
+                    padding="size-150"
                 >
-                    <Item key="Deployment">Deployment</Item>
-                    <Item key="Cellar">Cellar</Item>
-                    <Item key="Reinforcement">Reinforcement</Item>
-                </Picker>
-            </View>
+                    <Button onPress={triggerDialog}>Dialog</Button>
+                </View>
+                <View
+                    borderWidth="thin"
+                    borderColor="dark"
+                    borderRadius="medium"
+                    padding="size-150"
+                >
+                    <Picker 
+                        label="Set Phase" 
+                        defaultSelectedKey={phase}
+                        onSelectionChange={selected => onPhaseChange(selected)}
+                    >
+                        <Item key="Deployment">Deployment</Item>
+                        <Item key="Cellar">Cellar</Item>
+                        <Item key="Reinforcement">Reinforcement</Item>
+                    </Picker>
+                </View>
+                <Map />
+                <ActionDialog activeUnit={activeUnit} />
+            </Grid>
+            
             {/* <Card {...card} /> */}
             {/* <ActionGroup onAction={() => setAppDialog(true)}>
                 <Item key="playCard">Play Card</Item>
@@ -134,8 +149,8 @@ const App = () => {
                     </RadioGroup>
                 </View>
             </View> */}
-            <Map />
-            <ActionDialog activeUnit={activeUnit} />
+            
+            
             <DialogContainer onDismiss={onDialogClose}>
                 {dialogOpen &&
                     <Dialog>

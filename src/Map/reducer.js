@@ -58,7 +58,7 @@ const initialState = {
             id: 'NT2',
             location: 'NT',
             los: ['purple'],
-            unit: 'basse',
+            unit: null,
             movement: true,
         },
         {
@@ -177,21 +177,21 @@ const initialState = {
             id: 'G2',
             location: 'G',
             los: ['yellow', 'black'],
-            unit: 'pollack',
+            unit: null,
             movement: true,
         },
         {
             id: 'G3',
             location: 'G',
             los: ['black'],
-            unit: 'clemenceau',
+            unit: null,
             movement: true,
         },
         {
             id: 'G4',
             location: 'G',
             los: ['black'],
-            unit: 'basse',
+            unit: null,
             movement: true,
             armament: {
                 name: 'M13/A4',
@@ -203,7 +203,7 @@ const initialState = {
             id: 'BJ1',
             location: 'BJ',
             los: [],
-            unit: 'steiner',
+            unit: null,
             movement: true,
             armament: {
                 name: '76mm (Load)',
@@ -227,7 +227,7 @@ const initialState = {
             id: 'BJ3',
             location: 'BJ',
             los: ['black'],
-            unit: 'rushford',
+            unit: 'basse',
             movement: true,
             armament: {
                 name: 'M2HB',
@@ -251,35 +251,35 @@ const initialState = {
             id: 'C1',
             location: 'C',
             los: [],
-            unit: 'gamelin',
+            unit: 'Clemenceau',
             movement: false,
         },
         {
             id: 'C2',
             location: 'C',
             los: [],
-            unit: null,
+            unit: 'Gamelin',
             movement: false,
         },
         {
             id: 'C3',
             location: 'C',
             los: [],
-            unit: 'rocque',
+            unit: 'De La Rocque',
             movement: false,
         },
         {
             id: 'C4',
             location: 'C',
             los: [],
-            unit: 'reynaud',
+            unit: 'Reynaud',
             movement: false,
         },
         {
             id: 'C5',
             location: 'C',
             los: [],
-            unit: 'borotra',
+            unit: 'Borotra',
             movement: false,
         },
         {
@@ -293,7 +293,7 @@ const initialState = {
             id: 'D2',
             location: 'D',
             los: [],
-            unit: 'lee',
+            unit: null,
             movement: false,
         },
         {
@@ -307,7 +307,7 @@ const initialState = {
             id: 'D4',
             location: 'D',
             los: [],
-            unit: null, // pollack
+            unit: 'pollack',
             movement: false,
         },
         {
@@ -328,7 +328,7 @@ const initialState = {
             id: 'D7',
             location: 'D',
             los: [],
-            unit: null, // steiner
+            unit: 'steiner',
             movement: false,
         },
         {

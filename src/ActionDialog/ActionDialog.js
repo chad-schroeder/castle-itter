@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import ActionSuppress from './ActionSuppress';
 import MessageBox from './MessageBox';
 
 import { isPhaseActive, canTakeAction, canMove } from '../Utils/Units/checks';
@@ -9,7 +10,7 @@ import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
 import { getMoveTiles } from '../Utils/Libs/tiles';
 
 import { 
-    toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, 
+    toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
 } from '../Utils/Units/update';
 
 import { ActionButton, Flex, Grid, Item, Picker, View, Heading } from '@adobe/react-spectrum';
@@ -19,22 +20,25 @@ const ActionDialog = ({ activeUnit }) => {
     const { phase } = useSelector(state => state.common);
     const dispatch = useDispatch();
 
-    const onDeactivate = () => {
-        dispatch({ type: 'UNSET_ACTIVE_UNIT' });
-    };
-
     if (activeUnit) {
         const { id, name, tile, location, casualty } = activeUnit;
         const movementTiles = getMoveTiles();
         const swapAllies = getSwapAllies(id, location);
         const phaseActive = isPhaseActive(location);
 
+        const onPress = () => {
+            dispatch({ type: 'RECOVER_UNIT', payload: id });
+        }
+
+        const onDeactivate = () => {
+            dispatch({ type: 'UNSET_ACTIVE_UNIT' });
+        };
+
         return (
             <View
                 borderWidth="thin"
                 borderColor="dark"
                 borderRadius="medium"
-                marginY="size-200"
                 paddingY="size-125"
                 paddingX="size-200"
             >
@@ -45,8 +49,29 @@ const ActionDialog = ({ activeUnit }) => {
                         'unit',
                         'message',
                     ]}
-                    rows={['auto', 'auto']}
+                    rows={['auto', 'auto', 'auto', 'auto']}
                     gap="size-100">
+
+                    <View
+                        borderWidth="thin"
+                        borderColor="dark"
+                        borderRadius="medium"
+                        paddingY="size-125"
+                        paddingX="size-200"
+                    >
+                        <Flex direction="row" gap="size-100">
+                            <ActionButton onPress={() => console.log('Attack')}>
+                                Attack
+                            </ActionButton>
+                            <ActionSuppress unit={activeUnit} />
+                            <ActionButton>Move</ActionButton>
+                            <ActionButton>Deploy</ActionButton>
+                            <ActionButton>Swap</ActionButton>
+                            <ActionButton onPress={onPress}>Recover</ActionButton>
+                            <ActionButton>Command</ActionButton>
+                            <ActionButton>Escape</ActionButton>
+                        </Flex>
+                    </View>
 
                     <Flex direction="row" gap="size-100" alignItems="center" gridArea="unit">
                         <p>{name}</p>
@@ -65,7 +90,7 @@ const ActionDialog = ({ activeUnit }) => {
                                     {item => <Item>{item.id}</Item>}
                                 </Picker>
 
-                                {swapAllies.length && (
+                                {swapAllies.length > 0 && (
                                     <>
                                         <p>swap with</p>
                                         <Picker 
@@ -76,8 +101,7 @@ const ActionDialog = ({ activeUnit }) => {
                                             {item => <Item>{item.name}</Item>}
                                         </Picker>
                                     </>
-                                )}
-                                
+                                )}        
 
                                 <p>Toggles</p>
                                 <ActionButton
@@ -93,7 +117,6 @@ const ActionDialog = ({ activeUnit }) => {
                                 >
                                     Ordered
                                 </ActionButton>
-
 
                                 <ActionButton
                                     onPress={() => toggleCommanded(id)}
@@ -113,7 +136,9 @@ const ActionDialog = ({ activeUnit }) => {
                                     Casualty
                                 </ActionButton>
                             
-                                
+                                <ActionButton onPress={() => loadTankCannon()}>
+                                    Load
+                                </ActionButton>
                             </>
                         )}
                             <ActionButton

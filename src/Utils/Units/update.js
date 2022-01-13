@@ -26,3 +26,7 @@ export const toggleEscape = unit => {
         console.log('escaped!');
     }
 };
+
+export const loadTankCannon = () => {
+     store.dispatch({ type: 'TANK_CANNON_LOADED' });
+};

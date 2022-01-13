@@ -9,15 +9,26 @@ import {
 const Unit = ({ unit, isActive, isPhaseActive, onClick }) => {
     const { 
         name,
-        attack,
-        suppress,
+        tanker,
         exhausted,
         casualty,
         ordered,
         disrupted,
         commanded,
         tile,
+        los,
+        armament,
     } = unit;
+
+    let {
+        attack,
+        suppress,
+    } = unit;
+
+    if (tanker && armament) {
+        attack = armament.attack;
+        suppress = armament.suppress;
+    }
 
     return (
         <StyledContainer 

@@ -90,6 +90,7 @@ const initialState = {
     card: null,
     score: 0,
     hasEscaped: false,
+    tankLoaded: false, // tank cannon
     tankDestroyed: false,
     tankCasualties: [],
 };
@@ -155,6 +156,16 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             suppression: { ...payload },
+        }
+    case 'TANK_CANNON_LOADED':
+        return {
+            ...state,
+            tankLoaded: true,
+        }
+    case 'TANK_CANNON_FIRED':
+        return {
+            ...state,
+            tankLoaded: false,
         }
     case 'DESTROY_BESOTTEN_JENNY':
         return {

@@ -14,8 +14,8 @@ const initialState = {
             exhausted: false,
             casualty: false,
             activated: true,
-            tile: 'NT2',
-            location: 'NT',
+            tile: 'BJ3',
+            location: 'BJ',
         },
         {
             id: 'lee',
@@ -551,7 +551,34 @@ const reducer = (state = initialState, { type, payload }) => {
                     }
                 }
                 return unit;
-            })
+            }),
+        }
+    case 'ACTIVATE_UNIT': 
+        return {
+            ...state,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        activated: true,
+                    }
+                }
+                return unit;
+            }),
+        }
+    case 'RECOVER_UNIT':
+        return {
+            ...state,
+            allies: state.allies.map(unit => {
+                if (unit.id === payload) {
+                    return {
+                        ...unit,
+                        ordered: true,
+                        exhausted: false,
+                    }
+                }
+                return unit;
+            }),
         }
     case 'TOGGLE_EXHAUSTION':
         return {

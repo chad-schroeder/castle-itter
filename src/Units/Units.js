@@ -48,7 +48,6 @@ const Units = () => {
             borderWidth="thin"
             borderColor="dark"
             borderRadius="medium"
-            marginY="size-200"
             paddingY="size-150"
             paddingX="size-200"
         >

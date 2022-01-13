@@ -21,12 +21,11 @@ const Tiles = () => {
             borderWidth="thin"
             borderColor="dark"
             borderRadius="medium"
-            marginY="size-200"
             paddingY="size-150"
             paddingX="size-200"
         >
             <Heading level={2} marginBottom="size-100">Tiles</Heading>
-            <Flex height="size-5000" width="100%" direction="column" gap="size-150">
+            <Flex height="size-5000" direction="column">
                 <TableView aria-label="Tiles">
                     <TableHeader columns={columns}>
                         {column => (

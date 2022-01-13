@@ -7,8 +7,6 @@ export const moveFriendly = (unitId, fromTileId, toTileId) => {
     const { location } = tiles.find(tile => tile.id === toTileId);
     const unit = allies.find(unit => unit.id === unitId);
 
-    console.log('moveFriendly', location, unit);
-
     store.dispatch({
         type: 'UPDATE_TILES',
         payload: {
@@ -18,7 +16,7 @@ export const moveFriendly = (unitId, fromTileId, toTileId) => {
         },
     });
 
-    store.dispatch({ 
+    store.dispatch({
         type: 'UPDATE_ALLY', 
         payload: {
             ...unit,

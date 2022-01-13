@@ -15,15 +15,23 @@ export const isPhaseActive = (location) => {
     }
 };
 
-export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casualty }) => {
-    if ((ordered || exhausted || disrupted || commanded || casualty)) {
+export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casualty, activated }) => {
+    const { phase } = store.getState().common;
+
+    if ((ordered || exhausted || disrupted || commanded || casualty || !activated)) {
         return false;
     }
+    
+    // Deployed units cannot activate again until all deployment pool units have been placed
+    if (phase === 'Deployment' && activated) {
+        return false;
+    }
+
     return true;
 };
 
 export const canMove = unit => {
-    console.log('CanMove', unit);
+
 };
 
 export const canEscape = unit => {

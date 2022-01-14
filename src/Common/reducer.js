@@ -5,10 +5,11 @@ const initialState = {
     paused: false,
     hasWon: false,
     playerTurn: true,
+    action: 1, // 5 for player, 3 for axis
+    activeUnit: null, // the unit taking an action
+    history: {}, // keep a record of all actions for debug
     appMessage: {},
-    actionsRemaining: 5, // 5 for player, 3 for axis
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
-    activeUnit: null,
     suppression: {
         purple: 0,
         green: 0,
@@ -106,10 +107,15 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             loading: false,
         }
-    case 'GAME_PAUSED': 
+    case 'PAUSE_GAME': 
         return {
             ...state,
             paused: true,
+        }
+    case 'RESUME_GAME':
+        return {
+            ...state,
+            paused: false,
         }
     case 'BUILD_DECK':
         return {
@@ -142,15 +148,15 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             appMessage: {},
         }
-    case 'CHANGE_TURN':
+    case 'NEXT_TURN':
         return {
             ...state,
-            ...payload,
+            playerTurn: !state.playerTurn,
         }
-    case 'SPEND_ACTION':
+    case 'NEXT_ACTION':
         return {
             ...state,
-            actionsRemaining: payload,
+            action: payload,
         }
     case 'ADD_SUPPRESSION':
         return {

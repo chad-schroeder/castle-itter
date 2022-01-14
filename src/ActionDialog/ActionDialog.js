@@ -13,8 +13,9 @@ import {
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
 } from '../Utils/Units/update';
 
-import { ActionButton, Flex, Grid, Item, Picker, View, Heading } from '@adobe/react-spectrum';
+import { ActionButton, ActionGroup, Flex, Grid, Item, Picker, View, Heading, Text, } from '@adobe/react-spectrum';
 import Cancel from '@spectrum-icons/workflow/Cancel';
+import Copy from '@spectrum-icons/workflow/Copy';
 
 const ActionDialog = ({ activeUnit }) => {
     const { phase } = useSelector(state => state.common);
@@ -59,18 +60,46 @@ const ActionDialog = ({ activeUnit }) => {
                         paddingY="size-125"
                         paddingX="size-200"
                     >
-                        <Flex direction="row" gap="size-100">
-                            <ActionButton onPress={() => console.log('Attack')}>
-                                Attack
-                            </ActionButton>
-                            <ActionSuppress unit={activeUnit} />
-                            <ActionButton>Move</ActionButton>
-                            <ActionButton>Deploy</ActionButton>
-                            <ActionButton>Swap</ActionButton>
-                            <ActionButton onPress={onPress}>Recover</ActionButton>
-                            <ActionButton>Command</ActionButton>
-                            <ActionButton>Escape</ActionButton>
-                        </Flex>
+                        
+                        <ActionGroup 
+                            maxWidth={84}
+                            buttonLabelBehavior="hide"
+                            selectionMode="single"
+                        >
+                            <Item key="attack">
+                                <Copy />
+                                <Text>Attack</Text>
+                            </Item>
+                            <Item key="suppress">
+                                <Copy />
+                                <Text>Suppress</Text>
+                            </Item>
+                            <Item key="move">
+                                <Copy />
+                                <Text>Move</Text>
+                            </Item>
+                            <Item key="swap">
+                                <Copy />
+                                <Text>Move Within</Text>
+                            </Item>
+                            <Item key="recover">
+                                <Copy />
+                                <Text>Recover</Text>
+                            </Item>
+                            <Item key="command">
+                                <Copy />
+                                <Text>Command</Text>
+                            </Item>
+                            <Item key="escape">
+                                <Copy />
+                                <Text>Escape</Text>
+                            </Item>
+                            <Item key="load">
+                                <Copy />
+                                <Text>Load</Text>
+                            </Item>
+                        </ActionGroup>
+                        
                     </View>
 
                     <Flex direction="row" gap="size-100" alignItems="center" gridArea="unit">

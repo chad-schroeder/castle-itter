@@ -1,4 +1,4 @@
-export const Messages = {
+export const phases = {
     phase_deployment: {
         title: 'Deployment Phase',
         content: [

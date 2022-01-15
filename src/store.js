@@ -3,10 +3,9 @@ import createSagaMiddleware from 'redux-saga';
 // import { all } from 'redux-saga/effects';
 import { composeWithDevTools } from "redux-devtools-extension";
 
+import { reducer as appReducer } from './App';
 import { reducer as mapReducer } from './Map';
 import { reducer as unitReducer } from './Units';
-// import { reducer as commonReducer } from './Common';
-import { reducer as appReducer } from './App';
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -15,7 +14,7 @@ const rootReducer = combineReducers({
 });
 
 function* rootSaga() {
-    // yield all([organizerSaga(), sparkModalSaga(), commonSaga(), previewSaga()]);
+    // yield all([organizerSaga(), sparkModalSaga(), appSaga(), previewSaga()]);
 }
 
 const sagaMiddleware = createSagaMiddleware();

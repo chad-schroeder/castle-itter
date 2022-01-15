@@ -1,24 +1,23 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
-    loading: true,
-    paused: false,
-    hasWon: false,
+    loading: true, // is game state loading
+    paused: false, // has game been paused
     playerTurn: true,
     action: 1, // 5 for player, 3 for axis
-    activeUnit: null, // the unit taking an action
-    history: {}, // keep a record of all actions for debug
-    appMessage: {},
+    activeUnit: null, // unit taking an action
+    history: {}, // record of all actions for debugging
+    appMessage: {}, // dialog messages to player
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
-    suppression: {
+    suppression: { // suppression points accumulated, per color
         purple: 0,
         green: 0,
         black: 0,
         yellow: 0,
         orange: 0,
     },
-    deck: [], // axis draw deck
-    decks: {
+    deck: [], // shuffled axis draw deck
+    decks: { // axis deck
         1: [
             { id: uuidv4(), type: 'rifleman', action: 'advance', count: 2, cardDeck: 1, },
             { id: uuidv4(), type: 'rifleman', action: 'advance', count: 2, cardDeck: 1, },
@@ -88,12 +87,11 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', action: 'disrupt', cardDeck: 4, },
         ],
     },
-    card: null,
-    score: 0,
-    hasEscaped: false,
-    tankLoaded: false, // tank cannon
+    activeCard: null, // current Axis card
+    hasEscaped: false, // has Borotra escaped
+    tankLoaded: false, // is tank cannon armed
     tankDestroyed: false,
-    tankCasualties: [],
+    tankCasualties: [], // units inside the tank when destroyed
 };
 
 const reducer = (state = initialState, { type, payload }) => {

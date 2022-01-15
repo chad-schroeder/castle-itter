@@ -10,7 +10,7 @@ import { Heading, View } from '@adobe/react-spectrum';
 import { StyledUnits } from './styled';
 
 const Units = () => {
-    const { activeUnit, phase } = useSelector(state => state.common);
+    const { activeUnit, phase } = useSelector(state => state.app);
     const { tiles } = useSelector(state => state.map);
     const { allies } = useSelector(state => state.units);
 

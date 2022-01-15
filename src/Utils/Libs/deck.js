@@ -9,7 +9,7 @@ export const shuffle = (deck) => {
 };
 
 export const buildDeck = () => {
-    const decks = store.getState().common.decks;
+    const decks = store.getState().app.decks;
     
     const deck = [
         ...shuffle(decks[1]),

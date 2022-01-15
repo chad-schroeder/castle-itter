@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ActionDialog from 'ActionDialog';
 import AppDialog from 'AppDialog';
 import { Map } from 'Map';
+import MessageBox from 'MessageBox';
 // import Card from 'Card';
 
 import { buildDeck } from 'Utils/Libs/deck';
@@ -17,7 +18,7 @@ import { buildDeck } from 'Utils/Libs/deck';
 import { Grid, Heading, RadioGroup, Radio, View, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider, Flex, Picker, } from '@adobe/react-spectrum';
 
 const App = () => {
-    const { activeUnit, appMessage, phase, playerTurn, action, paused } = useSelector(state => state.common);
+    const { activeUnit, appMessage, phase, playerTurn, action, paused } = useSelector(state => state.app);
 
     const [dialogOpen, setDialogOpen] = useState(false);
     // const [card, setCard] = useState(null);
@@ -87,7 +88,7 @@ const App = () => {
     return (
         <>
             <Grid
-                rows={['auto', 'auto', 'auto', 'auto', 'auto']}
+                rows={['auto', 'auto', 'auto', 'auto', 'auto', 'auto']}
                 gap="size-100"
             >
                 <h1>Castle Itter</h1>
@@ -159,6 +160,10 @@ const App = () => {
                 </View> */}
                 <Map />
                 <ActionDialog activeUnit={activeUnit} />
+                <MessageBox 
+                    unit={activeUnit}
+                    phase={phase}
+                />
             </Grid>
             
             {/* <Card {...card} /> */}

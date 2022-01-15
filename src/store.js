@@ -5,11 +5,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { reducer as mapReducer } from './Map';
 import { reducer as unitReducer } from './Units';
-import { reducer as commonReducer } from './Common';
+// import { reducer as commonReducer } from './Common';
+import { reducer as appReducer } from './App';
 
 const rootReducer = combineReducers({
+    app: appReducer,
     map: mapReducer,
-    common: commonReducer,
     units: unitReducer,
 });
 

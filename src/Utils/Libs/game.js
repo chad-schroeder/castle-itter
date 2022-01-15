@@ -3,7 +3,7 @@ import playCard from './playCard';
 import store from '../../store';
 
 // export const spendAction = () => {
-//     let { playerTurn, actionsRemaining } = store.getState().common;
+//     let { playerTurn, actionsRemaining } = store.getState().app;
 
 //     if (playerTurn) {
 //         // show player options
@@ -23,7 +23,7 @@ import store from '../../store';
 // };
 
 // export const changeTurn = () => {
-//     let playerTurn = !store.getState().common.playerTurn;
+//     let playerTurn = !store.getState().app.playerTurn;
 
 //     const actionsRemaining = playerTurn ? 5 : 3;
 

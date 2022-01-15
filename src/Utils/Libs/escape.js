@@ -12,7 +12,7 @@ const regimentCard = {
 };
 
 const cardCount = () => {
-    const { deckLevel } = store.getState().common;
+    const { deckLevel } = store.getState().app;
 
     let count = 9;
 
@@ -23,7 +23,7 @@ const cardCount = () => {
 };
 
 const shuffleBottomCards = () => {
-    const { deck } = store.getState().common;
+    const { deck } = store.getState().app;
 
     const count = cardCount();
 

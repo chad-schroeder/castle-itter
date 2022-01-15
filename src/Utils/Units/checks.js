@@ -1,7 +1,7 @@
 import store from '../../store';
 
 export const isPhaseActive = (location) => {
-    const { phase } = store.getState().common;
+    const { phase } = store.getState().app;
 
     switch(phase) {
         case 'Deployment':
@@ -16,7 +16,7 @@ export const isPhaseActive = (location) => {
 };
 
 export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casualty, activated }) => {
-    const { phase } = store.getState().common;
+    const { phase } = store.getState().app;
 
     if ((ordered || exhausted || disrupted || commanded || casualty || !activated)) {
         return false;

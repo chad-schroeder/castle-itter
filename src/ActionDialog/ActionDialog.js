@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ActionSuppress from './ActionSuppress';
-import MessageBox from './MessageBox';
 
 import { isPhaseActive, canTakeAction, canMove } from '../Utils/Units/checks';
 import { getSwapAllies } from '../Utils/Units/allies';
@@ -15,10 +14,17 @@ import {
 
 import { ActionButton, ActionGroup, Flex, Grid, Item, Picker, View, Heading, Text, } from '@adobe/react-spectrum';
 import Cancel from '@spectrum-icons/workflow/Cancel';
-import Copy from '@spectrum-icons/workflow/Copy';
+import Switch from '@spectrum-icons/workflow/Switch';
+import Crosshairs from '@spectrum-icons/workflow/Crosshairs';
+import Wrench from '@spectrum-icons/workflow/Wrench';
+import Feature from '@spectrum-icons/workflow/Feature';
+import Follow from '@spectrum-icons/workflow/Follow';
+import Move from '@spectrum-icons/workflow/Move';
+import Relevance from '@spectrum-icons/workflow/Relevance';
+import SpotHeal from '@spectrum-icons/workflow/SpotHeal';
 
 const ActionDialog = ({ activeUnit }) => {
-    const { phase } = useSelector(state => state.common);
+    const { phase } = useSelector(state => state.app);
     const dispatch = useDispatch();
 
     if (activeUnit) {
@@ -60,46 +66,47 @@ const ActionDialog = ({ activeUnit }) => {
                         paddingY="size-125"
                         paddingX="size-200"
                     >
-                        
-                        <ActionGroup 
-                            maxWidth={84}
-                            buttonLabelBehavior="hide"
-                            selectionMode="single"
-                        >
-                            <Item key="attack">
-                                <Copy />
-                                <Text>Attack</Text>
-                            </Item>
-                            <Item key="suppress">
-                                <Copy />
-                                <Text>Suppress</Text>
-                            </Item>
-                            <Item key="move">
-                                <Copy />
-                                <Text>Move</Text>
-                            </Item>
-                            <Item key="swap">
-                                <Copy />
-                                <Text>Move Within</Text>
-                            </Item>
-                            <Item key="recover">
-                                <Copy />
-                                <Text>Recover</Text>
-                            </Item>
-                            <Item key="command">
-                                <Copy />
-                                <Text>Command</Text>
-                            </Item>
-                            <Item key="escape">
-                                <Copy />
-                                <Text>Escape</Text>
-                            </Item>
-                            <Item key="load">
-                                <Copy />
-                                <Text>Load</Text>
-                            </Item>
-                        </ActionGroup>
-                        
+                        <Flex direction="row" gap="size-100" alignItems="center">
+                            <p>Actions:</p>
+                            <ActionGroup 
+                                density="compact"
+                                buttonLabelBehavior="hide"
+                                selectionMode="single"
+                            >
+                                <Item key="attack">
+                                    <Crosshairs />
+                                    <Text>Attack</Text>
+                                </Item>
+                                <Item key="suppress">
+                                    <Relevance />
+                                    <Text>Suppress</Text>
+                                </Item>
+                                <Item key="move">
+                                    <Move />
+                                    <Text>Move</Text>
+                                </Item>
+                                <Item key="swap">
+                                    <Switch />
+                                    <Text>Move Within</Text>
+                                </Item>
+                                <Item key="recover">
+                                    <SpotHeal />
+                                    <Text>Recover</Text>
+                                </Item>
+                                <Item key="command">
+                                    <Feature />
+                                    <Text>Command</Text>
+                                </Item>
+                                <Item key="escape">
+                                    <Follow />
+                                    <Text>Escape</Text>
+                                </Item>
+                                <Item key="load">
+                                    <Wrench />
+                                    <Text>Load</Text>
+                                </Item>
+                            </ActionGroup>
+                        </Flex>
                     </View>
 
                     <Flex direction="row" gap="size-100" alignItems="center" gridArea="unit">
@@ -110,16 +117,16 @@ const ActionDialog = ({ activeUnit }) => {
 
                         {phaseActive && (
                             <>
-                                <p>move to</p>
+                                {/* <p>move to</p>
                                 <Picker 
                                     items={movementTiles}
                                     onSelectionChange={selected => moveFriendly(id, tile, selected)} 
                                     aria-label="Move"
                                 >
                                     {item => <Item>{item.id}</Item>}
-                                </Picker>
+                                </Picker> */}
 
-                                {swapAllies.length > 0 && (
+                                {/* {swapAllies.length > 0 && (
                                     <>
                                         <p>swap with</p>
                                         <Picker 
@@ -130,7 +137,7 @@ const ActionDialog = ({ activeUnit }) => {
                                             {item => <Item>{item.name}</Item>}
                                         </Picker>
                                     </>
-                                )}        
+                                )}         */}
 
                                 <p>Toggles</p>
                                 <ActionButton
@@ -177,11 +184,6 @@ const ActionDialog = ({ activeUnit }) => {
                                 <Cancel />
                             </ActionButton>
                     </Flex>
-                    <MessageBox 
-                        unit={activeUnit}
-                        phase={phase}
-                        gridArea="message" 
-                    />
                 </Grid>
             </View>
         );

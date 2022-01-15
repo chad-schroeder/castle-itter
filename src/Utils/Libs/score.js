@@ -1,6 +1,6 @@
 import store from '../../store';
 
-const { tankDestroyed, tankCasualties, hasEscaped } = store.getState().common;
+const { tankDestroyed, tankCasualties, hasEscaped } = store.getState().app;
 const { tiles, tracks } = store.getState().map;
 const { allies } = store.getState().units;
 

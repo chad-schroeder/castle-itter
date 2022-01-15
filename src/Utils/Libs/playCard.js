@@ -2,7 +2,7 @@ import store from '../../store';
 console.log('Play Card', store);
 
 const playCard = () => {
-    const { deck } = store.getState().common;
+    const { deck } = store.getState().app;
     const { axis } = store.getState().units;
 
     if (deck.length) {

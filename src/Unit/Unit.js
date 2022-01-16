@@ -6,7 +6,7 @@ import {
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit, isActive, isPhaseActive, onClick }) => {
+const Unit = ({ unit, isActive, onClick }) => {
     const { 
         name,
         tanker,
@@ -15,8 +15,7 @@ const Unit = ({ unit, isActive, isPhaseActive, onClick }) => {
         ordered,
         disrupted,
         commanded,
-        tile,
-        los,
+        tileId,
         armament,
     } = unit;
 
@@ -40,7 +39,6 @@ const Unit = ({ unit, isActive, isPhaseActive, onClick }) => {
                 'is-inspired': false,
                 'is-exhausted': exhausted,
                 'is-casualty': casualty,
-                'is-phase-inactive': !isPhaseActive,
             })}
             onClick={() => onClick(unit)}
         >
@@ -48,7 +46,7 @@ const Unit = ({ unit, isActive, isPhaseActive, onClick }) => {
                 {name}
             </StyledName>
             <StyledNationality>
-                {tile}
+                {tileId}
             </StyledNationality>
             <StyledValues>
                 {attack} | {suppress}

@@ -14,8 +14,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: true,
-            tile: 'BJ3',
-            location: 'BJ',
         },
         {
             id: 'lee',
@@ -31,8 +29,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: true,
-            tile: 'NT3',
-            location: 'NT',
         },
         {
             id: 'worsham',
@@ -46,8 +42,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D3',
-            location: 'D',
         },
         {
             id: 'pollack',
@@ -61,8 +55,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D4',
-            location: 'D',
         },
         {
             id: 'sutton',
@@ -76,8 +68,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D5',
-            location: 'D',
         },
         {
             id: 'petrukovich',
@@ -91,8 +81,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D6',
-            location: 'D',
         },
         {
             id: 'steiner',
@@ -107,8 +95,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D7',
-            location: 'D',
         },
         {
             id: 'szymczyk',
@@ -123,8 +109,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D8',
-            location: 'D',
         },
         {
             id: 'rushford',
@@ -139,8 +123,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D9',
-            location: 'D',
         },
         {
             id: 'mchaley',
@@ -155,8 +137,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D10',
-            location: 'D',
         },
         {
             id: 'schrader',
@@ -171,8 +151,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D11',
-            location: 'D',
         },
         {
             id: 'gangl',
@@ -189,8 +167,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D12',
-            location: 'D',
         },
         {
             id: 'dietrich',
@@ -205,8 +181,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D13',
-            location: 'D',
         },
         {
             id: 'hockel',
@@ -221,8 +195,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D14',
-            location: 'D',
         },
         {
             id: 'blechschmidt',
@@ -237,8 +209,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D15',
-            location: 'D',
         },
         {
             id: 'rifleman1',
@@ -253,8 +223,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D16',
-            location: 'D',
         },
         {
             id: 'rifleman2',
@@ -269,8 +237,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D17',
-            location: 'D',
         },
         {
             id: 'rifleman3',
@@ -285,8 +251,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D18',
-            location: 'D',
         },
         {
             id: 'rifleman4',
@@ -301,8 +265,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D19',
-            location: 'D',
         },
         {
             id: 'rifleman5',
@@ -317,8 +279,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'D20',
-            location: 'D',
         },
         {
             id: 'wegscheider',
@@ -334,8 +294,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'R1',
-            location: 'R',
         },
         {
             id: 'linson',
@@ -350,8 +308,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'R2',
-            location: 'R',
         },
         {
             id: 'waltl',
@@ -366,8 +322,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'R3',
-            location: 'R',
         },
         {
             id: 'clemenceau',
@@ -382,8 +336,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'C1',
-            location: 'C',
         },
         {
             id: 'gamelin',
@@ -398,8 +350,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'C2',
-            location: 'C',
         },
         {
             id: 'rocque',
@@ -414,8 +364,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'C3',
-            location: 'C',
         },
         {
             id: 'reynaud',
@@ -430,8 +378,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'C4',
-            location: 'C',
         },
         {
             id: 'borotra',
@@ -446,8 +392,6 @@ const initialState = {
             exhausted: false,
             casualty: false,
             mobilized: false,
-            tile: 'C5',
-            location: 'C',
         },
     ],
     axis: {

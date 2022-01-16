@@ -21,23 +21,31 @@ const Units = () => {
     };
 
     const renderUnits = allies.map(unit => {
-        const tile = tiles.find(tile => tile.id === unit.tile);
-        const { los, armament = 0 } = tile;
+        const tile = tiles.find(tile => tile.unit === unit.id);
+        const { 
+            id: tileId, 
+            location, 
+            los, 
+            armament = 0 
+        } = tile;
         const isActive = activeUnit?.id === unit.id;
         const phaseActive = isPhaseActive(phase, unit.location);
 
         const unitObj = {
             ...unit,
+            tileId,
+            location,
             los,
             armament,
         };
+        
+        console.log('Units', unitObj);
 
         return (
             <Unit 
                 key={unit.id} 
                 unit={unitObj}
                 isActive={isActive}
-                isPhaseActive={phaseActive}
                 onClick={onClick}
             />
         );

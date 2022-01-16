@@ -39,7 +39,7 @@ const Tiles = () => {
                             <Row>
                                 <Cell>{item.id}</Cell>
                                 <Cell>{item.location}</Cell>
-                                <Cell>{item.los.length ? item.los.map(sight => `${sight}`).join(', ') : '-'}</Cell>
+                                <Cell>{item.los ? item.los.map(sight => `${sight}`).join(', ') : '-'}</Cell>
                                 <Cell>{item.unit ? item.unit : '-'}</Cell>
                                 <Cell>{item.armament ? item.armament.name : '-'}</Cell>
                             </Row>

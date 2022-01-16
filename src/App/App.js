@@ -18,13 +18,24 @@ import { buildDeck } from 'Utils/Libs/deck';
 import { Grid, Heading, RadioGroup, Radio, View, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider, Flex, Picker, } from '@adobe/react-spectrum';
 
 const App = () => {
-    const { activeUnit, appMessage, phase, playerTurn, action, paused } = useSelector(state => state.app);
+    const { 
+        activeUnit, 
+        appMessage, 
+        phase, 
+        playerTurn, 
+        action, 
+        paused,
+    } = useSelector(state => state.app);
 
     const [dialogOpen, setDialogOpen] = useState(false);
     // const [card, setCard] = useState(null);
     const dispatch = useDispatch();
 
-    const { title: dialogTitle, content: dialogContent, button: dialogButton } = appMessage;
+    const { 
+        title: dialogTitle, 
+        content: dialogContent, 
+        button: dialogButton,
+    } = appMessage;
 
     const onDialogClose = () => {
         dispatch({ type: 'UNSET_APP_MESSAGE' });

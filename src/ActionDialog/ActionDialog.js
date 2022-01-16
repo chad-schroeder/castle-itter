@@ -24,18 +24,12 @@ import Relevance from '@spectrum-icons/workflow/Relevance';
 import SpotHeal from '@spectrum-icons/workflow/SpotHeal';
 
 const ActionDialog = ({ activeUnit }) => {
-    const { phase } = useSelector(state => state.app);
     const dispatch = useDispatch();
 
     if (activeUnit) {
-        const { id, name, tile, location, casualty } = activeUnit;
-        const movementTiles = getMoveTiles();
-        const swapAllies = getSwapAllies(id, location);
-        const phaseActive = isPhaseActive(location);
-
-        const onPress = () => {
-            dispatch({ type: 'RECOVER_UNIT', payload: id });
-        }
+        const { id, name, tileId, casualty, escape } = activeUnit;
+        // const movementTiles = getMoveTiles();
+        // const swapAllies = getSwapAllies(id, location);
 
         const onDeactivate = () => {
             dispatch({ type: 'UNSET_ACTIVE_UNIT' });
@@ -97,14 +91,18 @@ const ActionDialog = ({ activeUnit }) => {
                                     <Feature />
                                     <Text>Command</Text>
                                 </Item>
-                                <Item key="escape">
-                                    <Follow />
-                                    <Text>Escape</Text>
-                                </Item>
-                                <Item key="load">
-                                    <Wrench />
-                                    <Text>Load</Text>
-                                </Item>
+                                {escape && (
+                                    <Item key="escape">
+                                        <Follow />
+                                        <Text>Escape</Text>
+                                    </Item>
+                                )}
+                                {tileId === 'BJ1' && (
+                                    <Item key="load">
+                                        <Wrench />
+                                        <Text>Load</Text>
+                                    </Item>
+                                )}
                             </ActionGroup>
                         </Flex>
                     </View>
@@ -112,10 +110,10 @@ const ActionDialog = ({ activeUnit }) => {
                     <Flex direction="row" gap="size-100" alignItems="center" gridArea="unit">
                         <p>{name}</p>
                         <ActionButton>
-                            {tile}
+                            {tileId}
                         </ActionButton>
 
-                        {phaseActive && (
+                       
                             <>
                                 {/* <p>move to</p>
                                 <Picker 
@@ -176,7 +174,7 @@ const ActionDialog = ({ activeUnit }) => {
                                     Load
                                 </ActionButton>
                             </>
-                        )}
+
                             <ActionButton
                                 aria-label="Deactivate unit"
                                 onPress={onDeactivate}

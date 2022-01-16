@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 const initialState = {
     loading: true, // is game state loading
     paused: false, // has game been paused
-    playerTurn: true,
-    action: 1, // 5 for player, 3 for axis
+    playerTurn: true, // Defender or Axis
+    action: 1, // 5 for player, 3 for Axis
     activeUnit: null, // unit taking an action
     history: {}, // record of all actions for debugging
     appMessage: {}, // dialog messages to player
@@ -13,11 +13,10 @@ const initialState = {
         purple: 0,
         green: 0,
         black: 0,
-        yellow: 0,
         orange: 0,
     },
     deck: [], // shuffled axis draw deck
-    decks: { // axis deck
+    decks: { // Axis deck
         1: [
             { id: uuidv4(), type: 'rifleman', action: 'advance', count: 2, cardDeck: 1, },
             { id: uuidv4(), type: 'rifleman', action: 'advance', count: 2, cardDeck: 1, },

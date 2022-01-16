@@ -115,7 +115,7 @@ const App = () => {
                             onChange={onTurnChange}
                             orientation="horizontal"
                         >
-                            <Radio value="true">Allies</Radio>
+                            <Radio value="true">Defender</Radio>
                             <Radio value="false">Axis</Radio>
                         </RadioGroup>
                         <Divider orientation="vertical" size="S" />

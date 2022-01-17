@@ -28,8 +28,8 @@ export const StyledContainer = styled.div`
     opacity: 0.5;
   }
 
-  &.is-phase-inactive {
-    opacity: 0.5;
+  &.not-mobilized {
+    --border-color: red;
   }
 `;
 

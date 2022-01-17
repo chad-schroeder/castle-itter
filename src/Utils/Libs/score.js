@@ -2,13 +2,13 @@ import store from '../../store';
 
 const { tankDestroyed, tankCasualties, hasEscaped } = store.getState().app;
 const { tiles, tracks } = store.getState().map;
-const { allies } = store.getState().units;
+const { defenders } = store.getState().units;
 
 const getSurvivors = () => {
     const french = [];
     const nonFrench = [];
 
-    Object.keys(allies).forEach(ally => {
+    Object.keys(defenders).forEach(ally => {
         if (ally.nationality === 'FRA' && !ally.casualty && !ally.hasEscaped) {
             french.push(ally.id);
         } else {

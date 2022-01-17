@@ -1,5 +1,5 @@
 const initialState = {
-    allies: [
+    defenders: [
         {
             id: 'basse',
             name: 'Basse',
@@ -13,10 +13,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D1',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'lee',
@@ -31,10 +32,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D2',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'worsham',
@@ -47,10 +49,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D3',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'pollack',
@@ -63,10 +66,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D4',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'sutton',
@@ -79,10 +83,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D5',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'petrukovich',
@@ -95,10 +100,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D6',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'steiner',
@@ -112,10 +118,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D7',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'szymczyk',
@@ -129,10 +136,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D8',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rushford',
@@ -146,10 +154,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D9',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'mchaley',
@@ -163,10 +172,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D10',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'schrader',
@@ -180,10 +190,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D11',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'gangl',
@@ -199,10 +210,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D12',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'dietrich',
@@ -216,10 +228,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D13',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'hockel',
@@ -230,13 +243,14 @@ const initialState = {
             officer: true,
             ordered: false,
             commanded: false,
-            disrupted: true,
+            disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D14',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'blechschmidt',
@@ -246,14 +260,15 @@ const initialState = {
             suppress: 1,
             officer: true,
             ordered: false,
-            commanded: true,
+            commanded: false,
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D15',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rifleman1',
@@ -267,10 +282,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D16',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rifleman2',
@@ -284,10 +300,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D17',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rifleman3',
@@ -301,10 +318,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D18',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rifleman4',
@@ -318,10 +336,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D19',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rifleman5',
@@ -335,10 +354,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'D20',
-            location: 'D',
+            mobilized: true,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'wegscheider',
@@ -353,10 +373,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'R1',
-            location: 'R',
+            mobilized: false,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'linson',
@@ -370,10 +391,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'R2',
-            location: 'R',
+            mobilized: false,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'waltl',
@@ -387,10 +409,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            tileId: 'R3',
-            location: 'R',
+            mobilized: false,
+            tile: null,
+            location: null,
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'clemenceau',
@@ -404,10 +427,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            mobilized: false,
             tileId: 'C1',
             location: 'C',
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'gamelin',
@@ -421,10 +445,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            mobilized: false,
             tileId: 'C2',
             location: 'C',
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'rocque',
@@ -438,10 +463,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            mobilized: false,
             tileId: 'C3',
             location: 'C',
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'reynaud',
@@ -455,10 +481,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            mobilized: false,
             tileId: 'C4',
             location: 'C',
             los: [],
-            armament: {},
+            armament: null,
         },
         {
             id: 'borotra',
@@ -472,10 +499,11 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
+            mobilized: false,
             tileId: 'C5',
             location: 'C',
             los: [],
-            armament: {},
+            armament: null,
         },
     ],
     axis: {
@@ -558,38 +586,12 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...initialState,
         }
-    case 'UPDATE_ALLY':
+    case 'UPDATE_DEFENDER':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload.id) {
                     return payload;
-                }
-                return unit;
-            }),
-        }
-    case 'UPDATE_ALLIES':
-        return {
-            ...state,
-            allies: state.allies.map(unit => {
-                if (unit.id === payload.unitId) {
-                    return {
-                        ...unit,
-                        tile: payload.toTileId,
-                    }
-                }
-                return unit;
-            }),
-        }
-    case 'ACTIVATE_UNIT': 
-        return {
-            ...state,
-            allies: state.allies.map(unit => {
-                if (unit.id === payload) {
-                    return {
-                        ...unit,
-                        mobilized: true,
-                    }
                 }
                 return unit;
             }),
@@ -597,7 +599,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'RECOVER_UNIT':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload) {
                     return {
                         ...unit,
@@ -611,7 +613,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'TOGGLE_EXHAUSTION':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload) {
                     return {
                         ...unit,
@@ -624,7 +626,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'TOGGLE_DISRUPTED':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload) {
                     return {
                         ...unit,
@@ -637,7 +639,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'TOGGLE_ORDERED':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload) {
                     return {
                         ...unit,
@@ -650,7 +652,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'TOGGLE_COMMANDED':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload) {
                     return {
                         ...unit,
@@ -663,7 +665,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'TOGGLE_CASUALTY':
         return {
             ...state,
-            allies: state.allies.map(unit => {
+            defenders: state.defenders.map(unit => {
                 if (unit.id === payload) {
                     return {
                         ...unit,

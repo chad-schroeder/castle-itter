@@ -8,9 +8,7 @@ import { Heading, View } from '@adobe/react-spectrum';
 import { StyledUnits } from './styled';
 
 const Units = () => {
-    const { activeUnit } = useSelector(state => state.app);
-    const { locations, tiles } = useSelector(state => state.map);
-    const { allies } = useSelector(state => state.units);
+    const { defenders } = useSelector(state => state.units);
 
     const dispatch = useDispatch();
 
@@ -18,7 +16,7 @@ const Units = () => {
         dispatch({ type: 'SET_ACTIVE_UNIT', payload: unit });
     };
 
-    const renderUnits = allies.map(unit => {
+    const renderUnits = defenders.map(unit => {
         return (
             <Unit 
                 key={unit.id} 

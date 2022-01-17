@@ -15,6 +15,10 @@ const Tiles = () => {
         { name: 'Armament', uid: 'armament' },
     ];
 
+    const getLineOfSight = los => {
+        return los ? los.map(sight => `${sight}`).join(', ') : '-';
+    };
+
     return (
         <View
             borderWidth="thin"
@@ -38,7 +42,7 @@ const Tiles = () => {
                             <Row>
                                 <Cell>{item.id}</Cell>
                                 <Cell>{item.location}</Cell>
-                                <Cell>{item.los ? item.los.map(sight => `${sight}`).join(', ') : '-'}</Cell>
+                                <Cell>{getLineOfSight(item.los)}</Cell>
                                 <Cell>{item.armament ? item.armament.name : '-'}</Cell>
                             </Row>
                         )}

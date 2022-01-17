@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ActionDialog from 'ActionDialog';
-import AppDialog from 'AppDialog';
 import { Map } from 'Map';
 import MessageBox from 'MessageBox';
 // import Card from 'Card';
@@ -19,28 +18,14 @@ import { Grid, Heading, RadioGroup, Radio, View, Item, Dialog, DialogContainer, 
 
 const App = () => {
     const { 
-        activeUnit, 
-        appMessage, 
         phase, 
-        playerTurn, 
-        action, 
+        defenderTurn, 
+        actionRound, 
         paused,
     } = useSelector(state => state.app);
 
-    const [dialogOpen, setDialogOpen] = useState(false);
     // const [card, setCard] = useState(null);
     const dispatch = useDispatch();
-
-    const { 
-        title: dialogTitle, 
-        content: dialogContent, 
-        button: dialogButton,
-    } = appMessage;
-
-    const onDialogClose = () => {
-        dispatch({ type: 'UNSET_APP_MESSAGE' });
-        setDialogOpen(false);
-    };
 
     const onTurnChange = () => {
         dispatch({ type: 'NEXT_TURN' });
@@ -59,11 +44,7 @@ const App = () => {
     };
 
     const onPauseGame = () => {
-        if (paused) {
-            dispatch({ type: 'RESUME_GAME' });
-        } else {
-            dispatch({ type: 'PAUSE_GAME' });
-        }
+        dispatch({ type: 'SET_GAME_PAUSE' });
     };
 
     const onNewGame = () => {
@@ -77,24 +58,10 @@ const App = () => {
     const onTankFire = () => {
         dispatch({ type: 'TANK_CANNON_FIRED' });
     };
-
-    // const triggerDialog = () =>{
-    //     const payload = {
-    //         title: 'Title',
-    //         content: 'This is a test from Headquarters',
-    //         button: 'Close',
-    //     };
-
-    //     dispatch({ type: 'SET_APP_MESSAGE', payload });
-    // };
    
     useEffect(() => {
         buildDeck();
     }, []);
-
-    useEffect(() => {
-        if (dialogTitle) setDialogOpen(true);
-    }, [dialogTitle]);
 
     return (
         <>
@@ -122,7 +89,7 @@ const App = () => {
                         <Divider orientation="vertical" size="S" />
                         <RadioGroup 
                             label="Turn"
-                            value={playerTurn.toString()}
+                            value={defenderTurn.toString()}
                             onChange={onTurnChange}
                             orientation="horizontal"
                         >
@@ -132,7 +99,7 @@ const App = () => {
                         <Divider orientation="vertical" size="S" />
                         <RadioGroup 
                             label="Action" 
-                            value={action.toString()}
+                            value={actionRound.toString()}
                             onChange={onActionChange}
                             orientation="horizontal"
                         >
@@ -160,100 +127,10 @@ const App = () => {
                         <ActionButton onPress={onNewGame}>New Game</ActionButton>
                     </Flex>
                 </View>
-
-                {/* <View
-                    borderWidth="thin"
-                    borderColor="dark"
-                    borderRadius="medium"
-                    padding="size-150"
-                >
-                    <Button onPress={triggerDialog}>Dialog</Button>
-                </View> */}
                 <Map />
-                <ActionDialog activeUnit={activeUnit} />
-                <MessageBox 
-                    unit={activeUnit}
-                    phase={phase}
-                />
+                <ActionDialog />
+                <MessageBox />
             </Grid>
-            
-            {/* <Card {...card} /> */}
-            {/* <ActionGroup onAction={() => setAppDialog(true)}>
-                <Item key="playCard">Play Card</Item>
-                <Item key="spendAction">Spend Action</Item>
-                <Item key="destroyJenny">Destroy Besotten Jenny</Item>
-                <Item key="newGame">New Game</Item>
-                <Item key="escape">Escape</Item>
-            </ActionGroup> */}
-            {/* <DialogContainer onDismiss={() => setAppDialog(false)} isDismissable>
-                {appDialog && (
-                    <>
-                        <p>Hello, world!</p>
-                        <ActionButton onPress={() => setAppDialog(false)}>
-                            Close
-                        </ActionButton>
-                    </>
-                )}
-            </DialogContainer> */}
-
-            {/* <button onClick={() => setCard(playCard())}>
-                
-            </button>
-            <button onClick={spendAction}>
-                
-            </button>
-            <button onClick={destroyBesottenJenny}>
-                
-            </button>
-            <button onClick={setupGame}>
-                
-            </button>
-            <button onClick={() => escape('G2')}>
-                
-            </button> */}
-            {/* <View
-                borderWidth="thin"
-                borderColor="dark"
-                borderRadius="medium"
-                marginY="size-200"
-                paddingY="size-125"
-                paddingX="size-200"
-            >
-                <Heading level={3} marginBottom="size-100">Highlight</Heading>
-                <View
-                    borderWidth="thin"
-                    borderColor="dark"
-                    borderRadius="medium"
-                    paddingY="size-125"
-                    paddingX="size-200"
-                >
-                    <RadioGroup 
-                        orientation="horizontal" 
-                        // value={highlight}
-                        // onChange={setHighlight}
-                        aria-label="Set highlight"
-                    >
-                        <Radio value="none">None</Radio>
-                        <Radio value="move">Move</Radio>
-                        <Radio value="moveWithin">Move Within</Radio>
-                        <Radio value="command">Command</Radio>
-                    </RadioGroup>
-                </View>
-            </View> */}
-            
-            
-            <DialogContainer onDismiss={onDialogClose}>
-                {dialogOpen &&
-                    <Dialog>
-                        <Heading>{dialogTitle}</Heading>
-                        <Divider />
-                        <Content>{dialogContent}</Content>
-                        <ButtonGroup>
-                            <Button variant="secondary" onPress={onDialogClose}>{dialogButton}</Button>
-                        </ButtonGroup>
-                    </Dialog>
-                }
-            </DialogContainer>
         </>
     );
 };

@@ -3,19 +3,17 @@ import { v4 as uuidv4 } from 'uuid';
 const initialState = {
     loading: true, // is game state loading
     paused: false, // has game been paused
-    playerTurn: true, // Defender or Axis
-    action: 1, // 5 for player, 3 for Axis
-    activeUnit: null, // unit taking an action
+    defenderTurn: true, // Defender or Axis
+    actionRound: 1, // 5 for player, 3 for Axis
     history: {}, // record of all actions for debugging
-    appMessage: {}, // dialog messages to player
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
-    suppression: { // suppression points allocated, per color
+    suppression: { // Suppression points allocated, per color
         purple: 0,
         green: 0,
         black: 0,
         orange: 0,
     },
-    deck: [], // shuffled axis draw deck
+    deck: [], // shuffled Axis draw deck
     decks: { // Axis deck
         1: [
             { id: uuidv4(), type: 'rifleman', action: 'advance', count: 2, cardDeck: 1, },
@@ -86,11 +84,13 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', action: 'disrupt', cardDeck: 4, },
         ],
     },
-    activeCard: null, // current Axis card
+    activeCard: null, // id of current card
+    activeUnit: null, // id of current Defender
     hasEscaped: false, // has Borotra escaped
     tankLoaded: false, // is tank cannon armed
     tankDestroyed: false,
-    tankCasualties: [], // units inside the tank when destroyed
+    tankCasualties: [], // units inside tank when destroyed, used for scoring
+    casualties: [], // list of all casualties
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -104,15 +104,10 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             loading: false,
         }
-    case 'PAUSE_GAME': 
+    case 'SET_GAME_PAUSE': 
         return {
             ...state,
-            paused: true,
-        }
-    case 'RESUME_GAME':
-        return {
-            ...state,
-            paused: false,
+            paused: !state.paused,
         }
     case 'BUILD_DECK':
         return {
@@ -135,25 +130,15 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             phase: payload,
         }
-    case 'SET_APP_MESSAGE':
-        return {
-            ...state,
-            appMessage: payload,
-        }
-    case 'UNSET_APP_MESSAGE':
-        return {
-            ...state,
-            appMessage: {},
-        }
     case 'NEXT_TURN':
         return {
             ...state,
-            playerTurn: !state.playerTurn,
+            defenderTurn: !state.defenderTurn,
         }
     case 'NEXT_ACTION':
         return {
             ...state,
-            action: payload,
+            actionRound: payload,
         }
     case 'ADD_SUPPRESSION':
         return {
@@ -185,7 +170,6 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             paused: true,
-            hasWon: payload,
         }
     case 'NEW_GAME':
         return {

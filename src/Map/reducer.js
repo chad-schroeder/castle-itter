@@ -1,5 +1,5 @@
 const initialState = {
-    locations: { // hero areas
+    locations: { // Defender locales
         NT: {
             id: 'NT',
             name: 'North Terrace',
@@ -45,132 +45,107 @@ const initialState = {
             name: 'Cellar',
             tiles: ['C1', 'C2', 'C3', 'C4', 'C5'],
         },
-        R: {
-            id: 'R',
-            name: 'Reinforcements',
-            tiles: ['R1', 'R2', 'R3'],
-        }
     },
-    tiles: [ // hero tiles
+    tiles: [ // Defender tiles
         {
             id: 'NT2',
             location: 'NT',
             los: ['purple'],
-            movement: true,
         },
         {
             id: 'NT3',
             location: 'NT',
             los: ['purple'],
-            movement: true,
         },
         {
             id: 'NT5',
             location: 'NT',
             los: ['purple', 'yellow'],
-            movement: true,
         },
         {
             id: 'NT6',
             location: 'NT',
             los: ['purple', 'orange'],
-            movement: true,
         },
         {
             id: 'ST2',
             location: 'ST',
             los: ['green'],
-            movement: true,
         },
         {
             id: 'ST4',
             location: 'ST',
             los: ['green'],
-            movement: true,
         },
         {
             id: 'ST5',
             location: 'ST',
             los: ['green', 'orange'],
-            movement: true,
         },
         {
             id: 'ST6',
             location: 'ST',
             los: ['green', 'yellow'],
-            movement: true,
         },
         {
             id: 'K1',
             location: 'K',
             los: ['orange'],
-            movement: true,
         },
         {
             id: 'K2',
             location: 'K',
             los: ['orange'],
-            movement: true,
         },
         {
             id: 'K3',
             location: 'K',
             los: ['orange', 'green'],
-            movement: true,
         },
         {
             id: 'K4',
             location: 'K',
             los: ['orange', 'purple'],
-            movement: true,
         },
         {
             id: 'GH1',
             location: 'GH',
             los: ['purple'],
-            movement: true,
         },
         {
             id: 'GH2',
             location: 'GH',
             los: ['green'],
-            movement: true,
         },
         {
             id: 'GH3',
             location: 'GH',
             los: ['yellow'],
-            movement: true,
         },
         {
             id: 'GH4',
             location: 'GH',
             los: ['yellow'],
-            movement: true,
         },
         {
             id: 'G1',
             location: 'G',
             los: ['yellow', 'black'],
-            movement: true,
         },
         {
             id: 'G2',
             location: 'G',
             los: ['yellow', 'black'],
-            movement: true,
         },
         {
             id: 'G3',
             location: 'G',
             los: ['black'],
-            movement: true,
         },
         {
             id: 'G4',
             location: 'G',
             los: ['black'],
-            movement: true,
             armament: {
                 name: 'M13/A4',
                 attack: 2,
@@ -180,7 +155,6 @@ const initialState = {
         {
             id: 'BJ1',
             location: 'BJ',
-            movement: true,
             armament: {
                 name: '76mm (Load)',
                 load: true,
@@ -190,7 +164,6 @@ const initialState = {
             id: 'BJ2',
             location: 'BJ',
             los: ['black'],
-            movement: true,
             armament: {
                 name: '76mm (Fire)',
                 attack: 4,
@@ -202,7 +175,6 @@ const initialState = {
             id: 'BJ3',
             location: 'BJ',
             los: ['black'],
-            movement: true,
             armament: {
                 name: 'M2HB',
                 attack: 2,
@@ -213,7 +185,6 @@ const initialState = {
             id: 'BJ4',
             location: 'BJ',
             los: ['black'],
-            movement: true,
             armament: {
                 name: 'M1919A4',
                 attack: 2,
@@ -223,145 +194,25 @@ const initialState = {
         {
             id: 'C1',
             location: 'C',
-            movement: false,
         },
         {
             id: 'C2',
             location: 'C',
-            movement: false,
         },
         {
             id: 'C3',
             location: 'C',
-            movement: false,
         },
         {
             id: 'C4',
             location: 'C',
-            movement: false,
         },
         {
             id: 'C5',
             location: 'C',
-            movement: false,
-        },
-        {
-            id: 'D1',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D2',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D3',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D4',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D5',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D6',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D7',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D8',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D9',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D10',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D11',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D12',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D13',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D14',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D15',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D16',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D17',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D18',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D19',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'D20',
-            location: 'D',
-            movement: false,
-        },
-        {
-            id: 'R1',
-            location: 'R',
-            movement: false,
-        },
-        {
-            id: 'R2',
-            location: 'R',
-            movement: false,
-        },
-        {
-            id: 'R3',
-            location: 'R',
-            movement: false,
         },
     ],
-    tracks: { // enemy tracks
+    tracks: { // Axis tracks
         2: {
             los: 'green',
             next: 13, 
@@ -573,7 +424,7 @@ const initialState = {
             counter: null,
         },
     },
-    axisLOS: { // tiles axis units can target
+    axisLOS: { // zones Axis units can target
         sniper: {
             1: 'black',
             2: 'black',
@@ -628,25 +479,11 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...initialState,
         }
-    case 'UPDATE_TILES':
+    case 'UPDATE_TILE': {
         return {
             ...state,
-            tiles: state.tiles.map(tile => {
-                if (tile.id === payload.fromTileId) {
-                    return {
-                        ...tile,
-        
-                    }
-                }
-                if (tile.id === payload.toTileId) {
-                    return {
-                        ...tile,
-                        unit: payload.unitId,
-                    }
-                }
-                return tile;
-            }),
         }
+    }
     case 'UPDATE_TRACKS': 
         return {
             ...state,

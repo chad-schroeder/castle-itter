@@ -31,13 +31,13 @@ export const deployUnit = (unit, toTileId) => {
     };
 };
 
-export const getSwapAllies = (id, location) => {
-    const { allies } = store.getState().units;
+export const getSwapDefenders = (id, location) => {
+    const { defenders } = store.getState().units;
     
     // const swapAllies = allies.filter(unit => unit.id !== id && unit.location === location && unit.activated && canTakeAction(unit));
-    const locationAllies = allies.filter(unit => unit.id !== id && unit.location === location && unit.activation && canTakeAction(unit));
+    const locationDefenders = defenders.filter(unit => unit.id !== id && unit.location === location && unit.activation && canTakeAction(unit));
 
-    console.log('locationAllies', locationAllies);
+    console.log('defenders', locationDefenders);
 
-    return locationAllies;
+    return locationDefenders;
 };

@@ -1,28 +1,23 @@
 import store from '../../store';
 
-export const moveFriendly = (unitId, fromTileId, toTileId) => {
+export const moveDefender = (unit, toTileId) => {
     const tiles = store.getState().map.tiles;
-    const { allies } = store.getState().units;
 
-    const { location } = tiles.find(tile => tile.id === toTileId);
-    const unit = allies.find(unit => unit.id === unitId);
+    // get tile properties
+    const { tile: tileId, location, los } = tiles.find(tile => tile.id === toTileId);
 
-    store.dispatch({
-        type: 'UPDATE_TILES',
-        payload: {
-            unitId,
-            fromTileId,
-            toTileId,
-        },
-    });
+    const updatedUnit = {
+        ...unit,
+        tileId,
+        location,
+        los,
+        ordered: true,
+        exhausted: true,
+    }
 
     store.dispatch({
         type: 'UPDATE_ALLY', 
-        payload: {
-            ...unit,
-            tile: toTileId,
-            location,
-        },
+        payload: updatedUnit,
     });
 };
 

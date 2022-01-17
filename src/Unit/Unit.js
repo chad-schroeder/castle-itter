@@ -6,7 +6,7 @@ import {
     StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit, isActive, onClick }) => {
+const Unit = ({ unit, onClick }) => {
     const { 
         name,
         tanker,
@@ -32,7 +32,7 @@ const Unit = ({ unit, isActive, onClick }) => {
     return (
         <StyledContainer 
             className={classNames({
-                'is-active': isActive,
+                // 'is-active': isActive,
                 'is-ordered': ordered,
                 'is-disrupted': disrupted,
                 'is-commanded': commanded,

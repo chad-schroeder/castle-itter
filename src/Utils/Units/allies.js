@@ -2,6 +2,35 @@ import store from '../../store';
 
 import { canTakeAction } from './checks';
 
+export const deployUnit = (unit, toTileId) => {
+    const { tiles } = store.getState().map;
+
+    const tile = tiles.find(tile => tile.id === toTileId);
+    const { 
+        id: tileId,
+        location, 
+        los = null,
+        armament = 0,
+    } = tile;
+
+    let { attack, suppress } = unit;
+
+    if (unit.tanker && armament) {
+        attack = armament.attack;
+        suppress = armament.suppress;
+    }
+
+    return {
+        ...unit,
+        attack,
+        suppress,
+        tileId,
+        location,
+        los,
+        armament,
+    };
+};
+
 export const getSwapAllies = (id, location) => {
     const { allies } = store.getState().units;
     

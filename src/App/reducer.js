@@ -9,7 +9,7 @@ const initialState = {
     history: {}, // record of all actions for debugging
     appMessage: {}, // dialog messages to player
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
-    suppression: { // suppression points accumulated, per color
+    suppression: { // suppression points allocated, per color
         purple: 0,
         green: 0,
         black: 0,

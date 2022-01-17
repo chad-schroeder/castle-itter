@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ActionSuppress from './ActionSuppress';
 
-import { isPhaseActive, canTakeAction, canMove } from '../Utils/Units/checks';
+import { canTakeAction, canMove } from '../Utils/Units/checks';
 import { getSwapAllies } from '../Utils/Units/allies';
 import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
 import { getMoveTiles } from '../Utils/Libs/tiles';

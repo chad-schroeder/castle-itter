@@ -18,7 +18,7 @@ const Unit = ({ unit, isActive = false, onClick }) => {
         disrupted,
         commanded,
         mobilized,
-        tileId = '-',
+        tile,
         armament,
     } = unit;
 
@@ -45,7 +45,7 @@ const Unit = ({ unit, isActive = false, onClick }) => {
                 {name}
             </StyledName>
             <StyledTile>
-                {tileId}
+                {tile ? tile : '-'}
             </StyledTile>
             <StyledValues>
                 {attack} | {suppress}

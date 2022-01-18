@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ActionButton, Flex, Heading, Picker, Item, } from '@adobe/react-spectrum';
+import { Flex, Heading, Picker, Item, } from '@adobe/react-spectrum';
 
-const ActionMove = () => {
+const ActionMove = ({ unit }) => {
     const { tiles } = useSelector(state => state.map);
+    const dispatch = useDispatch();
+
+    const onMove = toTileId => {
+        const tile = tiles.find(tile => tile.id === toTileId);
+        const { location, los = [], armament = null } = tile;
+
+        dispatch({ 
+            type: 'UPDATE_DEFENDER', 
+            payload: {
+                ...unit,
+                tile: toTileId,
+                location,
+                los,
+                armament,
+            },
+        });
+    };
     
     return (
         <>
@@ -21,6 +38,7 @@ const ActionMove = () => {
                     labelAlign="end"
                     placeholder="Select a tile"
                     items={tiles}
+                    onSelectionChange={selected => onMove(selected)}
                 >
                     {(item) => <Item>{item.id}</Item>}
                 </Picker>

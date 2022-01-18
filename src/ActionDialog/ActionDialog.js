@@ -119,7 +119,7 @@ const ActionDialog = () => {
                                 <Suppress unit={unit} />                                
                             )}
                             {action === 'move' && (
-                                <ActionMove />
+                                <ActionMove unit={unit} />
                             )}
                         </Flex>
                     </View>

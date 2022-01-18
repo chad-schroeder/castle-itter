@@ -5,19 +5,17 @@ import {
     Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, 
 } from '@adobe/react-spectrum';
 
+const columns = [
+    { name: 'Name', uid: 'id' },
+    { name: 'Location', uid: 'location' },
+    { name: 'LOS', uid: 'los' },
+    { name: 'Armament', uid: 'armament' },
+];
+
+const getLineOfSight = los => los ? los.map(sight => `${sight}`).join(', ') : '-';
+
 const Tiles = () => {
     const { tiles } = useSelector(state => state.map);
-
-    const columns = [
-        { name: 'Name', uid: 'id' },
-        { name: 'Location', uid: 'location' },
-        { name: 'LOS', uid: 'los' },
-        { name: 'Armament', uid: 'armament' },
-    ];
-
-    const getLineOfSight = los => {
-        return los ? los.map(sight => `${sight}`).join(', ') : '-';
-    };
 
     return (
         <View
@@ -28,7 +26,7 @@ const Tiles = () => {
             paddingX="size-200"
         >
             <Heading level={2} marginBottom="size-100">Tiles</Heading>
-            <Flex height="size-5000" direction="column">
+            <Flex height="size-2400" direction="column">
                 <TableView aria-label="Tiles">
                     <TableHeader columns={columns}>
                         {column => (

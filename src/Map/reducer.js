@@ -475,15 +475,6 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-    case 'LOAD_MAP':
-        return {
-            ...initialState,
-        }
-    case 'UPDATE_TILE': {
-        return {
-            ...state,
-        }
-    }
     case 'UPDATE_TRACKS': 
         return {
             ...state,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Flex, Heading, Picker, Item, } from '@adobe/react-spectrum';
+import { Flex, Picker, Item, } from '@adobe/react-spectrum';
 
 const ActionMove = ({ unit }) => {
     const { tiles } = useSelector(state => state.map);
@@ -25,7 +25,6 @@ const ActionMove = ({ unit }) => {
     
     return (
         <>
-            <Heading level={4}>Move</Heading>
             <Flex 
                 direction="row" 
                 justifyContent="center" 

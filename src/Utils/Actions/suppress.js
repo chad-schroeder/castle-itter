@@ -16,7 +16,7 @@ const getLineOfSight = los => {
     return (
         <>
             {los.map((target) => {
-                if (target === 'yellow') return '';
+                if (target === 'yellow') return null;
 
                 return (
                     <View

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import ActionMove from '../ActionMove';
+
 import Suppress from '../Utils/Actions/suppress';
 import { getDefenderById } from '../Utils/Units/defenders';
 import { 
@@ -115,6 +117,9 @@ const ActionDialog = () => {
                             </ActionGroup>
                             {action === 'suppress' && (
                                 <Suppress unit={unit} />                                
+                            )}
+                            {action === 'move' && (
+                                <ActionMove />
                             )}
                         </Flex>
                     </View>

@@ -1,22 +1,43 @@
-import store from '../../store';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export const moveDefender = (unit, toTileId) => {
-    const tiles = store.getState().map.tiles;
+import { ActionButton, Flex, Heading, Text, View } from '@adobe/react-spectrum';
 
-    // get tile properties
-    const { tile: tileId, location, los } = tiles.find(tile => tile.id === toTileId);
+// export const moveDefender = (unit, toTileId) => {
+//     // get new tile stats
+//     const { 
+//         tile: tileId, 
+//         location, 
+//         los, 
+//         armament = null,
+//     } = tiles.find(tile => tile.id === toTileId);
 
-    const updatedUnit = {
-        ...unit,
-        tileId,
-        location,
-        los,
-        ordered: true,
-        exhausted: true,
-    }
+//     const movedUnit = {
+//         ...unit,
+//         tileId,
+//         location,
+//         los,
+//         armament,
+//     }
 
-    store.dispatch({
-        type: 'UPDATE_DEFENDER', 
-        payload: updatedUnit,
-    });
+//     dispatch({
+//         type: 'UPDATE_DEFENDER', 
+//         payload: movedUnit,
+//     });
+// };
+
+const Move = (unit, toTileId) => {
+    const tiles = useSelector(state => state.app);
+    const dispatch = useDispatch();
+
+    return (
+        <>
+            <Heading level={4}>Move</Heading>
+            <Flex direction="row" justifyContent="center" gap="size-100">
+                
+            </Flex>
+        </>
+    );
 };
+
+export default Move;

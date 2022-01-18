@@ -41,7 +41,7 @@ export const StyledName = styled.h2`
   text-transform: uppercase;
 `;
 
-export const StyledNationality = styled.p`
+export const StyledTile = styled.p`
   margin-bottom: 8px;
   font-size: 10px;
   text-align: center;

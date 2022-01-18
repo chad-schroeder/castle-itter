@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ActionDialog from 'ActionDialog';
 import { Map } from 'Map';
 import MessageBox from 'MessageBox';
-// import Card from 'Card';
 
 import { buildDeck } from 'Utils/Libs/deck';
-// import playCard from 'Utils/Libs/playCard';
-// import { spendAction } from 'Utils/Libs/game';
-// import escape from 'Utils/Libs/escape';
-// import { destroyBesottenJenny } from 'Utils/Libs/tiles';
-// import { actionMove } from 'Utils/Actions/move';
-// import { command } from 'Utils/Actions/command';
 
-import { Grid, Heading, RadioGroup, Radio, View, Item, Dialog, DialogContainer, Content, ActionButton, ButtonGroup, Button, Divider, Flex, Picker, } from '@adobe/react-spectrum';
+import { Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, } from '@adobe/react-spectrum';
 
 const App = () => {
     const { 
@@ -24,7 +17,6 @@ const App = () => {
         paused,
     } = useSelector(state => state.app);
 
-    // const [card, setCard] = useState(null);
     const dispatch = useDispatch();
 
     const onTurnChange = () => {

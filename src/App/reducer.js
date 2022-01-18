@@ -84,8 +84,8 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', action: 'disrupt', cardDeck: 4, },
         ],
     },
-    activeCard: null, // id of current card
-    activeUnit: null, // id of current Defender
+    cardPlayed: null,
+    activeDefender: null, // id of defender selected for an action
     hasEscaped: false, // has Borotra escaped
     tankLoaded: false, // is tank cannon armed
     tankDestroyed: false,
@@ -145,6 +145,16 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             suppression: { ...payload },
         }
+    case 'SET_ACTIVE_DEFENDER':
+            return {
+                ...state,
+                activeDefender: payload,
+            }
+    case 'UNSET_ACTIVE_DEFENDER':
+        return {
+            ...state,
+            activeDefender: null,
+        }
     case 'TANK_CANNON_LOADED':
         return {
             ...state,
@@ -174,16 +184,6 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'NEW_GAME':
         return {
             ...initialState,
-        }
-    case 'SET_ACTIVE_UNIT':
-        return {
-            ...state,
-            activeUnit: payload,
-        }
-    case 'UNSET_ACTIVE_UNIT':
-        return {
-            ...state,
-            activeUnit: null,
         }
     default:
         return state;

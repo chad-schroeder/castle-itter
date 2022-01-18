@@ -1,13 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ActionSuppress from './ActionSuppress';
-
-import { canTakeAction, canMove } from '../Utils/Units/checks';
-import { getSwapAllies } from '../Utils/Units/allies';
-import { moveFriendly, swapFriendly } from '../Utils/Actions/move';
-import { getMoveTiles } from '../Utils/Libs/tiles';
-
+import { getDefenderById } from '../Utils/Units/defenders';
 import { 
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
 } from '../Utils/Units/update';
@@ -23,16 +17,17 @@ import Move from '@spectrum-icons/workflow/Move';
 import Relevance from '@spectrum-icons/workflow/Relevance';
 import SpotHeal from '@spectrum-icons/workflow/SpotHeal';
 
-const ActionDialog = ({ activeUnit }) => {
+const ActionDialog = () => {
+    const { activeDefender } = useSelector(state => state.app);
+
     const dispatch = useDispatch();
 
-    if (activeUnit) {
-        const { id, name, tileId, casualty, escape } = activeUnit;
-        // const movementTiles = getMoveTiles();
-        // const swapAllies = getSwapAllies(id, location);
+    if (activeDefender) {
+        const unit = getDefenderById(activeDefender);
+        const { id, name, tileId, casualty, escape } = unit;
 
         const onDeactivate = () => {
-            dispatch({ type: 'UNSET_ACTIVE_UNIT' });
+            dispatch({ type: 'UNSET_ACTIVE_DEFENDER' });
         };
 
         return (
@@ -112,31 +107,7 @@ const ActionDialog = ({ activeUnit }) => {
                         <ActionButton>
                             {tileId}
                         </ActionButton>
-
-                       
                             <>
-                                {/* <p>move to</p>
-                                <Picker 
-                                    items={movementTiles}
-                                    onSelectionChange={selected => moveFriendly(id, tile, selected)} 
-                                    aria-label="Move"
-                                >
-                                    {item => <Item>{item.id}</Item>}
-                                </Picker> */}
-
-                                {/* {swapAllies.length > 0 && (
-                                    <>
-                                        <p>swap with</p>
-                                        <Picker 
-                                            items={swapAllies}
-                                            onSelectionChange={selected => console.log(selected)} 
-                                            aria-label="Swap"
-                                        >
-                                            {item => <Item>{item.name}</Item>}
-                                        </Picker>
-                                    </>
-                                )}         */}
-
                                 <p>Toggles</p>
                                 <ActionButton
                                     onPress={() => toggleExhaustion(id)}

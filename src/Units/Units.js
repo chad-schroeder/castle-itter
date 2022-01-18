@@ -8,19 +8,22 @@ import { Heading, View } from '@adobe/react-spectrum';
 import { StyledUnits } from './styled';
 
 const Units = () => {
+    const { activeDefender } = useSelector(state => state.app);
     const { defenders } = useSelector(state => state.units);
-
     const dispatch = useDispatch();
 
-    const onClick = unit => {
-        dispatch({ type: 'SET_ACTIVE_UNIT', payload: unit });
+    const onClick = id => {
+        dispatch({ type: 'SET_ACTIVE_DEFENDER', payload: id });
     };
 
     const renderUnits = defenders.map(unit => {
+        const isActive = unit.id === activeDefender;
+        
         return (
             <Unit 
                 key={unit.id} 
                 unit={unit}
+                isActive={isActive}
                 onClick={onClick}
             />
         );

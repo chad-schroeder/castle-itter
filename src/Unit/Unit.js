@@ -1,13 +1,13 @@
 import React from 'react';
-
 import classNames from 'classnames';
 
 import { 
-    StyledContainer, StyledName, StyledNationality, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
+    StyledContainer, StyledName, StyledTile, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit, onClick }) => {
-    const { 
+const Unit = ({ unit, isActive = false, onClick }) => {
+    let { 
+        id,
         name,
         attack,
         suppress,
@@ -22,10 +22,15 @@ const Unit = ({ unit, onClick }) => {
         armament,
     } = unit;
 
+    if (tanker && armament) {
+        attack = armament.attack;
+        suppress = armament.suppress;
+    }
+
     return (
         <StyledContainer 
             className={classNames({
-                // 'is-active': isActive,
+                'is-active': isActive,
                 'is-ordered': ordered,
                 'is-disrupted': disrupted,
                 'is-commanded': commanded,
@@ -34,14 +39,14 @@ const Unit = ({ unit, onClick }) => {
                 'is-casualty': casualty,
                 'not-mobilized': !mobilized,
             })}
-            onClick={() => onClick(unit)}
+            onClick={() => onClick(id)}
         >
             <StyledName>
                 {name}
             </StyledName>
-            <StyledNationality>
+            <StyledTile>
                 {tileId}
-            </StyledNationality>
+            </StyledTile>
             <StyledValues>
                 {attack} | {suppress}
             </StyledValues>

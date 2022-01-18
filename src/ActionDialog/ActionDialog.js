@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Suppress from '../Utils/Actions/suppress';
 import { getDefenderById } from '../Utils/Units/defenders';
 import { 
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
@@ -19,14 +20,22 @@ import SpotHeal from '@spectrum-icons/workflow/SpotHeal';
 
 const ActionDialog = () => {
     const { activeDefender } = useSelector(state => state.app);
-
+    const [action, setAction] = useState(null);
     const dispatch = useDispatch();
 
     if (activeDefender) {
         const unit = getDefenderById(activeDefender);
-        const { id, name, tileId, casualty, escape } = unit;
+        const { 
+            id, 
+            name,
+            tanker,
+            commander,
+            escape,
+            tileId, 
+        } = unit;
 
         const onDeactivate = () => {
+            setAction(null);
             dispatch({ type: 'UNSET_ACTIVE_DEFENDER' });
         };
 
@@ -61,6 +70,8 @@ const ActionDialog = () => {
                                 density="compact"
                                 buttonLabelBehavior="hide"
                                 selectionMode="single"
+                                isEmphasized
+                                onAction={setAction}
                             >
                                 <Item key="attack">
                                     <Crosshairs />
@@ -74,7 +85,7 @@ const ActionDialog = () => {
                                     <Move />
                                     <Text>Move</Text>
                                 </Item>
-                                <Item key="swap">
+                                <Item key="moveWithin">
                                     <Switch />
                                     <Text>Move Within</Text>
                                 </Item>
@@ -82,58 +93,52 @@ const ActionDialog = () => {
                                     <SpotHeal />
                                     <Text>Recover</Text>
                                 </Item>
-                                <Item key="command">
-                                    <Feature />
-                                    <Text>Command</Text>
-                                </Item>
+                                {commander && (
+                                    <Item key="command">
+                                        <Feature />
+                                        <Text>Command</Text>
+                                    </Item>
+                                )}
+                                
                                 {escape && (
                                     <Item key="escape">
                                         <Follow />
                                         <Text>Escape</Text>
                                     </Item>
                                 )}
-                                {tileId === 'BJ1' && (
+                                {/* {tileId === 'BJ1' && (
                                     <Item key="load">
                                         <Wrench />
                                         <Text>Load</Text>
                                     </Item>
-                                )}
+                                )} */}
                             </ActionGroup>
+                            {action === 'suppress' && (
+                                <Suppress unit={unit} />                                
+                            )}
                         </Flex>
                     </View>
 
                     <Flex direction="row" gap="size-100" alignItems="center" gridArea="unit">
                         <p>{name}</p>
                         <ActionButton>
-                            {tileId}
+                            {tileId ? tileId : '-'}
                         </ActionButton>
                             <>
                                 <p>Toggles</p>
-                                <ActionButton
-                                    onPress={() => toggleExhaustion(id)}
-                                    isDisabled={casualty}
-                                >
+                                <ActionButton onPress={() => toggleExhaustion(id)}>
                                     Exhausted
                                 </ActionButton>
 
-                                <ActionButton 
-                                    onPress={() => toggleOrdered(id)}
-                                    isDisabled={casualty}
-                                >
+                                <ActionButton onPress={() => toggleOrdered(id)}>
                                     Ordered
                                 </ActionButton>
 
-                                <ActionButton
-                                    onPress={() => toggleCommanded(id)}
-                                    isDisabled={casualty}
-                                >
+                                <ActionButton onPress={() => toggleCommanded(id)}>
                                     Commanded
                                 </ActionButton>
 
-                                <ActionButton 
-                                    onPress={() => toggleDisrupted(id)}
-                                    isDisabled={casualty}
-                                >
+                                <ActionButton onPress={() => toggleDisrupted(id)}>
                                     Disrupted
                                 </ActionButton>
 

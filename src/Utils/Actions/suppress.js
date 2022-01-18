@@ -1,37 +1,53 @@
 import React from 'react';
 
-import { ActionButton, Button, ButtonGroup, Content, Dialog, DialogTrigger, Divider, Flex, Heading, Text, View } from '@adobe/react-spectrum';
+import { ActionButton, Flex, Heading, Text, View } from '@adobe/react-spectrum';
 
-const Suppress = ({ unit })=> {
-    const { los } = unit;
+const colors = { 
+    // yellow tracks can only be targeted by direct fire, and are thus omitted
+    purple: 'purple-400',
+    black: 'static-black',
+    orange: 'orange-400',
+    green: 'green-400',
+};
 
-    const colors = {
-        purple: 'purple-400',
-        black: 'static-black',
-        yellow: 'yellow-400',
-        orange: 'orange-400',
-        green: 'green-400',
-    };
+const getLineOfSight = los => {
+    if (!los.length) return 'Nothing to hit';
 
     return (
         <>
-            <Heading>Suppress</Heading>
-            <Divider />
-            <Content>
-            <Flex direction="row" justifyContent="center" gap="size-100">
-                {los.map((target) => (
+            {los.map((target) => {
+                if (target === 'yellow') return '';
+
+                return (
                     <View
                         key={target}
                         backgroundColor={colors[target]}
-                        padding="size-500"
+                        padding="size-100"
                     >
                         <ActionButton staticColor="white">
                             <Text>{target}</Text>
                         </ActionButton>
                     </View>
-                ))}
+                );
+            })}
+        </>
+    )
+};
+
+const Suppress = ({ unit })=> {
+    const testLoS = ['purple', 'black', 'yellow', 'orange', 'green'];
+    let { suppress, tanker, los, armament } = unit;
+
+    if (tanker && armament) {
+        suppress = armament.suppress;
+    }
+
+    return (
+        <>
+            <Heading level={4}>Suppress: {suppress}</Heading>
+            <Flex direction="row" justifyContent="center" gap="size-100">
+                {getLineOfSight(testLoS)}
             </Flex>
-            </Content>
         </>
     );
 };

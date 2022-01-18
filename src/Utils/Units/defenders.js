@@ -1,6 +1,6 @@
 import store from '../../store';
 
-import { canTakeAction } from './checks';
+// import { canTakeAction } from './checks';
 
 export const getDefenderById = id => {
     const { defenders } = store.getState().units;

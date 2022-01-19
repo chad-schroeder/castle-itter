@@ -212,8 +212,9 @@ const initialState = {
             location: 'C',
         },
     ],
-    tracks: { // Axis tracks
-        2: {
+    tracks: [ // Axis tracks
+        {
+            id: 2,
             los: 'green',
             next: 13, 
             counter: {
@@ -223,7 +224,8 @@ const initialState = {
             },
             suppress: ['machineGun'],
         },
-        3: { 
+        { 
+            id: 3,
             los: 'orange', 
             next: 13, 
             counter: {
@@ -233,7 +235,8 @@ const initialState = {
             }, 
             suppress: [],
         },
-        4: {
+        {
+            id: 4,
             los: 'orange', 
             next: 15, 
             counter: {
@@ -243,7 +246,8 @@ const initialState = {
             }, 
             suppress: ['mortar'],
         },
-        5: {
+        {
+            id: 5,
             los: 'purple', 
             next: 18,
             counter: {
@@ -253,7 +257,8 @@ const initialState = {
             },
             suppress: [],
         },
-        6: {
+        {
+            id: 6,
             los: 'purple', 
             next: 20,
             counter: {
@@ -263,7 +268,8 @@ const initialState = {
             },
             suppress: [],
         },
-        7: {
+        {
+            id: 7,
             los: 'black', 
             next: 22,
             counter: {
@@ -273,7 +279,8 @@ const initialState = {
             },
             suppress: [],
         },
-        8: {
+        {
+            id: 8,
             los: 'black', 
             next: 26,
             counter: {
@@ -283,7 +290,8 @@ const initialState = {
             },
             suppress: [],
         },
-        9: {
+        {
+            id: 9,
             los: 'black', 
             next: 26,
             counter: {
@@ -293,7 +301,8 @@ const initialState = {
             },
             suppress: [],
         },
-        10: {
+        {
+            id: 10,
             los: 'black', 
             next: 28,
             counter: {
@@ -303,7 +312,8 @@ const initialState = {
             },
             suppress: [],
         },
-        11: {
+        {
+            id: 11,
             los: 'green', 
             next: 32,
             counter: {
@@ -313,7 +323,8 @@ const initialState = {
             },
             suppress: [],
         },
-        12: {
+        {
+            id: 12,
             los: 'green', 
             next: 32,
             counter: {
@@ -323,107 +334,127 @@ const initialState = {
             },
             suppress: [],
         },
-        13: {
+        {
+            id: 13,
             los: 'orange', 
             next: 14,
             counter: null, 
         },
-        14: {
+        {
+            id: 14,
             los: 'orange', 
             next: 16,
             counter: null, 
         },
-        15: {
+        {
+            id: 15,
             los: 'orange', 
             next: 14,
             counter: null, 
         },
-        16: {
+        {
+            id: 16,
             los: 'orange', 
             next: 21,
             counter: null, 
         },
-        17: {
+        {
+            id: 17,
             los: 'orange', 
             next: 16,
             counter: null, 
         },
-        18: {
+        {
+            id: 18,
             los: 'orange', 
             next: 17,
             counter: null, 
         },
-        19: {
+        {
+            id: 19,
             los: 'purple', 
             next: 17,
             counter: null, 
         },
-        20: {
+        {
+            id: 20,
             los: 'purple', 
             next: 19,
             counter: null, 
         },
-        21: {
+        {
+            id: 21,
             los: 'orange', 
             next: null,
             counter: null,
         },
-        22: {
+        {
+            id: 22,
             los: 'yellow', 
             next: 23,
             counter: null,
         },
-        23: {
+        {   
+            id: 23,
             los: 'yellow', 
             next: 24,
             counter: null,
         },
-        24: {
+        {
+            id: 24,
             los: 'yellow', 
             next: 25,
             counter: null,
         },
-        25: {
+        {
+            id: 25,
             los: 'yellow', 
             next: null,
             counter: null,
         },
-        26: {
+        {
+            id: 26,
             los: 'yellow', 
             next: 27,
             counter: null,
         },
-        27: {
+        {
+            id: 27,
             los: 'yellow', 
             next: 24,
             counter: null,
         },
-        28: {
+        {
+            id: 28,
             los: 'green', 
             next: 29,
             counter: null,
         },
-        29: {
+        {
+            id: 29,
             los: 'green', 
             next: 30,
             counter: null,
         },
-        30: {
+        {
+            id: 30,
             los: 'yellow', 
             next: 31,
             counter: null,
         },
-        31: {
+        {
+            id: 31,
             los: 'yellow', 
             next: null,
             counter: null,
         },
-        32: {
+        {
+            id: 32,
             los: 'green', 
             next: 30,
             counter: null,
         },
-    },
+    ],
     axisLOS: { // zones Axis units can target
         sniper: {
             1: 'black',

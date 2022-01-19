@@ -15,6 +15,7 @@ const App = () => {
         defenderTurn, 
         actionRound, 
         paused,
+        activeDefender,
     } = useSelector(state => state.app);
 
     const dispatch = useDispatch();
@@ -120,7 +121,7 @@ const App = () => {
                     </Flex>
                 </View>
                 <Map />
-                <ActionDialog />
+                {activeDefender && <ActionDialog activeDefender={activeDefender} />}
                 <MessageBox />
             </Grid>
         </>

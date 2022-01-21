@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { ActionGroup, Heading, Item, Flex, } from '@adobe/react-spectrum';
 
@@ -14,7 +14,6 @@ const ActionRecover = ({ unit }) => {
                 [action]: false,
             },
         });
-        // dispatch({ type: 'UNSET_ACTIVE_DEFENDER' });
     };
     
     return (

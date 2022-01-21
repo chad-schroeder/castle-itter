@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Flex, Picker, Item, } from '@adobe/react-spectrum';
 
 const ActionMoveWithin = ({ unit }) => {
     const { defenders } = useSelector(state => state.units);
-    // const dispatch = useDispatch();
 
     const onMoveWithin = (activeDefender, passiveDefender) => {
         console.log(activeDefender, passiveDefender);

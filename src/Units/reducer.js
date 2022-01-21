@@ -596,20 +596,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 return unit;
             }),
         }
-    case 'RECOVER_UNIT':
-        return {
-            ...state,
-            defenders: state.defenders.map(unit => {
-                if (unit.id === payload) {
-                    return {
-                        ...unit,
-                        ordered: true,
-                        exhausted: false,
-                    }
-                }
-                return unit;
-            }),
-        }
     case 'TOGGLE_EXHAUSTION':
         return {
             ...state,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ActionMove from '../ActionMove';
@@ -6,7 +6,6 @@ import ActionMoveWithin from '../ActionMoveWithin';
 import ActionAttack from '../ActionAttack';
 import ActionRecover from '../ActionRecover';
 
-import { getDefenderById } from '../Utils/Units/defenders';
 import { 
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
 } from '../Utils/Units/update';
@@ -23,11 +22,10 @@ import Move from '@spectrum-icons/workflow/Move';
 import Relevance from '@spectrum-icons/workflow/Relevance';
 import SpotHeal from '@spectrum-icons/workflow/SpotHeal';
 
-const ActionDialog = ({ activeDefender }) => {
+const ActionDialog = ({ unit }) => {
     const [action, setAction] = useState(null);
     const dispatch = useDispatch();
-
-    const unit = getDefenderById(activeDefender);
+    
     const { 
         id, 
         name,
@@ -41,14 +39,9 @@ const ActionDialog = ({ activeDefender }) => {
         tile, 
     } = unit;
 
-    const onAction = action => {
-        console.log(action);
-    };
-
     const onCancel = () => {
-        dispatch({ type: 'UNSET_ACTIVE_DEFENDER' });
+        dispatch({ type: 'UNSET_ACTIVE_DEFENDER_ID' });
     };
-
 
     const getToggleButtons = () => {
         return (

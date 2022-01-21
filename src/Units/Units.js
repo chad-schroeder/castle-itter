@@ -12,8 +12,11 @@ const Units = () => {
     const { defenders } = useSelector(state => state.units);
     const dispatch = useDispatch();
 
-    const onClick = id => {
-        dispatch({ type: 'SET_ACTIVE_DEFENDER', payload: id });
+    const onClick = unit => {
+        dispatch({ 
+            type: 'SET_ACTIVE_DEFENDER_ID', 
+            payload: unit,
+        });
     };
 
     const renderUnits = defenders.map(unit => {

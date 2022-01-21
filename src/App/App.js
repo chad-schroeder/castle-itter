@@ -15,10 +15,12 @@ const App = () => {
         defenderTurn, 
         actionRound, 
         paused,
-        activeDefender,
+        activeDefenderId,
     } = useSelector(state => state.app);
-
+    const { defenders } = useSelector(state => state.units);
     const dispatch = useDispatch();
+
+    const activeDefender = defenders.find(defender => defender.id === activeDefenderId);
 
     const onTurnChange = () => {
         dispatch({ type: 'NEXT_TURN' });
@@ -121,7 +123,7 @@ const App = () => {
                     </Flex>
                 </View>
                 <Map />
-                {activeDefender && <ActionDialog activeDefender={activeDefender} />}
+                {activeDefender && <ActionDialog unit={activeDefender} />}
                 <MessageBox />
             </Grid>
         </>

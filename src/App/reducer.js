@@ -4,7 +4,7 @@ const initialState = {
     loading: true, // is game state loading
     paused: false, // has game been paused
     defenderTurn: true, // Defender or Axis
-    actionRound: 1, // 5 for player, 3 for Axis
+    actionRound: 1, // 5 for Defender, 3 for Axis
     history: {}, // record of all actions for debugging
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
     suppression: { // Suppression points allocated, per color
@@ -84,13 +84,13 @@ const initialState = {
             { id: uuidv4(), type: 'mortar', action: 'disrupt', cardDeck: 4, },
         ],
     },
-    cardPlayed: null,
-    activeDefender: null, // id of defender selected for an action
-    hasEscaped: false, // has Borotra escaped
-    tankLoaded: false, // is tank cannon armed
-    tankDestroyed: false,
-    tankCasualties: [], // units inside tank when destroyed, used for scoring
-    casualties: [], // list of all casualties
+    activeCard: null, // current card drawn from the Axis deck
+    activeDefenderId: null, // id of defender taking an action
+    hasEscaped: false, // did Borotra escape
+    tankLoaded: false, // was the tank cannon armed
+    tankDestroyed: false, // was the Besotten Jenny destroyed
+    tankCasualties: [], // list of units inside the tank when destroyed, used for scoring
+    casualties: [], // list of all defender casualties
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -145,15 +145,15 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             suppression: { ...payload },
         }
-    case 'SET_ACTIVE_DEFENDER':
+    case 'SET_ACTIVE_DEFENDER_ID':
             return {
                 ...state,
-                activeDefender: payload,
+                activeDefenderId: payload,
             }
-    case 'UNSET_ACTIVE_DEFENDER':
+    case 'UNSET_ACTIVE_DEFENDER_ID':
         return {
             ...state,
-            activeDefender: null,
+            activeDefenderId: null,
         }
     case 'TANK_CANNON_LOADED':
         return {

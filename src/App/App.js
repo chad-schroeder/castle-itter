@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ActionDialog from 'ActionDialog';
 import { Map } from 'Map';
+import GamePanels from 'GamePanels';
 import MessageBox from 'MessageBox';
 
 import { buildDeck } from 'Utils/Libs/deck';
@@ -123,7 +124,8 @@ const App = () => {
                     </Flex>
                 </View>
                 <Map />
-                {activeDefender && <ActionDialog unit={activeDefender} />}
+                <GamePanels />
+                <ActionDialog unit={activeDefender} />
                 <MessageBox />
             </Grid>
         </>

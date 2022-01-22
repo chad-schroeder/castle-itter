@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Unit from '../Unit';
 
@@ -8,28 +8,10 @@ import { Heading, View } from '@adobe/react-spectrum';
 import { StyledUnits } from './styled';
 
 const Units = () => {
-    const { activeDefender } = useSelector(state => state.app);
     const { defenders } = useSelector(state => state.units);
-    const dispatch = useDispatch();
-
-    const onClick = unit => {
-        dispatch({ 
-            type: 'SET_ACTIVE_DEFENDER_ID', 
-            payload: unit,
-        });
-    };
 
     const renderUnits = defenders.map(unit => {
-        const isActive = unit.id === activeDefender;
-        
-        return (
-            <Unit 
-                key={unit.id} 
-                unit={unit}
-                isActive={isActive}
-                onClick={onClick}
-            />
-        );
+        return <Unit key={unit.id} unit={unit} />;
     });
 
     return (

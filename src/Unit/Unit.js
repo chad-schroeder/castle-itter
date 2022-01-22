@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
+
+// import { ActionButton, MenuTrigger, Menu, Item, Text, Keyboard } from '@adobe/react-spectrum';
 
 import { 
     StyledContainer, StyledName, StyledTile, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
 } from './styled';
 
-const Unit = ({ unit, isActive = false, onClick }) => {
+const Unit = ({ unit }) => {
+    const { activeDefenderId } = useSelector(state => state.app);
+    const ref = useRef(null);
+    const dispatch = useDispatch();
+
     let { 
         id,
         name,
@@ -27,10 +34,35 @@ const Unit = ({ unit, isActive = false, onClick }) => {
         suppress = armament.suppress;
     }
 
+    const onClick = () => {
+        dispatch({ 
+            type: 'SET_ACTIVE_DEFENDER_ID', 
+            payload: id,
+        });
+    };
+
+    const onContextMenu = (event) => {
+        event.preventDefault();
+
+        dispatch({ 
+            type: 'SET_ACTIVE_DEFENDER_ID', 
+            payload: id,
+        });
+    };
+
+    useEffect(() => {
+        const unitRef = ref.current;
+        unitRef.addEventListener('contextmenu', onContextMenu);
+
+        return () => {
+            unitRef.removeEventListener('contextmenu', onContextMenu);
+        };
+    });
+
     return (
         <StyledContainer 
             className={classNames({
-                'is-active': isActive,
+                'is-active': id === activeDefenderId,
                 'is-ordered': ordered,
                 'is-disrupted': disrupted,
                 'is-commanded': commanded,
@@ -39,6 +71,7 @@ const Unit = ({ unit, isActive = false, onClick }) => {
                 'is-casualty': casualty,
                 'not-mobilized': !mobilized,
             })}
+            ref={ref}
             onClick={() => onClick(id)}
         >
             <StyledName>

@@ -85,7 +85,8 @@ const initialState = {
         ],
     },
     activeCard: null, // current card drawn from the Axis deck
-    activeDefenderId: null, // id of defender taking an action
+    activeDefenderId: null, // id of defender selected to take an action
+    actionSelected: null, // current defender action
     hasEscaped: false, // did Borotra escape
     tankLoaded: false, // was the tank cannon armed
     tankDestroyed: false, // was the Besotten Jenny destroyed

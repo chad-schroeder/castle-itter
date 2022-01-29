@@ -1,12 +1,10 @@
-import React from 'react';
+import React           from 'react';
 import { useSelector } from 'react-redux';
 
-import { 
-    Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, 
-} from '@adobe/react-spectrum';
+import { Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, } from '@adobe/react-spectrum';
 
 const columns = [
-    { name: 'Name', uid: 'id' },
+    { name: 'ID', uid: 'id' },
     { name: 'LOS', uid: 'los' },
     { name: 'Counter', uid: 'counter' },
     { name: 'Suppression', uid: 'counter.type' },

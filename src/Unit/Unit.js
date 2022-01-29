@@ -1,16 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React                        from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import classNames from 'classnames';
+import classNames                   from 'classnames';
 
-// import { ActionButton, MenuTrigger, Menu, Item, Text, Keyboard } from '@adobe/react-spectrum';
+import { ActionGroup, Item, } from '@adobe/react-spectrum';
+
+import More from '@spectrum-icons/workflow/More';
 
 import { 
-    StyledContainer, StyledName, StyledTile, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered,
+    StyledContainer, StyledName, StyledTile, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered, StyledActions,
 } from './styled';
 
 const Unit = ({ unit }) => {
     const { activeDefenderId } = useSelector(state => state.app);
-    const ref = useRef(null);
     const dispatch = useDispatch();
 
     let { 
@@ -41,24 +42,6 @@ const Unit = ({ unit }) => {
         });
     };
 
-    const onContextMenu = (event) => {
-        event.preventDefault();
-
-        dispatch({ 
-            type: 'SET_ACTIVE_DEFENDER_ID', 
-            payload: id,
-        });
-    };
-
-    useEffect(() => {
-        const unitRef = ref.current;
-        unitRef.addEventListener('contextmenu', onContextMenu);
-
-        return () => {
-            unitRef.removeEventListener('contextmenu', onContextMenu);
-        };
-    });
-
     return (
         <StyledContainer 
             className={classNames({
@@ -71,7 +54,6 @@ const Unit = ({ unit }) => {
                 'is-casualty': casualty,
                 'not-mobilized': !mobilized,
             })}
-            ref={ref}
             onClick={() => onClick(id)}
         >
             <StyledName>
@@ -92,6 +74,14 @@ const Unit = ({ unit }) => {
             <StyledOrdered>
                 <img src="images/checkmark.svg" width="20" alt="ordered" />
             </StyledOrdered>
+
+            {/* <StyledActions>
+                <ActionGroup density="compact">
+                    <Item key="brush" aria-label="Brush"><More /></Item>
+                    <Item key="select" aria-label="Select"><More /></Item>
+                    <Item key="regionSelect" aria-label="Select Region"><More /></Item>
+                </ActionGroup>
+            </StyledActions> */}
         </StyledContainer>
     );
 };

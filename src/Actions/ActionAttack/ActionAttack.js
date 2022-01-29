@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { Flex, Picker, Item, } from '@adobe/react-spectrum';
 
-const ActionAttack = ({ unit }) => {
+const Attack = ({ unit }) => {
     const { tracks } = useSelector(state => state.map);
 
     const onAttack = track => {
@@ -33,4 +33,4 @@ const ActionAttack = ({ unit }) => {
     );
 };
 
-export default ActionAttack;
+export default Attack;

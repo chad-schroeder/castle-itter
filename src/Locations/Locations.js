@@ -7,15 +7,21 @@ import {
 
 const columns = [
     { name: 'ID', uid: 'id' },
-    { name: 'Location', uid: 'location' },
-    { name: 'LOS', uid: 'los' },
-    { name: 'Armament', uid: 'armament' },
+    { name: 'Name', uid: 'name' },
+    { name: 'Tiles', uid: 'tiles' },
+    { name: 'Defense', uid: 'defense' },
 ];
 
-const getLineOfSight = los => los ? los.map(sight => `${sight}`).join(', ') : '-';
+const convertLocationsToList = locations => {
+    const list = [];
+    Object.keys(locations).forEach(key => list.push(locations[key]));
+    return list;
+};
 
-const Tiles = () => {
-    const { tiles } = useSelector(state => state.map);
+const Locations = () => {
+    const { locations } = useSelector(state => state.map);
+
+    const locationsList = convertLocationsToList(locations);
 
     return (
         <View
@@ -25,7 +31,7 @@ const Tiles = () => {
             paddingY="size-150"
             paddingX="size-200"
         >
-            <Heading level={2} marginBottom="size-100">Tiles</Heading>
+            <Heading level={2}>Locations</Heading>
             <Flex height="size-2400" direction="column">
                 <TableView aria-label="Tiles">
                     <TableHeader columns={columns}>
@@ -35,13 +41,13 @@ const Tiles = () => {
                             </Column>
                         )}
                     </TableHeader>
-                    <TableBody items={tiles}>
-                        {item => (
+                    <TableBody items={locationsList}>
+                        {location => (
                             <Row>
-                                <Cell>{item.id}</Cell>
-                                <Cell>{item.location}</Cell>
-                                <Cell>{getLineOfSight(item.los)}</Cell>
-                                <Cell>{item.armament ? item.armament.name : '-'}</Cell>
+                                <Cell>{location.id}</Cell>
+                                <Cell>{location.name}</Cell>
+                                <Cell>{location.tiles.join(', ')}</Cell>
+                                <Cell>{location.defense}</Cell>
                             </Row>
                         )}
                     </TableBody>
@@ -51,4 +57,4 @@ const Tiles = () => {
     );
 };
 
-export default Tiles;
+export default Locations;

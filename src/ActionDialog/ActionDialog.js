@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch }     from 'react-redux';
 
-import ActionMove from '../ActionMove';
-import ActionMoveWithin from '../ActionMoveWithin';
-import ActionAttack from '../ActionAttack';
-import ActionRecover from '../ActionRecover';
+import ActionMove       from '../Actions/ActionMove';
+import ActionMoveWithin from '../Actions/ActionMoveWithin';
+import ActionAttack     from '../Actions/ActionAttack';
+import ActionRecover    from '../Actions/ActionRecover';
 
 import { 
     toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
@@ -12,15 +12,15 @@ import {
 
 import { ActionButton, ActionGroup, Flex, Item, View, Heading, Text, } from '@adobe/react-spectrum';
 
-import Cancel from '@spectrum-icons/workflow/Cancel';
-import Switch from '@spectrum-icons/workflow/Switch';
+import Cancel     from '@spectrum-icons/workflow/Cancel';
+import Switch     from '@spectrum-icons/workflow/Switch';
 import Crosshairs from '@spectrum-icons/workflow/Crosshairs';
-import Wrench from '@spectrum-icons/workflow/Wrench';
-import Feature from '@spectrum-icons/workflow/Feature';
-import Follow from '@spectrum-icons/workflow/Follow';
-import Move from '@spectrum-icons/workflow/Move';
-import Relevance from '@spectrum-icons/workflow/Relevance';
-import SpotHeal from '@spectrum-icons/workflow/SpotHeal';
+import Wrench     from '@spectrum-icons/workflow/Wrench';
+import Feature    from '@spectrum-icons/workflow/Feature';
+import Follow     from '@spectrum-icons/workflow/Follow';
+import Move       from '@spectrum-icons/workflow/Move';
+import Relevance  from '@spectrum-icons/workflow/Relevance';
+import SpotHeal   from '@spectrum-icons/workflow/SpotHeal';
 
 const ActionDialog = ({ unit }) => {
     const [action, setAction] = useState(null);

@@ -1,15 +1,17 @@
 import React from 'react';
 
 import { Units } from '../Units';
-import Tiles from '../Tiles';
-import Tracks from '../Tracks';
+import Tiles     from '../Tiles';
+import Locations from '../Locations';
+import Tracks    from '../Tracks';
 
 const Map = () => {
     return (
         <>
+            <Units />
+            <Locations />
             <Tiles />
             <Tracks />
-            <Units />
         </>
     );
 };

@@ -3,9 +3,6 @@ import React from 'react';
 
 import { Cell, Row } from '@adobe/react-spectrum'
 
-
-import { } from './styled';;
-
 const Tile = ({ tile }) => {
     const { id, location, los, unit, armament } = tile;
 

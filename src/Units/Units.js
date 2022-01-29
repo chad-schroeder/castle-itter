@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector }     from 'react-redux';
 
-import Unit from '../Unit';
+import ActionDialog from '../ActionDialog';
+import Unit         from '../Unit';
 
 import { 
     Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader,  
@@ -19,8 +20,11 @@ const getLineOfSight = los => los.length ? los.map(sight => `${sight}`).join(', 
 
 const Units = () => {
     const { defenders } = useSelector(state => state.units);
+    const { activeDefenderId } = useSelector(state => state.app);
 
     const [selectedDefenders, setSelectedDefenders] = useState(new Set([]));
+
+    const activeDefender = defenders.find(defender => defender.id === activeDefenderId);
 
     const renderUnits = defenders.map(unit => {
         return <Unit key={unit.id} unit={unit} />;
@@ -65,6 +69,7 @@ const Units = () => {
             <StyledUnits>
                 {renderUnits}
             </StyledUnits>
+            <ActionDialog unit={activeDefender} />
         </View>
     );
 };

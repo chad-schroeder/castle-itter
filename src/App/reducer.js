@@ -4,7 +4,7 @@ const initialState = {
     loading: true, // is game state loading
     paused: false, // has game been paused
     defenderTurn: true, // Defender or Axis
-    actionRound: 1, // 5 for Defender, 3 for Axis
+    actionRound: 1, // 5 rounds for Defender, 3 for Axis
     history: {}, // record of all actions for debugging
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
     suppression: { // Suppression points allocated, per color
@@ -141,10 +141,13 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             actionRound: payload,
         }
-    case 'ADD_SUPPRESSION':
+    case 'MODIFY_SUPPRESSION':
         return {
             ...state,
-            suppression: { ...payload },
+            suppression: { 
+                ...state.suppression,
+                ...payload,
+            },
         }
     case 'SET_ACTIVE_DEFENDER_ID':
             return {

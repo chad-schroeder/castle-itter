@@ -1,12 +1,13 @@
 import React, { useEffect }         from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ActionDialog from 'ActionDialog';
-import { Map }      from 'Map';
+import { Map } from 'Map';
 
 import { buildDeck } from 'Utils/Libs/deck';
 
-import { Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, } from '@adobe/react-spectrum';
+import { Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, Heading, NumberField, TextField } from '@adobe/react-spectrum';
+
+import { StyledContainer, } from './styled';
 
 const App = () => {
     const { 
@@ -14,12 +15,9 @@ const App = () => {
         defenderTurn, 
         actionRound, 
         paused,
-        activeDefenderId,
+        actionSelected,
     } = useSelector(state => state.app);
-    const { defenders } = useSelector(state => state.units);
     const dispatch = useDispatch();
-
-    const activeDefender = defenders.find(defender => defender.id === activeDefenderId);
 
     const onTurnChange = () => {
         dispatch({ type: 'NEXT_TURN' });
@@ -52,7 +50,17 @@ const App = () => {
     const onTankFire = () => {
         dispatch({ type: 'TANK_CANNON_FIRED' });
     };
-   
+
+    const handleSuppression = (val, color) => {
+
+        dispatch({ 
+            type: 'MODIFY_SUPPRESSION', 
+            payload: { 
+                [color]: val,
+            },
+        });
+    };
+
     useEffect(() => {
         buildDeck();
     }, []);
@@ -63,48 +71,96 @@ const App = () => {
                 rows={['auto', 'auto', 'auto', 'auto', 'auto', 'auto']}
                 gap="size-100"
             >
-                <h1>Castle Itter</h1>
+                <Heading level={2}>Castle Itter</Heading>
+
                 <View
                     borderWidth="thin"
                     borderColor="dark"
                     borderRadius="medium"
                     padding="size-150"
                 >
-                    <Flex direction="row" gap="size-100">
-                        <Picker 
-                            label="Phase" 
-                            defaultSelectedKey={phase}
-                            onSelectionChange={selected => onPhaseChange(selected)}
-                        >
-                            <Item key="Deployment">Deployment</Item>
-                            <Item key="Cellar">Cellar</Item>
-                            <Item key="Reinforcement">Reinforcement</Item>
-                        </Picker>
-                        <Divider orientation="vertical" size="S" />
-                        <RadioGroup 
-                            label="Turn"
-                            value={defenderTurn.toString()}
-                            onChange={onTurnChange}
-                            orientation="horizontal"
-                        >
-                            <Radio value="true">Defender</Radio>
-                            <Radio value="false">Axis</Radio>
-                        </RadioGroup>
-                        <Divider orientation="vertical" size="S" />
-                        <RadioGroup 
-                            label="Action" 
-                            value={actionRound.toString()}
-                            onChange={onActionChange}
-                            orientation="horizontal"
-                        >
-                            <Radio value="1">1</Radio>
-                            <Radio value="2">2</Radio>
-                            <Radio value="3">3</Radio>
-                            <Radio value="4">4</Radio>
-                            <Radio value="5">5</Radio>
-                        </RadioGroup>
-                    </Flex>
+                    <StyledContainer>
+                        <Flex direction="row" gap="size-100">
+
+                            <Picker 
+                                label="Phase" 
+                                defaultSelectedKey={phase}
+                                onSelectionChange={selected => onPhaseChange(selected)}
+                            >
+                                <Item key="Deployment">Deployment</Item>
+                                <Item key="Cellar">Cellar</Item>
+                                <Item key="Reinforcement">Reinforcement</Item>
+                            </Picker>
+
+                            <Divider orientation="vertical" size="S" />
+
+                            <RadioGroup 
+                                label="Turn"
+                                value={defenderTurn.toString()}
+                                onChange={onTurnChange}
+                                orientation="horizontal"
+                            >
+                                <Radio value="true">Defender</Radio>
+                                <Radio value="false">Axis</Radio>
+                            </RadioGroup>
+
+                            <Divider orientation="vertical" size="S" />
+
+                            <RadioGroup 
+                                label="Action" 
+                                value={actionRound.toString()}
+                                onChange={onActionChange}
+                                orientation="horizontal"
+                            >
+                                <Radio value="1">1</Radio>
+                                <Radio value="2">2</Radio>
+                                <Radio value="3">3</Radio>
+                                <Radio value="4">4</Radio>
+                                <Radio value="5">5</Radio>
+                            </RadioGroup>
+
+                            <Divider orientation="vertical" size="S" />
+
+                            <TextField 
+                                label="Current action" 
+                                value={actionSelected}
+                                defaultValue="None" 
+                                isReadOnly 
+                            />
+
+                            <Divider orientation="vertical" size="S" />
+
+                            <Flex direction="row" gap="size-50">
+                                <NumberField
+                                    label="Black"
+                                    defaultValue={0}
+                                    minValue={0}
+                                    onChange={(value) => handleSuppression(value, 'black')}
+                                />
+                                <NumberField
+                                    label="Purple"
+                                    defaultValue={0}
+                                    minValue={0} 
+                                    onChange={(value) => handleSuppression(value, 'purple')}
+                                />
+                                <NumberField
+                                    label="Orange"
+                                    defaultValue={0}
+                                    minValue={0} 
+                                    onChange={(value) => handleSuppression(value, 'orange')}
+                                />
+                                <NumberField
+                                    label="Green"
+                                    defaultValue={0}
+                                    minValue={0} 
+                                    onChange={(value) => handleSuppression(value, 'green')}
+                                />
+                            </Flex>
+                            
+                        </Flex>
+                    </StyledContainer>
                 </View>
+
                 <View
                     borderWidth="thin"
                     borderColor="dark"
@@ -122,7 +178,6 @@ const App = () => {
                     </Flex>
                 </View>
                 <Map />
-                <ActionDialog unit={activeDefender} />
             </Grid>
         </>
     );

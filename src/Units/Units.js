@@ -4,17 +4,9 @@ import { useSelector }     from 'react-redux';
 import ActionDialog from '../ActionDialog';
 import Unit         from '../Unit';
 
-import { 
-    Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader,  
-} from '@adobe/react-spectrum';
+import { Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, } from '@adobe/react-spectrum';
 
 import { StyledUnits } from './styled';
-
-const columns = [
-    { name: 'Id', uid: 'id' },
-    { name: 'Mobilized', uid: 'mobilized' },
-    { name: 'LOS', uid: 'los' },
-];
 
 const getLineOfSight = los => los.length ? los.map(sight => `${sight}`).join(', ') : '-';
 
@@ -25,10 +17,8 @@ const Units = () => {
     const [selectedDefenders, setSelectedDefenders] = useState(new Set([]));
 
     const activeDefender = defenders.find(defender => defender.id === activeDefenderId);
-
-    const renderUnits = defenders.map(unit => {
-        return <Unit key={unit.id} unit={unit} />;
-    });
+    
+    const renderUnits = defenders.map(unit => <Unit key={unit.id} unit={unit} />);
 
     return (
         <View
@@ -48,17 +38,15 @@ const Units = () => {
                     selectedKeys={selectedDefenders}
                     onSelectionChange={setSelectedDefenders}
                 >
-                    <TableHeader columns={columns}>
-                        {column => (
-                            <Column key={column.uid}>
-                                {column.name}
-                            </Column>
-                        )}
+                    <TableHeader>
+                        <Column>Name</Column>
+                        <Column>LOS</Column>
+                        <Column>Mobilized</Column>
                     </TableHeader>
                     <TableBody items={defenders}>
                         {defender => (
                             <Row>
-                                <Cell>{defender.id}</Cell>
+                                <Cell>{defender.name}</Cell>
                                 <Cell>{defender.mobilized.toString()}</Cell>
                                 <Cell>{getLineOfSight(defender.los)}</Cell>
                             </Row>

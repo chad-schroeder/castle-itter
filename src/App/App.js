@@ -15,7 +15,7 @@ const App = () => {
         defenderTurn, 
         actionRound, 
         paused,
-        actionSelected,
+        currentAction,
     } = useSelector(state => state.app);
     const dispatch = useDispatch();
 
@@ -52,7 +52,6 @@ const App = () => {
     };
 
     const handleSuppression = (val, color) => {
-
         dispatch({ 
             type: 'MODIFY_SUPPRESSION', 
             payload: { 
@@ -123,8 +122,7 @@ const App = () => {
 
                             <TextField 
                                 label="Current action" 
-                                value={actionSelected}
-                                defaultValue="None" 
+                                value={currentAction}
                                 isReadOnly 
                             />
 

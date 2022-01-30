@@ -1,19 +1,14 @@
-import React           from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector }     from 'react-redux';
 
 import { Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, } from '@adobe/react-spectrum';
 
-const columns = [
-    { name: 'ID', uid: 'id' },
-    { name: 'LOS', uid: 'los' },
-    { name: 'Counter', uid: 'counter' },
-    { name: 'Suppression', uid: 'counter.type' },
-];
+const getLineOfSight = suppression => suppression ? suppression.map(unit => `${unit}`).join(', ') : '-';
 
 const Tracks = () => {
     const { tracks } = useSelector(state => state.map);
 
-    const getLineOfSight = suppression => suppression ? suppression.map(unit => `${unit}`).join(', ') : '-';
+    const [selectedTrack, setSelectedTrack] = useState(new Set([]));
     
     return (
         <View
@@ -25,13 +20,17 @@ const Tracks = () => {
         >
             <Heading level={2}>Tracks</Heading>
             <Flex height="size-2400" direction="column">
-                <TableView aria-label="Tiles">
-                    <TableHeader columns={columns}>
-                        {column => (
-                            <Column key={column.uid}>
-                                {column.name}
-                            </Column>
-                        )}
+                <TableView 
+                    aria-label="Tracks"
+                    selectionMode="single"
+                    selectedKeys={selectedTrack}
+                    onSelectionChange={setSelectedTrack}
+                >
+                    <TableHeader>
+                        <Column maxWidth={180}>ID</Column>
+                        <Column>LOS</Column>
+                        <Column>Counter</Column>
+                        <Column>Suppression</Column>
                     </TableHeader>
                     <TableBody items={tracks}>
                         {item => (

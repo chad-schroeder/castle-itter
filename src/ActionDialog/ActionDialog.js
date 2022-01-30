@@ -39,8 +39,15 @@ const ActionDialog = ({ unit }) => {
             mobilized,
             tile, 
         } = unit;
+
+        const onAction = action => {
+            setAction(action);
+            dispatch({ type: 'SET_CURRENT_ACTION', payload: action });
+        };
     
         const onCancel = () => {
+            console.log('onCancel');
+            dispatch({ type: 'UNSET_CURRENT_ACTION' });
             dispatch({ type: 'UNSET_ACTIVE_DEFENDER_ID' });
         };
     
@@ -96,29 +103,29 @@ const ActionDialog = ({ unit }) => {
                                         buttonLabelBehavior="hide"
                                         selectionMode="single"
                                         isEmphasized
-                                        onAction={setAction}
+                                        onAction={onAction}
                                     >
-                                        <Item key="attack">
+                                        <Item key="Attack">
                                             <Crosshairs />
                                             <Text>Attack</Text>
                                         </Item>
                     
-                                        <Item key="suppress">
+                                        <Item key="Suppress">
                                             <Relevance />
                                             <Text>Suppress</Text>
                                         </Item>
                     
-                                        <Item key="move">
+                                        <Item key="Move">
                                             <Move />
                                             <Text>Move</Text>
                                         </Item>
                     
-                                        <Item key="moveWithin">
+                                        <Item key="Move Within">
                                             <Switch />
                                             <Text>Move Within</Text>
                                         </Item>
                     
-                                        <Item key="recover">
+                                        <Item key="Recover">
                                             <SpotHeal />
                                             <Text>Recover</Text>
                                         </Item>
@@ -145,19 +152,19 @@ const ActionDialog = ({ unit }) => {
                                         )}
                                     </ActionGroup>
                     
-                                    {action === 'move' && (
+                                    {action === 'Move' && (
                                         <ActionMove unit={unit} />
                                     )}
                 
-                                    {action === 'moveWithin' && (
+                                    {action === 'Move Within' && (
                                         <ActionMoveWithin unit={unit} />
                                     )}
                 
-                                    {action === 'attack' && (
+                                    {action === 'Attack' && (
                                         <ActionAttack unit={unit} />
                                     )}
                 
-                                    {action === 'recover' && (
+                                    {action === 'Recover' && (
                                         <ActionRecover unit={unit} />
                                     )}
                                 </Flex>

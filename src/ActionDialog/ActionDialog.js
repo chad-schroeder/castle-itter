@@ -6,9 +6,7 @@ import ActionMoveWithin from '../Actions/ActionMoveWithin';
 import ActionAttack     from '../Actions/ActionAttack';
 import ActionRecover    from '../Actions/ActionRecover';
 
-import { 
-    toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon,
-} from '../Utils/Units/update';
+import { toggleOrdered, toggleCommanded, toggleDisrupted, toggleExhaustion, toggleCasualty, loadTankCannon, } from '../Utils/Units/update';
 
 import { ActionButton, ActionGroup, Flex, Item, View, Heading, Text, Divider, } from '@adobe/react-spectrum';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React           from 'react';
 import { useDispatch } from 'react-redux';
 
 import { ActionGroup, Heading, Item, Flex, } from '@adobe/react-spectrum';

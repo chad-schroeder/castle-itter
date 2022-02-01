@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-    StyledContainer, StyledHeader, StyledBody, StyledTitle, StyledStats, StyledDefense, StyledAttack, StyledCount, StyledDeck,
-} from './styled';
+import { StyledContainer, StyledHeader, StyledBody, StyledTitle, StyledStats, StyledDefense, StyledAttack, StyledCount, StyledDeck, } from './styled';
 
 const Card = ({ id, name, count, attack, defense, cardDeck }) => {
     if (id) {

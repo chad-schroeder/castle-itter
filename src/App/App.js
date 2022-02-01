@@ -2,6 +2,7 @@ import React, { useEffect }         from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Map } from 'Map';
+import DialogManager from 'DialogManager';
 
 import { buildDeck } from 'Utils/Libs/deck';
 
@@ -17,6 +18,7 @@ const App = () => {
         paused,
         currentAction,
     } = useSelector(state => state.app);
+
     const dispatch = useDispatch();
 
     const onTurnChange = () => {
@@ -70,7 +72,7 @@ const App = () => {
                 rows={['auto', 'auto', 'auto', 'auto', 'auto', 'auto']}
                 gap="size-100"
             >
-                <Heading level={2}>Castle Itter</Heading>
+                <Heading level={2}>Castle Itter: The Strangest Battle of WWII</Heading>
 
                 <View
                     borderWidth="thin"
@@ -124,6 +126,7 @@ const App = () => {
                                 label="Current action" 
                                 value={currentAction}
                                 isReadOnly 
+                                isDisabled={currentAction === ''}
                             />
 
                             <Divider orientation="vertical" size="S" />
@@ -176,6 +179,7 @@ const App = () => {
                     </Flex>
                 </View>
                 <Map />
+                <DialogManager />
             </Grid>
         </>
     );

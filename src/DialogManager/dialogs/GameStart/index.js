@@ -20,7 +20,7 @@ const GameStart = () => {
                     Castle Itter: WWII tactical strongpoint defense game
                 </span> 
             </Heading>
-            <Divider />
+            <Divider size="L" />
             <Content>
                 <Well marginBottom="size-300">
                     <Flex 
@@ -34,6 +34,7 @@ const GameStart = () => {
                             borderRadius="medium"
                             padding="size-150"
                             width="size-1250"
+                            backgroundColor="gray-50"
                         >
                             <Flex direction="column" alignItems="center" gap="size-100">
                                 <Clock />
@@ -46,6 +47,7 @@ const GameStart = () => {
                             borderRadius="medium"
                             padding="size-150"
                             width="size-1250"
+                            backgroundColor="gray-50"
                         >
                             <Flex direction="column" alignItems="center" gap="size-100">
                                 <Visibility />
@@ -58,6 +60,7 @@ const GameStart = () => {
                             borderRadius="medium"
                             padding="size-150"
                             width="size-1250"
+                            backgroundColor="gray-50"
                         >
                             <Flex direction="column" alignItems="center" gap="size-100">
                                 <User />
@@ -67,15 +70,15 @@ const GameStart = () => {
                     </Flex>
                 </Well>
                 <Text>
-                    In <strong>Castle Itter,</strong> you take control of a makeshift force that is defending a castle nestled in the Austrian countryside from a SS assault. The defending force consists of an American tank crew and infantrymen, Wehrmacht infantrymen, a former SS officer, French prisoners, and an Austrian resistance fighter.
+                    The Battle for Castle Itter was fought near the Austrian village of Itter on 5 May 1945, in the last days of the WWII. U.S soldiers joined forces with Wehrmacht infantrymen, a former SS officer, an Austrian resistance fighter, and recently-freed French prisoners of war to defend the Austrian castle against an attacking force from the 17th SS Panzergrenadier Division.
                 </Text>
                 <Heading level={3} marginTop="size-300">Object of the Game</Heading>
                 <Text>
-                    The goal of <strong>Castle Itter</strong> is to last until reinforcements from the 142nd Infantry Regiment arrive. In the game, this is represented by playing through a deck of SS cards.
+                    The goal of <strong>Castle Itter</strong> is to play through and exhaust the SS deck of assault cards or last until reinforcements from the 142nd Infantry Regiment arrive, without allowing SS counters to reach the castle. You score points for each Defender that survives the assault and lose points for each SS counter remaining on the board at the end of the game &mdash; the higher your score, the better.
                 </Text>
             </Content>
             <ButtonGroup>
-                <Button variant="secondary" onPress={dialog.dismiss}>Cancel</Button>
+                <Button variant="cta" onPress={dialog.dismiss} autoFocus>Play</Button>
             </ButtonGroup>
         </Dialog>
     );

@@ -5,13 +5,11 @@ import classNames                   from 'classnames';
 import { ActionGroup, Item, } from '@adobe/react-spectrum';
 
 import More from '@spectrum-icons/workflow/More';
-import Checkmark from '@spectrum-icons/workflow/Checkmark';
-import Star from '@spectrum-icons/workflow/Star';
 import Lock from '@spectrum-icons/workflow/LockClosed';
 import Disrupted from '@spectrum-icons/workflow/FlashOn';
 
 import { 
-    StyledContainer, StyledName, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered, StyledActions, StyledAttributes, StyledNotMobilized,
+    StyledContainer, StyledName, StyledValues, StyledDisrupted, StyledActions, StyledNotMobilized,
 } from './styled';
 
 const Unit = ({ unit }) => {
@@ -31,6 +29,7 @@ const Unit = ({ unit }) => {
         disrupted,
         commanded,
         mobilized,
+        escape,
         tile,
         armament,
     } = unit;
@@ -59,6 +58,7 @@ const Unit = ({ unit }) => {
                     'is-exhausted': exhausted,
                     'is-casualty': casualty,
                     'not-mobilized': !mobilized,
+                    'is-escape': escape,
                     [`nationality-${nationality}`]: true,
                 })
             }
@@ -70,9 +70,6 @@ const Unit = ({ unit }) => {
             <StyledValues>
                 {attack} | {suppress}
             </StyledValues>
-            <StyledAttributes>
-
-            </StyledAttributes>
             <StyledDisrupted>
                 <Disrupted size="L" color="negative" />
             </StyledDisrupted>

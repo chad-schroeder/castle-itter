@@ -44,7 +44,7 @@ export const StyledContainer = styled.div`
   }
 
   &.nationality-GER {
-    --border-color: var(--spectrum-global-color-static-gray-900);
+    --border-color: #645656;
   }
 
   &.nationality-FRA {
@@ -53,6 +53,10 @@ export const StyledContainer = styled.div`
 
   &.nationality-AUS {
     --border-color: var(--spectrum-global-color-static-red-700);
+  }
+
+  &.is-exhausted {
+    --border-color: var(--spectrum-global-color-static-yellow-500);
   }
 
   &.is-casualty {
@@ -65,6 +69,10 @@ export const StyledContainer = styled.div`
 
   &.is-ordered {
     --border-color: var(--spectrum-global-color-chartreuse-400);
+  }
+
+  &.is-escape {
+    --border-color: var(--spectrum-global-color-static-purple-600);
   }
 
   &.is-active {

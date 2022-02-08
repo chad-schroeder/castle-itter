@@ -596,6 +596,18 @@ const reducer = (state = initialState, { type, payload }) => {
                 return unit;
             }),
         }
+    case 'UNSET_ORDERED_COMMANDED': {
+        return {
+            ...state,
+            defenders: state.defenders.map(unit => {
+                return {
+                    ...unit,
+                    ordered: false,
+                    commanded: false,
+                }
+            }),
+        }
+    }
     case 'TOGGLE_EXHAUSTION':
         return {
             ...state,

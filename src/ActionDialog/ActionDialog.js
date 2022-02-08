@@ -167,36 +167,36 @@ const ActionDialog = ({ unit }) => {
                                             <ActionRecover unit={unit} />
                                         )}
                                     </Flex>
-                                    <Divider orientation="vertical" size="S" />
-                                    <Flex direction="row" gap="size-100" alignItems="center">
-                                        <Heading level={4}>Toggles</Heading>
-                                        <ActionButton onPress={() => toggleExhaustion(id)}>
-                                            Exhausted
-                                        </ActionButton>
-                        
-                                        <ActionButton onPress={() => toggleOrdered(id)}>
-                                            Ordered
-                                        </ActionButton>
-                        
-                                        <ActionButton onPress={() => toggleCommanded(id)}>
-                                            Commanded
-                                        </ActionButton>
-                        
-                                        <ActionButton onPress={() => toggleDisrupted(id)}>
-                                            Disrupted
-                                        </ActionButton>
-                        
-                                        <ActionButton onPress={() => toggleCasualty(id)}>
-                                            Casualty
-                                        </ActionButton>
-                                    
-                                        <ActionButton onPress={() => loadTankCannon()}>
-                                            Load
-                                        </ActionButton>
-                                    </Flex>
                                 </Flex>
                             </>
                         )}
+                        <Divider orientation="vertical" size="S" />
+                        <Flex direction="row" gap="size-100" alignItems="center">
+                            <Heading level={4}>Toggles</Heading>
+                            <ActionButton onPress={() => toggleExhaustion(id)}>
+                                Exhausted
+                            </ActionButton>
+            
+                            <ActionButton onPress={() => toggleOrdered(id)}>
+                                Ordered
+                            </ActionButton>
+            
+                            <ActionButton onPress={() => toggleCommanded(id)}>
+                                Commanded
+                            </ActionButton>
+            
+                            <ActionButton onPress={() => toggleDisrupted(id)}>
+                                Disrupted
+                            </ActionButton>
+            
+                            <ActionButton onPress={() => toggleCasualty(id)}>
+                                Casualty
+                            </ActionButton>
+                        
+                            <ActionButton onPress={() => loadTankCannon()}>
+                                Load
+                            </ActionButton>
+                        </Flex>
                         <Divider orientation="vertical" size="S" />
                         <ActionButton onPress={onCancel}>
                             <Cancel />

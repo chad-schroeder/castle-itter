@@ -5,7 +5,10 @@ import classNames                   from 'classnames';
 import { ActionGroup, Item, } from '@adobe/react-spectrum';
 
 import More from '@spectrum-icons/workflow/More';
+import Checkmark from '@spectrum-icons/workflow/Checkmark';
+import Star from '@spectrum-icons/workflow/Star';
 import Lock from '@spectrum-icons/workflow/LockClosed';
+import Disrupted from '@spectrum-icons/workflow/FlashOn';
 
 import { 
     StyledContainer, StyledName, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered, StyledActions, StyledAttributes, StyledNotMobilized,
@@ -70,15 +73,9 @@ const Unit = ({ unit }) => {
             <StyledAttributes>
 
             </StyledAttributes>
-            <StyledCommanded>
-                <img src="images/commanded.svg" width="22" alt="commanded" />
-            </StyledCommanded>
             <StyledDisrupted>
-                <img src="images/disrupted.svg" width="22" alt="disrupted" />
+                <Disrupted size="L" color="negative" />
             </StyledDisrupted>
-            <StyledOrdered>
-                <img src="images/checkmark.svg" width="22" alt="ordered" />
-            </StyledOrdered>
             <StyledNotMobilized>
                 <Lock size="L" color="notice" />
             </StyledNotMobilized>

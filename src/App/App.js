@@ -26,6 +26,7 @@ const App = () => {
 
     const onTurnChange = () => {
         dispatch({ type: 'NEXT_TURN' });
+        dispatch({ type: 'UNSET_ORDERED_COMMANDED' });
     };
 
     const onActionChange = number => {

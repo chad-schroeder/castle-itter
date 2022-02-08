@@ -2,7 +2,16 @@ import styled, { css } from 'styled-components';
 
 const tokens = css`
   display: none;
+
   position: absolute;
+  inset: 0;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--spectrum-global-color-static-white);
+  border-radius: 50%;
 `;
 
 export const StyledContainer = styled.div`
@@ -30,10 +39,6 @@ export const StyledContainer = styled.div`
     --background-color: var(--spectrum-global-color-static-gray-300);
   }
 
-  &.is-casualty {
-    opacity: 0.25;
-  }
-
   &.nationality-USA {
     --border-color: #117620;
   }
@@ -50,8 +55,20 @@ export const StyledContainer = styled.div`
     --border-color: var(--spectrum-global-color-static-red-700);
   }
 
-  &.is-active {
+  &.is-casualty {
+    opacity: 0.25;
+  }
+
+  &.is-commanded {
+    --border-color: orange;
+  }
+
+  &.is-ordered {
     --border-color: var(--spectrum-global-color-chartreuse-400);
+  }
+
+  &.is-active {
+    // --border-color: var(--spectrum-global-color-chartreuse-400);
   }
 `;
 
@@ -79,17 +96,7 @@ export const StyledAttributes = styled.div``;
 export const StyledNotMobilized = styled.div`
   --spectrum-semantic-notice-color-icon: var(--spectrum-global-color-static-red-700);
 
-  display: none;
-
-  position: absolute;
-  inset: 0;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--spectrum-global-color-static-white);
-  border-radius: 50%;
+  ${tokens}
 
   ${StyledContainer}.not-mobilized & {
     display: flex;
@@ -97,46 +104,33 @@ export const StyledNotMobilized = styled.div`
 `;
 
 export const StyledCommanded = styled.div`
-  // ${tokens}
-  // top: 50%;
-  // right: -14px;
-  // transform: translateY(-50%);
+  ${tokens}
 
-  // ${StyledContainer}.is-commanded & {
-  //   display: flex;
-
-  //   img {
-  //     border-radius: 50%;
-  //   }
-  // }
+  ${StyledContainer}.is-commanded & {
+    display: flex;
+  }
 `;
 
 export const StyledDisrupted = styled.div`
-  // ${tokens}
-  // bottom: 0;
-  // right: -4px;
+  display: none;
 
-  // ${StyledContainer}.is-disrupted & {
-  //   display: flex;
-    
-  //   img {
-  //     border-radius: 50%;
-  //   }
-  // }
+  position: absolute;
+  top: -10px;
+  right: -4px; 
+  z-index: 10;
+  transform: rotate(14deg);
+
+  ${StyledContainer}.is-disrupted & {
+    display: flex;
+  }
 `;
 
 export const StyledOrdered = styled.div`
-  // ${tokens}
-  // top: 0;
-  // right: 0;
+  ${tokens}
 
-  // ${StyledContainer}.is-ordered & {
-  //   display: flex;
-    
-  //   img {
-  //     border-radius: 50%;
-  //   }
-  // }
+  ${StyledContainer}.is-ordered & {
+    display: flex;
+  }
 `;
 
 export const StyledActions = styled.div`

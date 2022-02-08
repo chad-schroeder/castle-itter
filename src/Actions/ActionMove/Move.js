@@ -19,6 +19,8 @@ const ActionMove = ({ unit }) => {
                 location,
                 los,
                 armament,
+                ordered: true,
+                exhausted: true,
             },
         });
     };

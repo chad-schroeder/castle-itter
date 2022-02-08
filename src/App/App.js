@@ -6,7 +6,9 @@ import DialogManager from 'DialogManager';
 
 import { buildDeck } from 'Utils/Libs/deck';
 
-import { Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, Heading, NumberField, TextField } from '@adobe/react-spectrum';
+import { 
+    Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, Heading, NumberField, TextField, Switch,
+} from '@adobe/react-spectrum';
 
 import { StyledContainer, } from './styled';
 
@@ -17,6 +19,7 @@ const App = () => {
         actionRound, 
         paused,
         currentAction,
+        displayDialog,
     } = useSelector(state => state.app);
 
     const dispatch = useDispatch();
@@ -38,7 +41,7 @@ const App = () => {
     };
 
     const onPauseGame = () => {
-        dispatch({ type: 'SET_GAME_PAUSE' });
+        dispatch({ type: 'TOGGLE_GAME_PAUSE' });
     };
 
     const onNewGame = () => {
@@ -60,6 +63,10 @@ const App = () => {
                 [color]: val,
             },
         });
+    };
+
+    const handleDialog = dialog => {
+        dispatch({ type: 'DISPLAY_DIALOG', payload: dialog });
     };
 
     useEffect(() => {
@@ -176,6 +183,23 @@ const App = () => {
                             {paused ? 'Unpause Game' : 'Pause Game'}
                         </ActionButton>
                         <ActionButton onPress={onNewGame}>New Game</ActionButton>
+                        <Picker 
+                            label="Dialog" 
+                            selectedKey={displayDialog}
+                            onSelectionChange={handleDialog}
+                            labelPosition="side" 
+                            labelAlign="end"
+                            placeholder="Select a dialog"
+                        >
+                            <Item key="gameStart">Game Start</Item>
+                            <Item key="score">Score</Item>
+                            <Item key="credits">Credits</Item>
+                        </Picker>
+                        <Switch
+                            isSelected={paused}
+                            onChange={onPauseGame}>
+                            Paused
+                        </Switch>
                     </Flex>
                 </View>
                 <Map />

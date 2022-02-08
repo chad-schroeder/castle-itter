@@ -87,7 +87,7 @@ const initialState = {
     activeCard: null, // current card drawn from the Axis deck
     activeDefenderId: null, // id of defender selected to take an action
     currentAction: '', // current defender action
-    displayDialog: 'gameStart', // current dialog shown to player
+    displayDialog: '', // current dialog shown to player
     hasEscaped: false, // did Borotra escape
     tankLoaded: false, // was the tank cannon armed
     tankDestroyed: false, // was the Besotten Jenny destroyed
@@ -106,10 +106,10 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             loading: false,
         }
-    case 'SET_GAME_PAUSE': 
+    case 'TOGGLE_GAME_PAUSE': 
         return {
             ...state,
-            paused: !state.paused,
+            paused: payload || !state.paused,
         }
     case 'BUILD_DECK':
         return {
@@ -174,11 +174,13 @@ const reducer = (state = initialState, { type, payload }) => {
         return {
             ...state,
             displayDialog: payload,
+            paused: true,
         }
     case 'CLOSE_DIALOG':
         return {
             ...state,
-            displayDialog: false,
+            displayDialog: '',
+            paused: false,
         }
     case 'TANK_CANNON_LOADED':
         return {

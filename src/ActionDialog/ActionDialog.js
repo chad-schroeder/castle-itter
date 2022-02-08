@@ -91,109 +91,111 @@ const ActionDialog = ({ unit }) => {
                                 </Item>
                             )}
                         </ActionGroup>
-                        <Divider orientation="vertical" size="S" />
                         {mobilized && (
-                            <Flex direction="row" gap="size-100" alignItems="center">
-                                <Flex direction="row" gap="size-100" alignItems="center">
-                                    <Heading level={4}>Actions</Heading>
-                                    <ActionGroup 
-                                        density="compact"
-                                        buttonLabelBehavior="hide"
-                                        selectionMode="single"
-                                        isEmphasized
-                                        onAction={onAction}
-                                    >
-                                        <Item key="Attack">
-                                            <Crosshairs />
-                                            <Text>Attack</Text>
-                                        </Item>
-                    
-                                        <Item key="Suppress">
-                                            <Relevance />
-                                            <Text>Suppress</Text>
-                                        </Item>
-                    
-                                        <Item key="Move">
-                                            <Move />
-                                            <Text>Move</Text>
-                                        </Item>
-                    
-                                        <Item key="Move Within">
-                                            <Switch />
-                                            <Text>Move Within</Text>
-                                        </Item>
-                    
-                                        <Item key="Recover">
-                                            <SpotHeal />
-                                            <Text>Recover</Text>
-                                        </Item>
-                    
-                                        {commander && (
-                                            <Item key="command">
-                                                <Feature />
-                                                <Text>Command</Text>
-                                            </Item>
-                                        )}
-                                        
-                                        {escape && (
-                                            <Item key="escape">
-                                                <Follow />
-                                                <Text>Escape</Text>
-                                            </Item>
-                                        )}
-                    
-                                        {tile === 'BJ1' && (
-                                            <Item key="load">
-                                                <Wrench />
-                                                <Text>Load</Text>
-                                            </Item>
-                                        )}
-                                    </ActionGroup>
-                    
-                                    {action === 'Move' && (
-                                        <ActionMove unit={unit} />
-                                    )}
-                
-                                    {action === 'Move Within' && (
-                                        <ActionMoveWithin unit={unit} />
-                                    )}
-                
-                                    {action === 'Attack' && (
-                                        <ActionAttack unit={unit} />
-                                    )}
-                
-                                    {action === 'Recover' && (
-                                        <ActionRecover unit={unit} />
-                                    )}
-                                </Flex>
+                            <>
                                 <Divider orientation="vertical" size="S" />
                                 <Flex direction="row" gap="size-100" alignItems="center">
-                                    <Heading level={4}>Toggles</Heading>
-                                    <ActionButton onPress={() => toggleExhaustion(id)}>
-                                        Exhausted
-                                    </ActionButton>
+                                    <Flex direction="row" gap="size-100" alignItems="center">
+                                        <Heading level={4}>Actions</Heading>
+                                        <ActionGroup 
+                                            density="compact"
+                                            buttonLabelBehavior="hide"
+                                            selectionMode="single"
+                                            isEmphasized
+                                            onAction={onAction}
+                                        >
+                                            <Item key="Attack">
+                                                <Crosshairs />
+                                                <Text>Attack</Text>
+                                            </Item>
+                        
+                                            <Item key="Suppress">
+                                                <Relevance />
+                                                <Text>Suppress</Text>
+                                            </Item>
+                        
+                                            <Item key="Move">
+                                                <Move />
+                                                <Text>Move</Text>
+                                            </Item>
+                        
+                                            <Item key="Move Within">
+                                                <Switch />
+                                                <Text>Move Within</Text>
+                                            </Item>
+                        
+                                            <Item key="Recover">
+                                                <SpotHeal />
+                                                <Text>Recover</Text>
+                                            </Item>
+                        
+                                            {commander && (
+                                                <Item key="command">
+                                                    <Feature />
+                                                    <Text>Command</Text>
+                                                </Item>
+                                            )}
+                                            
+                                            {escape && (
+                                                <Item key="escape">
+                                                    <Follow />
+                                                    <Text>Escape</Text>
+                                                </Item>
+                                            )}
+                        
+                                            {tile === 'BJ1' && (
+                                                <Item key="load">
+                                                    <Wrench />
+                                                    <Text>Load</Text>
+                                                </Item>
+                                            )}
+                                        </ActionGroup>
+                        
+                                        {action === 'Move' && (
+                                            <ActionMove unit={unit} />
+                                        )}
                     
-                                    <ActionButton onPress={() => toggleOrdered(id)}>
-                                        Ordered
-                                    </ActionButton>
+                                        {action === 'Move Within' && (
+                                            <ActionMoveWithin unit={unit} />
+                                        )}
                     
-                                    <ActionButton onPress={() => toggleCommanded(id)}>
-                                        Commanded
-                                    </ActionButton>
+                                        {action === 'Attack' && (
+                                            <ActionAttack unit={unit} />
+                                        )}
                     
-                                    <ActionButton onPress={() => toggleDisrupted(id)}>
-                                        Disrupted
-                                    </ActionButton>
-                    
-                                    <ActionButton onPress={() => toggleCasualty(id)}>
-                                        Casualty
-                                    </ActionButton>
-                                
-                                    <ActionButton onPress={() => loadTankCannon()}>
-                                        Load
-                                    </ActionButton>
+                                        {action === 'Recover' && (
+                                            <ActionRecover unit={unit} />
+                                        )}
+                                    </Flex>
+                                    <Divider orientation="vertical" size="S" />
+                                    <Flex direction="row" gap="size-100" alignItems="center">
+                                        <Heading level={4}>Toggles</Heading>
+                                        <ActionButton onPress={() => toggleExhaustion(id)}>
+                                            Exhausted
+                                        </ActionButton>
+                        
+                                        <ActionButton onPress={() => toggleOrdered(id)}>
+                                            Ordered
+                                        </ActionButton>
+                        
+                                        <ActionButton onPress={() => toggleCommanded(id)}>
+                                            Commanded
+                                        </ActionButton>
+                        
+                                        <ActionButton onPress={() => toggleDisrupted(id)}>
+                                            Disrupted
+                                        </ActionButton>
+                        
+                                        <ActionButton onPress={() => toggleCasualty(id)}>
+                                            Casualty
+                                        </ActionButton>
+                                    
+                                        <ActionButton onPress={() => loadTankCannon()}>
+                                            Load
+                                        </ActionButton>
+                                    </Flex>
                                 </Flex>
-                            </Flex>
+                            </>
                         )}
                         <Divider orientation="vertical" size="S" />
                         <ActionButton onPress={onCancel}>

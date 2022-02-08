@@ -5,9 +5,10 @@ import classNames                   from 'classnames';
 import { ActionGroup, Item, } from '@adobe/react-spectrum';
 
 import More from '@spectrum-icons/workflow/More';
+import Lock from '@spectrum-icons/workflow/LockClosed';
 
 import { 
-    StyledContainer, StyledName, StyledTile, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered, StyledActions,
+    StyledContainer, StyledName, StyledValues, StyledCommanded, StyledDisrupted, StyledOrdered, StyledActions, StyledAttributes, StyledNotMobilized,
 } from './styled';
 
 const Unit = ({ unit }) => {
@@ -17,6 +18,7 @@ const Unit = ({ unit }) => {
     let { 
         id,
         name,
+        nationality,
         attack,
         suppress,
         tanker,
@@ -44,36 +46,43 @@ const Unit = ({ unit }) => {
 
     return (
         <StyledContainer 
-            className={classNames({
-                'is-active': id === activeDefenderId,
-                'is-ordered': ordered,
-                'is-disrupted': disrupted,
-                'is-commanded': commanded,
-                'is-inspired': false,
-                'is-exhausted': exhausted,
-                'is-casualty': casualty,
-                'not-mobilized': !mobilized,
-            })}
+            className={
+                classNames({
+                    'is-active': id === activeDefenderId,
+                    'is-ordered': ordered,
+                    'is-disrupted': disrupted,
+                    'is-commanded': commanded,
+                    'is-inspired': false,
+                    'is-exhausted': exhausted,
+                    'is-casualty': casualty,
+                    'not-mobilized': !mobilized,
+                    [`nationality-${nationality}`]: true,
+                })
+            }
             onClick={() => onClick(id)}
         >
             <StyledName>
                 {name}
             </StyledName>
-            <StyledTile>
-                {tile ? tile : '-'}
-            </StyledTile>
             <StyledValues>
                 {attack} | {suppress}
             </StyledValues>
+            <StyledAttributes>
+
+            </StyledAttributes>
             <StyledCommanded>
-                <img src="images/commanded.svg" width="20" alt="commanded" />
+                <img src="images/commanded.svg" width="22" alt="commanded" />
             </StyledCommanded>
             <StyledDisrupted>
-                <img src="images/disrupted.svg" width="20" alt="disrupted" />
+                <img src="images/disrupted.svg" width="22" alt="disrupted" />
             </StyledDisrupted>
             <StyledOrdered>
-                <img src="images/checkmark.svg" width="20" alt="ordered" />
+                <img src="images/checkmark.svg" width="22" alt="ordered" />
             </StyledOrdered>
+            <StyledNotMobilized>
+                <Lock size="L" color="notice" />
+            </StyledNotMobilized>
+            
 
             {/* <StyledActions>
                 <ActionGroup density="compact">

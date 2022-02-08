@@ -181,7 +181,7 @@ const initialState = {
         {
             id: 'schrader',
             name: 'Schrader',
-            nationality: 'SS',
+            nationality: 'GER',
             attack: 1,
             suppress: 2,
             commander: true,

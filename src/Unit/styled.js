@@ -6,102 +6,137 @@ const tokens = css`
 `;
 
 export const StyledContainer = styled.div`
-  --border-color: black;
+  --color: var(--spectrum-global-color-static-black);
+  --background-color: var(--spectrum-global-color-static-white);
+  --border-color: var(--spectrum-global-color-static-black);
 
-  display: inline-block;
   position: relative;
-  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 110px;
+  height: 110px;
+  color: var(--color);
   cursor: pointer;
-  background-color: white;
-  border: 2px solid var(--border-color);
-  border-radius: 4px;
 
-  &.is-active {
-    --border-color: yellowgreen;
-  }
+  background-color: var(--background-color);
+  border: 8px solid var(--border-color);
+  border-radius: 50%;
 
-  &.is-exhausted {
-    opacity: 0.5;
+  &.not-mobilized {
+    --border-color: var(--spectrum-global-color-static-blue-800);
+    --background-color: var(--spectrum-global-color-static-gray-300);
   }
 
   &.is-casualty {
-    opacity: 0.5;
+    opacity: 0.25;
   }
 
-  &.not-mobilized {
-    --border-color: red;
+  &.nationality-USA {
+    --border-color: #117620;
+  }
+
+  &.nationality-GER {
+    --border-color: var(--spectrum-global-color-static-gray-900);
+  }
+
+  &.nationality-FRA {
+    --border-color: #34629b;
+  }
+
+  &.nationality-AUS {
+    --border-color: var(--spectrum-global-color-static-red-700);
+  }
+
+  &.is-active {
+    --border-color: var(--spectrum-global-color-chartreuse-400);
   }
 `;
 
 export const StyledName = styled.h2`
-  padding: 8px;
-  font-size: 10px;
+  margin-bottom: 4px;
+  font-size: 9px;
   font-weight: normal;
   text-align: center;
   text-transform: uppercase;
 `;
 
-export const StyledTile = styled.p`
-  margin-bottom: 8px;
-  font-size: 10px;
-  text-align: center;
-  text-transform: uppercase;
-`;
-
 export const StyledValues = styled.p`
-  padding: 2px 8px;
-  color: white;
-  font-size: 12px;
+  margin-bottom: 4px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
-  background-color: black;
-  border-radius: 0 0 2px 2px;
 
   ${StyledContainer}.is-inspired & {
     color: green;
   }
 `;
 
-export const StyledCommanded = styled.div`
-  ${tokens}
-  bottom: -14px;
-  right: -10px;
+export const StyledAttributes = styled.div``;
 
-  ${StyledContainer}.is-commanded & {
-    display: block;
+export const StyledNotMobilized = styled.div`
+  --spectrum-semantic-notice-color-icon: var(--spectrum-global-color-static-red-700);
 
-    img {
-      border-radius: 50%;
-    }
+  display: none;
+
+  position: absolute;
+  inset: 0;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--spectrum-global-color-static-white);
+  border-radius: 50%;
+
+  ${StyledContainer}.not-mobilized & {
+    display: flex;
   }
+`;
+
+export const StyledCommanded = styled.div`
+  // ${tokens}
+  // top: 50%;
+  // right: -14px;
+  // transform: translateY(-50%);
+
+  // ${StyledContainer}.is-commanded & {
+  //   display: flex;
+
+  //   img {
+  //     border-radius: 50%;
+  //   }
+  // }
 `;
 
 export const StyledDisrupted = styled.div`
-  ${tokens}
-  top: -10px;
-  left: -10px;
+  // ${tokens}
+  // bottom: 0;
+  // right: -4px;
 
-  ${StyledContainer}.is-disrupted & {
-    display: block;
+  // ${StyledContainer}.is-disrupted & {
+  //   display: flex;
     
-    img {
-      border-radius: 50%;
-    }
-  }
+  //   img {
+  //     border-radius: 50%;
+  //   }
+  // }
 `;
 
 export const StyledOrdered = styled.div`
-  ${tokens}
-  top: -10px;
-  right: -10px;
+  // ${tokens}
+  // top: 0;
+  // right: 0;
 
-  ${StyledContainer}.is-ordered & {
-    display: block;
+  // ${StyledContainer}.is-ordered & {
+  //   display: flex;
     
-    img {
-      border-radius: 50%;
-    }
-  }
+  //   img {
+  //     border-radius: 50%;
+  //   }
+  // }
 `;
 
 export const StyledActions = styled.div`

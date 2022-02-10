@@ -13,7 +13,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -32,7 +31,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -49,7 +47,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -66,7 +63,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -83,7 +79,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -100,7 +95,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -118,7 +112,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -136,7 +129,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -154,7 +146,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -172,7 +163,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -190,7 +180,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -210,7 +199,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -228,7 +216,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -246,7 +233,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -264,7 +250,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -282,7 +267,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -300,7 +284,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -318,7 +301,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -336,7 +318,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -354,7 +335,6 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: true,
             tile: null,
             location: null,
             los: [],
@@ -373,7 +353,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tile: null,
             location: null,
             los: [],
@@ -391,7 +371,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tile: null,
             location: null,
             los: [],
@@ -409,7 +389,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tile: null,
             location: null,
             los: [],
@@ -427,7 +407,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tileId: 'C1',
             location: 'C',
             los: [],
@@ -445,7 +425,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tileId: 'C2',
             location: 'C',
             los: [],
@@ -463,7 +443,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tileId: 'C3',
             location: 'C',
             los: [],
@@ -481,7 +461,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tileId: 'C4',
             location: 'C',
             los: [],
@@ -499,7 +479,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            mobilized: false,
+            locked: true,
             tileId: 'C5',
             location: 'C',
             los: [],
@@ -596,7 +576,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 return unit;
             }),
         }
-    case 'UNSET_ORDERED_COMMANDED': {
+    case 'CLEAR_UNIT_ACTIVATIONS': {
         return {
             ...state,
             defenders: state.defenders.map(unit => {
@@ -668,6 +648,37 @@ const reducer = (state = initialState, { type, payload }) => {
                     return {
                         ...unit,
                         casualty: !unit.casualty,
+                    }
+                }
+                return unit;
+            }),
+        }
+    case 'PHASE_CELLAR':
+        return {
+            ...state,
+            defenders: state.defenders.map(unit => {
+                if (unit.location === 'C') {
+                    return {
+                        ...unit,
+                        locked: false,
+                    }
+                } else if (unit.deployed) {
+                    return {
+                        ...unit,
+                        deployed: false,
+                    }
+                }
+                return unit;
+            }),
+        }
+    case 'PHASE_REINFORCEMENT':
+        return {
+            ...state,
+            defenders: state.defenders.map(unit => {
+                if (unit.reinforcement) {
+                    return {
+                        ...unit,
+                        locked: false,
                     }
                 }
                 return unit;

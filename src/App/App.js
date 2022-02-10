@@ -5,6 +5,7 @@ import { Map } from 'Map';
 import DialogManager from 'DialogManager';
 
 import { buildDeck } from 'Utils/Libs/deck';
+import { phaseUnits } from 'Utils/Units/defenders';
 
 import { 
     Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, Heading, NumberField, TextField, Switch,
@@ -26,7 +27,7 @@ const App = () => {
 
     const onTurnChange = () => {
         dispatch({ type: 'NEXT_TURN' });
-        dispatch({ type: 'UNSET_ORDERED_COMMANDED' });
+        dispatch({ type: 'CLEAR_UNIT_ACTIVATIONS' });
     };
 
     const onActionChange = number => {
@@ -35,6 +36,7 @@ const App = () => {
 
     const onPhaseChange = (phase) => {
         dispatch({ type: 'SET_PHASE', payload: phase });
+        phaseUnits(phase);
     };
 
     const onEscape = () => {

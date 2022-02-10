@@ -1,29 +1,9 @@
 import store from '../../store';
 
-export const isPhaseActive = (location) => {
-    const { phase } = store.getState().app;
+export const canTakeAction = unit => {
+    const { ordered, commanded, casualty, locked, deployed } = unit;
 
-    switch(phase) {
-        case 'Deployment':
-            if (location === 'C' || location === 'R') return false;
-            return true;
-        case 'Cellar':
-            if (location === 'R') return false;
-            return true;
-        default:
-            return true;
-    }
-};
-
-export const canTakeAction = ({ ordered, exhausted, disrupted, commanded, casualty, activation }) => {
-    const { phase } = store.getState().app;
-
-    if ((ordered || exhausted || disrupted || commanded || casualty || !activation)) {
-        return false;
-    }
-    
-    // Deployed units cannot activate again until all deployment pool units have been placed
-    if (phase === 'Deployment' && activation) {
+    if ((ordered || commanded || casualty || locked || deployed)) {
         return false;
     }
 

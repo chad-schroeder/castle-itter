@@ -4,12 +4,13 @@ import classNames                   from 'classnames';
 
 import { ActionGroup, Item, } from '@adobe/react-spectrum';
 
-import More from '@spectrum-icons/workflow/More';
-import Lock from '@spectrum-icons/workflow/LockClosed';
+import More      from '@spectrum-icons/workflow/More';
+import Lock      from '@spectrum-icons/workflow/LockClosed';
 import Disrupted from '@spectrum-icons/workflow/FlashOn';
+import Casualty  from '@spectrum-icons/workflow/Blur';
 
 import { 
-    StyledContainer, StyledName, StyledValues, StyledDisrupted, StyledActions, StyledNotMobilized,
+    StyledContainer, StyledName, StyledValues, StyledDisrupted, StyledActions, StyledLocked, StyledCasualty,
 } from './styled';
 
 const Unit = ({ unit }) => {
@@ -28,9 +29,9 @@ const Unit = ({ unit }) => {
         ordered,
         disrupted,
         commanded,
-        mobilized,
+        locked,
+        deployed = false,
         escape,
-        tile,
         armament,
     } = unit;
 
@@ -57,8 +58,9 @@ const Unit = ({ unit }) => {
                     'is-inspired': false,
                     'is-exhausted': exhausted,
                     'is-casualty': casualty,
-                    'not-mobilized': !mobilized,
+                    'is-locked': locked,
                     'is-escape': escape,
+                    'is-deployed': deployed,
                     [`nationality-${nationality}`]: true,
                 })
             }
@@ -73,10 +75,12 @@ const Unit = ({ unit }) => {
             <StyledDisrupted>
                 <Disrupted size="L" color="negative" />
             </StyledDisrupted>
-            <StyledNotMobilized>
+            <StyledLocked>
                 <Lock size="L" color="notice" />
-            </StyledNotMobilized>
-            
+            </StyledLocked>
+            <StyledCasualty>
+                <Casualty size="L" color="negative" />
+            </StyledCasualty>
 
             {/* <StyledActions>
                 <ActionGroup density="compact">

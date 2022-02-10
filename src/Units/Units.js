@@ -41,14 +41,14 @@ const Units = () => {
                     <TableHeader>
                         <Column>Name</Column>
                         <Column>LOS</Column>
-                        <Column>Mobilized</Column>
+                        <Column>Locked</Column>
                     </TableHeader>
                     <TableBody items={defenders}>
                         {defender => (
                             <Row>
                                 <Cell>{defender.name}</Cell>
-                                <Cell>{defender.mobilized.toString()}</Cell>
                                 <Cell>{getLineOfSight(defender.los)}</Cell>
+                                <Cell>{defender.locked ? 'true' : '-'}</Cell>
                             </Row>
                         )}
                     </TableBody>

@@ -1,4 +1,4 @@
-import playCard from './playCard';
+// import playCard from './playCard';
 
 import store from '../../store';
 

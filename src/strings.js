@@ -99,7 +99,7 @@ export const phases = {
         title: 'Cellar units unlocked!',
         content: rules.cellar,
     },
-    phase_reinforcements: {
+    phase_reinforcement: {
         title: 'Reinforcements arrive!',
         content: [
             'Reinforcement units may be placed onto the map', 

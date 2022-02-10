@@ -34,11 +34,6 @@ export const StyledContainer = styled.div`
   border: 8px solid var(--border-color);
   border-radius: 50%;
 
-  &.not-mobilized {
-    --border-color: var(--spectrum-global-color-static-blue-800);
-    --background-color: var(--spectrum-global-color-static-gray-300);
-  }
-
   &.nationality-USA {
     --border-color: #117620;
   }
@@ -52,7 +47,7 @@ export const StyledContainer = styled.div`
   }
 
   &.nationality-AUS {
-    --border-color: var(--spectrum-global-color-static-red-700);
+    --border-color: #ab1437;
   }
 
   &.is-exhausted {
@@ -60,7 +55,7 @@ export const StyledContainer = styled.div`
   }
 
   &.is-casualty {
-    opacity: 0.25;
+    --border-color: var(--spectrum-global-color-static-red-700);
   }
 
   &.is-commanded {
@@ -72,7 +67,11 @@ export const StyledContainer = styled.div`
   }
 
   &.is-escape {
-    --border-color: var(--spectrum-global-color-static-purple-600);
+    --border-color: var(--spectrum-global-color-static-purple-800);
+  }
+
+  &:is(.is-locked, .is-deactivated) {
+    --border-color: var(--spectrum-global-color-static-red-600);
   }
 
   &.is-active {
@@ -101,12 +100,22 @@ export const StyledValues = styled.p`
 
 export const StyledAttributes = styled.div``;
 
-export const StyledNotMobilized = styled.div`
+export const StyledLocked = styled.div`
   --spectrum-semantic-notice-color-icon: var(--spectrum-global-color-static-red-700);
 
   ${tokens}
 
-  ${StyledContainer}.not-mobilized & {
+  ${StyledContainer}.is-locked & {
+    display: flex;
+  }
+`;
+
+export const StyledCasualty = styled.div`
+  --spectrum-semantic-notice-color-icon: var(--spectrum-global-color-static-red-700);
+
+  ${tokens}
+
+  ${StyledContainer}.is-casualty & {
     display: flex;
   }
 `;

@@ -168,7 +168,6 @@ const initialState = {
                 name: '76mm (Fire)',
                 attack: 4,
                 suppress: 7,
-                loaded: false,
             },
         },
         {

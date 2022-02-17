@@ -86,6 +86,7 @@ const initialState = {
     },
     activeCard: null, // current card drawn from the Axis deck
     activeDefenderId: null, // id of defender selected to take an action
+    commandHistory: [], // allow user to undo changes during command action
     currentAction: '', // current defender action
     displayDialog: '', // current dialog shown to player
     hasEscaped: false, // did Borotra escape

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector }     from 'react-redux';
 
-import { Heading, View, Flex, Cell, Column, Row, TableView, TableBody, TableHeader, } from '@adobe/react-spectrum';
+import Location from '../Location';
+
+import { Heading, View } from '@adobe/react-spectrum';
+
+import { StyledLocations } from './styled';
 
 const convertLocationsToList = locations => {
     const list = [];
@@ -12,9 +16,9 @@ const convertLocationsToList = locations => {
 const Locations = () => {
     const { locations } = useSelector(state => state.map);
 
-    const [selectedLocation, setSelectedLocation] = useState(new Set([]));
+    const locales = convertLocationsToList(locations);
 
-    const locationsList = convertLocationsToList(locations);
+    const renderLocations = locales.map(locale => <Location key={locale.id} location={locale} />);
 
     return (
         <View
@@ -25,31 +29,9 @@ const Locations = () => {
             paddingX="size-200"
         >
             <Heading level={2}>Locations</Heading>
-            <Flex height="size-2400" direction="column">
-                <TableView 
-                    aria-label="Tiles"
-                    selectionMode="single"
-                    selectedKeys={selectedLocation}
-                    onSelectionChange={setSelectedLocation}
-                >
-                    <TableHeader>
-                        <Column maxWidth={180}>ID</Column>
-                        <Column>Name</Column>
-                        <Column>Tiles</Column>
-                        <Column>Defense</Column>
-                    </TableHeader>
-                    <TableBody items={locationsList}>
-                        {location => (
-                            <Row>
-                                <Cell>{location.id}</Cell>
-                                <Cell>{location.name}</Cell>
-                                <Cell>{location.tiles.join(', ')}</Cell>
-                                <Cell>{location.defense}</Cell>
-                            </Row>
-                        )}
-                    </TableBody>
-                </TableView>
-            </Flex>
+            <StyledLocations>
+                {renderLocations}
+            </StyledLocations>
         </View>
     );
 };

@@ -15,3 +15,18 @@ export const phaseUnits = phase => {
     }
 };
 
+export const getEligibleCommand = commander => {
+    const { defenders } = store.getState().units;
+
+    const { id, location } = commander;
+
+    const eligible = defenders.filter(defender => 
+            defender.id !== id
+            && defender.location === location // units must be in the same location
+            && (defender.exhausted || defender.disrupted) 
+            && !defender.command // units with command attribute cannot be commanded
+        );
+
+    return eligible;
+};
+

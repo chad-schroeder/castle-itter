@@ -1,9 +1,10 @@
 import React from 'react';
 
-// import ActionMove       from '../Actions/ActionMove';
-// import ActionMoveWithin from '../Actions/ActionMoveWithin';
-// import ActionAttack     from '../Actions/ActionAttack';
-// import ActionRecover    from '../Actions/ActionRecover';
+import Move             from './Move';
+import Command         from './Command';
+import ActionMoveWithin from '../../Actions/ActionMoveWithin';
+import ActionAttack     from '../../Actions/ActionAttack';
+import ActionRecover    from '../../Actions/ActionRecover';
 
 import { canTakeAction } from 'Utils/Units/checks';
 
@@ -14,7 +15,7 @@ import Crosshairs from '@spectrum-icons/workflow/Crosshairs';
 import Wrench     from '@spectrum-icons/workflow/Wrench';
 import Feature    from '@spectrum-icons/workflow/Feature';
 import Follow     from '@spectrum-icons/workflow/Follow';
-import Move       from '@spectrum-icons/workflow/Move';
+import Direction  from '@spectrum-icons/workflow/Move';
 import Relevance  from '@spectrum-icons/workflow/Relevance';
 import SpotHeal   from '@spectrum-icons/workflow/SpotHeal';
 
@@ -45,7 +46,7 @@ const Actions = ({ unit, action, onAction }) => {
                             </Item>
         
                             <Item key="Move">
-                                <Move />
+                                <Direction />
                                 <Text>Move</Text>
                             </Item>
         
@@ -59,7 +60,7 @@ const Actions = ({ unit, action, onAction }) => {
                                 <Text>Recover</Text>
                             </Item>
 
-                            <Item key="command">
+                            <Item key="Command">
                                 <Feature />
                                 <Text>Command</Text>
                             </Item>
@@ -75,8 +76,8 @@ const Actions = ({ unit, action, onAction }) => {
                             </Item>
                         </ActionGroup>
         
-                        {/* {action === 'Move' && (
-                            <ActionMove unit={unit} />
+                        {action === 'Move' && (
+                            <Move unit={unit} />
                         )}
 
                         {action === 'Move Within' && (
@@ -87,9 +88,13 @@ const Actions = ({ unit, action, onAction }) => {
                             <ActionAttack unit={unit} />
                         )}
 
+                        {action === 'Command' && (
+                            <Command unit={unit} />
+                        )}
+
                         {action === 'Recover' && (
                             <ActionRecover unit={unit} />
-                        )} */}
+                        )}
                     </Flex>
                 </Flex>
                 </>

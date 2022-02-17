@@ -1,26 +1,29 @@
-import React                        from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React           from 'react';
+import { useDispatch } from 'react-redux';
 
-import { Flex, Picker, Item, } from '@adobe/react-spectrum';
+import { getUnoccupiedTiles } from 'Utils/Libs/movement';
 
-const ActionMove = ({ unit }) => {
-    const { tiles } = useSelector(state => state.map);
+import { Flex, Picker, Item } from '@adobe/react-spectrum';
+
+const Move = ({ unit }) => {
+    const tiles = getUnoccupiedTiles();
     const dispatch = useDispatch();
 
-    const onMove = toTileId => {
-        const tile = tiles.find(tile => tile.id === toTileId);
+    const onMove = tileId => {
+        const tile = tiles.find(tile => tile.id === tileId);
         const { location, los = [], armament = null } = tile;
 
         dispatch({ 
             type: 'UPDATE_DEFENDER', 
             payload: {
                 ...unit,
-                tile: toTileId,
+                tile: tileId,
                 location,
                 los,
                 armament,
             },
         });
+        dispatch({ type: 'UNSET_CURRENT_ACTION' });
     };
     
     return (
@@ -46,4 +49,4 @@ const ActionMove = ({ unit }) => {
     );
 };
 
-export default ActionMove;
+export default Move;

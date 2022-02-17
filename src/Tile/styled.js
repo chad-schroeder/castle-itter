@@ -23,9 +23,13 @@ export const StyledSpinner = styled.td`
     }
 `;
 
-export const StyledCol = styled.td`
-    &.hl-inspired {
-      color: green;
-      font-weight: bold;
-    }
+export const StyledContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 4px;
 `;

@@ -15,7 +15,7 @@ const initialState = {
             casualty: false,
             tile: 'K1',
             location: 'K',
-            los: [],
+            los: ['orange'],
             armament: null,
         },
         {
@@ -33,7 +33,7 @@ const initialState = {
             casualty: false,
             tile: 'K2',
             location: 'K',
-            los: [],
+            los: ['orange'],
             armament: null,
         },
         {
@@ -41,7 +41,7 @@ const initialState = {
             name: 'Worsham',
             nationality: 'USA',
             attack: 1,
-            suppress: 1,
+            suppress: 4, // 1
             ordered: false,
             commanded: false,
             disrupted: false,
@@ -49,7 +49,7 @@ const initialState = {
             casualty: false,
             tile: 'K3',
             location: 'K',
-            los: [],
+            los: ['orange', 'green'],
             armament: null,
         },
         {

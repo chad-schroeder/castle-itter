@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Move             from './Move';
-import Command         from './Command';
+import Suppress         from './Suppress';
+import Command          from './Command';
 import ActionMoveWithin from '../../Actions/ActionMoveWithin';
 import ActionAttack     from '../../Actions/ActionAttack';
 import ActionRecover    from '../../Actions/ActionRecover';
@@ -28,6 +29,7 @@ const Actions = ({ unit, action, onAction }) => {
                 <Flex direction="row" gap="size-100" alignItems="center">
                     <Flex direction="row" gap="size-100" alignItems="center">
                         <Heading level={4}>Actions</Heading>
+                        <Suppress unit={unit} />
                         <ActionGroup 
                             density="compact"
                             buttonLabelBehavior="hide"

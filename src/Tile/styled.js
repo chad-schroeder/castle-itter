@@ -1,35 +1,22 @@
-import styled, { keyframes } from 'styled-components';
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-export const StyledSpinner = styled.td`
-    width: 60px;
-
-    img { 
-      display: none;
-      animation: ${rotate} 4s linear infinite;
-
-      ${({ highlight, unit }) => (highlight === 'move' && !unit) && `
-        display: block;
-      `}
-    }
-`;
+import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
 
-    padding: 8px;
+    padding: 6px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
-    border: 1px solid black;
-    border-radius: 4px;
+    border: 2px solid black;
+    border-radius: 6px;
+`;
+
+export const StyledArmament = styled.span`
+    flex: 1;
+
+    font-size: 10px;
+    text-align: right;
 `;

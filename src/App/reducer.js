@@ -8,10 +8,10 @@ const initialState = {
     history: {}, // record of all actions for debugging
     phase: 'Deployment', // Deployment, Cellar, Reinforcement
     suppression: { // Suppression points allocated, per color
-        purple: 0,
         green: 0,
-        black: 0,
         orange: 0,
+        purple: 0,
+        black: 0,
     },
     deck: [], // shuffled Axis draw deck
     decks: { // Axis deck
@@ -143,13 +143,10 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             actionRound: payload,
         }
-    case 'MODIFY_SUPPRESSION':
+    case 'UPDATE_SUPPRESSION':
         return {
             ...state,
-            suppression: { 
-                ...state.suppression,
-                ...payload,
-            },
+            suppression: payload,
         }
     case 'SET_CURRENT_ACTION':
         return {

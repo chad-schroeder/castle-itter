@@ -8,10 +8,10 @@ import { buildDeck } from 'Utils/Libs/deck';
 import { phaseUnits } from 'Utils/Units/defenders';
 
 import { 
-    Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, Heading, NumberField, TextField, Switch,
+    Grid, RadioGroup, Radio, View, Item, ActionButton, Divider, Flex, Picker, Heading, TextField, Switch,
 } from '@adobe/react-spectrum';
 
-import { StyledContainer, } from './styled';
+import { StyledContainer } from './styled';
 
 const App = () => {
     const { 
@@ -21,6 +21,7 @@ const App = () => {
         paused,
         currentAction,
         displayDialog,
+        suppression,
     } = useSelector(state => state.app);
 
     const dispatch = useDispatch();
@@ -39,33 +40,12 @@ const App = () => {
         phaseUnits(phase);
     };
 
-    const onEscape = () => {
-        dispatch({ type: 'BOROTRA_ESCAPED' });
-    };
-
     const onPauseGame = () => {
         dispatch({ type: 'TOGGLE_GAME_PAUSE' });
     };
 
     const onNewGame = () => {
         dispatch({ type: 'NEW_GAME' });
-    };
-
-    const onTankLoad = () => {
-        dispatch({ type: 'TANK_CANNON_LOADED' });
-    };
-
-    const onTankFire = () => {
-        dispatch({ type: 'TANK_CANNON_FIRED' });
-    };
-
-    const handleSuppression = (val, color) => {
-        dispatch({ 
-            type: 'MODIFY_SUPPRESSION', 
-            payload: { 
-                [color]: val,
-            },
-        });
     };
 
     const handleDialog = dialog => {
@@ -142,29 +122,29 @@ const App = () => {
                             <Divider orientation="vertical" size="S" />
 
                             <Flex direction="row" gap="size-50">
-                                <NumberField
-                                    label="Black"
-                                    defaultValue={0}
-                                    minValue={0}
-                                    onChange={(value) => handleSuppression(value, 'black')}
-                                />
-                                <NumberField
-                                    label="Purple"
-                                    defaultValue={0}
-                                    minValue={0} 
-                                    onChange={(value) => handleSuppression(value, 'purple')}
-                                />
-                                <NumberField
-                                    label="Orange"
-                                    defaultValue={0}
-                                    minValue={0} 
-                                    onChange={(value) => handleSuppression(value, 'orange')}
-                                />
-                                <NumberField
+                                <TextField
+                                    value={suppression.green}
                                     label="Green"
-                                    defaultValue={0}
-                                    minValue={0} 
-                                    onChange={(value) => handleSuppression(value, 'green')}
+                                    width="size-600"
+                                    isReadOnly
+                                />
+                                <TextField
+                                    value={suppression.orange}
+                                    label="Orange"
+                                    width="size-600"
+                                    isReadOnly
+                                />
+                                <TextField
+                                    value={suppression.purple}
+                                    label="Purple"
+                                    width="size-600"
+                                    isReadOnly
+                                />
+                                <TextField
+                                    value={suppression.black}
+                                    label="Black"
+                                    width="size-600"
+                                    isReadOnly
                                 />
                             </Flex>
                             
@@ -179,9 +159,6 @@ const App = () => {
                     padding="size-150"
                 >
                     <Flex direction="row" gap="size-100">
-                        <ActionButton onPress={onEscape}>Escape</ActionButton>
-                        <ActionButton onPress={onTankLoad}>Load Tank</ActionButton>
-                        <ActionButton onPress={onTankFire}>Fire Tank</ActionButton>
                         <ActionButton onPress={onPauseGame}>
                             {paused ? 'Unpause Game' : 'Pause Game'}
                         </ActionButton>

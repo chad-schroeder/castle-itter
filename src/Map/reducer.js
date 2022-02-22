@@ -156,7 +156,7 @@ const initialState = {
             id: 'BJ1',
             location: 'BJ',
             armament: {
-                name: '76mm (Load)',
+                name: '76mm: Load',
                 load: true,
             },
         },
@@ -165,7 +165,7 @@ const initialState = {
             location: 'BJ',
             los: ['black'],
             armament: {
-                name: '76mm (Fire)',
+                name: '76mm: Fire',
                 attack: 4,
                 suppress: 7,
             },

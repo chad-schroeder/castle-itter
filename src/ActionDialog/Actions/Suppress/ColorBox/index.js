@@ -10,19 +10,12 @@ import ChevronUp from '@spectrum-icons/workflow/ChevronUp';
 import ChevronDown from '@spectrum-icons/workflow/ChevronDown';
 
 const ColorBox = ({ count, color, increment, decrement, points }) => {
-
-    const incrementDisabled = points === 0;
-    const decrementDisabled = count < 1;
-
     return (
-        <View 
-            backgroundColor={LOS_COLORS[color]} 
-            width={'20%'}
-        >
+        <View backgroundColor={LOS_COLORS[color]} width={'20%'}>
             <Flex direction="column" alignItems="center" gap="size-100">
                 <ActionButton 
                     isQuiet
-                    isDisabled={incrementDisabled}
+                    isDisabled={points === 0}
                     onPress={() => increment(color)}
                 >
                     <ChevronUp />
@@ -30,7 +23,7 @@ const ColorBox = ({ count, color, increment, decrement, points }) => {
                 <StyledCount>{count}</StyledCount>
                 <ActionButton 
                     isQuiet
-                    isDisabled={decrementDisabled}
+                    isDisabled={count < 1}
                     onPress={() => decrement(color)}
                 >
                     <ChevronDown />

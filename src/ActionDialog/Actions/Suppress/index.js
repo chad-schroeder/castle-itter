@@ -21,7 +21,7 @@ const Suppress = ({ unit }) => {
     };
 
     const [allocation, setAllocation] = useState(initialAllocation);
-    const [points, setPoints] = useState(suppress);
+    const [pointsRemaining, setpointsRemaining] = useState(suppress);
     const dispatch = useDispatch();
 
     const increment = color => {
@@ -29,7 +29,7 @@ const Suppress = ({ unit }) => {
             ...allocation,
             [color]: allocation[color] + 1,
         });
-        setPoints(points - 1);
+        setpointsRemaining(pointsRemaining - 1);
     };
 
     const decrement = color => {
@@ -39,21 +39,27 @@ const Suppress = ({ unit }) => {
             ...allocation,
             [color]: allocation[color] - value,
         });
-        setPoints(points + value);
+        setpointsRemaining(pointsRemaining + value);
     };
 
     const reset = () => {
         setAllocation(initialAllocation);
-        setPoints(suppress);
+        setpointsRemaining(suppress);
     }
 
     const cleanup = close => {
+        dispatch({ type: 'UNSET_CURRENT_ACTION' });
+
         // dismiss dialog
         close(); 
 
-        // reset allocation + points
+        // reset allocation + pointsRemaining
         setAllocation(initialAllocation);
-        setPoints(suppress);
+        setpointsRemaining(suppress);
+    };
+
+    const onAction = () => {
+        dispatch({ type: 'SET_CURRENT_ACTION', payload: 'Suppress' });
     };
 
     const onCancel = close => {
@@ -68,17 +74,13 @@ const Suppress = ({ unit }) => {
             black: suppression.black + allocation.black,
         }
 
-        dispatch({
-            type: 'UPDATE_SUPPRESSION',
-            payload,
-        });
-
+        dispatch({ type: 'UPDATE_SUPPRESSION', payload });
         cleanup(close);
     };
 
     return (
         <DialogTrigger>
-            <ActionButton>
+            <ActionButton onPress={onAction}>
                 <Relevance />
             </ActionButton>
             {(close) => (
@@ -87,7 +89,7 @@ const Suppress = ({ unit }) => {
                     <Divider />
                     <Content>
                         <Text>
-                            Suppression points to spend: {points}
+                            Suppression points remaining: {pointsRemaining}
                         </Text>
                         <Flex 
                             direction="row" 
@@ -100,7 +102,7 @@ const Suppress = ({ unit }) => {
                                 los={los}
                                 increment={increment}
                                 decrement={decrement}
-                                points={points}
+                                pointsRemaining={pointsRemaining}
                             />
                             <ActionButton onPress={reset}>
                                 Reset
@@ -117,7 +119,7 @@ const Suppress = ({ unit }) => {
                         <Button 
                             variant="cta" 
                             onPress={() => onSubmit(close)} 
-                            isDisabled={points !== 0}
+                            isDisabled={pointsRemaining !== 0}
                             autoFocus
                         >
                             Confirm

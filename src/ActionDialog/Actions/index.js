@@ -2,6 +2,8 @@ import React from 'react';
 
 import Move             from './Move';
 import Suppress         from './Suppress';
+import Unexhaust        from './Unexhaust';
+import Undisrupt        from './Undisrupt';
 import Command          from './Command';
 import ActionMoveWithin from '../../Actions/ActionMoveWithin';
 import ActionAttack     from '../../Actions/ActionAttack';
@@ -18,7 +20,6 @@ import Feature    from '@spectrum-icons/workflow/Feature';
 import Follow     from '@spectrum-icons/workflow/Follow';
 import Direction  from '@spectrum-icons/workflow/Move';
 import Relevance  from '@spectrum-icons/workflow/Relevance';
-import SpotHeal   from '@spectrum-icons/workflow/SpotHeal';
 
 const Actions = ({ unit, action, onAction }) => {
     return (
@@ -30,6 +31,8 @@ const Actions = ({ unit, action, onAction }) => {
                     <Flex direction="row" gap="size-100" alignItems="center">
                         <Heading level={4}>Actions</Heading>
                         <Suppress unit={unit} />
+                        <Unexhaust unit={unit} />
+                        <Undisrupt unit={unit} />
                         <ActionGroup 
                             density="compact"
                             buttonLabelBehavior="hide"
@@ -55,11 +58,6 @@ const Actions = ({ unit, action, onAction }) => {
                             <Item key="Move Within">
                                 <Switch />
                                 <Text>Move Within</Text>
-                            </Item>
-        
-                            <Item key="Recover">
-                                <SpotHeal />
-                                <Text>Recover</Text>
                             </Item>
 
                             <Item key="Command">

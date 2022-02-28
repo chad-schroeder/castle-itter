@@ -17,7 +17,6 @@ const Command = ({ unit }) => {
     const onSelectedDefender = id => {
         const defender = defenders.find(defender => defender.id === id);
         setDefender(defender);
-        console.log(defender);
     };
 
     const onCommand = (command) => {

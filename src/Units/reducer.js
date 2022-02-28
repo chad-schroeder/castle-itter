@@ -41,7 +41,7 @@ const initialState = {
             name: 'Worsham',
             nationality: 'USA',
             attack: 1,
-            suppress: 4, // 1
+            suppress: 1,
             ordered: false,
             commanded: false,
             disrupted: false,
@@ -407,9 +407,9 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            locked: true,
-            tile: 'C1',
-            location: 'C',
+            locked: false, // true
+            tile: 'K4', // C1
+            location: 'K', // C
             los: [],
             armament: null,
         },
@@ -479,7 +479,7 @@ const initialState = {
             disrupted: false,
             exhausted: false,
             casualty: false,
-            locked: true,
+            locked: false, // true
             tile: 'C5',
             location: 'C',
             los: [],

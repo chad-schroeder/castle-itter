@@ -153,10 +153,9 @@ export const StyledOrdered = styled.div`
 export const StyledActions = styled.div`
   display: none;
   position: absolute;
-  bottom: -40px;
-  left: 50%;
+  top: 0;
+  left: 100%;
   z-index: 50;
-  transform: translateX(-50%);
 
   ${StyledContainer}.is-active & {
     display: block;

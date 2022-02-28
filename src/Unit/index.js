@@ -67,7 +67,7 @@ const Unit = ({ unit }) => {
             onClick={() => onClick(id)}
         >
             <StyledName>
-                {name}
+                {exhausted ? 'Exhausted' : name}
             </StyledName>
             <StyledValues>
                 {attack} | {suppress}

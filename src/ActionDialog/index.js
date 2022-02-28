@@ -1,7 +1,7 @@
-import React, { useState }          from 'react';
+import React                        from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Actions from './Actions';
+import Actions from '../Actions';
 import Toggles from './Toggles';
 
 import { ActionButton, ActionGroup, Flex, Item, View, Heading, Divider, } from '@adobe/react-spectrum';
@@ -22,10 +22,6 @@ const ActionDialog = ({ unit }) => {
             morale,
             tile, 
         } = unit;
-
-        const onAction = action => {
-            dispatch({ type: 'SET_CURRENT_ACTION', payload: action });
-        };
     
         const onCancel = () => {
             dispatch({ type: 'UNSET_CURRENT_ACTION' });
@@ -74,7 +70,7 @@ const ActionDialog = ({ unit }) => {
                                 </Item>
                             )}
                         </ActionGroup>
-                        <Actions unit={unit} action={currentAction} onAction={onAction} />
+                        <Actions unit={unit} />
                         <Divider orientation="vertical" size="S" />
                         <Toggles unit={unit} />
                         <Divider orientation="vertical" size="S" />

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ActionButton, Flex, View } from '@adobe/react-spectrum';
 
-import { LOS_COLORS } from '../../../../constants';
+import { LOS_COLORS } from '../../../constants';
 
 import { StyledCount } from './styled';
 

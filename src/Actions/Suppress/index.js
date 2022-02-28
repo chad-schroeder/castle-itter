@@ -3,15 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ColorBoxes from './ColorBoxes';
 
+import { isInspired } from '../../Utils/Units/checks';
+
 import { 
-    ActionButton, DialogTrigger, Dialog, Heading, Content, Divider, Text, Button, ButtonGroup, Flex,
+    ActionButton, DialogContainer, Dialog, Heading, Content, Divider, Text, Button, ButtonGroup, Flex,
 } from '@adobe/react-spectrum';
 
-import Relevance from '@spectrum-icons/workflow/Relevance';
-
 const Suppress = ({ unit }) => {
-    const { suppression } = useSelector(state => state.app);
+    const { currentAction, suppression } = useSelector(state => state.app);
     const { suppress, los } = unit;
+    let suppressVal = suppress;
 
     const initialAllocation = {
         green: 0,
@@ -20,8 +21,12 @@ const Suppress = ({ unit }) => {
         black: 0,
     };
 
+    if (isInspired(unit)) {
+        suppressVal += 1;
+    }
+
     const [allocation, setAllocation] = useState(initialAllocation);
-    const [pointsRemaining, setpointsRemaining] = useState(suppress);
+    const [pointsRemaining, setpointsRemaining] = useState(suppressVal);
     const dispatch = useDispatch();
 
     const increment = color => {
@@ -44,29 +49,19 @@ const Suppress = ({ unit }) => {
 
     const reset = () => {
         setAllocation(initialAllocation);
-        setpointsRemaining(suppress);
+        setpointsRemaining(suppressVal);
     }
 
-    const cleanup = close => {
+    const onClose = () => {
+        // clear action; close dialog
         dispatch({ type: 'UNSET_CURRENT_ACTION' });
 
-        // dismiss dialog
-        close(); 
-
-        // reset allocation + pointsRemaining
+        // reset values
         setAllocation(initialAllocation);
-        setpointsRemaining(suppress);
+        setpointsRemaining(suppressVal);
     };
 
-    const onAction = () => {
-        dispatch({ type: 'SET_CURRENT_ACTION', payload: 'Suppress' });
-    };
-
-    const onCancel = close => {
-        cleanup(close);
-    };
-
-    const onSubmit = close => {
+    const onConfirm = () => {
         const payload = {
             green: suppression.green + allocation.green,
             orange: suppression.orange + allocation.orange,
@@ -74,18 +69,26 @@ const Suppress = ({ unit }) => {
             black: suppression.black + allocation.black,
         }
 
+        // allocate Suppression points
         dispatch({ type: 'UPDATE_SUPPRESSION', payload });
-        cleanup(close);
+
+        // mark defender as ordered
+        dispatch({ 
+            type: 'UPDATE_DEFENDER',
+            payload: {
+                ...unit,
+                ordered: true,
+            },
+        });
+
+        onClose();
     };
 
     return (
-        <DialogTrigger>
-            <ActionButton onPress={onAction}>
-                <Relevance />
-            </ActionButton>
-            {(close) => (
+        <DialogContainer>
+            {currentAction === 'Suppress' &&
                 <Dialog>
-                    <Heading>Suppression</Heading>
+                    <Heading>Suppress</Heading>
                     <Divider />
                     <Content>
                         <Text>
@@ -110,25 +113,21 @@ const Suppress = ({ unit }) => {
                         </Flex>
                     </Content>
                     <ButtonGroup>
-                        <Button 
-                            variant="secondary" 
-                            onPress={() => onCancel(close)}
-                        >
+                        <Button variant="secondary" onPress={onClose}>
                             Cancel
                         </Button>
                         <Button 
                             variant="cta" 
-                            onPress={() => onSubmit(close)} 
+                            onPress={onConfirm} 
                             isDisabled={pointsRemaining !== 0}
-                            autoFocus
                         >
                             Confirm
                         </Button>
                     </ButtonGroup>
                 </Dialog>
-            )}
-        </DialogTrigger>
+            }
+      </DialogContainer>
     );
-};
+}
 
 export default Suppress;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Units } from '../Units';
 import Tiles     from '../Tiles';
 import Locations from '../Locations';
-// import Tracks    from '../Tracks';
+import Tracks    from '../Tracks';
 
 const Map = () => {
     return (
@@ -11,7 +11,7 @@ const Map = () => {
             <Units />
             <Locations />
             <Tiles />
-            {/* <Tracks /> */}
+            <Tracks />
         </>
     );
 };

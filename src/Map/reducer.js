@@ -218,7 +218,7 @@ const initialState = {
             next: 13, 
             counter: {
                 id: 'e9891108-8fe0-4849-a51e-91cc6778aace',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: ['machineGun'],
@@ -229,7 +229,7 @@ const initialState = {
             next: 13, 
             counter: {
                 id: '709acd99-d56a-4f99-93c9-ee4c53223153',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             }, 
             suppress: [],
@@ -240,7 +240,7 @@ const initialState = {
             next: 15, 
             counter: {
                 id: 'f10725b9-cf52-419f-9f9e-f661c5d2d8a6',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             }, 
             suppress: ['mortar'],
@@ -251,7 +251,7 @@ const initialState = {
             next: 18,
             counter: {
                 id: '01a080c5-c093-4e8e-82d7-9413b44b1731',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -262,7 +262,7 @@ const initialState = {
             next: 20,
             counter: {
                 id: '3b320fc7-3043-438e-9804-bd10958932c0',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -273,7 +273,7 @@ const initialState = {
             next: 22,
             counter: {
                 id: '2c5ecd47-95a4-492a-89d3-111cb4cc5c5f',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -284,7 +284,7 @@ const initialState = {
             next: 26,
             counter: {
                 id: 'd4bd4a2c-8906-403b-aa9a-ec385d625fd7',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -295,7 +295,7 @@ const initialState = {
             next: 26,
             counter: {
                 id: '1e17edb2-ded4-436d-8854-29c3ce11f323',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -306,7 +306,7 @@ const initialState = {
             next: 28,
             counter: {
                 id: '1223c0be-a8c0-4b4e-b352-8d2d07f8bff7',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -317,7 +317,7 @@ const initialState = {
             next: 32,
             counter: {
                 id: 'db4ddc22-ab91-456a-bab3-e75985f61597',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],
@@ -328,7 +328,7 @@ const initialState = {
             next: 32,
             counter: {
                 id: 'a14289f2-0cff-4d44-aeef-57d2be48c10f',
-                type: 'RF',
+                name: 'Rifleman',
                 defense: 3,
             },
             suppress: [],

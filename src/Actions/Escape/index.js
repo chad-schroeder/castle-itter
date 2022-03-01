@@ -7,6 +7,8 @@ import {
     DialogContainer, Dialog, Heading, Content, Divider, Button, ButtonGroup
 } from '@adobe/react-spectrum';
 
+import { StyledLi } from './styled';
+
 const Escape = ({ unit }) => {
     const { currentAction } = useSelector(state => state.app);
     const { los, location } = unit;
@@ -38,8 +40,19 @@ const Escape = ({ unit }) => {
                     <Divider />
                     <Content>
                         {escapePossible && <p>The path is clear: Borotra can escape!</p>}
-                        {!hasEscapeRoute(los) && <p>Borotra has no cleared escape path.</p>}
-                        {!isEscapeLocation(location) && <p>Borotra cannot escape from the Cellar [C] or Great Hall [GH].</p>}
+                        {!escapePossible && (
+                            <>
+                                <Heading level={4}>Conditions not met:</Heading>
+                                <ul>
+                                    {!hasEscapeRoute(los) && (
+                                        <StyledLi>Borotra has no cleared escape path.</StyledLi>
+                                    )}
+                                    {!isEscapeLocation(location) && (
+                                        <StyledLi>Borotra cannot escape from the <strong>Cellar</strong> or <strong>Great Hall</strong>.</StyledLi>
+                                    )}
+                                </ul>
+                            </>
+                        )}
                     </Content>
                     <ButtonGroup>
                         <Button variant="secondary" onPress={onCancel}>

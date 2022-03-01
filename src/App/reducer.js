@@ -86,6 +86,7 @@ const initialState = {
     },
     activeCard: null, // current card drawn from the Axis deck
     activeDefenderId: null, // id of defender selected to take an action
+    targetCounter: null, // counter selected for an Attack action
     commandHistory: [], // allow user to undo changes during command action
     currentAction: '', // attack, suppress, move, moveWithin, command, recover, sacrifice, escape
     displayDialog: '', // current dialog shown to player
@@ -179,6 +180,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             displayDialog: '',
             paused: false,
+        }
+    case 'SET_TARGET_COUNTER':
+        return {
+            ...state,
+            targetCounter: payload,
         }
     case 'TANK_CANNON_LOADED':
         return {

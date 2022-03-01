@@ -1,56 +1,58 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { isInspired } from '../../Utils/Units/checks';
 
 import { 
-    ActionButton, DialogTrigger, Dialog, Heading, Content, Divider, Text, Button, ButtonGroup
+    DialogContainer, Dialog, Heading, Header, Content, Divider, Text, Button, ButtonGroup
 } from '@adobe/react-spectrum';
-
-import Crosshairs from '@spectrum-icons/workflow/Crosshairs';
 
 const Attack = ({ unit }) => {
     let { attack } = unit;
+    const { currentAction, targetCounter } = useSelector(state => state.app);
+    const { name: targetName, defense } = targetCounter;
+    const dispatch = useDispatch();
 
     if (isInspired(unit)) {
         attack += 1;
     }
 
+    const onConfirm = () => {
+        console.log('Roll dice!');
+    };
+
+    const onCancel = () => {
+        dispatch({ type: 'SET_TARGET_COUNTER', payload: null });
+        dispatch({ type: 'UNSET_CURRENT_ACTION' });
+    };
+
     if (attack > 0) {
         return (
-            <DialogTrigger>
-                <ActionButton>
-                    <Crosshairs />
-                    <Text>Attack</Text>
-                </ActionButton>
-                {(close) => (
+            <DialogContainer>
+                {(currentAction === 'Attack' && targetCounter) &&
                     <Dialog>
-                        <Heading>Attack</Heading>
+                        <Heading>Attack {targetName}</Heading>
+                        <Header>Attack dice: {attack}</Header>
                         <Divider />
                         <Content>
                             <Text>
-                                Attack points: {attack}
+                               Needed to hit: {defense}
                             </Text>
                         </Content>
                         <ButtonGroup>
-                            <Button 
-                                variant="secondary" 
-                                onPress={close}
-                            >
+                            <Button variant="secondary" onPress={onCancel}>
                                 Cancel
                             </Button>
-                            <Button 
-                                variant="cta" 
-                                onPress={close} 
-                                autoFocus
-                            >
+                            <Button variant="cta" onPress={onConfirm} autoFocus>
                                 Roll
                             </Button>
                         </ButtonGroup>
                     </Dialog>
-                )}
-            </DialogTrigger>
+                }
+            </DialogContainer>
         );
     }
+    
     return null;
 };
 

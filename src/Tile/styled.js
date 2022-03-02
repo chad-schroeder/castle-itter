@@ -14,6 +14,12 @@ export const StyledContainer = styled.div`
     border-radius: 6px;
 `;
 
+export const StyledColor = styled.div`
+    width: var(--spectrum-global-dimension-size-300);
+    height: var(--spectrum-global-dimension-size-300);
+    background-color: var(${props => props.bgColor});
+`;
+
 export const StyledArmament = styled.span`
     flex: 1;
 

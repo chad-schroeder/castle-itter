@@ -55,10 +55,6 @@ const Suppress = ({ unit }) => {
     const onClose = () => {
         // clear action; close dialog
         dispatch({ type: 'UNSET_CURRENT_ACTION' });
-
-        // reset values
-        setAllocation(initialAllocation);
-        setpointsRemaining(suppressVal);
     };
 
     const onConfirm = () => {
@@ -80,8 +76,6 @@ const Suppress = ({ unit }) => {
                 ordered: true,
             },
         });
-
-        onClose();
     };
 
     return (

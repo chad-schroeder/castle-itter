@@ -3,12 +3,12 @@ import React from 'react';
 
 import { LOS_COLORS } from '../constants';
 
-import { Flex, Heading, View } from '@adobe/react-spectrum';
+import { Flex, Heading } from '@adobe/react-spectrum';
 
-import { StyledContainer, StyledArmament } from './styled';
+import { StyledContainer, StyledColor, StyledArmament } from './styled';
 
 const renderColorBox = color => {
-    return <View key={color} backgroundColor={LOS_COLORS[color]} width="size-300" height="size-300" />;
+    return <StyledColor key={color} bgColor={LOS_COLORS[color]} />;
 };
 
 const Tile = ({ tile }) => {
